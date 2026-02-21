@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21 19:12:08",
+  "generated_at": "2026-02-21 19:22:07",
   "customers": {
     "Tuesday": [
       "フェイト",
@@ -788,8 +788,8 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤     400",
+          "unit_price": 1238,
           "last_order_date": "2025/07/22"
         },
         {
@@ -852,14 +852,14 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤       400",
+          "unit_price": 1238,
           "last_order_date": "2025/12/11"
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤      800",
+          "unit_price": 1568,
           "last_order_date": "2025/12/11"
         },
         {
@@ -1094,8 +1094,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤        800",
+          "unit_price": 1568,
           "last_order_date": "2026/01/05"
         },
         {
@@ -1202,8 +1202,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤       400",
+          "unit_price": 1238,
           "last_order_date": "2025/10/20"
         },
         {
@@ -1412,7 +1412,7 @@
         },
         {
           "product_code": "204700",
-          "product_name": "PMEｶﾗｰｸﾘｰﾑ",
+          "product_name": "PMEｶﾗｰｸﾘｰﾑ     240",
           "unit_price": 1650,
           "last_order_date": "2025/04/14"
         },
@@ -1654,14 +1654,14 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤      400",
+          "unit_price": 1238,
           "last_order_date": "2025/12/01"
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤      800",
+          "unit_price": 1568,
           "last_order_date": "2025/12/01"
         },
         {
@@ -1848,8 +1848,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤       800",
+          "unit_price": 1568,
           "last_order_date": "2025/12/22"
         },
         {
@@ -2058,8 +2058,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤        400",
+          "unit_price": 1238,
           "last_order_date": "2025/09/01"
         },
         {
@@ -3168,8 +3168,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 2,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤      400",
+          "unit_price": 1320,
           "last_order_date": "2025/12/23"
         },
         {
@@ -3354,8 +3354,8 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤     400",
+          "unit_price": 1320,
           "last_order_date": "2025/09/02"
         },
         {
@@ -4344,8 +4344,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤      800",
+          "unit_price": 1672,
           "last_order_date": "2026/01/20"
         },
         {
@@ -4740,8 +4740,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤      400",
+          "unit_price": 1320,
           "last_order_date": "2025/08/05"
         },
         {
@@ -7076,8 +7076,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤      800",
+          "unit_price": 1672,
           "last_order_date": "2025/11/20"
         },
         {
@@ -7160,8 +7160,8 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤      400",
+          "unit_price": 1320,
           "last_order_date": "2025/10/24"
         },
         {
@@ -7304,8 +7304,8 @@
         },
         {
           "product_code": "1911134",
-          "product_name": "huntﾊｰﾄﾞｽﾌﾟﾚｰ",
-          "unit_price": 1,
+          "product_name": "huntﾊｰﾄﾞｽﾌﾟﾚｰ      160",
+          "unit_price": 1008,
           "last_order_date": "2025/09/02"
         },
         {
@@ -8444,8 +8444,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤      400",
+          "unit_price": 1320,
           "last_order_date": "2025/12/02"
         },
         {
@@ -8462,8 +8462,8 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤      400",
+          "unit_price": 1320,
           "last_order_date": "2025/11/18"
         },
         {
@@ -9344,14 +9344,14 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤     400",
+          "unit_price": 1320,
           "last_order_date": "2025/09/04"
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤     400",
+          "unit_price": 1320,
           "last_order_date": "2025/09/04"
         },
         {
@@ -10528,8 +10528,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤      400",
+          "unit_price": 1238,
           "last_order_date": "2026/01/15"
         },
         {
@@ -11082,8 +11082,8 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤      400",
+          "unit_price": 1320,
           "last_order_date": "2026/01/08"
         },
         {
@@ -11672,8 +11672,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤     800",
+          "unit_price": 1672,
           "last_order_date": "2025/12/25"
         },
         {
@@ -12345,7 +12345,7 @@
         {
           "product_code": "3005000",
           "product_name": "ﾌﾟﾛﾏｽﾀｰ 80",
-          "unit_price": 1,
+          "unit_price": 560,
           "last_order_date": "2025/07/10"
         },
         {
@@ -13448,8 +13448,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤      400",
+          "unit_price": 1238,
           "last_order_date": "2025/10/14"
         },
         {
@@ -13774,8 +13774,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤         800",
+          "unit_price": 1568,
           "last_order_date": "2026/01/08"
         },
         {
@@ -13828,14 +13828,14 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤      400",
+          "unit_price": 1238,
           "last_order_date": "2025/12/26"
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤         400",
+          "unit_price": 1238,
           "last_order_date": "2025/12/26"
         },
         {
@@ -14220,8 +14220,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤         800",
+          "unit_price": 1568,
           "last_order_date": "2026/01/16"
         },
         {
@@ -14538,8 +14538,8 @@
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤       400",
+          "unit_price": 1238,
           "last_order_date": "2025/11/30"
         },
         {
@@ -15760,14 +15760,14 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤     800",
+          "unit_price": 1672,
           "last_order_date": "2025/11/20"
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤     400",
+          "unit_price": 1320,
           "last_order_date": "2025/11/20"
         },
         {
@@ -17014,8 +17014,8 @@
         },
         {
           "product_code": "1911134",
-          "product_name": "huntﾊｰﾄﾞｽﾌﾟﾚｰ",
-          "unit_price": 1,
+          "product_name": "huntﾊｰﾄﾞｽﾌﾟﾚｰ     160",
+          "unit_price": 1050,
           "last_order_date": "2025/10/14"
         },
         {
@@ -17310,8 +17310,8 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤      800",
+          "unit_price": 1672,
           "last_order_date": "2026/01/15"
         },
         {
@@ -17466,8 +17466,8 @@
         },
         {
           "product_code": "807005",
-          "product_name": "ｻﾞ ﾗﾒﾗﾒNo.2",
-          "unit_price": 1,
+          "product_name": "ｻﾞ ﾗﾒﾗﾒNo.2      1000",
+          "unit_price": 3600,
           "last_order_date": "2025/12/09"
         },
         {
@@ -17502,8 +17502,8 @@
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤       400",
+          "unit_price": 1320,
           "last_order_date": "2025/10/16"
         },
         {
@@ -17720,20 +17720,20 @@
         },
         {
           "product_code": "301118",
-          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
-          "unit_price": 2,
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤       800",
+          "unit_price": 1672,
           "last_order_date": "2025/12/16"
         },
         {
           "product_code": "301111",
-          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
-          "unit_price": 3,
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤       400",
+          "unit_price": 1320,
           "last_order_date": "2025/12/16"
         },
         {
           "product_code": "301116",
-          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤",
-          "unit_price": 1,
+          "product_name": "ｸｵﾗｲﾝ T-C80 N 1剤       400",
+          "unit_price": 1320,
           "last_order_date": "2025/12/16"
         },
         {
@@ -17774,8 +17774,8 @@
         },
         {
           "product_code": "807005",
-          "product_name": "ｻﾞ ﾗﾒﾗﾒNo.2",
-          "unit_price": 1,
+          "product_name": "ｻﾞ ﾗﾒﾗﾒNo.2     1000",
+          "unit_price": 3600,
           "last_order_date": "2025/11/07"
         },
         {
@@ -17876,8 +17876,8 @@
         },
         {
           "product_code": "6111504",
-          "product_name": "ｴﾙｼﾞｭｰﾀﾞ ｴﾏﾙｼﾞｮﾝﾌﾟﾗｽ",
-          "unit_price": 2,
+          "product_name": "ｴﾙｼﾞｭｰﾀﾞ ｴﾏﾙｼﾞｮﾝﾌﾟﾗｽ     120",
+          "unit_price": 1673,
           "last_order_date": "2025/05/30"
         },
         {
