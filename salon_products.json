@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21 18:25:48",
+  "generated_at": "2026-02-21 18:27:50",
   "customers": {
     "Tuesday": [
       "フェイト",
@@ -6525,6 +6525,686 @@
           "product_name": "ﾅｼｰﾄﾞｱｼｯﾄﾞｶﾗｰ 190g",
           "unit_price": 950,
           "last_order_date": "2024/12/23"
+        }
+      ],
+      "リコラ": [
+        {
+          "product_code": "301002",
+          "product_name": "ｺｽﾒｶ-ﾙ H 400",
+          "unit_price": 800,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "301011",
+          "product_name": "ｺｽﾒｶｰﾙﾌﾟﾘｽﾞﾑﾌﾟﾗｽｱﾌﾀｰﾛｰｼｮﾝ800",
+          "unit_price": 1120,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "608080",
+          "product_name": "ｼｰｽﾞﾝﾄﾘｯﾌﾟ ｳｫｯｼｬﾌﾞﾙﾌｫｰﾑ 320",
+          "unit_price": 1568,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "611040",
+          "product_name": "ﾉﾌｨﾊｰﾄﾞｼﾞｪﾙR360",
+          "unit_price": 1232,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "711013",
+          "product_name": "CDｽｰﾊﾟｰﾊｰﾄﾞﾜｯｸｽ80",
+          "unit_price": 840,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "306041",
+          "product_name": "ｱｼﾞｱﾝｶﾗｰﾌｪｽOX6%1200",
+          "unit_price": 1040,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "305000",
+          "product_name": "ｱｼﾞｱﾝｶﾗｰﾌｪｽ 85",
+          "unit_price": 480,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "3004000",
+          "product_name": "ﾌﾟﾛｽﾃｯﾌﾟ80",
+          "unit_price": 416,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "708064",
+          "product_name": "ﾌｧｼﾅｰﾄ ﾎﾞﾃﾞｨｿｰﾌﾟ ﾚﾌｨﾙ 500",
+          "unit_price": 672,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "611301",
+          "product_name": "ﾓﾉｰｸ ｵｲﾙ 60",
+          "unit_price": 1836,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "304250",
+          "product_name": "ｶﾗｰｽﾄｰﾘｰ ｱﾄﾞﾐｵ 90",
+          "unit_price": 525,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "207027",
+          "product_name": "THCﾌｪﾝﾃﾌｫﾙﾃｼｰﾊﾞﾑｸﾘｱｼﾞｪﾙWA150",
+          "unit_price": 1125,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "301009",
+          "product_name": "ｺｽﾒｶｰﾙﾌﾟﾘｽﾞﾑﾌﾟﾗｽH400",
+          "unit_price": 960,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "611303",
+          "product_name": "ﾓﾉｰｸ ﾊﾞｰﾑ 45",
+          "unit_price": 1836,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "3207005",
+          "product_name": "ﾌｧｲﾊﾞｰP ﾎﾞﾝﾄﾞｵｲﾙ 150",
+          "unit_price": 1960,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "336001",
+          "product_name": "ﾏｰｸﾕｰ ｱｲﾌﾞﾛｳﾜｯｸｽ",
+          "unit_price": 1400,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "218810",
+          "product_name": "SMC AFｼｱｰｵｲﾙT100",
+          "unit_price": 1920,
+          "last_order_date": "2025/12/15"
+        },
+        {
+          "product_code": "218657",
+          "product_name": "SMCAIﾍﾞﾙﾍﾞｯﾄｵｲﾙ100",
+          "unit_price": 1920,
+          "last_order_date": "2025/12/15"
+        },
+        {
+          "product_code": "218606",
+          "product_name": "SMCSSｱｯﾌﾟ･ﾃｯｸｽR1800",
+          "unit_price": 5000,
+          "last_order_date": "2025/12/15"
+        },
+        {
+          "product_code": "9135802",
+          "product_name": "ﾏｲｸﾛｶﾚﾝﾄﾌﾟﾛｼｬﾝﾌﾟｰﾌﾞﾗｼ",
+          "unit_price": 3500,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "7198999",
+          "product_name": "*ｾﾙﾙﾘﾍﾟｱﾛｰｼｮﾝｽﾀ販",
+          "unit_price": 2750,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "218798",
+          "product_name": "SMC AF TRaR450",
+          "unit_price": 2470,
+          "last_order_date": "2025/12/08"
+        },
+        {
+          "product_code": "218686",
+          "product_name": "SMCADｼｬﾝﾌﾟｰ 1800R",
+          "unit_price": 5200,
+          "last_order_date": "2025/12/08"
+        },
+        {
+          "product_code": "218834",
+          "product_name": "SMC FFｸﾘｱｼｬﾜｰ120",
+          "unit_price": 2470,
+          "last_order_date": "2025/12/08"
+        },
+        {
+          "product_code": "218775",
+          "product_name": "SMC AIﾄﾘｰﾄﾒﾝﾄDR450",
+          "unit_price": 2470,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "218809",
+          "product_name": "SMC AFﾏｽｸT680",
+          "unit_price": 6000,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "218835",
+          "product_name": "SMC FFﾓｲｽﾄｼｬﾜｰ120",
+          "unit_price": 2470,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "218604",
+          "product_name": "SMCSSｱｳﾄ･CAR1200",
+          "unit_price": 4500,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "218836",
+          "product_name": "SMC SSﾘﾌｧｲﾝｸﾞｸﾘｰﾑ500",
+          "unit_price": 6590,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "306031",
+          "product_name": "ｶﾗｰｽﾄｰﾘｰ ｱﾄﾞﾐｵ OX2.8% 1000",
+          "unit_price": 1040,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "708302",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾋﾟﾝｸ 250",
+          "unit_price": 1064,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "218823",
+          "product_name": "SMCﾜﾝﾀﾞｰｼｰﾙﾄﾞA110",
+          "unit_price": 1760,
+          "last_order_date": "2025/11/26"
+        },
+        {
+          "product_code": "204700",
+          "product_name": "PMEｶﾗｰｸﾘｰﾑ 240",
+          "unit_price": 1650,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "207301",
+          "product_name": "TGMｿｰﾀﾞﾌｫｰﾑｸﾚﾝｻﾞｰ 170",
+          "unit_price": 2000,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "305250",
+          "product_name": "Nｶﾗｰｽﾄｰﾘｰﾌﾟﾗｲﾑ 90g",
+          "unit_price": 517,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "301118",
+          "product_name": "ｸｵﾗｲﾝ OX N2 2剤",
+          "unit_price": 1,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "608006",
+          "product_name": "CE3ｼｬﾝﾌﾟｰ 1000新価格",
+          "unit_price": 900,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "608007",
+          "product_name": "ｼｰｲｰｽﾘｰ ｼｬﾝﾌﾟｰR800",
+          "unit_price": 510,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "506711",
+          "product_name": "Nｱｸｾｽﾌﾘｰ ﾊﾟｳﾀﾞｰﾌﾞﾘｰﾁ 500",
+          "unit_price": 2320,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "207026",
+          "product_name": "THCﾌｪﾝﾃFｼｰﾊﾞﾑｸﾘｱｼﾞｪﾙｸｰﾙ150",
+          "unit_price": 1125,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "208010",
+          "product_name": "THCﾌｪﾝﾃﾌｫﾙﾃｼｬﾝﾌﾟｰ (ﾚ)1800",
+          "unit_price": 2700,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "210061",
+          "product_name": "THCﾌｪﾝﾃﾌｫﾙﾃﾄﾘｰﾄﾒﾝﾄAﾚﾌｨﾙ1800",
+          "unit_price": 3375,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "708063",
+          "product_name": "ﾌｧｼﾅｰﾄ ﾎﾞﾃﾞｨWﾃﾞｵｿｰﾌﾟ600",
+          "unit_price": 1008,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "9631008",
+          "product_name": "ｻﾎﾞﾆｰｽﾞ ﾗｯﾌﾟ ｽﾘﾑ 30cm*100m",
+          "unit_price": 432,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "218793",
+          "product_name": "SMC AF SPaR450",
+          "unit_price": 1920,
+          "last_order_date": "2025/11/14"
+        },
+        {
+          "product_code": "218680",
+          "product_name": "SMCSSﾜﾝﾀﾞｰｼｰﾙﾄﾞ125",
+          "unit_price": 2250,
+          "last_order_date": "2025/11/14"
+        },
+        {
+          "product_code": "1911132",
+          "product_name": "huntｽﾀｲﾘﾝｸﾞｼﾞｪﾙ 300",
+          "unit_price": 1008,
+          "last_order_date": "2025/10/28"
+        },
+        {
+          "product_code": "1911131",
+          "product_name": "huntｽﾀｲﾘﾝｸﾞｸﾞﾘｰｽ 100",
+          "unit_price": 1008,
+          "last_order_date": "2025/10/28"
+        },
+        {
+          "product_code": "231201",
+          "product_name": "TGMｳｫｯｼｭ 120",
+          "unit_price": 1300,
+          "last_order_date": "2025/10/28"
+        },
+        {
+          "product_code": "218684",
+          "product_name": "SMCADｼｬﾝﾌﾟｰ 500",
+          "unit_price": 2750,
+          "last_order_date": "2025/10/27"
+        },
+        {
+          "product_code": "218691",
+          "product_name": "SMCADﾍｱﾄﾘｰﾄﾒﾝﾄ 500",
+          "unit_price": 3570,
+          "last_order_date": "2025/10/27"
+        },
+        {
+          "product_code": "218679",
+          "product_name": "SMCSSﾜﾝﾀﾞｰｼｰﾙﾄﾞ480R",
+          "unit_price": 9000,
+          "last_order_date": "2025/10/27"
+        },
+        {
+          "product_code": "301114",
+          "product_name": "ｸｵﾗｲﾝ CA-C130 N2 400",
+          "unit_price": 1584,
+          "last_order_date": "2025/10/24"
+        },
+        {
+          "product_code": "301121",
+          "product_name": "ｸｵﾗｲﾝ CA-C110 400",
+          "unit_price": 1584,
+          "last_order_date": "2025/10/24"
+        },
+        {
+          "product_code": "301111",
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
+          "unit_price": 1,
+          "last_order_date": "2025/10/24"
+        },
+        {
+          "product_code": "301119",
+          "product_name": "ｸｵﾗｲﾝ ｱﾌﾀｰｸﾘｰﾑN2 800",
+          "unit_price": 1672,
+          "last_order_date": "2025/10/24"
+        },
+        {
+          "product_code": "1911133",
+          "product_name": "huntｽﾀｲﾘﾝｸﾞﾜｯｸｽ 100",
+          "unit_price": 1008,
+          "last_order_date": "2025/10/24"
+        },
+        {
+          "product_code": "218794",
+          "product_name": "SMC AF SPaR1800",
+          "unit_price": 4500,
+          "last_order_date": "2025/10/15"
+        },
+        {
+          "product_code": "711001",
+          "product_name": "CDﾌﾘｰｽﾞｽﾌﾟﾚｰ200",
+          "unit_price": 840,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "9106904",
+          "product_name": "P-UP XTERAﾃﾗﾍﾙﾂ ﾊﾟﾄﾞﾙﾌﾞﾗｼ",
+          "unit_price": 5040,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "308139",
+          "product_name": "NｽﾌﾟﾘﾅｰｼﾞｭSPﾊﾟﾌｽﾑｰｽa1000",
+          "unit_price": 2520,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "310139",
+          "product_name": "NｽﾌﾟﾘﾅｰｼﾞｭTRﾊﾟﾌｽﾑｰｽa1000",
+          "unit_price": 2730,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "218791",
+          "product_name": "SMC AF SPa500",
+          "unit_price": 2360,
+          "last_order_date": "2025/10/08"
+        },
+        {
+          "product_code": "218771",
+          "product_name": "SMC ADｼｬﾝﾌﾟｰR450",
+          "unit_price": 2200,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "218804",
+          "product_name": "SMCAF TRT500",
+          "unit_price": 3080,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "231205",
+          "product_name": "TGMﾛｰｼｮﾝ 480",
+          "unit_price": 3200,
+          "last_order_date": "2025/09/30"
+        },
+        {
+          "product_code": "9102901",
+          "product_name": "ﾈｯｸｼｬｯﾀｰ 2      ﾗｲﾄｸﾞﾚｰ",
+          "unit_price": 1080,
+          "last_order_date": "2025/09/30"
+        },
+        {
+          "product_code": "9720029",
+          "product_name": "P-UPXTERAﾃﾗﾍﾙﾂｸｯｼｮﾝﾌﾞﾗｼ #",
+          "unit_price": 4410,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "7298999",
+          "product_name": "*ﾘｾﾝｽSTｷｰﾌﾟｽﾀｲﾘﾝｸﾞ",
+          "unit_price": 750,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "708301",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾊﾟｰﾌﾟﾙ 250",
+          "unit_price": 1068,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "907084",
+          "product_name": "ﾌｨﾄｼﾞｱﾈｰｾﾞ200",
+          "unit_price": 3800,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "9720028",
+          "product_name": "P-UPXTERAﾃﾗﾍﾙﾂﾊﾟﾄﾞﾙﾌﾞﾗｼ #",
+          "unit_price": 5040,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "9215502",
+          "product_name": "ﾏｲｸﾛｶﾚﾝﾄﾌﾟﾛｼｬﾝﾌﾟｰﾌﾞﾗｼ",
+          "unit_price": 3150,
+          "last_order_date": "2025/09/17"
+        },
+        {
+          "product_code": "218644",
+          "product_name": "SMCAIｼｬﾝﾌﾟｰ500",
+          "unit_price": 2360,
+          "last_order_date": "2025/09/10"
+        },
+        {
+          "product_code": "218602",
+          "product_name": "SMCSSｵﾌ･ｸﾘｱR1800",
+          "unit_price": 3700,
+          "last_order_date": "2025/09/10"
+        },
+        {
+          "product_code": "218705",
+          "product_name": "SMC SS ﾃﾞｨｰﾌﾟｽﾑｰｽR1800",
+          "unit_price": 14900,
+          "last_order_date": "2025/09/10"
+        },
+        {
+          "product_code": "7998999",
+          "product_name": "*ﾃﾗﾍﾙﾂﾊﾟﾄﾞﾙﾌﾞﾗｼ",
+          "unit_price": 4410,
+          "last_order_date": "2025/09/08"
+        },
+        {
+          "product_code": "610011",
+          "product_name": "CE3ﾄﾘｰﾄﾒﾝﾄ1000新価格",
+          "unit_price": 975,
+          "last_order_date": "2025/09/02"
+        },
+        {
+          "product_code": "610012",
+          "product_name": "ｼｰｲｰｽﾘｰﾄﾘｰﾄﾒﾝﾄ R750",
+          "unit_price": 638,
+          "last_order_date": "2025/09/02"
+        },
+        {
+          "product_code": "708305",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ｱｯｼｭ 250",
+          "unit_price": 1064,
+          "last_order_date": "2025/09/02"
+        },
+        {
+          "product_code": "708033",
+          "product_name": "Fﾌﾟﾛﾃｸﾄｼｬﾝﾌﾟｰﾍﾞｰｼｯｸ1000ﾚﾌｨﾙ",
+          "unit_price": 1736,
+          "last_order_date": "2025/09/02"
+        },
+        {
+          "product_code": "508321",
+          "product_name": "ｲﾝﾌﾟﾗｲﾑ ｿｰﾀﾞｼｬﾝﾌﾟｰ 200",
+          "unit_price": 1170,
+          "last_order_date": "2025/09/02"
+        },
+        {
+          "product_code": "1911134",
+          "product_name": "huntﾊｰﾄﾞｽﾌﾟﾚｰ",
+          "unit_price": 1,
+          "last_order_date": "2025/09/02"
+        },
+        {
+          "product_code": "9997455",
+          "product_name": "ｻﾎﾞﾆｰｽﾞﾗｯﾌﾟ30cm×100m",
+          "unit_price": 432,
+          "last_order_date": "2025/08/05"
+        },
+        {
+          "product_code": "306707",
+          "product_name": "ｱﾘﾐﾉﾌﾞﾘｰﾁ120 500",
+          "unit_price": 3040,
+          "last_order_date": "2025/08/05"
+        },
+        {
+          "product_code": "511170",
+          "product_name": "ﾐｰﾌｧﾌﾚｸﾞﾗﾝｽUVｽﾌﾟﾚｰ80ｼﾄﾗｽｸﾞﾘｰﾝ",
+          "unit_price": 546,
+          "last_order_date": "2025/08/05"
+        },
+        {
+          "product_code": "218656",
+          "product_name": "SMCAIﾏｽｸD200",
+          "unit_price": 2580,
+          "last_order_date": "2025/08/01"
+        },
+        {
+          "product_code": "611039",
+          "product_name": "ﾉﾌｨﾊｰﾄﾞｼﾞｪﾙ200",
+          "unit_price": 896,
+          "last_order_date": "2025/07/29"
+        },
+        {
+          "product_code": "218806",
+          "product_name": "SMCAF TRTR450",
+          "unit_price": 2470,
+          "last_order_date": "2025/06/30"
+        },
+        {
+          "product_code": "9232903",
+          "product_name": "NｵｷｬｸｻﾏﾃﾞﾝﾋﾟｮｳW(ﾌｸｼｬ) 5ｻﾂ",
+          "unit_price": 2250,
+          "last_order_date": "2025/06/12"
+        },
+        {
+          "product_code": "218808",
+          "product_name": "SMC AFﾏｽｸT200",
+          "unit_price": 2580,
+          "last_order_date": "2025/06/05"
+        },
+        {
+          "product_code": "218773",
+          "product_name": "SMC AIｼｬﾝﾌﾟｰR450",
+          "unit_price": 1920,
+          "last_order_date": "2025/05/07"
+        },
+        {
+          "product_code": "218807",
+          "product_name": "SMCAF TRTR1800",
+          "unit_price": 6000,
+          "last_order_date": "2025/05/07"
+        },
+        {
+          "product_code": "1308009",
+          "product_name": "ｱﾌﾞﾘｰｾﾞ ｼｬﾝﾌﾟｰ CR 600ﾚﾌｨﾙ",
+          "unit_price": 1820,
+          "last_order_date": "2025/04/29"
+        },
+        {
+          "product_code": "1310009",
+          "product_name": "ｱﾌﾞﾘｰｾﾞ ﾍｱﾊﾟｯｸ CR 600ﾚﾌｨﾙ",
+          "unit_price": 2184,
+          "last_order_date": "2025/04/29"
+        },
+        {
+          "product_code": "1398001",
+          "product_name": "ｱﾌﾞﾘｰｾﾞ ｼｬﾝﾌﾟｰ 容器",
+          "unit_price": 500,
+          "last_order_date": "2025/04/29"
+        },
+        {
+          "product_code": "1398002",
+          "product_name": "ｱﾌﾞﾘｰｾﾞ ﾍｱﾊﾟｯｸ 容器",
+          "unit_price": 500,
+          "last_order_date": "2025/04/29"
+        },
+        {
+          "product_code": "9676003",
+          "product_name": "G-ZERO COIL ｼｬﾝﾌﾟｰﾌﾞﾗｼ",
+          "unit_price": 3150,
+          "last_order_date": "2025/04/29"
+        },
+        {
+          "product_code": "611302",
+          "product_name": "ﾓﾉｰｸ ｵｲﾙｼﾞｪﾘｰ 80",
+          "unit_price": 1620,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "511182",
+          "product_name": "ﾐｰﾌｧﾌﾚｸﾞﾗﾝｽUVｽﾌﾟﾚｰ80＜ﾎﾜｲﾄﾃｨｰ＞",
+          "unit_price": 546,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "301090",
+          "product_name": "ｸｵﾗｲﾝT-C80 1剤400",
+          "unit_price": 1200,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "301086",
+          "product_name": "NｸｵﾗｲﾝT280 1剤400",
+          "unit_price": 1200,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "301088",
+          "product_name": "NｸｵﾗｲﾝOX2剤800",
+          "unit_price": 1520,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "218689",
+          "product_name": "SMCADｽｶﾙﾌﾟﾄﾘｰﾄﾒﾝﾄ 1800R",
+          "unit_price": 6800,
+          "last_order_date": "2025/03/17"
+        },
+        {
+          "product_code": "218654",
+          "product_name": "SMCAIﾄﾘｰﾄﾒﾝﾄD1800R",
+          "unit_price": 6000,
+          "last_order_date": "2025/03/17"
+        },
+        {
+          "product_code": "4030018",
+          "product_name": "ｽﾀ販LOA THE OIL pair BLANCHE 100",
+          "unit_price": 3000,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "5010013",
+          "product_name": "OMGproMAX one1000(業務用)",
+          "unit_price": 9800,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "218792",
+          "product_name": "SMC AF SPa1000",
+          "unit_price": 3500,
+          "last_order_date": "2025/03/03"
+        },
+        {
+          "product_code": "231208",
+          "product_name": "TGMｿｰﾀﾞﾊﾟｯｸﾘﾌｧｲﾅｰ 6×10",
+          "unit_price": 5000,
+          "last_order_date": "2025/02/12"
+        },
+        {
+          "product_code": "4011206",
+          "product_name": "LOA THE OIL MYSTIQUE WOOD",
+          "unit_price": 3500,
+          "last_order_date": "2025/02/07"
+        },
+        {
+          "product_code": "9114902",
+          "product_name": "ﾏｲｸﾛｶﾚﾝﾄﾌﾟﾛｼｬﾝﾌﾟｰﾌﾞﾗｼ",
+          "unit_price": 3150,
+          "last_order_date": "2025/01/21"
+        },
+        {
+          "product_code": "218630",
+          "product_name": "SMCAIﾏｽｸD680",
+          "unit_price": 6000,
+          "last_order_date": "2025/01/14"
+        },
+        {
+          "product_code": "218652",
+          "product_name": "SMCAIﾄﾘｰﾄﾒﾝﾄD500",
+          "unit_price": 3080,
+          "last_order_date": "2024/12/24"
         }
       ],
       "スリー5階": [
@@ -15621,6 +16301,428 @@
           "product_name": "ﾙｰﾁｪﾝﾄｶﾗｰ    80g",
           "unit_price": 512,
           "last_order_date": "2025/01/24"
+        }
+      ],
+      "クラーク": [
+        {
+          "product_code": "3004000",
+          "product_name": "ﾌﾟﾛｽﾃｯﾌﾟ80",
+          "unit_price": 416,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "706008",
+          "product_name": "BLｶﾗｰ OX 6% 2000 ﾊﾟｳﾁ",
+          "unit_price": 1125,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "301114",
+          "product_name": "ｸｵﾗｲﾝ CA-C130 N2 400",
+          "unit_price": 1584,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "7198999",
+          "product_name": "*ﾈｯｸｼｬｯﾀｰ2ﾗｲﾄｸﾞﾚｰ",
+          "unit_price": 1110,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "9112708",
+          "product_name": "ｱｲﾋﾞﾙ ｴｺﾎｲﾙ       ｼﾙﾊﾞｰ ｿﾌﾄ",
+          "unit_price": 1050,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "9112614",
+          "product_name": "ﾌﾛｰﾗｲﾔｰｶﾊﾞｰ100ﾏｲｲﾘ(ﾌｸﾛｲﾘ)",
+          "unit_price": 890,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "9114305",
+          "product_name": "ﾌﾟﾛﾋﾞｭｰﾃｨﾊﾞﾝﾄﾞ ﾊｺ 16-1.5",
+          "unit_price": 480,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "301112",
+          "product_name": "ｸｵﾗｲﾝ T-C250 N2 1剤 400",
+          "unit_price": 1320,
+          "last_order_date": "2025/12/18"
+        },
+        {
+          "product_code": "1908181",
+          "product_name": "SONOﾎﾞﾘｭｰﾑｼｬﾝﾌﾟｰ 300",
+          "unit_price": 2520,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "1910171",
+          "product_name": "SONOﾎﾞﾘｭｰﾑﾄﾘｰﾄﾒﾝﾄ 300",
+          "unit_price": 2520,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "102051",
+          "product_name": "ﾌﾟﾗｲｱ TG-1",
+          "unit_price": 592,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "9997451",
+          "product_name": "ﾌｪｲｽｼ-ﾄEX",
+          "unit_price": 423,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "1418028",
+          "product_name": "ｲﾝﾌﾟﾚｯｼﾌﾞPPTｾﾗﾑﾏｽｸﾓｲｽﾁｬｰ 700",
+          "unit_price": 6416,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "9666004",
+          "product_name": "ﾍｱﾙｰﾄﾎﾞﾘｭｰﾏｲｻﾞｰ S ﾌﾞﾗｯｸ",
+          "unit_price": 1080,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "1418019",
+          "product_name": "OG ｲﾝﾌﾟﾚｯｼﾌﾞPPTｾﾗﾑﾓｲｽﾁｬｰ 700",
+          "unit_price": 4634,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "3108006",
+          "product_name": "ﾌﾟﾃﾛ ARｼｬﾝﾌﾟｰ 1500R",
+          "unit_price": 6720,
+          "last_order_date": "2025/12/02"
+        },
+        {
+          "product_code": "3011251",
+          "product_name": "ｿﾏﾙｶL OBTﾒﾛｳｴﾏﾙｼﾞｮﾝ 150",
+          "unit_price": 1417,
+          "last_order_date": "2025/11/30"
+        },
+        {
+          "product_code": "5011002",
+          "product_name": "OMGproMAX one50 ｻﾛﾝﾄﾗｲｱﾙｾｯﾄ",
+          "unit_price": 1200,
+          "last_order_date": "2025/11/30"
+        },
+        {
+          "product_code": "708001",
+          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛｼｬﾝﾌﾟｰ 5000",
+          "unit_price": 3080,
+          "last_order_date": "2025/11/30"
+        },
+        {
+          "product_code": "102052",
+          "product_name": "ﾌﾟﾗｲｱ TC-1",
+          "unit_price": 680,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "4011256",
+          "product_name": "LOA THE EMULSION Pair BLANCHE 100",
+          "unit_price": 3850,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "1418889",
+          "product_name": "ﾃｸﾉｴｲﾄ送料",
+          "unit_price": 1000,
+          "last_order_date": "2025/11/18"
+        },
+        {
+          "product_code": "7598999",
+          "product_name": "*AROMAﾑｽｸﾌﾛｰﾗﾙ",
+          "unit_price": 280,
+          "last_order_date": "2025/11/07"
+        },
+        {
+          "product_code": "706005",
+          "product_name": "BLｶﾗｰ OX 2% 2000",
+          "unit_price": 1125,
+          "last_order_date": "2025/10/17"
+        },
+        {
+          "product_code": "105600",
+          "product_name": "ｴﾄﾞﾙｸｵﾝ 120",
+          "unit_price": 720,
+          "last_order_date": "2025/10/17"
+        },
+        {
+          "product_code": "111057",
+          "product_name": "新ﾄﾘｴSｽﾌﾟﾚｰ10-170",
+          "unit_price": 832,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "1911134",
+          "product_name": "huntﾊｰﾄﾞｽﾌﾟﾚｰ",
+          "unit_price": 1,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "4011202",
+          "product_name": "LOA THE OIL BLANCHE 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "4030012",
+          "product_name": "ｽﾀ販 LOA THE ﾊﾞｰﾑ      BLANCHE",
+          "unit_price": 2700,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "4030030",
+          "product_name": "ｽﾀ販 LOA THE ﾊﾞｰﾑ BLUE CLAIR",
+          "unit_price": 2700,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "4030041",
+          "product_name": "ｽﾀ販 LOA THE EMULSION Pair BLANCHE",
+          "unit_price": 3300,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "4030039",
+          "product_name": "ｽﾀ販 LOA THE EMULSION BLUE CLAIR",
+          "unit_price": 3300,
+          "last_order_date": "2025/09/26"
+        },
+        {
+          "product_code": "4011208",
+          "product_name": "LOA THE OIL BLUE CLAIR 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "4011209",
+          "product_name": "LOA THE OIL pair BLANCHE 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "708305",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ｱｯｼｭ 250",
+          "unit_price": 1064,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "4011206",
+          "product_name": "LOA THE OIL WOOD 100",
+          "unit_price": 2450,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "4011205",
+          "product_name": "LOA THE OIL BEACH CLUB",
+          "unit_price": 2940,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "3311041",
+          "product_name": "Markｴﾙﾄﾘｰﾄﾒﾝﾄ 120",
+          "unit_price": 2058,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "3011224",
+          "product_name": "ｴﾄﾗｽﾚｱﾊﾞｰﾑ80",
+          "unit_price": 1092,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "608007",
+          "product_name": "ｼｰｲｰｽﾘｰ ｼｬﾝﾌﾟｰR800",
+          "unit_price": 330,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "610012",
+          "product_name": "ｼｰｲｰｽﾘｰﾄﾘｰﾄﾒﾝﾄ R750",
+          "unit_price": 413,
+          "last_order_date": "2025/09/19"
+        },
+        {
+          "product_code": "4008852",
+          "product_name": "Forｵｰｾﾝﾃｨｯｸｼｬﾝﾌﾟｰ 980",
+          "unit_price": 1200,
+          "last_order_date": "2025/08/08"
+        },
+        {
+          "product_code": "1507021",
+          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 120",
+          "unit_price": 1755,
+          "last_order_date": "2025/07/25"
+        },
+        {
+          "product_code": "3310081",
+          "product_name": "ﾔｸｼﾞｮ nobiruﾍｱﾏｽｸ 200",
+          "unit_price": 2723,
+          "last_order_date": "2025/07/18"
+        },
+        {
+          "product_code": "710001",
+          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛﾄﾘｰﾄﾒﾝﾄ 5000",
+          "unit_price": 3080,
+          "last_order_date": "2025/07/18"
+        },
+        {
+          "product_code": "301087",
+          "product_name": "NｸｵﾗｲﾝT-C250 1剤400",
+          "unit_price": 1200,
+          "last_order_date": "2025/06/27"
+        },
+        {
+          "product_code": "1418163",
+          "product_name": "ﾄｩﾙｰﾄﾘｰﾄﾒﾝﾄﾌﾟﾛCW",
+          "unit_price": 20000,
+          "last_order_date": "2025/06/23"
+        },
+        {
+          "product_code": "1911101",
+          "product_name": "N ReOTTO ﾓｲｽﾄｺﾝﾄﾛｰﾙTR 100",
+          "unit_price": 1050,
+          "last_order_date": "2025/06/20"
+        },
+        {
+          "product_code": "1418027",
+          "product_name": "ｲﾝﾌﾟﾚｯｼﾌﾞPPTｾﾗﾑﾏｽｸﾓｲｽﾁｬｰ 180",
+          "unit_price": 2310,
+          "last_order_date": "2025/06/17"
+        },
+        {
+          "product_code": "301082",
+          "product_name": "NｸｵﾗｲﾝCA-C130(400)",
+          "unit_price": 1440,
+          "last_order_date": "2025/06/06"
+        },
+        {
+          "product_code": "107214",
+          "product_name": "ﾋﾀﾘﾌﾞｰﾀｰｾﾗﾑX800",
+          "unit_price": 3200,
+          "last_order_date": "2025/05/16"
+        },
+        {
+          "product_code": "101113",
+          "product_name": "ﾋﾀAPｽﾄﾚｰﾄ中性Cｺｽﾒ1 400",
+          "unit_price": 2240,
+          "last_order_date": "2025/05/16"
+        },
+        {
+          "product_code": "9997267",
+          "product_name": "ｵｶﾓﾄﾌﾞﾗｯｸｸﾞﾛｰﾌﾞM",
+          "unit_price": 3040,
+          "last_order_date": "2025/05/09"
+        },
+        {
+          "product_code": "711167",
+          "product_name": "ﾓﾀﾞﾘｴ ﾎｰﾙﾄﾞｽﾌﾟﾚｰ 200",
+          "unit_price": 654,
+          "last_order_date": "2025/05/09"
+        },
+        {
+          "product_code": "704000",
+          "product_name": "BLｶﾗｰ    120g",
+          "unit_price": 653,
+          "last_order_date": "2025/05/02"
+        },
+        {
+          "product_code": "104600",
+          "product_name": "ﾏﾃﾘｱ     120g",
+          "unit_price": 650,
+          "last_order_date": "2025/04/11"
+        },
+        {
+          "product_code": "706704",
+          "product_name": "BLｶﾗｰﾊﾟｳﾀﾞｰﾌﾞﾘｰﾁ500",
+          "unit_price": 2240,
+          "last_order_date": "2025/04/11"
+        },
+        {
+          "product_code": "105300",
+          "product_name": "ｴﾄﾞﾙ   80g",
+          "unit_price": 540,
+          "last_order_date": "2025/03/28"
+        },
+        {
+          "product_code": "708064",
+          "product_name": "ﾌｧｼﾅｰﾄ ﾎﾞﾃﾞｨｿｰﾌﾟ ﾚﾌｨﾙ 500",
+          "unit_price": 490,
+          "last_order_date": "2025/03/28"
+        },
+        {
+          "product_code": "4011203",
+          "product_name": "LOA THE OIL          Citrus Vert",
+          "unit_price": 3500,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "4030021",
+          "product_name": "ｽﾀ販LOA THE OIL CARE Pair B ﾋﾟﾝｸ100",
+          "unit_price": 3300,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "4030018",
+          "product_name": "ｽﾀ販LOA THE OIL pair BLANCHE 100",
+          "unit_price": 3000,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "708034",
+          "product_name": "Fﾌﾟﾛﾃｸﾄｼｬﾝﾌﾟｰ ﾘｯﾁ 300",
+          "unit_price": 924,
+          "last_order_date": "2025/02/14"
+        },
+        {
+          "product_code": "710034",
+          "product_name": "Fﾌﾟﾛﾃｸﾄﾍｱﾏｽｸ ﾘｯﾁ 200",
+          "unit_price": 924,
+          "last_order_date": "2025/02/14"
+        },
+        {
+          "product_code": "1418031",
+          "product_name": "ｲﾝﾌﾟﾚｯｼﾌﾞPPTｾﾗﾑﾏｽｸﾓｲｽﾁｬｰﾄﾗｲｱ",
+          "unit_price": 1200,
+          "last_order_date": "2025/02/14"
+        },
+        {
+          "product_code": "9997560",
+          "product_name": "ﾌｧｲﾝｸｰﾙｸﾞﾘｰｽG 210",
+          "unit_price": 1071,
+          "last_order_date": "2025/01/24"
+        },
+        {
+          "product_code": "1498999",
+          "product_name": "ｵｯｼﾞｨｵｯﾄ ﾄｩﾙｰﾄﾘｰﾄﾒﾝﾄ ﾌﾟﾛ［OG-100/CW",
+          "unit_price": 23765,
+          "last_order_date": "2025/01/21"
+        },
+        {
+          "product_code": "708036",
+          "product_name": "Fﾌﾟﾛﾃｸﾄｼｬﾝﾌﾟｰﾘｯﾁ1000ﾚﾌｨﾙ",
+          "unit_price": 1266,
+          "last_order_date": "2025/01/14"
+        },
+        {
+          "product_code": "710036",
+          "product_name": "Fﾌﾟﾛﾃｸﾄﾍｱﾏｽｸﾘｯﾁ1000ﾚﾌｨﾙ",
+          "unit_price": 1715,
+          "last_order_date": "2025/01/14"
+        },
+        {
+          "product_code": "7998999",
+          "product_name": "*ﾃﾗｺｺﾍｱｺｰﾑ",
+          "unit_price": 3920,
+          "last_order_date": "2025/01/14"
         }
       ],
       "ホロホロヘアー": [
