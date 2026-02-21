@@ -642,8 +642,12 @@
         }
 
         function getCustomersForDay(day) {
-            // customers.json の順序を保ちたいが、JSONに含まれていないのでDATA.salonsのキーを使用
             if (!DATA) return [];
+            // customers.json の全サロンリストを使う（売上データがないサロンも表示）
+            if (DATA.customers && DATA.customers[day]) {
+                return DATA.customers[day];
+            }
+            // フォールバック: salonsのキーを使用
             const salonsOnDay = DATA.salons[day] || {};
             return Object.keys(salonsOnDay);
         }
