@@ -886,9 +886,12 @@
             const query = document.getElementById('product-search').value.toLowerCase();
             const today = new Date();
 
-            let filtered = products.filter(p =>
-                !query || p.product_name.toLowerCase().includes(query) || p.product_code.includes(query)
-            );
+            let filtered = products.filter(p => {
+                if (!query) return true;
+                const normName = normalizeSearch(p.product_name);
+                const normQuery = normalizeSearch(query);
+                return normName.includes(normQuery) || p.product_code.includes(query);
+            });
 
             const sorted = [...filtered].sort((a, b) => {
                 if (sortOrder === 'date') return b.last_order_date.localeCompare(a.last_order_date);
@@ -963,7 +966,7 @@
             for (const [day, salons] of Object.entries(DATA.salons)) {
                 for (const [salon, products] of Object.entries(salons)) {
                     for (const p of products) {
-                        if (p.product_name.toLowerCase().includes(query)) {
+                        if (normalizeSearch(p.product_name).includes(normalizeSearch(query))) {
                             const key = p.product_name;
                             if (!matches[key]) matches[key] = [];
                             matches[key].push({
@@ -1042,6 +1045,30 @@
         }
         function escapeAttr(str) {
             return String(str).replace(/'/g, "\\'");
+        }
+
+        // ── 検索用正規化（全角⇔半角・大小文字統一） ──
+        function normalizeSearch(str) {
+            let result = '';
+            for (const ch of str) {
+                const code = ch.charCodeAt(0);
+                // 全角英数 → 半角
+                if (code >= 0xFF01 && code <= 0xFF5E) {
+                    result += String.fromCharCode(code - 0xFEE0);
+                // 全角スペース → 半角
+                } else if (code === 0x3000) {
+                    result += ' ';
+                // 半角カタカナ → 全角カタカナ
+                } else if (code >= 0xFF65 && code <= 0xFF9F) {
+                    const hkMap = 'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ';
+                    const fkMap = 'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛゜';
+                    const idx = hkMap.indexOf(ch);
+                    result += idx >= 0 ? fkMap[idx] : ch;
+                } else {
+                    result += ch;
+                }
+            }
+            return result.toLowerCase();
         }
 
         // ── Init ──
