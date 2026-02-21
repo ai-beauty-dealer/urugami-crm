@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21 17:05:38",
+  "generated_at": "2026-02-21 17:30:03",
   "salons": {
     "Tuesday": {
       "FATE": [
@@ -262,1020 +262,366 @@
           "last_order_date": "2025/02/04"
         }
       ],
-      "シーサイド": [
-        {
-          "product_code": "704400",
-          "product_name": "ｸｵﾙｼｱ",
-          "unit_price": 653,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "704000",
-          "product_name": "BLｶﾗｰ   120g",
-          "unit_price": 653,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "3011221",
-          "product_name": "ｴﾄﾗｽﾑｰﾌﾞｾﾗﾑ90",
-          "unit_price": 956,
-          "last_order_date": "2025/11/27"
-        },
-        {
-          "product_code": "1507022",
-          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 300",
-          "unit_price": 2925,
-          "last_order_date": "2025/10/02"
-        },
-        {
-          "product_code": "7298999",
-          "product_name": "*ﾘｾﾝｽSTｷｰﾌﾟｽﾀｲﾘﾝｸﾞ",
-          "unit_price": 750,
-          "last_order_date": "2025/10/02"
-        },
-        {
-          "product_code": "311233",
-          "product_name": "ｱﾘﾐﾉﾒﾝﾌﾘｰｽﾞｷｰﾌﾟｸﾞﾘｰｽ100",
-          "unit_price": 1120,
-          "last_order_date": "2025/09/25"
-        },
-        {
-          "product_code": "4011301",
-          "product_name": "ｱﾝﾀﾞｰﾊﾞｰﾌﾟﾗｽ ﾍｱｵｲﾙ 92",
-          "unit_price": 2275,
-          "last_order_date": "2025/07/10"
-        },
-        {
-          "product_code": "3206704",
-          "product_name": "ｲｺﾞﾗ ｳﾞｧﾘｵﾌﾞﾛﾝﾄﾞﾌﾟﾗｽ a 450g",
-          "unit_price": 1733,
-          "last_order_date": "2025/07/10"
-        },
-        {
-          "product_code": "111064",
-          "product_name": "新 ﾄﾘｴ8ｴﾏﾙｼﾞｮﾝ50",
-          "unit_price": 832,
-          "last_order_date": "2025/07/01"
-        },
-        {
-          "product_code": "205100",
-          "product_name": "ﾌﾟﾘﾐｴﾝｽ x 80",
-          "unit_price": 510,
-          "last_order_date": "2025/05/20"
-        },
-        {
-          "product_code": "504400",
-          "product_name": "ﾅｼｰﾄﾞｶﾗｰ 80g",
-          "unit_price": 390,
-          "last_order_date": "2025/05/20"
-        },
-        {
-          "product_code": "4011201",
-          "product_name": "LOA THE OIL JASMIN 100",
-          "unit_price": 2450,
-          "last_order_date": "2025/03/14"
-        },
-        {
-          "product_code": "4030018",
-          "product_name": "ｽﾀ販LOA THE OIL pair BLANCHE 100",
-          "unit_price": 2230,
-          "last_order_date": "2025/03/14"
-        },
-        {
-          "product_code": "204500",
-          "product_name": "ｱﾙﾃｨｽﾄﾊﾞｲﾌﾟﾘﾐｴﾝｽ    80g",
-          "unit_price": 525,
-          "last_order_date": "2025/01/14"
-        }
-      ],
-      "KOZY": [
-        {
-          "product_code": "506600",
-          "product_name": "N.ｱｼｯﾄﾞｶﾗｰ190",
-          "unit_price": 713,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "3018021",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｴｯｾﾝｽﾐﾙｸ 95",
-          "unit_price": 1950,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "301001",
-          "product_name": "ｺｽﾒｶ-ﾙ EX 400",
-          "unit_price": 800,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "711001",
-          "product_name": "CDﾌﾘｰｽﾞｽﾌﾟﾚｰ200",
-          "unit_price": 788,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "708001",
-          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛｼｬﾝﾌﾟｰ 5000",
-          "unit_price": 2888,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "506711",
-          "product_name": "Nｱｸｾｽﾌﾘｰ ﾊﾟｳﾀﾞｰﾌﾞﾘｰﾁ 500",
-          "unit_price": 2175,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "507052",
-          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｽﾑｰｽﾄﾘｰﾄﾒﾝﾄ1200",
-          "unit_price": 3150,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "3018020",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｴｯｾﾝｽｵｲﾙ 95",
-          "unit_price": 1950,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "204700",
-          "product_name": "PMEｶﾗｰｸﾘｰﾑ 240",
-          "unit_price": 1760,
-          "last_order_date": "2025/12/17"
-        },
-        {
-          "product_code": "701051",
-          "product_name": "BLｽﾄﾚｰﾄ FHc 400",
-          "unit_price": 1050,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "102053",
-          "product_name": "ﾌﾟﾗｲｱ T-2",
-          "unit_price": 600,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "507051",
-          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｲﾝﾅｰﾄﾘｰﾄﾒﾝﾄ1200",
-          "unit_price": 2625,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "704000",
-          "product_name": "BLｶﾗｰ     120g",
-          "unit_price": 454,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "3011223",
-          "product_name": "ｴﾄﾗｽｸﾞﾘｯｸｽ100",
-          "unit_price": 1365,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "701055",
-          "product_name": "BLｽﾄﾚｰﾄ FEc 400",
-          "unit_price": 1125,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "7198999",
-          "product_name": "*ｾﾙﾙﾘﾍﾟｱﾛｰｼｮﾝ ｽﾀ販",
-          "unit_price": 2750,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "405000",
-          "product_name": "iNOA",
-          "unit_price": 595,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "704200",
-          "product_name": "BLｶﾗｰ ﾗﾃﾞｨｰﾁｪ",
-          "unit_price": 454,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "3018009",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH 280",
-          "unit_price": 2470,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "102051",
-          "product_name": "ﾌﾟﾗｲｱ TG-1",
-          "unit_price": 555,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "3011222",
-          "product_name": "ｴﾄﾗｽｾﾐﾄﾞﾗｲｸﾘｰﾑ80",
-          "unit_price": 1229,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "706703",
-          "product_name": "ﾍｱｰｶﾗｰ ﾘﾑｰﾊﾞｰEX 280",
-          "unit_price": 800,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "507053",
-          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄﾓｲｽﾁｬｰﾄﾘｰﾄ 1200",
-          "unit_price": 3150,
-          "last_order_date": "2025/11/27"
-        },
-        {
-          "product_code": "7501001",
-          "product_name": "ﾋﾟｭｱﾏｰﾒｲﾄﾞｸﾘｰﾑ １剤400g",
-          "unit_price": 1530,
-          "last_order_date": "2025/11/27"
-        },
-        {
-          "product_code": "9997571",
-          "product_name": "ｻﾎﾞﾆｰｽﾞﾌﾟﾛﾃｸﾄｸﾘｰﾑ500R",
-          "unit_price": 2400,
-          "last_order_date": "2025/11/27"
-        },
-        {
-          "product_code": "704400",
-          "product_name": "ｸｵﾙｼｱ",
-          "unit_price": 454,
-          "last_order_date": "2025/11/27"
-        },
-        {
-          "product_code": "318113",
-          "product_name": "ｺｱﾐｰｼｬﾝﾌﾟｰEX 590",
-          "unit_price": 3240,
-          "last_order_date": "2025/11/25"
-        },
-        {
-          "product_code": "318094",
-          "product_name": "ｺｱﾐｰｻﾛﾝｹｱHｼｮｯﾄﾌﾞｰｽﾀｰ 1000",
-          "unit_price": 3000,
-          "last_order_date": "2025/11/25"
-        },
-        {
-          "product_code": "318098",
-          "product_name": "ｺｱﾐｰｻﾛﾝｹｱｱｼｯﾄﾞﾌｨｯｸｽ 1000",
-          "unit_price": 4000,
-          "last_order_date": "2025/11/25"
-        },
-        {
-          "product_code": "318193",
-          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸPKｺﾝﾌﾟﾚｯｸｽﾁｬｰｼﾞ1000",
-          "unit_price": 4800,
-          "last_order_date": "2025/11/25"
-        },
-        {
-          "product_code": "318194",
-          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸﾌｨﾙﾏｽｸE1000",
-          "unit_price": 4800,
-          "last_order_date": "2025/11/25"
-        },
-        {
-          "product_code": "318206",
-          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸﾏｽｸMS590",
-          "unit_price": 4680,
-          "last_order_date": "2025/11/25"
-        },
-        {
-          "product_code": "710001",
-          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛﾄﾘｰﾄﾒﾝﾄ 5000",
-          "unit_price": 2888,
-          "last_order_date": "2025/11/20"
-        },
-        {
-          "product_code": "3018015",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS 250",
-          "unit_price": 2470,
-          "last_order_date": "2025/11/20"
-        },
-        {
-          "product_code": "9997454",
-          "product_name": "ｱｲﾋﾞﾙｴｺﾎｲﾙ SE ｼﾙﾊﾞｰ",
-          "unit_price": 1296,
-          "last_order_date": "2025/11/20"
-        },
-        {
-          "product_code": "3207005",
-          "product_name": "ﾌｧｲﾊﾞｰP ﾎﾞﾝﾄﾞｵｲﾙ 150",
-          "unit_price": 1960,
-          "last_order_date": "2025/11/20"
-        },
-        {
-          "product_code": "107214",
-          "product_name": "ﾋﾀﾘﾌﾞｰﾀｰｾﾗﾑX800",
-          "unit_price": 3200,
-          "last_order_date": "2025/11/06"
-        },
-        {
-          "product_code": "318199",
-          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸSPMS250",
-          "unit_price": 2280,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "318121",
-          "product_name": "ｺｱﾐｰﾍｱﾏｽｸM 590",
-          "unit_price": 3840,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "318205",
-          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸﾏｽｸMS235",
-          "unit_price": 2520,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "318127",
-          "product_name": "ｺｱﾐｰﾄﾘｰﾄﾒﾝﾄｵｲﾙM 80",
-          "unit_price": 2280,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "318183",
-          "product_name": "ｺｱﾐｰﾘﾍﾟｱﾃｨﾌﾞTRﾐﾙｸCD80",
-          "unit_price": 2400,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "318184",
-          "product_name": "ｺｱﾐｰﾘﾍﾟｱﾃｨﾌﾞTRｵｲﾙHD80",
-          "unit_price": 2400,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "318153",
-          "product_name": "ｺｱﾐｰｽｷｬﾙﾌﾟｾﾗﾑﾛｰｼｮﾝ100",
-          "unit_price": 3600,
-          "last_order_date": "2025/10/29"
-        },
-        {
-          "product_code": "301009",
-          "product_name": "ｺｽﾒｶｰﾙﾌﾟﾘｽﾞﾑﾌﾟﾗｽH400",
-          "unit_price": 960,
-          "last_order_date": "2025/10/23"
-        },
-        {
-          "product_code": "707007",
-          "product_name": "FﾌﾟﾛﾃｸﾄN 03 1500",
-          "unit_price": 3375,
-          "last_order_date": "2025/10/16"
-        },
-        {
-          "product_code": "708301",
-          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾊﾟｰﾌﾟﾙ 250",
-          "unit_price": 1064,
-          "last_order_date": "2025/10/16"
-        },
-        {
-          "product_code": "708302",
-          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾋﾟﾝｸ 250",
-          "unit_price": 1064,
-          "last_order_date": "2025/10/16"
-        },
-        {
-          "product_code": "4007202",
-          "product_name": "UPTOGLOSS ﾊﾟｳﾀﾞｰ 100",
-          "unit_price": 16000,
-          "last_order_date": "2025/10/08"
-        },
-        {
-          "product_code": "9997160",
-          "product_name": "ﾊｳｽ用ｽﾍﾟｱﾍﾟｰﾊﾟｰL",
-          "unit_price": 2511,
-          "last_order_date": "2025/10/02"
-        },
-        {
-          "product_code": "701052",
-          "product_name": "BLｽﾄﾚｰﾄ FRc 400",
-          "unit_price": 1050,
-          "last_order_date": "2025/09/18"
-        },
-        {
-          "product_code": "3018038",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ UH 280",
-          "unit_price": 2470,
-          "last_order_date": "2025/08/28"
-        },
-        {
-          "product_code": "3018039",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ UH ﾚﾌｨﾙ 600",
-          "unit_price": 4030,
-          "last_order_date": "2025/08/28"
-        },
-        {
-          "product_code": "711167",
-          "product_name": "ﾓﾀﾞﾘｴ ﾎｰﾙﾄﾞｽﾌﾟﾚｰ 200",
-          "unit_price": 654,
-          "last_order_date": "2025/08/28"
-        },
-        {
-          "product_code": "3018042",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ HS 250",
-          "unit_price": 2470,
-          "last_order_date": "2025/08/28"
-        },
-        {
-          "product_code": "3011221",
-          "product_name": "ｴﾄﾗｽﾑｰﾌﾞｾﾗﾑ90",
-          "unit_price": 1365,
-          "last_order_date": "2025/08/21"
-        },
-        {
-          "product_code": "706708",
-          "product_name": "ｸｵﾙｼｱ ﾊｲﾌﾞﾘｰﾁ 500",
-          "unit_price": 2100,
-          "last_order_date": "2025/08/21"
-        },
-        {
-          "product_code": "3018043",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ HS ﾚﾌｨﾙ 600",
-          "unit_price": 4680,
-          "last_order_date": "2025/08/07"
-        },
-        {
-          "product_code": "308052",
-          "product_name": "ﾐﾝﾄｼｬﾝﾌﾟｰﾌﾛｰｽﾞﾝﾘﾌﾚｯｼｭ23 550",
-          "unit_price": 1680,
-          "last_order_date": "2025/07/24"
-        },
-        {
-          "product_code": "4018049",
-          "product_name": "ﾚﾌﾟﾛﾅｲｻﾞｰ 107D Plus",
-          "unit_price": 121600,
-          "last_order_date": "2025/07/11"
-        },
-        {
-          "product_code": "4018050",
-          "product_name": "ﾍｱﾋﾞｭｰﾛﾝ 107D Plus[ｽﾄﾚｰﾄ]",
-          "unit_price": 113600,
-          "last_order_date": "2025/07/11"
-        },
-        {
-          "product_code": "308051",
-          "product_name": "ﾐﾝﾄｼｬﾝﾌﾟｰﾌﾛｰｽﾞﾝﾘﾌﾚｯｼｭ23 250",
-          "unit_price": 896,
-          "last_order_date": "2025/07/10"
-        },
-        {
-          "product_code": "318161",
-          "product_name": "ｺｱﾐｰﾌｨﾅｼﾞｰｽｷｬﾙﾌﾟｾﾗﾑ180",
-          "unit_price": 4800,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "318143",
-          "product_name": "ｺｱﾐｰｻﾛﾝｹｱﾌｨﾅｼﾞｰSPBS590",
-          "unit_price": 3600,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "318144",
-          "product_name": "ｺｱﾐｰｻﾛﾝｹｱﾌｨﾅｼﾞｰSPBT590",
-          "unit_price": 3600,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "318159",
-          "product_name": "ｺｱﾐｰTRｵｲﾙM240",
-          "unit_price": 4560,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "318171",
-          "product_name": "ｺｱﾐｰﾘﾍﾟｱﾃｨﾌﾞTRｵｲﾙHD240",
-          "unit_price": 4800,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "318122",
-          "product_name": "ｺｱﾐｰﾍｱﾏｽｸEX 590",
-          "unit_price": 3840,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "318150",
-          "product_name": "ｺｱﾐｰｻﾛﾝｹｱﾌｨﾅｼﾞｰﾍｱﾏｽｸBT590",
-          "unit_price": 4500,
-          "last_order_date": "2025/07/03"
-        },
-        {
-          "product_code": "3018505",
-          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ﾘﾍﾟｱｼｬﾝﾌﾟｰUH 280",
-          "unit_price": 1900,
-          "last_order_date": "2025/06/27"
-        },
-        {
-          "product_code": "3018511",
-          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ｾﾗﾑﾄﾘｰﾄﾒﾝﾄHS 250",
-          "unit_price": 1900,
-          "last_order_date": "2025/06/27"
-        },
-        {
-          "product_code": "3018521",
-          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ｺﾝｾﾝﾄﾚｲﾄｴｯｾﾝｽ 40",
-          "unit_price": 1000,
-          "last_order_date": "2025/06/27"
-        },
-        {
-          "product_code": "3018522",
-          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ｾﾗﾑﾏｽｸ 100",
-          "unit_price": 1100,
-          "last_order_date": "2025/06/27"
-        },
-        {
-          "product_code": "9998999",
-          "product_name": "* 99％の地域密着ｻﾛﾝ",
-          "unit_price": 4500,
-          "last_order_date": "2025/06/19"
-        },
-        {
-          "product_code": "706706",
-          "product_name": "ｽｷｬﾙﾌﾟﾌﾟﾛﾃｸｼｮﾝｵｲﾙ 200",
-          "unit_price": 750,
-          "last_order_date": "2025/06/05"
-        },
-        {
-          "product_code": "3018047",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｺﾝｾﾝﾄﾚｲﾄｴｯｾﾝｽ 40",
-          "unit_price": 1300,
-          "last_order_date": "2025/05/15"
-        },
-        {
-          "product_code": "3018049",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｾﾗﾑﾏｽｸ 100",
-          "unit_price": 1430,
-          "last_order_date": "2025/05/15"
-        },
-        {
-          "product_code": "3018048",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｺﾝｾﾝﾄﾚｲﾄEｷﾞｮｳﾑ 110",
-          "unit_price": 2600,
-          "last_order_date": "2025/05/08"
-        },
-        {
-          "product_code": "708064",
-          "product_name": "ﾌｧｼﾅｰﾄ ﾎﾞﾃﾞｨｿｰﾌﾟ ﾚﾌｨﾙ 500",
-          "unit_price": 490,
-          "last_order_date": "2025/05/01"
-        },
-        {
-          "product_code": "4011203",
-          "product_name": "LOA THE OIL Citrus 100",
-          "unit_price": 3500,
-          "last_order_date": "2025/04/24"
-        },
-        {
-          "product_code": "4011213",
-          "product_name": "LOA THE OIL CARE Citrus Vertﾋﾟﾝｸ",
-          "unit_price": 3850,
-          "last_order_date": "2025/04/17"
-        },
-        {
-          "product_code": "4011204",
-          "product_name": "LOA THE OIL    LATTE ROSE",
-          "unit_price": 3500,
-          "last_order_date": "2025/04/10"
-        },
+      "リンクコネクト": [
         {
           "product_code": "3311041",
           "product_name": "Markｴﾙﾄﾘｰﾄﾒﾝﾄ 120",
-          "unit_price": 2058,
-          "last_order_date": "2025/03/27"
-        },
-        {
-          "product_code": "3208022",
-          "product_name": "ﾌｧｲﾊﾞｰﾌﾟﾚｯｸｽﾎﾞﾝﾄﾞｼｬﾝﾌﾟｰ 250",
-          "unit_price": 1235,
-          "last_order_date": "2025/03/27"
-        },
-        {
-          "product_code": "3210002",
-          "product_name": "ﾌｧｲﾊﾞｰﾌﾟﾚｯｸｽﾎﾞﾝﾄﾞﾄﾘｰﾄﾒﾝﾄ 250",
-          "unit_price": 1482,
-          "last_order_date": "2025/03/27"
-        },
-        {
-          "product_code": "3112010",
-          "product_name": "ﾌﾟﾃﾛ ARｴｯｾﾝｽUprise 500",
-          "unit_price": 8459,
-          "last_order_date": "2025/03/27"
-        },
-        {
-          "product_code": "708307",
-          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ｱｯｼｭ 1000",
-          "unit_price": 3360,
-          "last_order_date": "2025/03/20"
-        },
-        {
-          "product_code": "3018001",
-          "product_name": "ﾊﾞｲｶﾙﾃ CBﾐｽﾄ 1000",
-          "unit_price": 2500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018002",
-          "product_name": "ﾊﾞｲｶﾙﾃ CYSｷｯﾄ",
-          "unit_price": 3000,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018003",
-          "product_name": "ﾊﾞｲｶﾙﾃ CFｸﾘｰﾑ 800",
-          "unit_price": 3500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018004",
-          "product_name": "ﾊﾞｲｶﾙﾃ CRﾌｫｰﾑ 1000",
-          "unit_price": 2500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018006",
-          "product_name": "ﾊﾞｲｶﾙﾃ CCｸﾘｰﾑ SE 800",
-          "unit_price": 3500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018005",
-          "product_name": "ﾊﾞｲｶﾙﾃ CCｸﾘｰﾑ ME 800",
-          "unit_price": 3500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018007",
-          "product_name": "ﾊﾞｲｶﾙﾃ CROSSｵｲﾙ 45",
-          "unit_price": 2500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018030",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH業務 1300",
-          "unit_price": 6500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018031",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH業務 1300",
-          "unit_price": 6500,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018032",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS業務 1300",
-          "unit_price": 7000,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018033",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS業務 1300",
-          "unit_price": 7000,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018034",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ ﾎﾙﾀﾞｰ",
-          "unit_price": 650,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018035",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ ﾎﾙﾀﾞｰ",
-          "unit_price": 650,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018036",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｷﾞｮｳﾑﾎﾟﾝﾌﾟ",
-          "unit_price": 150,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018010",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH ﾚﾌｨﾙ 600",
-          "unit_price": 4030,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018013",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH ﾚﾌｨﾙ 600",
-          "unit_price": 4030,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018016",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS ﾚﾌｨﾙ 600",
-          "unit_price": 4680,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018019",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS ﾚﾌｨﾙ 600",
-          "unit_price": 4680,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018022",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH 600空容器",
-          "unit_price": 900,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018023",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH 600空容器",
-          "unit_price": 900,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018024",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS 600空容器",
-          "unit_price": 900,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018025",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS 600空容器",
-          "unit_price": 900,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018012",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH 280",
-          "unit_price": 2470,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018018",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS 250",
-          "unit_price": 2470,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018008",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH S 75",
-          "unit_price": 780,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018011",
-          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH S 75",
-          "unit_price": 780,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018014",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS S 60",
-          "unit_price": 780,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "3018017",
-          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS S 60",
-          "unit_price": 780,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "708312",
-          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾍﾞｰｼﾞｭ 1000",
-          "unit_price": 3360,
-          "last_order_date": "2025/03/13"
-        },
-        {
-          "product_code": "7298999",
-          "product_name": "*アイロン修理ｱｶﾞﾘ",
-          "unit_price": 4000,
-          "last_order_date": "2025/03/06"
-        },
-        {
-          "product_code": "4011214",
-          "product_name": "LOA THE OIL CARE LATTE ROSEEﾋﾟﾝｸ",
-          "unit_price": 3850,
-          "last_order_date": "2025/02/27"
-        },
-        {
-          "product_code": "4011212",
-          "product_name": "LOA THE OIL CARE BLANCHEﾋﾟﾝｸ 100",
-          "unit_price": 3850,
-          "last_order_date": "2025/02/27"
-        },
-        {
-          "product_code": "4011211",
-          "product_name": "LOA THE OIL CARE JASMIN doreﾋﾟﾝｸ",
-          "unit_price": 3850,
-          "last_order_date": "2025/02/12"
-        },
-        {
-          "product_code": "318128",
-          "product_name": "ｺｱﾐｰﾄﾘｰﾄﾒﾝﾄｵｲﾙEX 80",
-          "unit_price": 2280,
-          "last_order_date": "2025/02/06"
-        },
-        {
-          "product_code": "318119",
-          "product_name": "ｺｱﾐｰﾍｱﾏｽｸEX 235",
-          "unit_price": 2040,
-          "last_order_date": "2025/02/06"
-        },
-        {
-          "product_code": "318112",
-          "product_name": "ｺｱﾐｰｼｬﾝﾌﾟｰM 590",
-          "unit_price": 3240,
-          "last_order_date": "2025/02/06"
-        },
-        {
-          "product_code": "708305",
-          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ｱｯｼｭ 250",
-          "unit_price": 998,
-          "last_order_date": "2025/01/23"
-        },
-        {
-          "product_code": "708311",
-          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾍﾞｰｼﾞｭ 250",
-          "unit_price": 1064,
-          "last_order_date": "2025/01/14"
-        },
-        {
-          "product_code": "198156",
-          "product_name": "LBｸﾘｱｼｮｯﾊﾟｰ100枚",
-          "unit_price": 1100,
-          "last_order_date": "2024/12/31"
-        }
-      ],
-      "ルテラ": [
-        {
-          "product_code": "3307001",
-          "product_name": "潤髪ZERO 1000",
-          "unit_price": 4850,
+          "unit_price": 2940,
           "last_order_date": "2025/12/16"
         },
         {
-          "product_code": "3310002",
-          "product_name": "ﾔｸｼﾞｮ潤髪ｴｯｾﾝｽｸﾘｰﾑ 500",
-          "unit_price": 8710,
-          "last_order_date": "2025/12/11"
+          "product_code": "3311042",
+          "product_name": "Markｴﾙﾄﾘｰﾄﾒﾝﾄ 300ﾚﾌｨﾙ",
+          "unit_price": 5460,
+          "last_order_date": "2025/12/16"
         },
         {
-          "product_code": "3307003",
-          "product_name": "ﾔｸｼﾞｮ潤髪ﾎﾞﾝﾄﾞ 500",
-          "unit_price": 8710,
-          "last_order_date": "2025/12/11"
+          "product_code": "3310081",
+          "product_name": "ﾔｸｼﾞｮ nobiruﾍｱﾏｽｸ 200",
+          "unit_price": 3465,
+          "last_order_date": "2025/12/16"
         },
         {
-          "product_code": "5018903",
-          "product_name": "ﾗﾀﾞﾒｰﾙ OFｾﾗﾑﾊｲﾄﾞﾚｰﾃｨﾝｸﾞ50",
-          "unit_price": 3600,
-          "last_order_date": "2025/12/11"
-        },
-        {
-          "product_code": "9104901",
-          "product_name": "PR-2000 ﾌﾟﾛｼﾖｳﾊﾞﾘｶﾝ",
-          "unit_price": 11000,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "7198999",
-          "product_name": "*ｾﾙﾙﾘﾍﾟｱﾛｰｼｮﾝ",
-          "unit_price": 1788,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "711167",
-          "product_name": "ﾓﾀﾞﾘｴ ﾎｰﾙﾄﾞｽﾌﾟﾚｰ 200",
-          "unit_price": 654,
-          "last_order_date": "2025/12/03"
-        },
-        {
-          "product_code": "3331003",
-          "product_name": "ﾔｸｼﾞｮｽｲ 1000 (ﾛｰｼｮﾝ)",
-          "unit_price": 13000,
-          "last_order_date": "2025/11/27"
-        },
-        {
-          "product_code": "1507021",
-          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 120",
-          "unit_price": 1755,
-          "last_order_date": "2025/11/20"
-        },
-        {
-          "product_code": "3307006",
-          "product_name": "ﾔｸｼﾞｮ潤髪ｱﾙｷｭｰﾄ 1000",
-          "unit_price": 12500,
-          "last_order_date": "2025/10/23"
-        },
-        {
-          "product_code": "3307005",
-          "product_name": "ﾔｸｼﾞｮ潤髪ﾚﾌﾞﾘ 1000",
-          "unit_price": 12500,
-          "last_order_date": "2025/10/23"
-        },
-        {
-          "product_code": "9114504",
-          "product_name": "FMｽﾌﾟﾚｲﾔｰ ﾌﾞﾗｳﾝ/ﾌﾞﾗｯｸﾍｯﾄﾞ",
-          "unit_price": 882,
-          "last_order_date": "2025/10/23"
-        },
-        {
-          "product_code": "7298999",
-          "product_name": "*ﾘｾﾝｽSTｷｰﾌﾟｽﾀｲﾘﾝｸﾞ",
-          "unit_price": 750,
-          "last_order_date": "2025/10/02"
-        },
-        {
-          "product_code": "9207402",
-          "product_name": "NB-4100ﾏｲﾅｽｲｵﾝﾄﾞﾗｲﾔｰﾌﾞﾗｯｸ",
-          "unit_price": 12500,
-          "last_order_date": "2025/08/07"
-        },
-        {
-          "product_code": "5198999",
-          "product_name": "*HALODUX",
-          "unit_price": 25000,
-          "last_order_date": "2025/05/22"
-        },
-        {
-          "product_code": "507051",
-          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｲﾝﾅｰﾄﾘｰﾄﾒﾝﾄ1200",
-          "unit_price": 2625,
-          "last_order_date": "2025/04/03"
-        },
-        {
-          "product_code": "507052",
-          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｽﾑｰｽﾄﾘｰﾄﾒﾝﾄ1200",
-          "unit_price": 3150,
-          "last_order_date": "2025/04/03"
-        },
-        {
-          "product_code": "507053",
-          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄﾓｲｽﾁｬｰﾄﾘｰﾄ 1200",
-          "unit_price": 3150,
-          "last_order_date": "2025/04/03"
-        }
-      ],
-      "クプラ": [
-        {
-          "product_code": "1507021",
-          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 120",
-          "unit_price": 1755,
-          "last_order_date": "2025/12/09"
-        },
-        {
-          "product_code": "1507022",
-          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 300",
-          "unit_price": 2925,
-          "last_order_date": "2025/11/04"
-        },
-        {
-          "product_code": "4011201",
-          "product_name": "LOA THE OIL JASMIN 100",
-          "unit_price": 3500,
-          "last_order_date": "2025/10/02"
-        },
-        {
-          "product_code": "4011207",
-          "product_name": "LOA THE OIL Neroli 100",
-          "unit_price": 3500,
-          "last_order_date": "2025/10/02"
-        },
-        {
-          "product_code": "3206704",
-          "product_name": "ｲｺﾞﾗ ｳﾞｧﾘｵﾌﾞﾛﾝﾄﾞﾌﾟﾗｽ a 450g",
-          "unit_price": 1733,
-          "last_order_date": "2025/07/08"
-        },
-        {
-          "product_code": "4011209",
-          "product_name": "LOA THE OIL pair BLANCHE 100",
-          "unit_price": 3500,
-          "last_order_date": "2025/04/23"
+          "product_code": "3308081",
+          "product_name": "ﾔｸｼﾞｮ潤髪ﾚﾌﾞﾘｰｼｬﾝﾌﾟｰ 500",
+          "unit_price": 4060,
+          "last_order_date": "2025/12/16"
         },
         {
           "product_code": "608007",
           "product_name": "ｼｰｲｰｽﾘｰ ｼｬﾝﾌﾟｰR800",
           "unit_price": 330,
-          "last_order_date": "2025/04/22"
+          "last_order_date": "2025/12/16"
         },
         {
           "product_code": "610012",
           "product_name": "ｼｰｲｰｽﾘｰﾄﾘｰﾄﾒﾝﾄ R750",
           "unit_price": 413,
-          "last_order_date": "2025/04/22"
+          "last_order_date": "2025/12/16"
         },
         {
-          "product_code": "3011224",
-          "product_name": "ｴﾄﾗｽﾚｱﾊﾞｰﾑ80",
-          "unit_price": 1092,
-          "last_order_date": "2025/04/22"
+          "product_code": "7198999",
+          "product_name": "*ｴﾚﾒｱｺｰﾑｽﾄﾚｲﾅｰ",
+          "unit_price": 2750,
+          "last_order_date": "2025/12/11"
         },
         {
-          "product_code": "1911061",
-          "product_name": "COCUU mellow Oil 100",
-          "unit_price": 1144,
-          "last_order_date": "2025/04/22"
+          "product_code": "3310071",
+          "product_name": "ﾔｸｼﾞｮｲﾝﾊﾞｽﾄﾘｰﾄﾒﾝﾄ 300",
+          "unit_price": 2660,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "3108004",
+          "product_name": "ﾌﾟﾃﾛ ARｼｬﾝﾌﾟｰ 300",
+          "unit_price": 2128,
+          "last_order_date": "2025/12/09"
+        },
+        {
+          "product_code": "3112009",
+          "product_name": "ﾌﾟﾃﾛ ARｴｯｾﾝｽUprise 140",
+          "unit_price": 5200,
+          "last_order_date": "2025/12/09"
+        },
+        {
+          "product_code": "7602309",
+          "product_name": "ﾍﾟｰﾊﾟｰﾃｯｸﾌﾞﾘｰﾁ用",
+          "unit_price": 357,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "3110003",
+          "product_name": "ﾌﾟﾃﾛ ARﾍｱ&ｽｶﾙﾌﾟﾊﾟｯｸ 240",
+          "unit_price": 2016,
+          "last_order_date": "2025/12/02"
+        },
+        {
+          "product_code": "3112011",
+          "product_name": "ﾌﾟﾃﾛ ﾏﾙﾁﾐｽﾄ 145",
+          "unit_price": 1624,
+          "last_order_date": "2025/12/02"
+        },
+        {
+          "product_code": "3308041",
+          "product_name": "ﾔｸｼﾞｮｱﾙｶﾞﾝｼｬﾝﾌﾟｰ 500ﾎﾟﾝﾌﾟ",
+          "unit_price": 4186,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "3108005",
+          "product_name": "ﾌﾟﾃﾛ ARｼｬﾝﾌﾟｰ 700",
+          "unit_price": 4256,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "3308022",
+          "product_name": "ﾔｸｼﾞｮﾀﾞｰｸｼｬﾝﾌﾟｰ 500ﾎﾟﾝﾌﾟ",
+          "unit_price": 4760,
+          "last_order_date": "2025/11/26"
+        },
+        {
+          "product_code": "3331012",
+          "product_name": "ﾔｸｼﾞｮ ｳｫｰﾀｰｿｰﾌﾟ 100 ｹｰｽ･ﾈｯﾄ付",
+          "unit_price": 2450,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "4011214",
+          "product_name": "LOA THE OIL CARE LATTE Rﾋﾟﾝｸ 100",
+          "unit_price": 3850,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "704200",
+          "product_name": "BLｶﾗｰ ﾗﾃﾞｨｰﾁｪ",
+          "unit_price": 590,
+          "last_order_date": "2025/11/18"
+        },
+        {
+          "product_code": "3308083",
+          "product_name": "ﾔｸｼﾞｮ潤髪ﾚﾌﾞﾘｰｼｬﾝﾌﾟ詰替 1000",
+          "unit_price": 6993,
+          "last_order_date": "2025/11/18"
+        },
+        {
+          "product_code": "708001",
+          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛｼｬﾝﾌﾟｰ 5000",
+          "unit_price": 3000,
+          "last_order_date": "2025/11/18"
+        },
+        {
+          "product_code": "704400",
+          "product_name": "ｸｵﾙｼｱ",
+          "unit_price": 590,
+          "last_order_date": "2025/11/11"
+        },
+        {
+          "product_code": "4011238",
+          "product_name": "LOA THE OIL CARE Pair BLANCHEﾋﾟﾝｸ100",
+          "unit_price": 3850,
+          "last_order_date": "2025/11/11"
+        },
+        {
+          "product_code": "111101",
+          "product_name": "ｲｵｴｯｾﾝｽ 100 ｽﾘｰｸ",
+          "unit_price": 910,
+          "last_order_date": "2025/11/11"
+        },
+        {
+          "product_code": "708064",
+          "product_name": "ﾌｧｼﾅｰﾄ ﾎﾞﾃﾞｨｿｰﾌﾟ ﾚﾌｨﾙ 500",
+          "unit_price": 672,
+          "last_order_date": "2025/11/04"
+        },
+        {
+          "product_code": "704000",
+          "product_name": "BLｶﾗｰ    120g",
+          "unit_price": 590,
+          "last_order_date": "2025/10/20"
+        },
+        {
+          "product_code": "9998997",
+          "product_name": "送料*",
+          "unit_price": 900,
+          "last_order_date": "2025/10/14"
+        },
+        {
+          "product_code": "706707",
+          "product_name": "ｸｵﾙｼｱﾌﾞﾘｰﾁ 500",
+          "unit_price": 2240,
+          "last_order_date": "2025/10/07"
+        },
+        {
+          "product_code": "3331002",
+          "product_name": "ﾔｸｼﾞｮｽｲ 400 (ﾛｰｼｮﾝ)",
+          "unit_price": 4760,
+          "last_order_date": "2025/10/07"
+        },
+        {
+          "product_code": "7298999",
+          "product_name": "*ﾘｾﾝｽSTｷｰﾌﾟｽﾀｲﾘﾝｸﾞ",
+          "unit_price": 750,
+          "last_order_date": "2025/09/30"
+        },
+        {
+          "product_code": "1211082",
+          "product_name": "黒彩ぽんぽん           栗",
+          "unit_price": 1512,
+          "last_order_date": "2025/09/09"
+        },
+        {
+          "product_code": "708203",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶSP800",
+          "unit_price": 2500,
+          "last_order_date": "2025/08/19"
+        },
+        {
+          "product_code": "4011212",
+          "product_name": "LOA THE OIL CARE BLANCHEﾋﾟﾝｸ 100",
+          "unit_price": 3850,
+          "last_order_date": "2025/08/19"
+        },
+        {
+          "product_code": "7998999",
+          "product_name": "*ﾃﾗﾍﾙﾂﾊﾟﾄﾞﾙﾌﾞﾗｼ",
+          "unit_price": 5040,
+          "last_order_date": "2025/06/10"
+        },
+        {
+          "product_code": "9998999",
+          "product_name": "* ｶｯﾄ革命だった",
+          "unit_price": 4500,
+          "last_order_date": "2025/06/06"
+        },
+        {
+          "product_code": "708205",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶSPｽﾘｰｸ400",
+          "unit_price": 1800,
+          "last_order_date": "2025/06/03"
+        },
+        {
+          "product_code": "710001",
+          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛﾄﾘｰﾄﾒﾝﾄ 5000",
+          "unit_price": 3000,
+          "last_order_date": "2025/05/27"
+        },
+        {
+          "product_code": "9212704",
+          "product_name": "Utakataﾍｱﾀﾞｲﾌﾞﾗｼﾐﾙｸﾊﾟｰﾌﾟﾙ",
+          "unit_price": 990,
+          "last_order_date": "2025/05/27"
+        },
+        {
+          "product_code": "710203",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶTRﾓｲｽﾄ800",
+          "unit_price": 2650,
+          "last_order_date": "2025/05/13"
+        },
+        {
+          "product_code": "708206",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶSPｽﾘｰｸ800",
+          "unit_price": 2500,
+          "last_order_date": "2025/05/13"
+        },
+        {
+          "product_code": "8698999",
+          "product_name": "*ERGP82Kﾊﾟﾅｿﾆｯｸﾊﾞﾘｶﾝ",
+          "unit_price": 21240,
+          "last_order_date": "2025/04/15"
+        },
+        {
+          "product_code": "706010",
+          "product_name": "BLｶﾗｰ OX 1.5% 2000 ﾊﾟｳﾁ",
+          "unit_price": 1125,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "9213118",
+          "product_name": "ﾌﾛｰﾗ PPﾊﾟﾈﾙ 20ﾏｲ      M",
+          "unit_price": 342,
+          "last_order_date": "2025/04/08"
+        },
+        {
+          "product_code": "3330002",
+          "product_name": "ｽﾀ販 markｴﾙﾄﾘｰﾄﾒﾝﾄ詰替300",
+          "unit_price": 4895,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3330004",
+          "product_name": "ｽﾀ販 markﾏﾙﾁｵｲﾙﾊﾞｰﾑﾋﾟｵﾆｰ50",
+          "unit_price": 1980,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3330051",
+          "product_name": "ｽﾀ販 ﾔｸｼﾞｮ潤髪ﾚﾌﾞﾘｼｬﾝﾌﾟｰ500",
+          "unit_price": 3190,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3330052",
+          "product_name": "ｽﾀ販 ﾔｸｼﾞｮ潤髪ﾚﾌﾞﾘｱｳﾄﾊﾞｽﾄﾘｰﾄﾒﾝﾄ120",
+          "unit_price": 2090,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3330020",
+          "product_name": "ｽﾀ販 ﾔｸｼﾞｮﾔｸｼﾞｮｽｲ詰替400",
+          "unit_price": 3740,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3330025",
+          "product_name": "ｽﾀ販 ﾔｸｼﾞｮとろみﾛｰｼｮﾝ150",
+          "unit_price": 2365,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3330001",
+          "product_name": "ｽﾀ販 markｴﾙﾄﾘｰﾄﾒﾝﾄ120",
+          "unit_price": 2310,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "9676003",
+          "product_name": "G-ZERO COIL ｼｬﾝﾌﾟｰﾌﾞﾗｼ",
+          "unit_price": 3150,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "3398999",
+          "product_name": "*潤髪ﾚﾌﾞﾘｰSP500",
+          "unit_price": 4060,
+          "last_order_date": "2025/03/11"
+        },
+        {
+          "product_code": "9108003",
+          "product_name": "MS-730 ｽﾄﾚｰﾄ ｼｬｲﾅｰ ﾌﾞﾗｼ",
+          "unit_price": 3528,
+          "last_order_date": "2025/02/28"
+        },
+        {
+          "product_code": "9110811",
+          "product_name": "NBAAｿﾌﾄﾛｰﾙﾌﾞﾗｼ45ﾅﾁｭﾗﾙｳｯﾄﾞ",
+          "unit_price": 4185,
+          "last_order_date": "2025/02/28"
+        },
+        {
+          "product_code": "9114902",
+          "product_name": "ﾏｲｸﾛｶﾚﾝﾄﾌﾟﾛｼｬﾝﾌﾟｰﾌﾞﾗｼ",
+          "unit_price": 3150,
+          "last_order_date": "2025/02/20"
+        },
+        {
+          "product_code": "708202",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶSP400",
+          "unit_price": 1800,
+          "last_order_date": "2025/02/04"
+        },
+        {
+          "product_code": "710202",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶTRﾓｲｽﾄ400",
+          "unit_price": 1900,
+          "last_order_date": "2025/02/04"
+        },
+        {
+          "product_code": "3110004",
+          "product_name": "ﾌﾟﾃﾛ ARﾍｱ&ｽｶﾙﾌﾟﾊﾟｯｸ 1000R",
+          "unit_price": 4084,
+          "last_order_date": "2025/02/04"
+        },
+        {
+          "product_code": "710205",
+          "product_name": "F.AidﾌﾟﾘﾌｨｶTRﾃﾞｨｰﾌﾟ400",
+          "unit_price": 1900,
+          "last_order_date": "2025/01/24"
+        },
+        {
+          "product_code": "4011232",
+          "product_name": "LOA THE BALM BLANCHE(ﾊﾞｰﾑ)",
+          "unit_price": 3150,
+          "last_order_date": "2025/01/07"
         }
       ]
     },
@@ -6599,6 +5945,68 @@
           "unit_price": 950,
           "last_order_date": "2024/12/23"
         }
+      ],
+      "ワンネス": [
+        {
+          "product_code": "1507021",
+          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 120",
+          "unit_price": 1755,
+          "last_order_date": "2025/12/09"
+        },
+        {
+          "product_code": "1507022",
+          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 300",
+          "unit_price": 2925,
+          "last_order_date": "2025/11/04"
+        },
+        {
+          "product_code": "4011201",
+          "product_name": "LOA THE OIL JASMIN 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "4011207",
+          "product_name": "LOA THE OIL Neroli 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "3206704",
+          "product_name": "ｲｺﾞﾗ ｳﾞｧﾘｵﾌﾞﾛﾝﾄﾞﾌﾟﾗｽ a 450g",
+          "unit_price": 1733,
+          "last_order_date": "2025/07/08"
+        },
+        {
+          "product_code": "4011209",
+          "product_name": "LOA THE OIL pair BLANCHE 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/04/23"
+        },
+        {
+          "product_code": "608007",
+          "product_name": "ｼｰｲｰｽﾘｰ ｼｬﾝﾌﾟｰR800",
+          "unit_price": 330,
+          "last_order_date": "2025/04/22"
+        },
+        {
+          "product_code": "610012",
+          "product_name": "ｼｰｲｰｽﾘｰﾄﾘｰﾄﾒﾝﾄ R750",
+          "unit_price": 413,
+          "last_order_date": "2025/04/22"
+        },
+        {
+          "product_code": "3011224",
+          "product_name": "ｴﾄﾗｽﾚｱﾊﾞｰﾑ80",
+          "unit_price": 1092,
+          "last_order_date": "2025/04/22"
+        },
+        {
+          "product_code": "1911061",
+          "product_name": "COCUU mellow Oil 100",
+          "unit_price": 1144,
+          "last_order_date": "2025/04/22"
+        }
       ]
     },
     "Thursday": {
@@ -8222,6 +7630,850 @@
           "last_order_date": "2025/01/09"
         }
       ],
+      "シーサイド": [
+        {
+          "product_code": "704400",
+          "product_name": "ｸｵﾙｼｱ",
+          "unit_price": 653,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "704000",
+          "product_name": "BLｶﾗｰ   120g",
+          "unit_price": 653,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "3011221",
+          "product_name": "ｴﾄﾗｽﾑｰﾌﾞｾﾗﾑ90",
+          "unit_price": 956,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "1507022",
+          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 300",
+          "unit_price": 2925,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "7298999",
+          "product_name": "*ﾘｾﾝｽSTｷｰﾌﾟｽﾀｲﾘﾝｸﾞ",
+          "unit_price": 750,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "311233",
+          "product_name": "ｱﾘﾐﾉﾒﾝﾌﾘｰｽﾞｷｰﾌﾟｸﾞﾘｰｽ100",
+          "unit_price": 1120,
+          "last_order_date": "2025/09/25"
+        },
+        {
+          "product_code": "4011301",
+          "product_name": "ｱﾝﾀﾞｰﾊﾞｰﾌﾟﾗｽ ﾍｱｵｲﾙ 92",
+          "unit_price": 2275,
+          "last_order_date": "2025/07/10"
+        },
+        {
+          "product_code": "3206704",
+          "product_name": "ｲｺﾞﾗ ｳﾞｧﾘｵﾌﾞﾛﾝﾄﾞﾌﾟﾗｽ a 450g",
+          "unit_price": 1733,
+          "last_order_date": "2025/07/10"
+        },
+        {
+          "product_code": "111064",
+          "product_name": "新 ﾄﾘｴ8ｴﾏﾙｼﾞｮﾝ50",
+          "unit_price": 832,
+          "last_order_date": "2025/07/01"
+        },
+        {
+          "product_code": "205100",
+          "product_name": "ﾌﾟﾘﾐｴﾝｽ x 80",
+          "unit_price": 510,
+          "last_order_date": "2025/05/20"
+        },
+        {
+          "product_code": "504400",
+          "product_name": "ﾅｼｰﾄﾞｶﾗｰ 80g",
+          "unit_price": 390,
+          "last_order_date": "2025/05/20"
+        },
+        {
+          "product_code": "4011201",
+          "product_name": "LOA THE OIL JASMIN 100",
+          "unit_price": 2450,
+          "last_order_date": "2025/03/14"
+        },
+        {
+          "product_code": "4030018",
+          "product_name": "ｽﾀ販LOA THE OIL pair BLANCHE 100",
+          "unit_price": 2230,
+          "last_order_date": "2025/03/14"
+        },
+        {
+          "product_code": "204500",
+          "product_name": "ｱﾙﾃｨｽﾄﾊﾞｲﾌﾟﾘﾐｴﾝｽ    80g",
+          "unit_price": 525,
+          "last_order_date": "2025/01/14"
+        }
+      ],
+      "KOZY": [
+        {
+          "product_code": "506600",
+          "product_name": "N.ｱｼｯﾄﾞｶﾗｰ190",
+          "unit_price": 713,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "3018021",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｴｯｾﾝｽﾐﾙｸ 95",
+          "unit_price": 1950,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "301001",
+          "product_name": "ｺｽﾒｶ-ﾙ EX 400",
+          "unit_price": 800,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "711001",
+          "product_name": "CDﾌﾘｰｽﾞｽﾌﾟﾚｰ200",
+          "unit_price": 788,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "708001",
+          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛｼｬﾝﾌﾟｰ 5000",
+          "unit_price": 2888,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "506711",
+          "product_name": "Nｱｸｾｽﾌﾘｰ ﾊﾟｳﾀﾞｰﾌﾞﾘｰﾁ 500",
+          "unit_price": 2175,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "507052",
+          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｽﾑｰｽﾄﾘｰﾄﾒﾝﾄ1200",
+          "unit_price": 3150,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "3018020",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｴｯｾﾝｽｵｲﾙ 95",
+          "unit_price": 1950,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "204700",
+          "product_name": "PMEｶﾗｰｸﾘｰﾑ 240",
+          "unit_price": 1760,
+          "last_order_date": "2025/12/17"
+        },
+        {
+          "product_code": "701051",
+          "product_name": "BLｽﾄﾚｰﾄ FHc 400",
+          "unit_price": 1050,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "102053",
+          "product_name": "ﾌﾟﾗｲｱ T-2",
+          "unit_price": 600,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "507051",
+          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｲﾝﾅｰﾄﾘｰﾄﾒﾝﾄ1200",
+          "unit_price": 2625,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "704000",
+          "product_name": "BLｶﾗｰ     120g",
+          "unit_price": 454,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "3011223",
+          "product_name": "ｴﾄﾗｽｸﾞﾘｯｸｽ100",
+          "unit_price": 1365,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "701055",
+          "product_name": "BLｽﾄﾚｰﾄ FEc 400",
+          "unit_price": 1125,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "7198999",
+          "product_name": "*ｾﾙﾙﾘﾍﾟｱﾛｰｼｮﾝ ｽﾀ販",
+          "unit_price": 2750,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "405000",
+          "product_name": "iNOA",
+          "unit_price": 595,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "704200",
+          "product_name": "BLｶﾗｰ ﾗﾃﾞｨｰﾁｪ",
+          "unit_price": 454,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "3018009",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH 280",
+          "unit_price": 2470,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "102051",
+          "product_name": "ﾌﾟﾗｲｱ TG-1",
+          "unit_price": 555,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "3011222",
+          "product_name": "ｴﾄﾗｽｾﾐﾄﾞﾗｲｸﾘｰﾑ80",
+          "unit_price": 1229,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "706703",
+          "product_name": "ﾍｱｰｶﾗｰ ﾘﾑｰﾊﾞｰEX 280",
+          "unit_price": 800,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "507053",
+          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄﾓｲｽﾁｬｰﾄﾘｰﾄ 1200",
+          "unit_price": 3150,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "7501001",
+          "product_name": "ﾋﾟｭｱﾏｰﾒｲﾄﾞｸﾘｰﾑ １剤400g",
+          "unit_price": 1530,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "9997571",
+          "product_name": "ｻﾎﾞﾆｰｽﾞﾌﾟﾛﾃｸﾄｸﾘｰﾑ500R",
+          "unit_price": 2400,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "704400",
+          "product_name": "ｸｵﾙｼｱ",
+          "unit_price": 454,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "318113",
+          "product_name": "ｺｱﾐｰｼｬﾝﾌﾟｰEX 590",
+          "unit_price": 3240,
+          "last_order_date": "2025/11/25"
+        },
+        {
+          "product_code": "318094",
+          "product_name": "ｺｱﾐｰｻﾛﾝｹｱHｼｮｯﾄﾌﾞｰｽﾀｰ 1000",
+          "unit_price": 3000,
+          "last_order_date": "2025/11/25"
+        },
+        {
+          "product_code": "318098",
+          "product_name": "ｺｱﾐｰｻﾛﾝｹｱｱｼｯﾄﾞﾌｨｯｸｽ 1000",
+          "unit_price": 4000,
+          "last_order_date": "2025/11/25"
+        },
+        {
+          "product_code": "318193",
+          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸPKｺﾝﾌﾟﾚｯｸｽﾁｬｰｼﾞ1000",
+          "unit_price": 4800,
+          "last_order_date": "2025/11/25"
+        },
+        {
+          "product_code": "318194",
+          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸﾌｨﾙﾏｽｸE1000",
+          "unit_price": 4800,
+          "last_order_date": "2025/11/25"
+        },
+        {
+          "product_code": "318206",
+          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸﾏｽｸMS590",
+          "unit_price": 4680,
+          "last_order_date": "2025/11/25"
+        },
+        {
+          "product_code": "710001",
+          "product_name": "ﾌｨﾖｰﾚ ﾌﾟﾛﾄﾘｰﾄﾒﾝﾄ 5000",
+          "unit_price": 2888,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "3018015",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS 250",
+          "unit_price": 2470,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "9997454",
+          "product_name": "ｱｲﾋﾞﾙｴｺﾎｲﾙ SE ｼﾙﾊﾞｰ",
+          "unit_price": 1296,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "3207005",
+          "product_name": "ﾌｧｲﾊﾞｰP ﾎﾞﾝﾄﾞｵｲﾙ 150",
+          "unit_price": 1960,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "107214",
+          "product_name": "ﾋﾀﾘﾌﾞｰﾀｰｾﾗﾑX800",
+          "unit_price": 3200,
+          "last_order_date": "2025/11/06"
+        },
+        {
+          "product_code": "318199",
+          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸSPMS250",
+          "unit_price": 2280,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "318121",
+          "product_name": "ｺｱﾐｰﾍｱﾏｽｸM 590",
+          "unit_price": 3840,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "318205",
+          "product_name": "ｺｱﾐｰｴﾗﾌﾟｼｰｸﾏｽｸMS235",
+          "unit_price": 2520,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "318127",
+          "product_name": "ｺｱﾐｰﾄﾘｰﾄﾒﾝﾄｵｲﾙM 80",
+          "unit_price": 2280,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "318183",
+          "product_name": "ｺｱﾐｰﾘﾍﾟｱﾃｨﾌﾞTRﾐﾙｸCD80",
+          "unit_price": 2400,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "318184",
+          "product_name": "ｺｱﾐｰﾘﾍﾟｱﾃｨﾌﾞTRｵｲﾙHD80",
+          "unit_price": 2400,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "318153",
+          "product_name": "ｺｱﾐｰｽｷｬﾙﾌﾟｾﾗﾑﾛｰｼｮﾝ100",
+          "unit_price": 3600,
+          "last_order_date": "2025/10/29"
+        },
+        {
+          "product_code": "301009",
+          "product_name": "ｺｽﾒｶｰﾙﾌﾟﾘｽﾞﾑﾌﾟﾗｽH400",
+          "unit_price": 960,
+          "last_order_date": "2025/10/23"
+        },
+        {
+          "product_code": "707007",
+          "product_name": "FﾌﾟﾛﾃｸﾄN 03 1500",
+          "unit_price": 3375,
+          "last_order_date": "2025/10/16"
+        },
+        {
+          "product_code": "708301",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾊﾟｰﾌﾟﾙ 250",
+          "unit_price": 1064,
+          "last_order_date": "2025/10/16"
+        },
+        {
+          "product_code": "708302",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾋﾟﾝｸ 250",
+          "unit_price": 1064,
+          "last_order_date": "2025/10/16"
+        },
+        {
+          "product_code": "4007202",
+          "product_name": "UPTOGLOSS ﾊﾟｳﾀﾞｰ 100",
+          "unit_price": 16000,
+          "last_order_date": "2025/10/08"
+        },
+        {
+          "product_code": "9997160",
+          "product_name": "ﾊｳｽ用ｽﾍﾟｱﾍﾟｰﾊﾟｰL",
+          "unit_price": 2511,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "701052",
+          "product_name": "BLｽﾄﾚｰﾄ FRc 400",
+          "unit_price": 1050,
+          "last_order_date": "2025/09/18"
+        },
+        {
+          "product_code": "3018038",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ UH 280",
+          "unit_price": 2470,
+          "last_order_date": "2025/08/28"
+        },
+        {
+          "product_code": "3018039",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ UH ﾚﾌｨﾙ 600",
+          "unit_price": 4030,
+          "last_order_date": "2025/08/28"
+        },
+        {
+          "product_code": "711167",
+          "product_name": "ﾓﾀﾞﾘｴ ﾎｰﾙﾄﾞｽﾌﾟﾚｰ 200",
+          "unit_price": 654,
+          "last_order_date": "2025/08/28"
+        },
+        {
+          "product_code": "3018042",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ HS 250",
+          "unit_price": 2470,
+          "last_order_date": "2025/08/28"
+        },
+        {
+          "product_code": "3011221",
+          "product_name": "ｴﾄﾗｽﾑｰﾌﾞｾﾗﾑ90",
+          "unit_price": 1365,
+          "last_order_date": "2025/08/21"
+        },
+        {
+          "product_code": "706708",
+          "product_name": "ｸｵﾙｼｱ ﾊｲﾌﾞﾘｰﾁ 500",
+          "unit_price": 2100,
+          "last_order_date": "2025/08/21"
+        },
+        {
+          "product_code": "3018043",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ HS ﾚﾌｨﾙ 600",
+          "unit_price": 4680,
+          "last_order_date": "2025/08/07"
+        },
+        {
+          "product_code": "308052",
+          "product_name": "ﾐﾝﾄｼｬﾝﾌﾟｰﾌﾛｰｽﾞﾝﾘﾌﾚｯｼｭ23 550",
+          "unit_price": 1680,
+          "last_order_date": "2025/07/24"
+        },
+        {
+          "product_code": "4018049",
+          "product_name": "ﾚﾌﾟﾛﾅｲｻﾞｰ 107D Plus",
+          "unit_price": 121600,
+          "last_order_date": "2025/07/11"
+        },
+        {
+          "product_code": "4018050",
+          "product_name": "ﾍｱﾋﾞｭｰﾛﾝ 107D Plus[ｽﾄﾚｰﾄ]",
+          "unit_price": 113600,
+          "last_order_date": "2025/07/11"
+        },
+        {
+          "product_code": "308051",
+          "product_name": "ﾐﾝﾄｼｬﾝﾌﾟｰﾌﾛｰｽﾞﾝﾘﾌﾚｯｼｭ23 250",
+          "unit_price": 896,
+          "last_order_date": "2025/07/10"
+        },
+        {
+          "product_code": "318161",
+          "product_name": "ｺｱﾐｰﾌｨﾅｼﾞｰｽｷｬﾙﾌﾟｾﾗﾑ180",
+          "unit_price": 4800,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "318143",
+          "product_name": "ｺｱﾐｰｻﾛﾝｹｱﾌｨﾅｼﾞｰSPBS590",
+          "unit_price": 3600,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "318144",
+          "product_name": "ｺｱﾐｰｻﾛﾝｹｱﾌｨﾅｼﾞｰSPBT590",
+          "unit_price": 3600,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "318159",
+          "product_name": "ｺｱﾐｰTRｵｲﾙM240",
+          "unit_price": 4560,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "318171",
+          "product_name": "ｺｱﾐｰﾘﾍﾟｱﾃｨﾌﾞTRｵｲﾙHD240",
+          "unit_price": 4800,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "318122",
+          "product_name": "ｺｱﾐｰﾍｱﾏｽｸEX 590",
+          "unit_price": 3840,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "318150",
+          "product_name": "ｺｱﾐｰｻﾛﾝｹｱﾌｨﾅｼﾞｰﾍｱﾏｽｸBT590",
+          "unit_price": 4500,
+          "last_order_date": "2025/07/03"
+        },
+        {
+          "product_code": "3018505",
+          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ﾘﾍﾟｱｼｬﾝﾌﾟｰUH 280",
+          "unit_price": 1900,
+          "last_order_date": "2025/06/27"
+        },
+        {
+          "product_code": "3018511",
+          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ｾﾗﾑﾄﾘｰﾄﾒﾝﾄHS 250",
+          "unit_price": 1900,
+          "last_order_date": "2025/06/27"
+        },
+        {
+          "product_code": "3018521",
+          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ｺﾝｾﾝﾄﾚｲﾄｴｯｾﾝｽ 40",
+          "unit_price": 1000,
+          "last_order_date": "2025/06/27"
+        },
+        {
+          "product_code": "3018522",
+          "product_name": "ｽﾀ販 ﾊﾞｲｶﾙﾃ ｾﾗﾑﾏｽｸ 100",
+          "unit_price": 1100,
+          "last_order_date": "2025/06/27"
+        },
+        {
+          "product_code": "9998999",
+          "product_name": "* 99％の地域密着ｻﾛﾝ",
+          "unit_price": 4500,
+          "last_order_date": "2025/06/19"
+        },
+        {
+          "product_code": "706706",
+          "product_name": "ｽｷｬﾙﾌﾟﾌﾟﾛﾃｸｼｮﾝｵｲﾙ 200",
+          "unit_price": 750,
+          "last_order_date": "2025/06/05"
+        },
+        {
+          "product_code": "3018047",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｺﾝｾﾝﾄﾚｲﾄｴｯｾﾝｽ 40",
+          "unit_price": 1300,
+          "last_order_date": "2025/05/15"
+        },
+        {
+          "product_code": "3018049",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｾﾗﾑﾏｽｸ 100",
+          "unit_price": 1430,
+          "last_order_date": "2025/05/15"
+        },
+        {
+          "product_code": "3018048",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｺﾝｾﾝﾄﾚｲﾄEｷﾞｮｳﾑ 110",
+          "unit_price": 2600,
+          "last_order_date": "2025/05/08"
+        },
+        {
+          "product_code": "708064",
+          "product_name": "ﾌｧｼﾅｰﾄ ﾎﾞﾃﾞｨｿｰﾌﾟ ﾚﾌｨﾙ 500",
+          "unit_price": 490,
+          "last_order_date": "2025/05/01"
+        },
+        {
+          "product_code": "4011203",
+          "product_name": "LOA THE OIL Citrus 100",
+          "unit_price": 3500,
+          "last_order_date": "2025/04/24"
+        },
+        {
+          "product_code": "4011213",
+          "product_name": "LOA THE OIL CARE Citrus Vertﾋﾟﾝｸ",
+          "unit_price": 3850,
+          "last_order_date": "2025/04/17"
+        },
+        {
+          "product_code": "4011204",
+          "product_name": "LOA THE OIL    LATTE ROSE",
+          "unit_price": 3500,
+          "last_order_date": "2025/04/10"
+        },
+        {
+          "product_code": "3311041",
+          "product_name": "Markｴﾙﾄﾘｰﾄﾒﾝﾄ 120",
+          "unit_price": 2058,
+          "last_order_date": "2025/03/27"
+        },
+        {
+          "product_code": "3208022",
+          "product_name": "ﾌｧｲﾊﾞｰﾌﾟﾚｯｸｽﾎﾞﾝﾄﾞｼｬﾝﾌﾟｰ 250",
+          "unit_price": 1235,
+          "last_order_date": "2025/03/27"
+        },
+        {
+          "product_code": "3210002",
+          "product_name": "ﾌｧｲﾊﾞｰﾌﾟﾚｯｸｽﾎﾞﾝﾄﾞﾄﾘｰﾄﾒﾝﾄ 250",
+          "unit_price": 1482,
+          "last_order_date": "2025/03/27"
+        },
+        {
+          "product_code": "3112010",
+          "product_name": "ﾌﾟﾃﾛ ARｴｯｾﾝｽUprise 500",
+          "unit_price": 8459,
+          "last_order_date": "2025/03/27"
+        },
+        {
+          "product_code": "708307",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ｱｯｼｭ 1000",
+          "unit_price": 3360,
+          "last_order_date": "2025/03/20"
+        },
+        {
+          "product_code": "3018001",
+          "product_name": "ﾊﾞｲｶﾙﾃ CBﾐｽﾄ 1000",
+          "unit_price": 2500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018002",
+          "product_name": "ﾊﾞｲｶﾙﾃ CYSｷｯﾄ",
+          "unit_price": 3000,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018003",
+          "product_name": "ﾊﾞｲｶﾙﾃ CFｸﾘｰﾑ 800",
+          "unit_price": 3500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018004",
+          "product_name": "ﾊﾞｲｶﾙﾃ CRﾌｫｰﾑ 1000",
+          "unit_price": 2500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018006",
+          "product_name": "ﾊﾞｲｶﾙﾃ CCｸﾘｰﾑ SE 800",
+          "unit_price": 3500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018005",
+          "product_name": "ﾊﾞｲｶﾙﾃ CCｸﾘｰﾑ ME 800",
+          "unit_price": 3500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018007",
+          "product_name": "ﾊﾞｲｶﾙﾃ CROSSｵｲﾙ 45",
+          "unit_price": 2500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018030",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH業務 1300",
+          "unit_price": 6500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018031",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH業務 1300",
+          "unit_price": 6500,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018032",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS業務 1300",
+          "unit_price": 7000,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018033",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS業務 1300",
+          "unit_price": 7000,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018034",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ ﾎﾙﾀﾞｰ",
+          "unit_price": 650,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018035",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ ﾎﾙﾀﾞｰ",
+          "unit_price": 650,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018036",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｷﾞｮｳﾑﾎﾟﾝﾌﾟ",
+          "unit_price": 150,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018010",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH ﾚﾌｨﾙ 600",
+          "unit_price": 4030,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018013",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH ﾚﾌｨﾙ 600",
+          "unit_price": 4030,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018016",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS ﾚﾌｨﾙ 600",
+          "unit_price": 4680,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018019",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS ﾚﾌｨﾙ 600",
+          "unit_price": 4680,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018022",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH 600空容器",
+          "unit_price": 900,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018023",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH 600空容器",
+          "unit_price": 900,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018024",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS 600空容器",
+          "unit_price": 900,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018025",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS 600空容器",
+          "unit_price": 900,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018012",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH 280",
+          "unit_price": 2470,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018018",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS 250",
+          "unit_price": 2470,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018008",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ FH S 75",
+          "unit_price": 780,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018011",
+          "product_name": "ﾊﾞｲｶﾙﾃ ｼｬﾝﾌﾟｰ CH S 75",
+          "unit_price": 780,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018014",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ SS S 60",
+          "unit_price": 780,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "3018017",
+          "product_name": "ﾊﾞｲｶﾙﾃ ﾄﾘｰﾄﾒﾝﾄ MS S 60",
+          "unit_price": 780,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "708312",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾍﾞｰｼﾞｭ 1000",
+          "unit_price": 3360,
+          "last_order_date": "2025/03/13"
+        },
+        {
+          "product_code": "7298999",
+          "product_name": "*アイロン修理ｱｶﾞﾘ",
+          "unit_price": 4000,
+          "last_order_date": "2025/03/06"
+        },
+        {
+          "product_code": "4011214",
+          "product_name": "LOA THE OIL CARE LATTE ROSEEﾋﾟﾝｸ",
+          "unit_price": 3850,
+          "last_order_date": "2025/02/27"
+        },
+        {
+          "product_code": "4011212",
+          "product_name": "LOA THE OIL CARE BLANCHEﾋﾟﾝｸ 100",
+          "unit_price": 3850,
+          "last_order_date": "2025/02/27"
+        },
+        {
+          "product_code": "4011211",
+          "product_name": "LOA THE OIL CARE JASMIN doreﾋﾟﾝｸ",
+          "unit_price": 3850,
+          "last_order_date": "2025/02/12"
+        },
+        {
+          "product_code": "318128",
+          "product_name": "ｺｱﾐｰﾄﾘｰﾄﾒﾝﾄｵｲﾙEX 80",
+          "unit_price": 2280,
+          "last_order_date": "2025/02/06"
+        },
+        {
+          "product_code": "318119",
+          "product_name": "ｺｱﾐｰﾍｱﾏｽｸEX 235",
+          "unit_price": 2040,
+          "last_order_date": "2025/02/06"
+        },
+        {
+          "product_code": "318112",
+          "product_name": "ｺｱﾐｰｼｬﾝﾌﾟｰM 590",
+          "unit_price": 3240,
+          "last_order_date": "2025/02/06"
+        },
+        {
+          "product_code": "708305",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ｱｯｼｭ 250",
+          "unit_price": 998,
+          "last_order_date": "2025/01/23"
+        },
+        {
+          "product_code": "708311",
+          "product_name": "ｸｵﾙｼｱｶﾗｰ ｼｬﾝﾌﾟｰ ﾍﾞｰｼﾞｭ 250",
+          "unit_price": 1064,
+          "last_order_date": "2025/01/14"
+        },
+        {
+          "product_code": "198156",
+          "product_name": "LBｸﾘｱｼｮｯﾊﾟｰ100枚",
+          "unit_price": 1100,
+          "last_order_date": "2024/12/31"
+        }
+      ],
       "nook": [
         {
           "product_code": "3311043",
@@ -9300,6 +9552,116 @@
           "product_name": "ｱｲﾋﾞﾙ ﾌﾟﾛﾄﾘﾏｰ F3(Tｼﾞﾊﾂｷ)",
           "unit_price": 9800,
           "last_order_date": "2024/12/23"
+        }
+      ],
+      "ルテラ": [
+        {
+          "product_code": "3307001",
+          "product_name": "潤髪ZERO 1000",
+          "unit_price": 4850,
+          "last_order_date": "2025/12/16"
+        },
+        {
+          "product_code": "3310002",
+          "product_name": "ﾔｸｼﾞｮ潤髪ｴｯｾﾝｽｸﾘｰﾑ 500",
+          "unit_price": 8710,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "3307003",
+          "product_name": "ﾔｸｼﾞｮ潤髪ﾎﾞﾝﾄﾞ 500",
+          "unit_price": 8710,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "5018903",
+          "product_name": "ﾗﾀﾞﾒｰﾙ OFｾﾗﾑﾊｲﾄﾞﾚｰﾃｨﾝｸﾞ50",
+          "unit_price": 3600,
+          "last_order_date": "2025/12/11"
+        },
+        {
+          "product_code": "9104901",
+          "product_name": "PR-2000 ﾌﾟﾛｼﾖｳﾊﾞﾘｶﾝ",
+          "unit_price": 11000,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "7198999",
+          "product_name": "*ｾﾙﾙﾘﾍﾟｱﾛｰｼｮﾝ",
+          "unit_price": 1788,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "711167",
+          "product_name": "ﾓﾀﾞﾘｴ ﾎｰﾙﾄﾞｽﾌﾟﾚｰ 200",
+          "unit_price": 654,
+          "last_order_date": "2025/12/03"
+        },
+        {
+          "product_code": "3331003",
+          "product_name": "ﾔｸｼﾞｮｽｲ 1000 (ﾛｰｼｮﾝ)",
+          "unit_price": 13000,
+          "last_order_date": "2025/11/27"
+        },
+        {
+          "product_code": "1507021",
+          "product_name": "ｹﾗФﾋｰﾄｴﾏﾙｼﾞｮﾝ 120",
+          "unit_price": 1755,
+          "last_order_date": "2025/11/20"
+        },
+        {
+          "product_code": "3307006",
+          "product_name": "ﾔｸｼﾞｮ潤髪ｱﾙｷｭｰﾄ 1000",
+          "unit_price": 12500,
+          "last_order_date": "2025/10/23"
+        },
+        {
+          "product_code": "3307005",
+          "product_name": "ﾔｸｼﾞｮ潤髪ﾚﾌﾞﾘ 1000",
+          "unit_price": 12500,
+          "last_order_date": "2025/10/23"
+        },
+        {
+          "product_code": "9114504",
+          "product_name": "FMｽﾌﾟﾚｲﾔｰ ﾌﾞﾗｳﾝ/ﾌﾞﾗｯｸﾍｯﾄﾞ",
+          "unit_price": 882,
+          "last_order_date": "2025/10/23"
+        },
+        {
+          "product_code": "7298999",
+          "product_name": "*ﾘｾﾝｽSTｷｰﾌﾟｽﾀｲﾘﾝｸﾞ",
+          "unit_price": 750,
+          "last_order_date": "2025/10/02"
+        },
+        {
+          "product_code": "9207402",
+          "product_name": "NB-4100ﾏｲﾅｽｲｵﾝﾄﾞﾗｲﾔｰﾌﾞﾗｯｸ",
+          "unit_price": 12500,
+          "last_order_date": "2025/08/07"
+        },
+        {
+          "product_code": "5198999",
+          "product_name": "*HALODUX",
+          "unit_price": 25000,
+          "last_order_date": "2025/05/22"
+        },
+        {
+          "product_code": "507051",
+          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｲﾝﾅｰﾄﾘｰﾄﾒﾝﾄ1200",
+          "unit_price": 2625,
+          "last_order_date": "2025/04/03"
+        },
+        {
+          "product_code": "507052",
+          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄｽﾑｰｽﾄﾘｰﾄﾒﾝﾄ1200",
+          "unit_price": 3150,
+          "last_order_date": "2025/04/03"
+        },
+        {
+          "product_code": "507053",
+          "product_name": "ﾅﾋﾟｭｱﾌﾗｯｼｭﾒﾝﾄﾓｲｽﾁｬｰﾄﾘｰﾄ 1200",
+          "unit_price": 3150,
+          "last_order_date": "2025/04/03"
         }
       ],
       "Hui": [
