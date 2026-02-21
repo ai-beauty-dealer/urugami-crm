@@ -1172,6 +1172,16 @@
                     result += ch;
                 }
             }
+            // 濁点(゛)・半濁点(゜)を前の文字と結合
+            result = result.replace(/([カキクケコサシスセソタチツテトハヒフヘホウ])゛/g, (_, c) => {
+                const dakuMap = 'カガキギクグケゲコゴサザシジスズセゼソゾタダチヂツヅテデトドハバヒビフブヘベホボウヴ';
+                const i = dakuMap.indexOf(c);
+                return i >= 0 && i % 2 === 0 ? dakuMap[i + 1] : c + '゛';
+            });
+            result = result.replace(/([ハヒフヘホ])゜/g, (_, c) => {
+                const hanMap = { 'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ' };
+                return hanMap[c] || c + '゜';
+            });
             return result.toLowerCase();
         }
 
