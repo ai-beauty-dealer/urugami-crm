@@ -1184,6 +1184,63 @@
         }
 
         // ── 訪問履歴（GAS API連携） ──
+        // 日報スプレッドシートのサロン名 → CRM上のサロン名 逆引きマッピング
+        const REPORT_SALON_MAP = {
+            // 火曜日
+            'FATE': 'フェイト', 'Fate': 'フェイト',
+            'スコップ': 'スコップ', 'リンクコネクト株式会社': 'スコップ',
+            'STANDARD': 'スタンダード',
+            // 水曜日
+            'リッシュヘアー': 'リッシュヘアー', 'Riche hair': 'リッシュヘアー',
+            'ピーブランズヘア大野城': 'ピーブランズヘア大野城', 'P-brandshair onojo': 'ピーブランズヘア大野城',
+            'ピーブランズヘア春日': 'ピーブランズヘア春日',
+            'アリー': 'アリー', 'Ari': 'アリー',
+            'スタイリー': 'スタイリー', 'STYLEE': 'スタイリー',
+            'ベルリアージュ': 'ベルリアージュ', 'Bellreage': 'ベルリアージュ',
+            'クレア': 'クレア', 'Crea': 'クレア',
+            'リズム': 'リズム', 'RHYTHM': 'リズム',
+            'ワンネス': 'ワンネス', 'Oneness': 'ワンネス',
+            'ひとみ美容室': 'ひとみ美容室',
+            'プラント': 'プラント', 'plant': 'プラント',
+            '出張理美容': '出張理美容',
+            'アトリコ': 'アトリコ', 'attrico': 'アトリコ',
+            'セブンベルベット': 'セブンベルベット', '7Velvet': 'セブンベルベット',
+            'コージーベルベット': 'コージーベルベット', 'cosy Velvet': 'コージーベルベット',
+            'アヴェ': 'アヴェ', 'ave': 'アヴェ', 'Ave': 'アヴェ',
+            'スリー1階': 'スリー1階', 'THREE': 'スリー5階',
+            'スリー5階': 'スリー5階', 'スリー ブリーチ': 'スリー ブリーチ',
+            'エレ': 'エレ', 'ere': 'エレ',
+            'ドロップバイドロップ': 'ドロップバイドロップ', 'drop by drop': 'ドロップバイドロップ',
+            'ベルベットヘア': 'ベルベットヘア', 'Velvet hair': 'ベルベットヘア',
+            'リコラ': 'リコラ', 'ricore': 'リコラ',
+            'ライトリー': 'ライトリー', 'LYTRIE': 'ライトリー',
+            // 木曜日
+            'リブロ': 'リブロ', 'LiBro': 'リブロ',
+            'ハルズヘアー': 'ハルズヘアー', 'HALS': 'ハルズヘアー',
+            'ラック': 'ラック', 'luck': 'ラック',
+            'コージー': 'コージー', 'KOZY': 'コージー',
+            'ナッティー': 'ナッティー', 'Natty': 'ナッティー',
+            'サロンココ': 'サロンココ', 'Salon COCO': 'サロンココ',
+            'アンバー': 'アンバー', 'Amber': 'アンバー',
+            'リュクス': 'リュクス', 'Luxe': 'リュクス',
+            // 金曜日
+            'クラーク': 'クラーク', 'Clarke': 'クラーク',
+            'ミツアミ堂': 'ミツアミ堂',
+            'ラコヘアー': 'ラコヘアー', 'LACO hair': 'ラコヘアー',
+            'ベルベット千早': 'ベルベット千早', 'Velvet hair 千早': 'ベルベット千早',
+            'ロブレ': 'ロブレ', 'Roble': 'ロブレ',
+            'シエララグゼ': 'シエララグゼ',
+            'ホロホロヘアー': 'ホロホロヘアー',
+        };
+
+        function matchesSalonName(reportSalon, crmSalon) {
+            if (reportSalon === crmSalon) return true;
+            const mapped = REPORT_SALON_MAP[reportSalon];
+            if (mapped === crmSalon) return true;
+            // 正規化比較（大小文字・全角半角統一）
+            return normalizeSearch(reportSalon) === normalizeSearch(crmSalon);
+        }
+
         function loadReports() {
             const reportSection = document.getElementById('section-reports');
             const reportList = document.getElementById('report-list');
@@ -1199,20 +1256,29 @@
             reportSection.classList.add('slide-in');
             reportList.innerHTML = '<div class="report-loading"><span class="spinner"></span>読み込み中...</div>';
 
-            // JSONP でGAS APIを呼び出し（CORS回避）
+            // JSONP でGAS APIを呼び出し（customerフィルタ無し→CRM側で名寄せ）
             const callbackName = 'gasCallback_' + Date.now();
             window[callbackName] = function (response) {
                 delete window[callbackName];
                 const scriptEl = document.getElementById('gas-jsonp');
                 if (scriptEl) scriptEl.remove();
 
-                if (!response || response.status !== 'ok' || !response.reports || response.reports.length === 0) {
+                if (!response || response.status !== 'ok' || !response.reports) {
                     reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>訪問履歴がありません</p></div>';
                     return;
                 }
 
-                reportList.innerHTML = response.reports.map(r => {
+                // CRM側で名寄せフィルタリング
+                const filtered = response.reports.filter(r => matchesSalonName(r.salon, selectedSalon));
+
+                if (filtered.length === 0) {
+                    reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>訪問履歴がありません</p></div>';
+                    return;
+                }
+
+                reportList.innerHTML = filtered.map(r => {
                     const photoHtml = r.photoUrl && r.photoUrl !== '' && r.photoUrl !== 'undefined'
+                        && r.photoUrl.startsWith('http')
                         ? `<a class="report-photo-link" href="${escapeHtml(r.photoUrl)}" target="_blank">📷 写真を見る</a>`
                         : '';
                     return `<div class="report-entry">
@@ -1225,7 +1291,7 @@
 
             const script = document.createElement('script');
             script.id = 'gas-jsonp';
-            script.src = GAS_API_URL + '?action=getReports&day=' + encodeURIComponent(selectedDay) + '&customer=' + encodeURIComponent(selectedSalon) + '&callback=' + callbackName;
+            script.src = GAS_API_URL + '?action=getReports&day=' + encodeURIComponent(selectedDay) + '&callback=' + callbackName;
             script.onerror = function () {
                 reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><p>日報データの取得に失敗しました</p></div>';
                 delete window[callbackName];
