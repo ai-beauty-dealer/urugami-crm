@@ -888,9 +888,7 @@
 
             let filtered = products.filter(p => {
                 if (!query) return true;
-                const normName = normalizeSearch(p.product_name);
-                const normQuery = normalizeSearch(query);
-                return normName.includes(normQuery) || p.product_code.includes(query);
+                return matchesQuery(p.product_name, query);
             });
 
             const sorted = [...filtered].sort((a, b) => {
@@ -966,7 +964,7 @@
             for (const [day, salons] of Object.entries(DATA.salons)) {
                 for (const [salon, products] of Object.entries(salons)) {
                     for (const p of products) {
-                        if (normalizeSearch(p.product_name).includes(normalizeSearch(query))) {
+                        if (matchesQuery(p.product_name, query)) {
                             const key = p.product_name;
                             if (!matches[key]) matches[key] = [];
                             matches[key].push({
@@ -1055,10 +1053,10 @@
                 // 全角英数 → 半角
                 if (code >= 0xFF01 && code <= 0xFF5E) {
                     result += String.fromCharCode(code - 0xFEE0);
-                // 全角スペース → 半角
+                    // 全角スペース → 半角
                 } else if (code === 0x3000) {
                     result += ' ';
-                // 半角カタカナ → 全角カタカナ
+                    // 半角カタカナ → 全角カタカナ
                 } else if (code >= 0xFF65 && code <= 0xFF9F) {
                     const hkMap = 'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ';
                     const fkMap = 'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛゜';
@@ -1069,6 +1067,14 @@
                 }
             }
             return result.toLowerCase();
+        }
+
+        // ── スペース区切りAND検索 ──
+        function matchesQuery(productName, query) {
+            const normName = normalizeSearch(productName);
+            // スペース（全角・半角）で分割し、各トークンがすべて含まれていればマッチ
+            const tokens = normalizeSearch(query).split(/\s+/).filter(t => t.length > 0);
+            return tokens.every(t => normName.includes(t));
         }
 
         // ── Init ──
