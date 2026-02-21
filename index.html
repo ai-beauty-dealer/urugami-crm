@@ -557,6 +557,93 @@
             font-size: 13px;
         }
 
+        /* ── Report History ── */
+        .report-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .report-tab {
+            flex: 1;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .report-tab.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .report-entry {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .report-entry:last-child {
+            border-bottom: none;
+        }
+
+        .report-date {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+        }
+
+        .report-comment {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .report-photo-link {
+            font-size: 11px;
+            color: var(--primary-light);
+            text-decoration: none;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .report-photo-link:hover {
+            text-decoration: underline;
+        }
+
+        .report-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        .report-loading .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary-light);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         /* ── Slide animation ── */
         .slide-in {
             animation: slideIn 0.25s ease;
@@ -691,6 +778,21 @@
                 <div id="generated-at" style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;">
                 </div>
             </div>
+
+            <!-- Step 4: Visit History -->
+            <div class="section glass slide-in" id="section-reports" style="display:none;">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    📝 訪問履歴
+                </div>
+                <div id="report-list"></div>
+            </div>
         </div>
 
         <!-- ===== PRODUCT SEARCH MODE ===== -->
@@ -722,6 +824,9 @@
         let sortOrder = 'date';
         let currentMode = 'salon'; // 'salon' | 'product'
         let priceOverrides = {}; // localStorage保存の価格オーバーライド
+
+        // GAS Web App URL（デプロイ後にここに設定）
+        const GAS_API_URL = localStorage.getItem('crm_gas_url') || '';
 
         const DAY_LABELS = {
             Tuesday: '火曜日',
@@ -869,6 +974,7 @@
             void document.getElementById('section-products').offsetWidth;
             document.getElementById('section-products').classList.add('slide-in');
             renderTable();
+            loadReports();
             document.getElementById('section-products').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -1076,6 +1182,63 @@
             const tokens = normalizeSearch(query).split(/\s+/).filter(t => t.length > 0);
             return tokens.every(t => normName.includes(t));
         }
+
+        // ── 訪問履歴（GAS API連携） ──
+        function loadReports() {
+            const reportSection = document.getElementById('section-reports');
+            const reportList = document.getElementById('report-list');
+
+            if (!GAS_API_URL || !selectedSalon || !selectedDay) {
+                reportSection.style.display = 'none';
+                return;
+            }
+
+            reportSection.style.display = 'block';
+            reportSection.classList.remove('slide-in');
+            void reportSection.offsetWidth;
+            reportSection.classList.add('slide-in');
+            reportList.innerHTML = '<div class="report-loading"><span class="spinner"></span>読み込み中...</div>';
+
+            // JSONP でGAS APIを呼び出し（CORS回避）
+            const callbackName = 'gasCallback_' + Date.now();
+            window[callbackName] = function (response) {
+                delete window[callbackName];
+                const scriptEl = document.getElementById('gas-jsonp');
+                if (scriptEl) scriptEl.remove();
+
+                if (!response || response.status !== 'ok' || !response.reports || response.reports.length === 0) {
+                    reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>訪問履歴がありません</p></div>';
+                    return;
+                }
+
+                reportList.innerHTML = response.reports.map(r => {
+                    const photoHtml = r.photoUrl && r.photoUrl !== '' && r.photoUrl !== 'undefined'
+                        ? `<a class="report-photo-link" href="${escapeHtml(r.photoUrl)}" target="_blank">📷 写真を見る</a>`
+                        : '';
+                    return `<div class="report-entry">
+                        <div class="report-date">${escapeHtml(r.date)}</div>
+                        <div class="report-comment">${escapeHtml(r.comment)}</div>
+                        ${photoHtml}
+                    </div>`;
+                }).join('');
+            };
+
+            const script = document.createElement('script');
+            script.id = 'gas-jsonp';
+            script.src = GAS_API_URL + '?action=getReports&day=' + encodeURIComponent(selectedDay) + '&customer=' + encodeURIComponent(selectedSalon) + '&callback=' + callbackName;
+            script.onerror = function () {
+                reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><p>日報データの取得に失敗しました</p></div>';
+                delete window[callbackName];
+            };
+            document.body.appendChild(script);
+        }
+
+        // ── GAS URL設定ヘルパー ──
+        // ブラウザコンソールで setGasUrl('https://script.google.com/macros/s/XXXXX/exec') を実行
+        window.setGasUrl = function (url) {
+            localStorage.setItem('crm_gas_url', url);
+            location.reload();
+        };
 
         // ── Init ──
         loadPriceOverrides();
