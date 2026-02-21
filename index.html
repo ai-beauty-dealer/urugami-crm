@@ -47,7 +47,6 @@
             min-height: 100vh;
         }
 
-        /* ── Background decoration ── */
         body::before {
             content: '';
             position: fixed;
@@ -72,7 +71,7 @@
         /* ── Header ── */
         header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .badge {
@@ -107,15 +106,49 @@
             margin-top: 4px;
         }
 
+        /* ── Mode Tabs ── */
+        .mode-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .mode-tab {
+            flex: 1;
+            padding: 10px 8px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .mode-tab:hover {
+            color: var(--text);
+        }
+
+        .mode-tab.active {
+            background: var(--primary-glow);
+            color: var(--primary-light);
+            box-shadow: 0 2px 8px rgba(124, 106, 247, 0.2);
+        }
+
         /* ── Steps ── */
         .steps {
             display: flex;
             align-items: center;
-            gap: 0;
+            gap: 8px;
             margin-bottom: 2rem;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 8px;
         }
 
         .step {
@@ -407,6 +440,107 @@
             color: var(--red);
         }
 
+        /* ── Price Edit ── */
+        .price-cell {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .price-value {
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: background 0.15s;
+        }
+
+        .price-value:hover {
+            background: rgba(124, 106, 247, 0.15);
+        }
+
+        .price-value.edited {
+            color: var(--green);
+        }
+
+        .price-edit-input {
+            width: 80px;
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 2px 6px;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 700;
+            outline: none;
+            text-align: right;
+        }
+
+        .price-reset {
+            font-size: 9px;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: color 0.15s;
+        }
+
+        .price-reset:hover {
+            color: var(--red);
+        }
+
+        /* ── Product Search Mode ── */
+        .product-search-section {
+            margin-top: 1rem;
+        }
+
+        .product-search-results {
+            margin-top: 1rem;
+        }
+
+        .result-product-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: var(--primary-glow);
+            border-radius: 8px;
+            border: 1px solid rgba(124, 106, 247, 0.2);
+        }
+
+        .result-salon-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.15s;
+        }
+
+        .result-salon-card:hover {
+            background: var(--surface-hover);
+        }
+
+        .result-salon-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .result-salon-day {
+            font-size: 10px;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 2px 8px;
+            margin-left: 8px;
+        }
+
+        .result-meta {
+            text-align: right;
+            font-size: 12px;
+        }
+
         /* ── Empty State ── */
         .empty-state {
             text-align: center;
@@ -437,31 +571,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        /* ── Loading ── */
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
             }
         }
 
@@ -500,77 +609,106 @@
             <p>顧客情報管理システム</p>
         </header>
 
-        <!-- Steps Indicator -->
-        <div class="steps" id="steps">
-            <div class="step active" id="step1">
-                <div class="step-num">1</div>
-                <span>曜日を選択</span>
-            </div>
-            <div class="step-sep">›</div>
-            <div class="step" id="step2">
-                <div class="step-num">2</div>
-                <span>サロンを選択</span>
-            </div>
-            <div class="step-sep">›</div>
-            <div class="step" id="step3">
-                <div class="step-num">3</div>
-                <span>導入商品を確認</span>
-            </div>
+        <!-- Mode Tabs -->
+        <div class="mode-tabs">
+            <button class="mode-tab active" onclick="switchMode('salon')" id="tab-salon">📋 サロン別</button>
+            <button class="mode-tab" onclick="switchMode('product')" id="tab-product">🔍 商品検索</button>
         </div>
 
-        <!-- Step 1: Day Selection -->
-        <div class="section" id="section-day">
-            <div class="section-label">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                    <line x1="16" y1="2" x2="16" y2="6" />
-                    <line x1="8" y1="2" x2="8" y2="6" />
-                    <line x1="3" y1="10" x2="21" y2="10" />
-                </svg>
-                訪問曜日
-            </div>
-            <div class="day-grid">
-                <button class="day-btn" onclick="selectDay('Tuesday')" id="day-Tuesday">火曜日</button>
-                <button class="day-btn" onclick="selectDay('Wednesday')" id="day-Wednesday">水曜日</button>
-                <button class="day-btn" onclick="selectDay('Thursday')" id="day-Thursday">木曜日</button>
-                <button class="day-btn" onclick="selectDay('Friday')" id="day-Friday">金曜日</button>
-            </div>
-        </div>
-
-        <!-- Step 2: Salon Selection -->
-        <div class="section glass slide-in" id="section-salon" style="display:none;">
-            <div class="section-label">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
-                サロンを選択
-            </div>
-            <div class="salon-list" id="salon-list"></div>
-        </div>
-
-        <!-- Step 3: Product List -->
-        <div class="section glass slide-in" id="section-products" style="display:none;">
-            <div class="product-header">
-                <div>
-                    <div class="salon-title" id="selected-salon-name"></div>
-                    <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">導入商品リスト</div>
+        <!-- ===== SALON MODE ===== -->
+        <div id="mode-salon">
+            <!-- Steps Indicator -->
+            <div class="steps" id="steps">
+                <div class="step active" id="step1">
+                    <div class="step-num">1</div>
+                    <span>曜日を選択</span>
                 </div>
-                <div class="product-count" id="product-count"></div>
-            </div>
-            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
-                <div class="sort-bar">
-                    <button class="sort-btn active" onclick="setSortOrder('date')" id="sort-date">最終発注日順</button>
-                    <button class="sort-btn" onclick="setSortOrder('name')" id="sort-name">商品名順</button>
-                    <button class="sort-btn" onclick="setSortOrder('price')" id="sort-price">価格順</button>
+                <div class="step-sep">›</div>
+                <div class="step" id="step2">
+                    <div class="step-num">2</div>
+                    <span>サロンを選択</span>
+                </div>
+                <div class="step-sep">›</div>
+                <div class="step" id="step3">
+                    <div class="step-num">3</div>
+                    <span>導入商品を確認</span>
                 </div>
             </div>
-            <input class="search-box" type="text" id="product-search" placeholder="商品名で絞り込み..."
-                oninput="renderTable()" />
-            <div id="table-container"></div>
-            <div id="generated-at" style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;"></div>
+
+            <!-- Step 1: Day Selection -->
+            <div class="section" id="section-day">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    訪問曜日
+                </div>
+                <div class="day-grid">
+                    <button class="day-btn" onclick="selectDay('Tuesday')" id="day-Tuesday">火曜日</button>
+                    <button class="day-btn" onclick="selectDay('Wednesday')" id="day-Wednesday">水曜日</button>
+                    <button class="day-btn" onclick="selectDay('Thursday')" id="day-Thursday">木曜日</button>
+                    <button class="day-btn" onclick="selectDay('Friday')" id="day-Friday">金曜日</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Salon Selection -->
+            <div class="section glass slide-in" id="section-salon" style="display:none;">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    サロンを選択
+                </div>
+                <div class="salon-list" id="salon-list"></div>
+            </div>
+
+            <!-- Step 3: Product List -->
+            <div class="section glass slide-in" id="section-products" style="display:none;">
+                <div class="product-header">
+                    <div>
+                        <div class="salon-title" id="selected-salon-name"></div>
+                        <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">導入商品リスト <span
+                                style="font-size:10px;opacity:0.6;">（価格クリックで変更可）</span></div>
+                    </div>
+                    <div class="product-count" id="product-count"></div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
+                    <div class="sort-bar">
+                        <button class="sort-btn active" onclick="setSortOrder('date')" id="sort-date">最終発注日順</button>
+                        <button class="sort-btn" onclick="setSortOrder('name')" id="sort-name">商品名順</button>
+                        <button class="sort-btn" onclick="setSortOrder('price')" id="sort-price">価格順</button>
+                    </div>
+                </div>
+                <input class="search-box" type="text" id="product-search" placeholder="商品名で絞り込み..."
+                    oninput="renderTable()" />
+                <div id="table-container"></div>
+                <div id="generated-at" style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PRODUCT SEARCH MODE ===== -->
+        <div id="mode-product" style="display:none;">
+            <div class="section product-search-section">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    商品名で導入サロンを検索
+                </div>
+                <input class="search-box" type="text" id="global-product-search" placeholder="商品名を入力..."
+                    oninput="searchProducts()" />
+                <div id="product-search-count" style="font-size:11px;color:var(--text-muted);margin-bottom:12px;"></div>
+                <div class="product-search-results" id="global-search-results"></div>
+            </div>
         </div>
 
         <footer>© 2026 2nd Brain Systems. All rights reserved.</footer>
@@ -578,10 +716,12 @@
 
     <script>
         // ── State ──
-        let DATA = null;           // salon_products.json
+        let DATA = null;
         let selectedDay = null;
         let selectedSalon = null;
-        let sortOrder = 'date';    // 'date' | 'name' | 'price'
+        let sortOrder = 'date';
+        let currentMode = 'salon'; // 'salon' | 'product'
+        let priceOverrides = {}; // localStorage保存の価格オーバーライド
 
         const DAY_LABELS = {
             Tuesday: '火曜日',
@@ -589,6 +729,80 @@
             Thursday: '木曜日',
             Friday: '金曜日',
         };
+
+        // ── Price Override (localStorage) ──
+        function loadPriceOverrides() {
+            try {
+                const saved = localStorage.getItem('crm_price_overrides');
+                if (saved) priceOverrides = JSON.parse(saved);
+            } catch (e) { priceOverrides = {}; }
+        }
+
+        function savePriceOverrides() {
+            localStorage.setItem('crm_price_overrides', JSON.stringify(priceOverrides));
+        }
+
+        function getPriceKey(day, salon, productName) {
+            return `${day}::${salon}::${productName}`;
+        }
+
+        function getDisplayPrice(day, salon, product) {
+            const key = getPriceKey(day, salon, product.product_name);
+            return priceOverrides[key] !== undefined ? priceOverrides[key] : product.unit_price;
+        }
+
+        function isEdited(day, salon, productName) {
+            return priceOverrides[getPriceKey(day, salon, productName)] !== undefined;
+        }
+
+        function startEditPrice(day, salon, productName, currentPrice) {
+            const key = getPriceKey(day, salon, productName);
+            const cell = event.target.closest('.price-cell');
+            const valueEl = cell.querySelector('.price-value');
+            valueEl.style.display = 'none';
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'price-edit-input';
+            input.value = currentPrice;
+            cell.insertBefore(input, valueEl);
+            input.focus();
+            input.select();
+
+            const commit = () => {
+                const newPrice = parseInt(input.value);
+                if (!isNaN(newPrice) && newPrice >= 0) {
+                    priceOverrides[key] = newPrice;
+                    savePriceOverrides();
+                }
+                renderTable();
+            };
+
+            input.addEventListener('blur', commit);
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); commit(); }
+                if (e.key === 'Escape') { input.remove(); valueEl.style.display = ''; }
+            });
+        }
+
+        function resetPrice(day, salon, productName) {
+            const key = getPriceKey(day, salon, productName);
+            delete priceOverrides[key];
+            savePriceOverrides();
+            renderTable();
+        }
+
+        // ── Mode Switching ──
+        function switchMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + mode).classList.add('active');
+            document.getElementById('mode-salon').style.display = mode === 'salon' ? 'block' : 'none';
+            document.getElementById('mode-product').style.display = mode === 'product' ? 'block' : 'none';
+            if (mode === 'product') {
+                document.getElementById('global-product-search').focus();
+            }
+        }
 
         // ── Data Loading ──
         async function loadData() {
@@ -607,15 +821,9 @@
         function selectDay(day) {
             selectedDay = day;
             selectedSalon = null;
-
-            // Update buttons
             document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('day-' + day).classList.add('active');
-
-            // Update steps
             updateSteps(2);
-
-            // Render salons
             renderSalons();
             document.getElementById('section-salon').style.display = 'block';
             document.getElementById('section-salon').classList.remove('slide-in');
@@ -629,7 +837,6 @@
             if (!DATA) return;
             const salonsOnDay = DATA.salons[selectedDay] || {};
             const customers = getCustomersForDay(selectedDay);
-
             const list = document.getElementById('salon-list');
             list.innerHTML = customers.map(name => {
                 const hasData = name in salonsOnDay;
@@ -643,11 +850,7 @@
 
         function getCustomersForDay(day) {
             if (!DATA) return [];
-            // customers.json の全サロンリストを使う（売上データがないサロンも表示）
-            if (DATA.customers && DATA.customers[day]) {
-                return DATA.customers[day];
-            }
-            // フォールバック: salonsのキーを使用
+            if (DATA.customers && DATA.customers[day]) return DATA.customers[day];
             const salonsOnDay = DATA.salons[day] || {};
             return Object.keys(salonsOnDay);
         }
@@ -655,19 +858,11 @@
         // ── Salon Selection ──
         function selectSalon(name) {
             selectedSalon = name;
-
-            // Update buttons
             document.querySelectorAll('.salon-btn').forEach(b => b.classList.remove('active'));
             const btn = document.getElementById('salon-' + encodeURIComponent(name));
             if (btn) btn.classList.add('active');
-
-            // Update steps
             updateSteps(3);
-
-            // Reset search
             document.getElementById('product-search').value = '';
-
-            // Render products
             document.getElementById('selected-salon-name').textContent = name;
             document.getElementById('section-products').style.display = 'block';
             document.getElementById('section-products').classList.remove('slide-in');
@@ -691,16 +886,18 @@
             const query = document.getElementById('product-search').value.toLowerCase();
             const today = new Date();
 
-            // Filter
             let filtered = products.filter(p =>
                 !query || p.product_name.toLowerCase().includes(query) || p.product_code.includes(query)
             );
 
-            // Sort
             const sorted = [...filtered].sort((a, b) => {
                 if (sortOrder === 'date') return b.last_order_date.localeCompare(a.last_order_date);
                 if (sortOrder === 'name') return a.product_name.localeCompare(b.product_name, 'ja');
-                if (sortOrder === 'price') return b.unit_price - a.unit_price;
+                if (sortOrder === 'price') {
+                    const pa = getDisplayPrice(selectedDay, selectedSalon, a);
+                    const pb = getDisplayPrice(selectedDay, selectedSalon, b);
+                    return pb - pa;
+                }
                 return 0;
             });
 
@@ -719,9 +916,16 @@
             const rows = sorted.map(p => {
                 const dateClass = getDateClass(p.last_order_date, today);
                 const dateLabel = formatDateRelative(p.last_order_date, today);
+                const displayPrice = getDisplayPrice(selectedDay, selectedSalon, p);
+                const edited = isEdited(selectedDay, selectedSalon, p.product_name);
                 return `<tr>
         <td class="td-product">${escapeHtml(p.product_name)}</td>
-        <td class="td-price">¥${p.unit_price.toLocaleString()}</td>
+        <td class="td-price">
+          <div class="price-cell">
+            <span class="price-value ${edited ? 'edited' : ''}" onclick="startEditPrice('${escapeAttr(selectedDay)}','${escapeAttr(selectedSalon)}','${escapeAttr(p.product_name)}',${displayPrice})" title="クリックで価格を変更">¥${displayPrice.toLocaleString()}</span>
+            ${edited ? `<span class="price-reset" onclick="resetPrice('${escapeAttr(selectedDay)}','${escapeAttr(selectedSalon)}','${escapeAttr(p.product_name)}')" title="元に戻す">↩</span>` : ''}
+          </div>
+        </td>
         <td class="td-date ${dateClass}" title="${p.last_order_date}">${p.last_order_date}<br><span style="font-size:10px;opacity:0.7">${dateLabel}</span></td>
       </tr>`;
             }).join('');
@@ -739,6 +943,73 @@
       </table>`;
         }
 
+        // ── Product Search Mode ──
+        function searchProducts() {
+            if (!DATA) return;
+            const query = document.getElementById('global-product-search').value.toLowerCase().trim();
+            const results = document.getElementById('global-search-results');
+            const countEl = document.getElementById('product-search-count');
+
+            if (query.length < 2) {
+                results.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><p>2文字以上入力してください</p></div>`;
+                countEl.textContent = '';
+                return;
+            }
+
+            // 全サロン・全商品から検索
+            const matches = {}; // product_name -> [{salon, day, price, date}]
+            const today = new Date();
+
+            for (const [day, salons] of Object.entries(DATA.salons)) {
+                for (const [salon, products] of Object.entries(salons)) {
+                    for (const p of products) {
+                        if (p.product_name.toLowerCase().includes(query)) {
+                            const key = p.product_name;
+                            if (!matches[key]) matches[key] = [];
+                            matches[key].push({
+                                salon,
+                                day,
+                                price: getDisplayPrice(day, salon, p),
+                                date: p.last_order_date,
+                            });
+                        }
+                    }
+                }
+            }
+
+            const productNames = Object.keys(matches).sort((a, b) => a.localeCompare(b, 'ja'));
+            const totalSalons = productNames.reduce((sum, k) => sum + matches[k].length, 0);
+            countEl.textContent = `${productNames.length} 商品 / ${totalSalons} サロン`;
+
+            if (productNames.length === 0) {
+                results.innerHTML = `<div class="empty-state"><div class="empty-icon">📦</div><p>「${escapeHtml(query)}」に一致する商品がありません</p></div>`;
+                return;
+            }
+
+            results.innerHTML = productNames.map(name => {
+                const salons = matches[name].sort((a, b) => b.date.localeCompare(a.date));
+                return `
+          <div class="glass" style="margin-bottom:12px;">
+            <div class="result-product-name">${escapeHtml(name)}<span style="font-size:11px;color:var(--text-muted);margin-left:8px;">${salons.length}サロン</span></div>
+            ${salons.map(s => {
+                    const dateClass = getDateClass(s.date, today);
+                    const dateLabel = formatDateRelative(s.date, today);
+                    return `<div class="result-salon-card">
+              <div>
+                <span class="result-salon-name">${escapeHtml(s.salon)}</span>
+                <span class="result-salon-day">${DAY_LABELS[s.day] || s.day}</span>
+              </div>
+              <div class="result-meta">
+                <div class="td-price" style="font-size:13px;">¥${s.price.toLocaleString()}</div>
+                <div class="td-date ${dateClass}" style="font-size:11px;">${s.date} (${dateLabel})</div>
+              </div>
+            </div>`;
+                }).join('')}
+          </div>`;
+            }).join('');
+        }
+
+        // ── Helpers ──
         function getDateClass(dateStr, today) {
             const d = new Date(dateStr);
             const diffDays = Math.floor((today - d) / (1000 * 60 * 60 * 24));
@@ -757,7 +1028,6 @@
             return `${Math.floor(diffDays / 365)}年以上前`;
         }
 
-        // ── Step Indicator ──
         function updateSteps(active) {
             [1, 2, 3].forEach(i => {
                 const el = document.getElementById('step' + i);
@@ -767,7 +1037,6 @@
             });
         }
 
-        // ── Escape helpers ──
         function escapeHtml(str) {
             return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
@@ -776,6 +1045,7 @@
         }
 
         // ── Init ──
+        loadPriceOverrides();
         loadData();
     </script>
 </body>
