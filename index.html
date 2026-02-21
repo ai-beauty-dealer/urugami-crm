@@ -825,8 +825,8 @@
         let currentMode = 'salon'; // 'salon' | 'product'
         let priceOverrides = {}; // localStorage保存の価格オーバーライド
 
-        // GAS Web App URL（デプロイ後にここに設定）
-        const GAS_API_URL = localStorage.getItem('crm_gas_url') || '';
+        // GAS Web App URL
+        const GAS_API_URL = localStorage.getItem('crm_gas_url') || 'https://script.google.com/macros/s/AKfycbxutj9vkwLDtQEYuRsxARvY2c6OJD0hYBh9BZR892Sf5fesbXQcU2S72zWj-FHsJC1P/exec';
 
         const DAY_LABELS = {
             Tuesday: '火曜日',
