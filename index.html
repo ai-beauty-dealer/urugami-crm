@@ -1268,8 +1268,17 @@
                     return;
                 }
 
+                // レスポンスの列ずれ対応: salonが数字の場合はcomment=サロン名, photoUrl=コメント
+                const normalized = response.reports.map(r => {
+                    if (/^\d+$/.test(String(r.salon).trim())) {
+                        // 列ずれ: salon=件数, comment=サロン名, photoUrl=コメント
+                        return { date: r.date, salon: r.comment, comment: r.photoUrl || '', photoUrl: '' };
+                    }
+                    return r;
+                });
+
                 // CRM側で名寄せフィルタリング
-                const filtered = response.reports.filter(r => matchesSalonName(r.salon, selectedSalon));
+                const filtered = normalized.filter(r => matchesSalonName(r.salon, selectedSalon));
 
                 if (filtered.length === 0) {
                     reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>訪問履歴がありません</p></div>';
