@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-21 17:30:03",
+  "generated_at": "2026-02-21 17:33:43",
   "salons": {
     "Tuesday": {
       "FATE": [
@@ -622,6 +622,74 @@
           "product_name": "LOA THE BALM BLANCHE(ﾊﾞｰﾑ)",
           "unit_price": 3150,
           "last_order_date": "2025/01/07"
+        }
+      ],
+      "スタンダード": [
+        {
+          "product_code": "4030043",
+          "product_name": "ｽﾀ販LOA THE HAND WASH Neroli 320",
+          "unit_price": 4200,
+          "last_order_date": "2025/11/04"
+        },
+        {
+          "product_code": "7112001",
+          "product_name": "SLEEP STEP 炭酸ﾍｯﾄﾞｽﾊﾟ ｽｲｰﾄﾄﾞﾘｰﾑ",
+          "unit_price": 1071,
+          "last_order_date": "2025/08/19"
+        },
+        {
+          "product_code": "301114",
+          "product_name": "ｸｵﾗｲﾝ CA-C130 N2 400",
+          "unit_price": 1485,
+          "last_order_date": "2025/08/05"
+        },
+        {
+          "product_code": "301121",
+          "product_name": "ｸｵﾗｲﾝ CA-C110 400",
+          "unit_price": 1485,
+          "last_order_date": "2025/08/05"
+        },
+        {
+          "product_code": "301113",
+          "product_name": "ｸｵﾗｲﾝ CA-T200 N2 400",
+          "unit_price": 1485,
+          "last_order_date": "2025/08/05"
+        },
+        {
+          "product_code": "301111",
+          "product_name": "ｸｵﾗｲﾝ T280 N2 1剤",
+          "unit_price": 1,
+          "last_order_date": "2025/07/22"
+        },
+        {
+          "product_code": "4011209",
+          "product_name": "LOA THE OIL pair BLANCHE 100",
+          "unit_price": 2450,
+          "last_order_date": "2025/07/22"
+        },
+        {
+          "product_code": "108025",
+          "product_name": "ｲｵｾﾗﾑCL 2500",
+          "unit_price": 4410,
+          "last_order_date": "2025/07/22"
+        },
+        {
+          "product_code": "110020",
+          "product_name": "ｲｵｾﾗﾑCR 2500",
+          "unit_price": 4410,
+          "last_order_date": "2025/07/22"
+        },
+        {
+          "product_code": "4131116",
+          "product_name": "ｱﾝﾘﾐﾃｯﾄﾞﾒｲｸｱｯﾌﾟﾌｨｯｸｽﾐｽﾄ*4100",
+          "unit_price": 2009,
+          "last_order_date": "2025/07/22"
+        },
+        {
+          "product_code": "301082",
+          "product_name": "NｸｵﾗｲﾝCA-C130(400)",
+          "unit_price": 1350,
+          "last_order_date": "2025/07/01"
         }
       ]
     },
