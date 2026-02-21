@@ -757,25 +757,32 @@
 
             <!-- Step 3: Product List -->
             <div class="section glass slide-in" id="section-products" style="display:none;">
-                <div class="product-header">
+                <div class="product-header" onclick="toggleProductList()" style="cursor:pointer;">
                     <div>
                         <div class="salon-title" id="selected-salon-name"></div>
                         <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">導入商品リスト <span
                                 style="font-size:10px;opacity:0.6;">（価格クリックで変更可）</span></div>
                     </div>
-                    <div class="product-count" id="product-count"></div>
-                </div>
-                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
-                    <div class="sort-bar">
-                        <button class="sort-btn active" onclick="setSortOrder('date')" id="sort-date">最終発注日順</button>
-                        <button class="sort-btn" onclick="setSortOrder('name')" id="sort-name">商品名順</button>
-                        <button class="sort-btn" onclick="setSortOrder('price')" id="sort-price">価格順</button>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div class="product-count" id="product-count"></div>
+                        <span id="product-toggle-icon" style="font-size:18px;transition:transform 0.3s;">▼</span>
                     </div>
                 </div>
-                <input class="search-box" type="text" id="product-search" placeholder="商品名で絞り込み..."
-                    oninput="renderTable()" />
-                <div id="table-container"></div>
-                <div id="generated-at" style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;">
+                <div id="product-list-body">
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
+                        <div class="sort-bar">
+                            <button class="sort-btn active" onclick="setSortOrder('date')"
+                                id="sort-date">最終発注日順</button>
+                            <button class="sort-btn" onclick="setSortOrder('name')" id="sort-name">商品名順</button>
+                            <button class="sort-btn" onclick="setSortOrder('price')" id="sort-price">価格順</button>
+                        </div>
+                    </div>
+                    <input class="search-box" type="text" id="product-search" placeholder="商品名で絞り込み..."
+                        oninput="renderTable()" />
+                    <div id="table-container"></div>
+                    <div id="generated-at"
+                        style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;">
+                    </div>
                 </div>
             </div>
 
@@ -979,6 +986,18 @@
         }
 
         // ── Product Table ──
+        function toggleProductList() {
+            const body = document.getElementById('product-list-body');
+            const icon = document.getElementById('product-toggle-icon');
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                body.style.display = 'none';
+                icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+
         function setSortOrder(order) {
             sortOrder = order;
             document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
