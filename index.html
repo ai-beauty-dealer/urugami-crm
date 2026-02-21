@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRM ツール | URUGAMI SYSTEM</title>
+    <meta name="description" content="サロン別・導入商品情報確認ツール" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-hover: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.18);
+            --primary: #7c6af7;
+            --primary-light: #a095ff;
+            --primary-glow: rgba(124, 106, 247, 0.25);
+            --text: #f0f0f8;
+            --text-muted: #7a7994;
+            --text-dim: #4a4a6a;
+            --green: #34d399;
+            --yellow: #fbbf24;
+            --red: #f87171;
+            --radius: 14px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── Background decoration ── */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 60vh;
+            background: radial-gradient(ellipse, rgba(124, 106, 247, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .app {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+        }
+
+        /* ── Header ── */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(124, 106, 247, 0.12);
+            border: 1px solid rgba(124, 106, 247, 0.3);
+            border-radius: 100px;
+            padding: 4px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        h1.brand {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #fff 30%, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ── Steps ── */
+        .steps {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .step.active {
+            color: var(--primary-light);
+        }
+
+        .step.done {
+            color: var(--green);
+        }
+
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-num {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .step.done .step-num {
+            background: rgba(52, 211, 153, 0.15);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .step-sep {
+            color: var(--text-dim);
+            margin: 0 4px;
+        }
+
+        /* ── Section ── */
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-label svg {
+            color: var(--primary-light);
+        }
+
+        /* ── Day Buttons ── */
+        .day-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .day-btn {
+            padding: 14px 8px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .day-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .day-btn.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(124, 106, 247, 0.3);
+        }
+
+        /* ── Glass Panel ── */
+        .glass {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        /* ── Salon List ── */
+        .salon-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+        }
+
+        .salon-btn {
+            padding: 12px 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .salon-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
+
+        .salon-btn.active {
+            background: rgba(124, 106, 247, 0.15);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .salon-btn .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .salon-btn.no-data .dot {
+            background: var(--text-dim);
+        }
+
+        /* ── Product Table ── */
+        .product-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .salon-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .product-count {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 3px 10px;
+        }
+
+        .sort-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .sort-btn {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .sort-btn.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .search-box {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: var(--text);
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+
+        .search-box::placeholder {
+            color: var(--text-dim);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            text-align: left;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            padding: 0 8px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr {
+            transition: background 0.15s;
+            cursor: default;
+        }
+
+        tbody tr:hover {
+            background: var(--surface-hover);
+        }
+
+        tbody td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .td-product {
+            font-weight: 500;
+        }
+
+        .td-price {
+            font-weight: 700;
+            color: var(--primary-light);
+            white-space: nowrap;
+        }
+
+        .td-date {
+            color: var(--text-muted);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .td-date.recent {
+            color: var(--green);
+        }
+
+        .td-date.old {
+            color: var(--yellow);
+        }
+
+        .td-date.very-old {
+            color: var(--red);
+        }
+
+        /* ── Empty State ── */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-dim);
+        }
+
+        .empty-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .empty-state p {
+            font-size: 13px;
+        }
+
+        /* ── Slide animation ── */
+        .slide-in {
+            animation: slideIn 0.25s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Loading ── */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .day-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .salon-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header>
+            <div class="badge">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor">
+                    <path d="M6 0l1.5 4H12L8.5 6.5 10 11 6 8.5 2 11l1.5-4.5L0 4h4.5z" />
+                </svg>
+                URUGAMI SYSTEM
+            </div>
+            <h1 class="brand">CRM TOOL</h1>
+            <p>顧客情報管理システム</p>
+        </header>
+
+        <!-- Steps Indicator -->
+        <div class="steps" id="steps">
+            <div class="step active" id="step1">
+                <div class="step-num">1</div>
+                <span>曜日を選択</span>
+            </div>
+            <div class="step-sep">›</div>
+            <div class="step" id="step2">
+                <div class="step-num">2</div>
+                <span>サロンを選択</span>
+            </div>
+            <div class="step-sep">›</div>
+            <div class="step" id="step3">
+                <div class="step-num">3</div>
+                <span>導入商品を確認</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Day Selection -->
+        <div class="section" id="section-day">
+            <div class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                訪問曜日
+            </div>
+            <div class="day-grid">
+                <button class="day-btn" onclick="selectDay('Tuesday')" id="day-Tuesday">火曜日</button>
+                <button class="day-btn" onclick="selectDay('Wednesday')" id="day-Wednesday">水曜日</button>
+                <button class="day-btn" onclick="selectDay('Thursday')" id="day-Thursday">木曜日</button>
+                <button class="day-btn" onclick="selectDay('Friday')" id="day-Friday">金曜日</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Salon Selection -->
+        <div class="section glass slide-in" id="section-salon" style="display:none;">
+            <div class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                サロンを選択
+            </div>
+            <div class="salon-list" id="salon-list"></div>
+        </div>
+
+        <!-- Step 3: Product List -->
+        <div class="section glass slide-in" id="section-products" style="display:none;">
+            <div class="product-header">
+                <div>
+                    <div class="salon-title" id="selected-salon-name"></div>
+                    <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">導入商品リスト</div>
+                </div>
+                <div class="product-count" id="product-count"></div>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
+                <div class="sort-bar">
+                    <button class="sort-btn active" onclick="setSortOrder('date')" id="sort-date">最終発注日順</button>
+                    <button class="sort-btn" onclick="setSortOrder('name')" id="sort-name">商品名順</button>
+                    <button class="sort-btn" onclick="setSortOrder('price')" id="sort-price">価格順</button>
+                </div>
+            </div>
+            <input class="search-box" type="text" id="product-search" placeholder="商品名で絞り込み..."
+                oninput="renderTable()" />
+            <div id="table-container"></div>
+            <div id="generated-at" style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;"></div>
+        </div>
+
+        <footer>© 2026 2nd Brain Systems. All rights reserved.</footer>
+    </div>
+
+    <script>
+        // ── State ──
+        let DATA = null;           // salon_products.json
+        let selectedDay = null;
+        let selectedSalon = null;
+        let sortOrder = 'date';    // 'date' | 'name' | 'price'
+
+        const DAY_LABELS = {
+            Tuesday: '火曜日',
+            Wednesday: '水曜日',
+            Thursday: '木曜日',
+            Friday: '金曜日',
+        };
+
+        // ── Data Loading ──
+        async function loadData() {
+            try {
+                const res = await fetch('./salon_products.json');
+                if (!res.ok) throw new Error('fetch failed');
+                DATA = await res.json();
+                console.log('データ読み込み完了:', DATA.generated_at);
+            } catch (e) {
+                console.error('データ読み込みエラー:', e);
+                alert('salon_products.json が見つかりません。parse_sales.py を実行してください。');
+            }
+        }
+
+        // ── Day Selection ──
+        function selectDay(day) {
+            selectedDay = day;
+            selectedSalon = null;
+
+            // Update buttons
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('day-' + day).classList.add('active');
+
+            // Update steps
+            updateSteps(2);
+
+            // Render salons
+            renderSalons();
+            document.getElementById('section-salon').style.display = 'block';
+            document.getElementById('section-salon').classList.remove('slide-in');
+            void document.getElementById('section-salon').offsetWidth;
+            document.getElementById('section-salon').classList.add('slide-in');
+            document.getElementById('section-products').style.display = 'none';
+        }
+
+        // ── Salon Rendering ──
+        function renderSalons() {
+            if (!DATA) return;
+            const salonsOnDay = DATA.salons[selectedDay] || {};
+            const customers = getCustomersForDay(selectedDay);
+
+            const list = document.getElementById('salon-list');
+            list.innerHTML = customers.map(name => {
+                const hasData = name in salonsOnDay;
+                const count = hasData ? salonsOnDay[name].length : 0;
+                return `<button class="salon-btn ${!hasData ? 'no-data' : ''}" onclick="selectSalon('${escapeAttr(name)}')" id="salon-${encodeURIComponent(name)}">
+        <span class="dot"></span>${escapeHtml(name)}
+        ${hasData ? `<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">${count}商品</div>` : '<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">データなし</div>'}
+      </button>`;
+            }).join('');
+        }
+
+        function getCustomersForDay(day) {
+            // customers.json の順序を保ちたいが、JSONに含まれていないのでDATA.salonsのキーを使用
+            if (!DATA) return [];
+            const salonsOnDay = DATA.salons[day] || {};
+            return Object.keys(salonsOnDay);
+        }
+
+        // ── Salon Selection ──
+        function selectSalon(name) {
+            selectedSalon = name;
+
+            // Update buttons
+            document.querySelectorAll('.salon-btn').forEach(b => b.classList.remove('active'));
+            const btn = document.getElementById('salon-' + encodeURIComponent(name));
+            if (btn) btn.classList.add('active');
+
+            // Update steps
+            updateSteps(3);
+
+            // Reset search
+            document.getElementById('product-search').value = '';
+
+            // Render products
+            document.getElementById('selected-salon-name').textContent = name;
+            document.getElementById('section-products').style.display = 'block';
+            document.getElementById('section-products').classList.remove('slide-in');
+            void document.getElementById('section-products').offsetWidth;
+            document.getElementById('section-products').classList.add('slide-in');
+            renderTable();
+            document.getElementById('section-products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ── Product Table ──
+        function setSortOrder(order) {
+            sortOrder = order;
+            document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('sort-' + order).classList.add('active');
+            renderTable();
+        }
+
+        function renderTable() {
+            if (!DATA || !selectedSalon || !selectedDay) return;
+            const products = (DATA.salons[selectedDay] || {})[selectedSalon] || [];
+            const query = document.getElementById('product-search').value.toLowerCase();
+            const today = new Date();
+
+            // Filter
+            let filtered = products.filter(p =>
+                !query || p.product_name.toLowerCase().includes(query) || p.product_code.includes(query)
+            );
+
+            // Sort
+            const sorted = [...filtered].sort((a, b) => {
+                if (sortOrder === 'date') return b.last_order_date.localeCompare(a.last_order_date);
+                if (sortOrder === 'name') return a.product_name.localeCompare(b.product_name, 'ja');
+                if (sortOrder === 'price') return b.unit_price - a.unit_price;
+                return 0;
+            });
+
+            document.getElementById('product-count').textContent = `${sorted.length} / ${products.length} 件`;
+            document.getElementById('generated-at').textContent = `データ更新: ${DATA.generated_at}`;
+
+            if (sorted.length === 0) {
+                document.getElementById('table-container').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📦</div>
+          <p>${query ? '条件に一致する商品がありません' : '売上データが見つかりません'}</p>
+        </div>`;
+                return;
+            }
+
+            const rows = sorted.map(p => {
+                const dateClass = getDateClass(p.last_order_date, today);
+                const dateLabel = formatDateRelative(p.last_order_date, today);
+                return `<tr>
+        <td class="td-product">${escapeHtml(p.product_name)}</td>
+        <td class="td-price">¥${p.unit_price.toLocaleString()}</td>
+        <td class="td-date ${dateClass}" title="${p.last_order_date}">${p.last_order_date}<br><span style="font-size:10px;opacity:0.7">${dateLabel}</span></td>
+      </tr>`;
+            }).join('');
+
+            document.getElementById('table-container').innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>販売単価</th>
+            <th>最終発注日</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+        }
+
+        function getDateClass(dateStr, today) {
+            const d = new Date(dateStr);
+            const diffDays = Math.floor((today - d) / (1000 * 60 * 60 * 24));
+            if (diffDays <= 60) return 'recent';
+            if (diffDays <= 180) return 'old';
+            return 'very-old';
+        }
+
+        function formatDateRelative(dateStr, today) {
+            const d = new Date(dateStr);
+            const diffDays = Math.floor((today - d) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) return '今日';
+            if (diffDays < 7) return `${diffDays}日前`;
+            if (diffDays < 30) return `${Math.floor(diffDays / 7)}週間前`;
+            if (diffDays < 365) return `${Math.floor(diffDays / 30)}ヶ月前`;
+            return `${Math.floor(diffDays / 365)}年以上前`;
+        }
+
+        // ── Step Indicator ──
+        function updateSteps(active) {
+            [1, 2, 3].forEach(i => {
+                const el = document.getElementById('step' + i);
+                el.classList.remove('active', 'done');
+                if (i < active) el.classList.add('done');
+                else if (i === active) el.classList.add('active');
+            });
+        }
+
+        // ── Escape helpers ──
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+        function escapeAttr(str) {
+            return String(str).replace(/'/g, "\\'");
+        }
+
+        // ── Init ──
+        loadData();
+    </script>
+</body>
+
+</html>
