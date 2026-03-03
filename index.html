@@ -739,6 +739,7 @@
                     <button class="day-btn" onclick="selectDay('Wednesday')" id="day-Wednesday">水曜日</button>
                     <button class="day-btn" onclick="selectDay('Thursday')" id="day-Thursday">木曜日</button>
                     <button class="day-btn" onclick="selectDay('Friday')" id="day-Friday">金曜日</button>
+                    <button class="day-btn" onclick="selectDay('Others')" id="day-Others">その他</button>
                 </div>
             </div>
 
@@ -784,6 +785,20 @@
                         style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;">
                     </div>
                 </div>
+            </div>
+
+            <!-- Step 3.5: Monthly Sales Report -->
+            <div class="section glass slide-in" id="section-monthly-sales" style="display:none; margin-top: 1rem;">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="20" x2="12" y2="10" />
+                        <line x1="18" y1="20" x2="18" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="16" />
+                    </svg>
+                    📊 月次売上推移分析
+                </div>
+                <div id="monthly-sales-container"></div>
             </div>
 
             <!-- Step 4: Visit History -->
@@ -840,7 +855,10 @@
             Wednesday: '水曜日',
             Thursday: '木曜日',
             Friday: '金曜日',
+            Others: 'その他'
         };
+
+        let MONTHLY_DATA = null;
 
         // ── Price Override (localStorage) ──
         function loadPriceOverrides() {
@@ -919,13 +937,23 @@
         // ── Data Loading ──
         async function loadData() {
             try {
-                const res = await fetch('./salon_products.json');
-                if (!res.ok) throw new Error('fetch failed');
-                DATA = await res.json();
-                console.log('データ読み込み完了:', DATA.generated_at);
+                const [resProducts, resMonthly] = await Promise.all([
+                    fetch('./salon_products.json'),
+                    fetch('./salon_monthly_sales.json')
+                ]);
+
+                if (resProducts.ok) {
+                    DATA = await resProducts.json();
+                    console.log('商品データ読み込み完了:', DATA.generated_at);
+                }
+
+                if (resMonthly.ok) {
+                    MONTHLY_DATA = await resMonthly.json();
+                    console.log('月次売上データ読み込み完了:', MONTHLY_DATA.generated_at);
+                }
             } catch (e) {
                 console.error('データ読み込みエラー:', e);
-                alert('salon_products.json が見つかりません。parse_sales.py を実行してください。');
+                if (!DATA) alert('データファイルの読み込みに失敗しました。');
             }
         }
 
@@ -948,16 +976,33 @@
         function renderSalons() {
             if (!DATA) return;
             const salonsOnDay = DATA.salons[selectedDay] || {};
-            const customers = getCustomersForDay(selectedDay);
+            let customers = getCustomersForDay(selectedDay);
+
+            // Others の場合は月次データにある全てのサロン（マスタにないもの）を表示
+            if (selectedDay === 'Others' && MONTHLY_DATA) {
+                customers = Object.keys(MONTHLY_DATA.salons).filter(name => name === 'その他' || !isMasterSalon(name));
+            }
+
             const list = document.getElementById('salon-list');
             list.innerHTML = customers.map(name => {
                 const hasData = name in salonsOnDay;
                 const count = hasData ? salonsOnDay[name].length : 0;
-                return `<button class="salon-btn ${!hasData ? 'no-data' : ''}" onclick="selectSalon('${escapeAttr(name)}')" id="salon-${encodeURIComponent(name)}">
+                const hasMonthly = MONTHLY_DATA && MONTHLY_DATA.salons[name];
+
+                return `<button class="salon-btn ${!hasData ? 'no-data' : ''} ${hasMonthly ? 'has-monthly' : ''}" onclick="selectSalon('${escapeAttr(name)}')" id="salon-${encodeURIComponent(name)}">
         <span class="dot"></span>${escapeHtml(name)}
-        ${hasData ? `<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">${count}商品</div>` : '<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">データなし</div>'}
+        ${hasData ? `<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">${count}商品</div>` : '<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">商品データなし</div>'}
+        ${hasMonthly ? `<div style="font-size:9px;color:var(--primary-light);margin-top:2px;">📈 売上データあり</div>` : ''}
       </button>`;
             }).join('');
+        }
+
+        function isMasterSalon(name) {
+            for (const day in DATA.customers) {
+                if (DATA.customers[day].includes(name)) return true;
+                if (DATA.salons[day] && DATA.salons[day][name]) return true;
+            }
+            return false;
         }
 
         function getCustomersForDay(day) {
@@ -971,18 +1016,82 @@
         function selectSalon(name) {
             selectedSalon = name;
             document.querySelectorAll('.salon-btn').forEach(b => b.classList.remove('active'));
+            // encodeURIComponentだとIDとして見つけにくい場合があるため selectorで対応
             const btn = document.getElementById('salon-' + encodeURIComponent(name));
             if (btn) btn.classList.add('active');
             updateSteps(3);
             document.getElementById('product-search').value = '';
             document.getElementById('selected-salon-name').textContent = name;
-            document.getElementById('section-products').style.display = 'block';
-            document.getElementById('section-products').classList.remove('slide-in');
-            void document.getElementById('section-products').offsetWidth;
-            document.getElementById('section-products').classList.add('slide-in');
+
+            // 商品データがある場合のみ表示
+            const hasProducts = DATA && DATA.salons[selectedDay] && DATA.salons[selectedDay][name];
+            document.getElementById('section-products').style.display = hasProducts ? 'block' : 'none';
+
             renderTable();
+            renderMonthlySales(); // 売上レポート表示
             loadReports();
-            document.getElementById('section-products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            const target = hasProducts ? 'section-products' : 'section-monthly-sales';
+            document.getElementById(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function renderMonthlySales() {
+            const container = document.getElementById('monthly-sales-container');
+            const section = document.getElementById('section-monthly-sales');
+
+            if (!MONTHLY_DATA || !MONTHLY_DATA.salons[selectedSalon]) {
+                section.style.display = 'none';
+                return;
+            }
+
+            section.style.display = 'block';
+            const salonMonths = MONTHLY_DATA.salons[selectedSalon];
+            const sortedMonths = Object.keys(salonMonths).sort((a, b) => b.localeCompare(a));
+
+            container.innerHTML = sortedMonths.map(month => {
+                const data = salonMonths[month];
+                const margin = data.sales > 0 ? Math.round((data.profit / data.sales) * 100) : 0;
+                const accordionId = `acc-${month.replace('-', '')}`;
+
+                return `
+                <div class="glass" style="margin-bottom: 10px; padding: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleAccordion('${accordionId}')">
+                        <div>
+                            <span style="font-weight: 700; color: var(--primary-light); font-size: 15px;">${month.replace('-', '年')}月</span>
+                            <span style="margin-left: 10px; font-size: 16px; font-weight: 700;">¥${data.sales.toLocaleString()}</span>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 11px; color: var(--text-muted);">利益: ¥${data.profit.toLocaleString()} (${margin}%)</div>
+                            <div style="font-size: 10px; color: var(--primary-light); margin-top: 2px;">明細表示 ▼</div>
+                        </div>
+                    </div>
+                    <div id="${accordionId}" style="display: none; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 10px;">
+                        <table style="font-size: 11px;">
+                            <thead style="background: rgba(255,255,255,0.02);">
+                                <tr>
+                                    <th style="padding: 4px;">商品名</th>
+                                    <th style="padding: 4px; text-align: center;">数量</th>
+                                    <th style="padding: 4px; text-align: right;">売上</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.details.map(d => `
+                                    <tr>
+                                        <td style="padding: 6px 4px; color: var(--text-muted);">${escapeHtml(d.name)}</td>
+                                        <td style="padding: 6px 4px; text-align: center;">${d.qty}</td>
+                                        <td style="padding: 6px 4px; text-align: right; color: var(--primary-light);">¥${d.sales.toLocaleString()}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        window.toggleAccordion = function (id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
         }
 
         // ── Product Table ──
