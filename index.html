@@ -753,6 +753,8 @@
                     </svg>
                     サロンを選択
                 </div>
+                <input class="search-box" type="text" id="salon-search" placeholder="サロン名で絞り込み..."
+                    oninput="renderSalons()" />
                 <div class="salon-list" id="salon-list"></div>
             </div>
 
@@ -975,15 +977,31 @@
         // ── Salon Rendering ──
         function renderSalons() {
             if (!DATA) return;
+            const query = (document.getElementById('salon-search').value || '').toLowerCase();
             const salonsOnDay = DATA.salons[selectedDay] || {};
             let customers = getCustomersForDay(selectedDay);
 
             // Others の場合は月次データにある全てのサロン（マスタにないもの）を表示
             if (selectedDay === 'Others' && MONTHLY_DATA) {
-                customers = Object.keys(MONTHLY_DATA.salons).filter(name => name === 'その他' || !isMasterSalon(name));
+                // マスタに存在しないサロンを抽出
+                customers = Object.keys(MONTHLY_DATA.salons).filter(name => {
+                    return !isMasterSalon(name);
+                });
+                // 読みやすいようにソート
+                customers.sort((a, b) => a.localeCompare(b, 'ja'));
+            }
+
+            // 検索フィルタリング
+            if (query) {
+                customers = customers.filter(name => normalizeSearch(name).includes(normalizeSearch(query)));
             }
 
             const list = document.getElementById('salon-list');
+            if (customers.length === 0) {
+                list.innerHTML = `<div class="empty-state" style="grid-column: 1/-1;"><p>不一致またはデータなし</p></div>`;
+                return;
+            }
+
             list.innerHTML = customers.map(name => {
                 const hasData = name in salonsOnDay;
                 const count = hasData ? salonsOnDay[name].length : 0;
