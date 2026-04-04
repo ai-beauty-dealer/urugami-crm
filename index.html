@@ -1491,7 +1491,7 @@
                     const marginClass = item.margin < 18 ? 'margin-low' : (item.margin > 25 ? 'margin-high' : '');
                     const yoyInfo = item.yoy !== null ? 
                         `<div class="trend-badge ${item.yoy >= 0 ? 'trend-up' : 'trend-down'}" style="font-size:9px; padding:1px 5px; margin-top:2px; display:inline-block;">
-                            ${item.yoy >= 0 ? '▲' : '▼'}${Math.abs(item.yoy).toFixed(0)}%
+                            ${item.yoy >= 0 ? '↑' : '↓'}${Math.abs(item.yoy).toFixed(0)}%
                          </div>` : '';
                     return `
                         <tr>
@@ -1580,6 +1580,8 @@
             const summaryText = document.getElementById('analysis-summary').innerText.replace(/\n/g, ' ');
 
             const prompt = `あなたは優秀な美容ディーラーの営業コンサルタントです。以下の${month}月の売上データに基づき、簡潔で鋭いビジネスインサイトを3点提示してください。
+            【凡例】: ↑は昨対比で「増加（ポジティブ）」、↓は「減少（ネガティブ）」を意味します。
+            
             【全体計】: ${summaryText}
             【上位サロン(TOP10)】:
             ${top5}
@@ -1623,7 +1625,7 @@
             const renderDiff = (cur, target, label) => {
                 if (!target || target.sales === 0) return `<small style="color:var(--text-dim);">${label}: データなし (新規?)</small>`;
                 const diff = ((cur - target.sales) / target.sales) * 100;
-                const icon = diff >= 0 ? '▲' : '▼';
+                const icon = diff >= 0 ? '↑' : '↓';
                 const cls = diff >= 0 ? 'trend-up' : 'trend-down';
                 return `<span class="trend-badge ${cls}" style="font-size:10px;">${icon}${Math.abs(diff).toFixed(1)}% <small>${label}</small></span>`;
             };
@@ -1637,7 +1639,7 @@
                 const iconCls = (diff) => diff >= 0 ? 'trend-up' : 'trend-down';
                 if (!target || target.profit === 0) return "";
                 const diff = ((cur - target.profit) / target.profit) * 100;
-                const icon = diff >= 0 ? '▲' : '▼';
+                const icon = diff >= 0 ? '↑' : '↓';
                 const color = diff >= 0 ? 'var(--green)' : 'var(--red)';
                 return `<small style="color:${color}; font-weight:700; margin-left:5px;">${icon}${Math.abs(diff).toFixed(1)}%(${label})</small>`;
             };
@@ -1734,9 +1736,10 @@
 
             const prompt = `あなたはデータ分析に基づいた美容商社のトップセールスコンサルタントです。
             サロン「${salonName}」の${month}月の状況を、短期・中長期の両面から分析し、次回の訪問で「絶対に提案すべき」営業アクションを3点提示してください。
+            【凡例】: ↑は増加、↓は減少を意味します。
 
             【データインプット】
-            ・当月売上: ¥${(current.sales||0).toLocaleString()}（昨対: ${yoyText}）
+            ・当月売上: ¥${(current.sales||0).toLocaleString()}（${yoyText.replace('昨対比:', '昨対比(↑増加/↓減少):')}）
             ・前月売上: ¥${(prev.sales||0).toLocaleString()}
             ・過去の推移: ${trendText}
             ・直近の取引商品: ${(current.details||[]).map(d => d.name).slice(0, 10).join(', ')}
