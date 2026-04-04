@@ -858,7 +858,9 @@
             backdrop-filter: blur(8px);
             display: none;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 40px 0;
             z-index: 1000;
         }
         .modal {
@@ -1439,9 +1441,12 @@
                         });
                     }
 
-                    let yoy = null;
-                    if (prevD && prevD.sales > 0) yoy = ((sales - prevD.sales) / prevD.sales) * 100;
-                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy });
+                    let yoy = null, yoyDiff = null;
+                    if (prevD && prevD.sales > 0) {
+                        yoy = ((sales - prevD.sales) / prevD.sales) * 100;
+                        yoyDiff = sales - prevD.sales;
+                    }
+                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy, yoyDiff });
                 }
                 if (prevD) {
                     prevTotalSales += prevD.sales || 0;
@@ -1450,6 +1455,9 @@
             }
 
             let overallYoY = null, profitYoY = null, marginYoY = null;
+            let salesDiff = totalSales - prevTotalSales;
+            let profitDiff = totalProfit - prevTotalProfit;
+
             if (prevTotalSales > 0) overallYoY = ((totalSales - prevTotalSales) / prevTotalSales) * 100;
             if (prevTotalProfit > 0) profitYoY = ((totalProfit - prevTotalProfit) / prevTotalProfit) * 100;
             
@@ -1467,12 +1475,12 @@
             if (summary) {
                 const salesBadge = overallYoY !== null ? 
                     `<div class="trend-badge ${overallYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
-                        ${overallYoY >= 0 ? '↑' : '↓'} ${Math.abs(overallYoY).toFixed(1)}% <small>昨対</small>
+                        ${overallYoY >= 0 ? '↑' : '↓'} ${Math.abs(overallYoY).toFixed(1)}% (${(salesDiff >= 0 ? '+' : '-') + '¥' + Math.abs(salesDiff).toLocaleString()})
                      </div>` : '';
 
                 const profitBadge = profitYoY !== null ? 
                     `<div class="trend-badge ${profitYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
-                        ${profitYoY >= 0 ? '↑' : '↓'} ${Math.abs(profitYoY).toFixed(1)}% <small>昨対</small>
+                        ${profitYoY >= 0 ? '↑' : '↓'} ${Math.abs(profitYoY).toFixed(1)}% (${(profitDiff >= 0 ? '+' : '-') + '¥' + Math.abs(profitDiff).toLocaleString()})
                      </div>` : '';
 
                 const marginBadge = marginYoY !== null ? 
@@ -1520,8 +1528,9 @@
                 tbody.innerHTML = list.map((item, idx) => {
                     const marginClass = item.margin < 18 ? 'margin-low' : (item.margin > 25 ? 'margin-high' : '');
                     const yoyInfo = item.yoy !== null ? 
-                        `<div class="trend-badge ${item.yoy >= 0 ? 'trend-up' : 'trend-down'}" style="font-size:9px; padding:1px 5px; margin-top:2px; display:inline-block;">
+                        `<div class="trend-badge ${item.yoy >= 0 ? 'trend-up' : 'trend-down'}" style="font-size:9px; padding:2px 6px; margin-top:2px; display:inline-block;">
                             ${item.yoy >= 0 ? '↑' : '↓'}${Math.abs(item.yoy).toFixed(0)}%
+                            <br><small style="font-weight:700;">${(item.yoyDiff >= 0 ? '+' : '-') + '¥' + Math.abs(item.yoyDiff).toLocaleString()}</small>
                          </div>` : '';
                     return `
                         <tr>
