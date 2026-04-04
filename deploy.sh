@@ -28,11 +28,8 @@ echo "✅ デプロイ準備が完了しました。"
 echo "📍 場所: $DEPLOY_DIR"
 echo "🌐 ブラウザで index.html を開いて動作確認してください。"
 
-# GitHubへの自動コミットが必要な場合は以下を有効化
-# read -p "GitHubにプッシュしますか？ (y/N): " response
-# if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-#    git add .
-#    git commit -m "Auto-deploy: $(date '+%Y-%m-%d %H:%M:%S')"
-#    git push origin main
-#    echo "🚀 GitHubにプッシュ完了しました。"
-# fi
+# GitHubへのプッシュ（自動）
+git add .
+git commit -m "Auto-deploy: $(date '+%Y-%m-%d %H:%M:%S')"
+git push origin main
+echo "🚀 GitHubに同期完了しました。"

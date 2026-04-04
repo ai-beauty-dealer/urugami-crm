@@ -922,6 +922,81 @@
                 font-weight: 700; color: var(--text-dim); font-size: 11px;
             }
         }
+        /* --- Salon Detail Modal (Analysis) --- */
+        .modal-detail {
+            max-width: 600px;
+            width: 95%;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .detail-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+        .detail-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .detail-diff {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+        .clickable-name {
+            display: inline-block;
+            padding: 8px 4px;
+            color: var(--primary-light);
+            text-decoration: underline;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+        .clickable-name:active {
+            background: rgba(124, 106, 247, 0.2);
+            color: #fff;
+        }
+        .clickable-name:hover { opacity: 0.7; }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .btn-salon-ai {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        #salon-ai-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(168, 85, 247, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+        }
     </style>
 </head>
 
@@ -1152,6 +1227,48 @@
         </div>
     </div>
 
+    <!-- Salon Detail Modal -->
+    <div class="modal-overlay" id="modal-salon-detail">
+        <div class="modal modal-detail">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="detail-salon-name">サロン名</h2>
+                    <p style="font-size:11px; color:var(--text-dim); margin-top:2px;" id="detail-month-label"></p>
+                </div>
+                <button class="modal-close" onclick="closeSalonDetail()">&times;</button>
+            </div>
+            
+            <div id="detail-content">
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">売上高 (YoY / MoM)</div>
+                        <div class="detail-value" id="detail-sales">¥0</div>
+                        <div class="detail-diff" id="detail-sales-diff"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">利益額 (YoY / MoM)</div>
+                        <div class="detail-value" id="detail-profit">¥0</div>
+                        <div class="detail-diff" id="detail-profit-diff"></div>
+                    </div>
+                </div>
+
+                <div class="section-label">📊 推移データ</div>
+                <div id="detail-table-area" style="overflow-x:auto; margin-bottom: 20px;">
+                    <!-- JSで動的に追加 -->
+                </div>
+
+                <div id="detail-products-area" style="margin-bottom: 20px;">
+                    <!-- 当月の主力商品を表示 -->
+                </div>
+
+                <button class="btn-salon-ai" id="btn-salon-ai" onclick="analyzeSalonSpecific()">
+                    ✨ このサロンをAI分析
+                </button>
+                <div id="salon-ai-result" class="ai-result-box"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ── State ──
         let DATA = null;
@@ -1379,7 +1496,10 @@
                     return `
                         <tr>
                             <td class="td-rank">${idx + 1}</td>
-                            <td data-label="サロン名" style="font-weight:600;">${escapeHtml(item.name)}${yoyInfo}</td>
+                            <td data-label="サロン名" style="font-weight:600;">
+                                <span class="clickable-name" onclick="showSalonAnalysisDetail('${escapeAttr(item.name)}')">${escapeHtml(item.name)}</span>
+                                ${yoyInfo}
+                            </td>
                             <td data-label="売上高" style="text-align:right; font-weight:700;">¥${item.sales.toLocaleString()}</td>
                             <td data-label="利益額" style="text-align:right; color:var(--primary-light);">¥${item.profit.toLocaleString()}</td>
                             <td data-label="利益率" style="text-align:right;">
@@ -1393,32 +1513,16 @@
             if (table) table.classList.add('mobile-cards');
         }
 
-        async function analyzeFullMonth() {
+        // --- Common AI Analysis Logic ---
+        async function callGeminiAPI(prompt, btn, resultBox, costEl = null) {
             const key = localStorage.getItem('crm_gemini_key');
             if (!key) { alert('APIキーを設定してください（⚙️アイコンから）'); return; }
 
-            const month = document.getElementById('analysis-month-select').value;
-            const btn = document.getElementById('btn-monthly-ai');
-            const resultBox = document.getElementById('monthly-ai-result');
-            const costEl = document.getElementById('monthly-api-cost');
-
             try {
-                btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> 分析中...';
+                btn.disabled = true;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="spinner"></span> 分析中...';
                 
-                const top5 = [...document.querySelectorAll('#ranking-body tr')].slice(0, 10).map(tr => tr.innerText.replace(/\n/g, ' ')).join('\n');
-                const summaryText = document.getElementById('analysis-summary').innerText.replace(/\n/g, ' ');
-
-                const prompt = `あなたは優秀な美容ディーラーの営業コンサルタントです。以下の${month}月の売上データに基づき、簡潔で鋭いビジネスインサイトを3点提示してください。
-                【全体計】: ${summaryText}
-                【上位サロン(TOP10)】:
-                ${top5}
-                
-                条件:
-                1. 昨対比や利益率の観点から特筆すべき点を指摘。
-                2. 注力ブランド（プテロ、P-UP）の動きに触れる。
-                3. 具体的な改善・フォロー提案を1つ含める。
-                日本語で、マークダウン形式で出力してください。`;
-
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
@@ -1428,14 +1532,204 @@
                     const text = resData.candidates[0].content.parts[0].text;
                     resultBox.innerHTML = formatMarkdown(text);
                     resultBox.style.display = 'block';
-                    costEl.textContent = `完了 (Tokens: ${resData.usageMetadata?.totalTokenCount || 0})`;
+                    if (costEl) costEl.textContent = `完了 (Tokens: ${resData.usageMetadata?.totalTokenCount || 0})`;
                 } else { throw new Error(resData.error?.message || '不明なエラー'); }
+                btn.innerHTML = originalText;
             } catch (e) {
-                resultBox.textContent = 'エラー: ' + e.message;
+                resultBox.innerHTML = `<span style="color:var(--red);">エラー: ${e.message}</span>`;
                 resultBox.style.display = 'block';
+                btn.innerHTML = '✨ 再試行';
             } finally {
-                btn.disabled = false; btn.innerHTML = '✨ AI分析';
+                btn.disabled = false;
             }
+        }
+
+        async function analyzeFullMonth() {
+            const month = document.getElementById('analysis-month-select').value;
+            const btn = document.getElementById('btn-monthly-ai');
+            const resultBox = document.getElementById('monthly-ai-result');
+            const costEl = document.getElementById('monthly-api-cost');
+
+            const top5 = [...document.querySelectorAll('#ranking-body tr')].slice(0, 10).map(tr => tr.innerText.replace(/\n/g, ' ')).join('\n');
+            const summaryText = document.getElementById('analysis-summary').innerText.replace(/\n/g, ' ');
+
+            const prompt = `あなたは優秀な美容ディーラーの営業コンサルタントです。以下の${month}月の売上データに基づき、簡潔で鋭いビジネスインサイトを3点提示してください。
+            【全体計】: ${summaryText}
+            【上位サロン(TOP10)】:
+            ${top5}
+            
+            条件:
+            1. 昨対比や利益率の観点から特筆すべき点を指摘。
+            2. 注力ブランド（プテロ、P-UP）の動きに触れる。
+            3. 具体的な改善・フォロー提案を1つ含める。
+            日本語で、マークダウン形式で出力。`;
+
+            await callGeminiAPI(prompt, btn, resultBox, costEl);
+        }
+
+        // --- Individual Salon Detail & AI Analysis ---
+        let currentDetailSalon = "";
+
+        function showSalonAnalysisDetail(name) {
+            currentDetailSalon = name;
+            const month = document.getElementById('analysis-month-select').value;
+            if (!MONTHLY_DATA || !month) return;
+
+            document.getElementById('detail-salon-name').textContent = name;
+            document.getElementById('detail-month-label').textContent = `${month.replace('-', '年')}月 の詳細データ`;
+            
+            const salonMonths = MONTHLY_DATA.salons[name] || {};
+            const data = salonMonths[month] || { sales: 0, profit: 0 };
+            
+            // --- YoY (Year over Year) ---
+            const [y, m] = month.split('-').map(Number);
+            const yoyKey = `${y - 1}-${m.toString().padStart(2, '0')}`;
+            const yoyData = salonMonths[yoyKey];
+
+            // --- MoM (Month over Month) ---
+            const momKey = getPreviousMonth(month);
+            const momData = salonMonths[momKey];
+
+            // Render Overview
+            document.getElementById('detail-sales').textContent = `¥${data.sales.toLocaleString()}`;
+            document.getElementById('detail-profit').textContent = `¥${data.profit.toLocaleString()}`;
+
+            const renderDiff = (cur, target, label) => {
+                if (!target || target.sales === 0) return `<small style="color:var(--text-dim);">${label}: データなし (新規?)</small>`;
+                const diff = ((cur - target.sales) / target.sales) * 100;
+                const icon = diff >= 0 ? '▲' : '▼';
+                const cls = diff >= 0 ? 'trend-up' : 'trend-down';
+                return `<span class="trend-badge ${cls}" style="font-size:10px;">${icon}${Math.abs(diff).toFixed(1)}% <small>${label}</small></span>`;
+            };
+
+            document.getElementById('detail-sales-diff').innerHTML = `
+                ${renderDiff(data.sales, yoyData, '昨対')} 
+                ${renderDiff(data.sales, momData, '前月比')}
+            `;
+
+            const renderProfitDiff = (cur, target, label) => {
+                const iconCls = (diff) => diff >= 0 ? 'trend-up' : 'trend-down';
+                if (!target || target.profit === 0) return "";
+                const diff = ((cur - target.profit) / target.profit) * 100;
+                const icon = diff >= 0 ? '▲' : '▼';
+                const color = diff >= 0 ? 'var(--green)' : 'var(--red)';
+                return `<small style="color:${color}; font-weight:700; margin-left:5px;">${icon}${Math.abs(diff).toFixed(1)}%(${label})</small>`;
+            };
+
+            document.getElementById('detail-profit-diff').innerHTML = `
+                ${renderProfitDiff(data.profit, yoyData, '昨対')}
+                ${renderProfitDiff(data.profit, momData, '前月比')}
+            `;
+
+            // Render Mini Trend Table
+            const allMonths = Object.keys(salonMonths).sort().reverse();
+            const sliceIdx = allMonths.indexOf(month);
+            const trendMonths = allMonths.slice(sliceIdx, sliceIdx + 6);
+            
+            let tableHtml = `<table class="ranking-table" style="font-size:12px; margin-top:10px;">
+                <thead><tr><th>月</th><th>売上</th><th>利益</th><th>利益率</th></tr></thead>
+                <tbody>`;
+            
+            if (trendMonths.length === 0) {
+                tableHtml += `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-dim);">過去の取引データがありません</td></tr>`;
+            } else {
+                trendMonths.forEach(mKey => {
+                    const d = salonMonths[mKey];
+                    const margin = d.sales > 0 ? (d.profit/d.sales*100).toFixed(1) : 0;
+                    tableHtml += `<tr>
+                        <td>${mKey}</td>
+                        <td style="text-align:right;">¥${d.sales.toLocaleString()}</td>
+                        <td style="text-align:right;">¥${d.profit.toLocaleString()}</td>
+                        <td style="text-align:right;">${margin}%</td>
+                    </tr>`;
+                });
+            }
+            tableHtml += `</tbody></table>`;
+            document.getElementById('detail-table-area').innerHTML = tableHtml;
+
+            // Render Today's Top Products
+            let productHtml = "";
+            if (data.details && data.details.length > 0) {
+                const topProducts = [...data.details].sort((a,b) => (b.sales||0) - (a.sales||0)).slice(0, 5);
+                productHtml = `
+                    <div class="section-label">🛒 ${month.slice(-2)}月の主力取引</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+                        ${topProducts.map(p => `
+                            <div style="background:rgba(255,255,255,0.05); border:1px solid var(--border); padding:4px 10px; border-radius:15px; font-size:11px;">
+                                ${escapeHtml(p.name)} <span style="color:var(--primary-light); font-weight:700;">¥${(p.sales||0).toLocaleString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            document.getElementById('detail-products-area').innerHTML = productHtml;
+
+            // Reset AI area
+            document.getElementById('salon-ai-result').style.display = 'none';
+            document.getElementById('salon-ai-result').innerHTML = '';
+
+            const modal = document.getElementById('modal-salon-detail');
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+            setTimeout(() => modal.classList.add('active'), 10);
+
+            // Close on overlay click
+            modal.onclick = (e) => { if(e.target === modal) closeSalonDetail(); };
+        }
+
+        function closeSalonDetail() {
+            const modal = document.getElementById('modal-salon-detail');
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        async function analyzeSalonSpecific() {
+            const btn = document.getElementById('btn-salon-ai');
+            const resultBox = document.getElementById('salon-ai-result');
+            const month = document.getElementById('analysis-month-select').value;
+            const salonName = currentDetailSalon;
+
+            const salonMonths = MONTHLY_DATA.salons[salonName] || {};
+            const current = salonMonths[month] || {};
+            const prevMonthKey = getPreviousMonth(month);
+            const prev = salonMonths[prevMonthKey] || {};
+            
+            // Calculate 6-month trend (roughly)
+            const allMonths = Object.keys(salonMonths).sort();
+            const last6 = allMonths.slice(Math.max(0, allMonths.indexOf(month) - 5), allMonths.indexOf(month) + 1);
+            const trendText = last6.map(m => `${m}: ¥${(salonMonths[m].sales||0).toLocaleString()}`).join(' → ');
+
+            // Calculate YoY
+            const [y, m] = month.split('-').map(Number);
+            const yoyKey = `${y - 1}-${m.toString().padStart(2, '0')}`;
+            const yoySales = salonMonths[yoyKey] ? salonMonths[yoyKey].sales : 0;
+            const yoyText = yoySales > 0 ? `昨対比: ${((current.sales/yoySales)*100).toFixed(1)}%` : "昨対比: データなし";
+
+            const prompt = `あなたはデータ分析に基づいた美容商社のトップセールスコンサルタントです。
+            サロン「${salonName}」の${month}月の状況を、短期・中長期の両面から分析し、次回の訪問で「絶対に提案すべき」営業アクションを3点提示してください。
+
+            【データインプット】
+            ・当月売上: ¥${(current.sales||0).toLocaleString()}（昨対: ${yoyText}）
+            ・前月売上: ¥${(prev.sales||0).toLocaleString()}
+            ・過去の推移: ${trendText}
+            ・直近の取引商品: ${(current.details||[]).map(d => d.name).slice(0, 10).join(', ')}
+
+            【分析・提案の要件】
+            1. **トレンド分析**: 過去数ヶ月の推移から、成長中か衰退中かを判断し、その背景（推測）を述べる。
+            2. **具体アクション**: 「この商品を」「この理由で」「この時期に」提案せよ、という具体的なスクリプト案を含める。
+            3. **リスク管理**: 注文が減っている商品のフォローや、利益率向上のための店販提案など、コンサルティング視点を含める。
+
+            出力は日本語、簡潔なマークダウン形式で。専門用語を使いつつも、営業担当者が自信を持って話せるスタイルで。`;
+
+            await callGeminiAPI(prompt, btn, resultBox);
+        }
+
+        function getPreviousMonth(monthStr) {
+            const [y, m] = monthStr.split('-').map(Number);
+            let prevY = y, prevM = m - 1;
+            if (prevM === 0) { prevM = 12; prevY--; }
+            return `${prevY}-${prevM.toString().padStart(2, '0')}`;
         }
 
         function formatMarkdown(text) {
