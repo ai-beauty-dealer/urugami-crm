@@ -1675,9 +1675,11 @@
             const top5 = [...document.querySelectorAll('#ranking-body tr')].slice(0, 10).map(tr => tr.innerText.replace(/\n/g, ' ')).join('\n');
             const summaryText = document.getElementById('analysis-summary').innerText.replace(/\n/g, ' ');
 
-            const topBrandsStr = Object.entries(brandSummary)
+            const registry = window.currentProductRegistry || {};
+            const topBrandsStr = Object.entries(registry)
                 .filter(([_, b]) => b.sales > 0)
                 .sort((a, b) => b[1].sales - a[1].sales)
+                .slice(0, 6)
                 .map(([name, b]) => `${name}: ¥${b.sales.toLocaleString()} (${b.count}点)`)
                 .join(', ');
 
