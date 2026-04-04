@@ -1688,9 +1688,10 @@
             const renderDiff = (cur, target, label) => {
                 if (!target || target.sales === 0) return `<small style="color:var(--text-dim);">${label}: データなし (新規?)</small>`;
                 const diff = ((cur - target.sales) / target.sales) * 100;
+                const diffAmt = cur - target.sales;
                 const icon = diff >= 0 ? '↑' : '↓';
                 const cls = diff >= 0 ? 'trend-up' : 'trend-down';
-                return `<span class="trend-badge ${cls}" style="font-size:10px;">${icon}${Math.abs(diff).toFixed(1)}% <small>${label}</small></span>`;
+                return `<span class="trend-badge ${cls}" style="font-size:10px;">${icon}${Math.abs(diff).toFixed(1)}% (${(diffAmt>=0?'+':'-')+'¥'+Math.abs(diffAmt).toLocaleString()}) <small>${label}</small></span>`;
             };
 
             document.getElementById('detail-sales-diff').innerHTML = `
@@ -1699,12 +1700,12 @@
             `;
 
             const renderProfitDiff = (cur, target, label) => {
-                const iconCls = (diff) => diff >= 0 ? 'trend-up' : 'trend-down';
                 if (!target || target.profit === 0) return "";
                 const diff = ((cur - target.profit) / target.profit) * 100;
+                const diffAmt = cur - target.profit;
                 const icon = diff >= 0 ? '↑' : '↓';
                 const color = diff >= 0 ? 'var(--green)' : 'var(--red)';
-                return `<small style="color:${color}; font-weight:700; margin-left:5px;">${icon}${Math.abs(diff).toFixed(1)}%(${label})</small>`;
+                return `<small style="color:${color}; font-weight:700; margin-left:5px;">${icon}${Math.abs(diff).toFixed(1)}%(${(diffAmt>=0?'+':'-')+'¥'+Math.abs(diffAmt).toLocaleString()}) <small>${label}</small></small>`;
             };
 
             document.getElementById('detail-profit-diff').innerHTML = `
