@@ -1401,7 +1401,7 @@
             const prevYearMonth = `${y - 1}-${m.toString().padStart(2, '0')}`;
 
             const list = [];
-            let totalSales = 0, totalProfit = 0, prevTotalSales = 0;
+            let totalSales = 0, totalProfit = 0, prevTotalSales = 0, prevTotalProfit = 0;
             const brandSummary = { 
                 'プテロ/Putelo': { sales: 0, count: 0 }, 
                 'P-UP/XTERA': { sales: 0, count: 0 },
@@ -1420,18 +1420,13 @@
                     totalSales += sales;
                     totalProfit += profit;
 
-                    let yoy = null;
-                    if (prevD && prevD.sales > 0) yoy = ((sales - prevD.sales) / prevD.sales) * 100;
-
-                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy });
-
                     if (data.details) {
                         data.details.forEach(p => {
                             const pName = p.name.toUpperCase();
                             if (pName.includes('プテロ') || pName.includes('PUTELO')) {
                                 brandSummary['プテロ/Putelo'].sales += p.sales || 0;
                                 brandSummary['プテロ/Putelo'].count += (p.qty || 1);
-                            } else if (pName.includes('P-UP') || pName.includes('ﾃﾗﾍﾙﾂ')) {
+                            } else if ((pName.includes('P-UP') || pName.includes('ﾃﾗﾍﾙﾂ')) && !pName.includes('ﾌﾞﾗｼ') && !pName.includes('ブラシ')) {
                                 brandSummary['P-UP/XTERA'].sales += p.sales || 0;
                                 brandSummary['P-UP/XTERA'].count += (p.qty || 1);
                             } else if (pName.includes('LOA') || pName.includes('OIL')) {
@@ -1443,12 +1438,24 @@
                             }
                         });
                     }
+
+                    let yoy = null;
+                    if (prevD && prevD.sales > 0) yoy = ((sales - prevD.sales) / prevD.sales) * 100;
+                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy });
                 }
-                if (prevD) prevTotalSales += prevD.sales || 0;
+                if (prevD) {
+                    prevTotalSales += prevD.sales || 0;
+                    prevTotalProfit += prevD.profit || 0;
+                }
             }
 
-            let overallYoY = null;
+            let overallYoY = null, profitYoY = null, marginYoY = null;
             if (prevTotalSales > 0) overallYoY = ((totalSales - prevTotalSales) / prevTotalSales) * 100;
+            if (prevTotalProfit > 0) profitYoY = ((totalProfit - prevTotalProfit) / prevTotalProfit) * 100;
+            
+            const currentMargin = totalSales > 0 ? (totalProfit / totalSales) * 100 : 0;
+            const prevMargin = prevTotalSales > 0 ? (prevTotalProfit / prevTotalSales) * 100 : 0;
+            if (prevMargin > 0) marginYoY = currentMargin - prevMargin;
 
             list.sort((a, b) => {
                 if (analysisSort === 'name') return a.name.localeCompare(b.name, 'ja');
@@ -1458,24 +1465,36 @@
 
             const summary = document.getElementById('analysis-summary');
             if (summary) {
-                const yoyBadge = overallYoY !== null ? 
+                const salesBadge = overallYoY !== null ? 
                     `<div class="trend-badge ${overallYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
                         ${overallYoY >= 0 ? '↑' : '↓'} ${Math.abs(overallYoY).toFixed(1)}% <small>昨対</small>
+                     </div>` : '';
+
+                const profitBadge = profitYoY !== null ? 
+                    `<div class="trend-badge ${profitYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
+                        ${profitYoY >= 0 ? '↑' : '↓'} ${Math.abs(profitYoY).toFixed(1)}% <small>昨対</small>
+                     </div>` : '';
+
+                const marginBadge = marginYoY !== null ? 
+                    `<div class="trend-badge ${marginYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
+                        ${marginYoY >= 0 ? '↑' : '↓'} ${Math.abs(marginYoY).toFixed(1)}pt <small>昨対</small>
                      </div>` : '';
 
                 summary.innerHTML = `
                     <div class="summary-card">
                         <div class="summary-label">総売上</div>
                         <div class="summary-value">¥${totalSales.toLocaleString()}</div>
-                        ${yoyBadge}
+                        ${salesBadge}
                     </div>
                     <div class="summary-card">
                         <div class="summary-label">総利益</div>
                         <div class="summary-value">¥${totalProfit.toLocaleString()}</div>
+                        ${profitBadge}
                     </div>
                     <div class="summary-card">
                         <div class="summary-label">平均利益率</div>
-                        <div class="summary-value">${(totalSales > 0 ? (totalProfit/totalSales)*100 : 0).toFixed(1)}%</div>
+                        <div class="summary-value">${currentMargin.toFixed(1)}%</div>
+                        ${marginBadge}
                     </div>
                 `;
 
