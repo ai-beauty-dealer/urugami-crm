@@ -1441,12 +1441,14 @@
                         });
                     }
 
-                    let yoy = null, yoyDiff = null;
+                    let yoy = null, yoyDiff = null, pDiff = null;
                     if (prevD && prevD.sales > 0) {
                         yoy = ((sales - prevD.sales) / prevD.sales) * 100;
                         yoyDiff = sales - prevD.sales;
                     }
-                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy, yoyDiff });
+                    if (prevD) pDiff = profit - (prevD.profit || 0);
+
+                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy, yoyDiff, pDiff });
                 }
                 if (prevD) {
                     prevTotalSales += prevD.sales || 0;
@@ -1532,6 +1534,15 @@
                             ${item.yoy >= 0 ? '↑' : '↓'}${Math.abs(item.yoy).toFixed(0)}%
                             <br><small style="font-weight:700;">${(item.yoyDiff >= 0 ? '+' : '-') + '¥' + Math.abs(item.yoyDiff).toLocaleString()}</small>
                          </div>` : '';
+                    const saleTrend = item.yoyDiff !== null ? 
+                        `<div style="font-size:9px; font-weight:700; color:${item.yoyDiff >= 0 ? 'var(--green)' : 'var(--red)'};">
+                            ${item.yoyDiff >= 0 ? '↑' : '↓'}¥${Math.abs(item.yoyDiff).toLocaleString()}
+                         </div>` : '';
+                    const profitTrend = item.pDiff !== null ? 
+                        `<div style="font-size:9px; font-weight:700; color:${item.pDiff >= 0 ? 'var(--green)' : 'var(--red)'};">
+                            ${item.pDiff >= 0 ? '↑' : '↓'}¥${Math.abs(item.pDiff).toLocaleString()}
+                         </div>` : '';
+
                     return `
                         <tr>
                             <td class="td-rank">${idx + 1}</td>
@@ -1539,8 +1550,14 @@
                                 <span class="clickable-name" onclick="showSalonAnalysisDetail('${escapeAttr(item.name)}')">${escapeHtml(item.name)}</span>
                                 ${yoyInfo}
                             </td>
-                            <td data-label="売上高" style="text-align:right; font-weight:700;">¥${item.sales.toLocaleString()}</td>
-                            <td data-label="利益額" style="text-align:right; color:var(--primary-light);">¥${item.profit.toLocaleString()}</td>
+                            <td data-label="売上高" style="text-align:right; font-weight:700;">
+                                ¥${item.sales.toLocaleString()}
+                                ${saleTrend}
+                            </td>
+                            <td data-label="利益額" style="text-align:right; color:var(--primary-light);">
+                                ¥${item.profit.toLocaleString()}
+                                ${profitTrend}
+                            </td>
                             <td data-label="利益率" style="text-align:right;">
                                 <span class="td-margin-badge ${marginClass}">${item.margin.toFixed(1)}%</span>
                             </td>
