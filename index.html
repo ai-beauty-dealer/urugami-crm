@@ -1518,25 +1518,51 @@
             const key = localStorage.getItem('crm_gemini_key');
             if (!key) { alert('APIキーを設定してください（⚙️アイコンから）'); return; }
 
+            // 無料枠で安定している 1.5-flash をメインに使用
+            const MODEL = "gemini-1.5-flash"; 
+
             try {
                 btn.disabled = true;
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<span class="spinner"></span> 分析中...';
                 
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${key}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                 });
+                
                 const resData = await res.json();
+
+                if (res.status === 429 || res.status === 403) {
+                    const errorMsg = resData.error?.message || "";
+                    let waitMsg = "現在、APIの利用制限（クォータ）に達しています。";
+                    const match = errorMsg.match(/retry in ([\d\.]+)s/);
+                    if (match) {
+                        waitMsg += `<br>あと <strong>${Math.ceil(parseFloat(match[1]))} 秒</strong> 待ってから再試行してください。`;
+                    } else {
+                        waitMsg += "<br>1分ほど待ってから再度お試しください。";
+                    }
+                    throw new Error(waitMsg);
+                }
+
                 if (resData.candidates && resData.candidates[0].content) {
                     const text = resData.candidates[0].content.parts[0].text;
                     resultBox.innerHTML = formatMarkdown(text);
                     resultBox.style.display = 'block';
-                    if (costEl) costEl.textContent = `完了 (Tokens: ${resData.usageMetadata?.totalTokenCount || 0})`;
-                } else { throw new Error(resData.error?.message || '不明なエラー'); }
+                    if (costEl) costEl.textContent = `完了 (${MODEL} / Tokens: ${resData.usageMetadata?.totalTokenCount || 0})`;
+                } else { 
+                    throw new Error(resData.error?.message || 'AIからの応答がありませんでした。'); 
+                }
                 btn.innerHTML = originalText;
             } catch (e) {
-                resultBox.innerHTML = `<span style="color:var(--red);">エラー: ${e.message}</span>`;
+                const isQuota = e.message.includes("制限") || e.message.includes("quota");
+                resultBox.innerHTML = `
+                    <div style="border-left: 3px solid ${isQuota ? '#fbbf24' : 'var(--red)'}; padding-left: 12px;">
+                        <span style="color:${isQuota ? '#fbbf24' : 'var(--red)'}; font-weight:700;">
+                            ${isQuota ? '⏳ 利用制限中' : '⚠️ エラー'}
+                        </span><br>
+                        <span style="font-size:12px;">${e.message}</span>
+                    </div>`;
                 resultBox.style.display = 'block';
                 btn.innerHTML = '✨ 再試行';
             } finally {
