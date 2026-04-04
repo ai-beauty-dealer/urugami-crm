@@ -1518,8 +1518,8 @@
             const key = localStorage.getItem('crm_gemini_key');
             if (!key) { alert('APIキーを設定してください（⚙️アイコンから）'); return; }
 
-            // 無料枠で安定している 1.5-flash をメインに使用
-            const MODEL = "gemini-1.5-flash"; 
+            // 2026年4月現在の最新安定モデル gemini-2.5-flash に更新
+            const MODEL = "gemini-2.5-flash"; 
 
             try {
                 btn.disabled = true;
