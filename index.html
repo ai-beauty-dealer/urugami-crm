@@ -1402,7 +1402,12 @@
 
             const list = [];
             let totalSales = 0, totalProfit = 0, prevTotalSales = 0;
-            const brandSummary = { 'プテロ/Putelo': { sales: 0, count: 0 }, 'P-UP/XTERA': { sales: 0, count: 0 } };
+            const brandSummary = { 
+                'プテロ/Putelo': { sales: 0, count: 0 }, 
+                'P-UP/XTERA': { sales: 0, count: 0 },
+                'LOA THE OIL': { sales: 0, count: 0 },
+                'エマルジョン系': { sales: 0, count: 0 }
+            };
 
             for (const name in MONTHLY_DATA.salons) {
                 const sData = MONTHLY_DATA.salons[name];
@@ -1422,13 +1427,19 @@
 
                     if (data.details) {
                         data.details.forEach(p => {
-                            if (p.name.includes('プテロ') || p.name.toUpperCase().includes('PUTELO')) {
+                            const pName = p.name.toUpperCase();
+                            if (pName.includes('プテロ') || pName.includes('PUTELO')) {
                                 brandSummary['プテロ/Putelo'].sales += p.sales || 0;
                                 brandSummary['プテロ/Putelo'].count += (p.qty || 1);
-                            }
-                            if (p.name.includes('P-UP') || p.name.includes('ﾃﾗﾍﾙﾂ')) {
+                            } else if (pName.includes('P-UP') || pName.includes('ﾃﾗﾍﾙﾂ')) {
                                 brandSummary['P-UP/XTERA'].sales += p.sales || 0;
                                 brandSummary['P-UP/XTERA'].count += (p.qty || 1);
+                            } else if (pName.includes('LOA') || pName.includes('OIL')) {
+                                brandSummary['LOA THE OIL'].sales += p.sales || 0;
+                                brandSummary['LOA THE OIL'].count += (p.qty || 1);
+                            } else if (pName.includes('ｴﾏﾙｼﾞｮﾝ') || pName.includes('エマルジョン')) {
+                                brandSummary['エマルジョン系'].sales += p.sales || 0;
+                                brandSummary['エマルジョン系'].count += (p.qty || 1);
                             }
                         });
                     }
@@ -1449,7 +1460,7 @@
             if (summary) {
                 const yoyBadge = overallYoY !== null ? 
                     `<div class="trend-badge ${overallYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
-                        ${overallYoY >= 0 ? '▲' : '▼'} ${Math.abs(overallYoY).toFixed(1)}% <small>昨対</small>
+                        ${overallYoY >= 0 ? '↑' : '↓'} ${Math.abs(overallYoY).toFixed(1)}% <small>昨対</small>
                      </div>` : '';
 
                 summary.innerHTML = `
@@ -1579,17 +1590,24 @@
             const top5 = [...document.querySelectorAll('#ranking-body tr')].slice(0, 10).map(tr => tr.innerText.replace(/\n/g, ' ')).join('\n');
             const summaryText = document.getElementById('analysis-summary').innerText.replace(/\n/g, ' ');
 
+            const topBrandsStr = Object.entries(brandSummary)
+                .filter(([_, b]) => b.sales > 0)
+                .sort((a, b) => b[1].sales - a[1].sales)
+                .map(([name, b]) => `${name}: ¥${b.sales.toLocaleString()} (${b.count}点)`)
+                .join(', ');
+
             const prompt = `あなたは優秀な美容ディーラーの営業コンサルタントです。以下の${month}月の売上データに基づき、簡潔で鋭いビジネスインサイトを3点提示してください。
-            【凡例】: ↑は昨対比で「増加（ポジティブ）」、↓は「減少（ネガティブ）」を意味します。
+            【凡例】: ↑は増加、↓は減少を意味します。
             
             【全体計】: ${summaryText}
+            【注力/主力ブランド動向】: ${topBrandsStr || 'データなし'}
             【上位サロン(TOP10)】:
             ${top5}
             
             条件:
-            1. 昨対比や利益率の観点から特筆すべき点を指摘。
-            2. 注力ブランド（プテロ、P-UP）の動きに触れる。
-            3. 具体的な改善・フォロー提案を1つ含める。
+            1. 昨対比や利益率の観点から、売上の「増減の原因」をデータから推測し指摘せよ。
+            2. 動向にあるブランド（LOA, エマルジョン, プテロ等）の実績に基づいた分析を含める。
+            3. 現場で即役立つ具体的なフォロー提案を1つ含める。
             日本語で、マークダウン形式で出力。`;
 
             await callGeminiAPI(prompt, btn, resultBox, costEl);
