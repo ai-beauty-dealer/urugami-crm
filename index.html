@@ -999,6 +999,11 @@
             font-size: 13px;
             display: none;
         }
+        .summary-card.clickable:hover {
+            border-color: var(--primary) !important;
+            background: rgba(255,255,255,0.06) !important;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
@@ -1271,6 +1276,26 @@
         </div>
     </div>
 
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="modal-product-detail">
+        <div class="modal modal-detail">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="product-detail-name">商品名</h2>
+                    <p style="font-size:11px; color:var(--text-dim); margin-top:2px;" id="product-detail-summary"></p>
+                </div>
+                <button class="modal-close" onclick="closeProductDetail()">&times;</button>
+            </div>
+            
+            <div id="product-detail-content">
+                <div class="section-label">🏪 サロン別販売内訳</div>
+                <div id="product-detail-table-area" style="overflow-x:auto; margin-bottom: 20px;">
+                    <!-- JSで動的に追加 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ── State ──
         let DATA = null;
@@ -1404,11 +1429,12 @@
 
             const list = [];
             let totalSales = 0, totalProfit = 0, prevTotalSales = 0, prevTotalProfit = 0;
-            const brandSummary = { 
-                'プテロ/Putelo': { sales: 0, count: 0 }, 
-                'P-UP/XTERA': { sales: 0, count: 0 },
-                'LOA THE OIL': { sales: 0, count: 0 },
-                'エマルジョン系': { sales: 0, count: 0 }
+            const productRegistry = {}; // { name: { sales, count, salons: { name: { qty, sales } } } }
+
+            const getFocusBrand = (pName) => {
+                if (pName.includes('プテロ') || pName.includes('PUTELO')) return 'プテロ/Putelo';
+                if ((pName.includes('P-UP') || pName.includes('ﾃﾗﾍﾙﾂ')) && !pName.includes('ﾌﾞﾗｼ') && !pName.includes('ブラシ')) return 'P-UP/XTERA';
+                return null;
             };
 
             for (const name in MONTHLY_DATA.salons) {
@@ -1425,19 +1451,20 @@
                     if (data.details) {
                         data.details.forEach(p => {
                             const pName = p.name.toUpperCase();
-                            if (pName.includes('プテロ') || pName.includes('PUTELO')) {
-                                brandSummary['プテロ/Putelo'].sales += p.sales || 0;
-                                brandSummary['プテロ/Putelo'].count += (p.qty || 1);
-                            } else if ((pName.includes('P-UP') || pName.includes('ﾃﾗﾍﾙﾂ')) && !pName.includes('ﾌﾞﾗｼ') && !pName.includes('ブラシ')) {
-                                brandSummary['P-UP/XTERA'].sales += p.sales || 0;
-                                brandSummary['P-UP/XTERA'].count += (p.qty || 1);
-                            } else if (pName.includes('LOA') || pName.includes('OIL')) {
-                                brandSummary['LOA THE OIL'].sales += p.sales || 0;
-                                brandSummary['LOA THE OIL'].count += (p.qty || 1);
-                            } else if (pName.includes('ｴﾏﾙｼﾞｮﾝ') || pName.includes('エマルジョン')) {
-                                brandSummary['エマルジョン系'].sales += p.sales || 0;
-                                brandSummary['エマルジョン系'].count += (p.qty || 1);
+                            const focusBrand = getFocusBrand(pName);
+                            const key = focusBrand || p.name; // フォーカスブランドがあればそちらに集約、なければ個別商品名
+
+                            if (!productRegistry[key]) {
+                                productRegistry[key] = { sales: 0, count: 0, salons: {} };
                             }
+                            productRegistry[key].sales += (p.sales || 0);
+                            productRegistry[key].count += (p.qty || 1);
+                            
+                            if (!productRegistry[key].salons[name]) {
+                                productRegistry[key].salons[name] = { qty: 0, sales: 0 };
+                            }
+                            productRegistry[key].salons[name].qty += (p.qty || 1);
+                            productRegistry[key].salons[name].sales += (p.sales || 0);
                         });
                     }
 
@@ -1508,19 +1535,32 @@
                     </div>
                 `;
 
+                // 動的ブランド/商品の抽出 (プテロ・P-UPを優先、残りは売上順にTOP6まで)
+                const sortedProducts = Object.entries(productRegistry)
+                    .sort((a, b) => b[1].sales - a[1].sales);
+                
+                const focusItems = sortedProducts.filter(([name]) => name === 'プテロ/Putelo' || name === 'P-UP/XTERA');
+                const restItems = sortedProducts.filter(([name]) => name !== 'プテロ/Putelo' && name !== 'P-UP/XTERA').slice(0, 4);
+                const displayProducts = [...focusItems, ...restItems].slice(0, 6);
+
+                window.currentProductRegistry = productRegistry; // モーダルアクセス用
+
                 let brandHtml = '<div style="margin-top:20px; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; width:100%;">';
-                for (const brand in brandSummary) {
-                    const b = brandSummary[brand];
+                displayProducts.forEach(([name, b]) => {
                     if (b.sales > 0) {
                         brandHtml += `
-                            <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); padding:12px; border-radius:12px;">
-                                <div style="font-size:11px; color:var(--text-dim); margin-bottom:4px;">${brand}</div>
+                            <div class="summary-card clickable" onclick="showProductAnalysisDetail('${escapeAttr(name)}')" 
+                                 style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); padding:12px; border-radius:12px; cursor:pointer; transition: all 0.2s;">
+                                <div style="font-size:11px; color:var(--text-dim); margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>${name}</span>
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                                </div>
                                 <div style="font-size:16px; font-weight:700; color:var(--primary-light);">¥${b.sales.toLocaleString()}</div>
                                 <div style="font-size:10px; color:var(--text-muted);">${b.count} 点の販売</div>
                             </div>
                         `;
                     }
-                }
+                });
                 brandHtml += '</div>';
                 summary.innerHTML += brandHtml;
             }
@@ -1767,6 +1807,49 @@
 
             // Close on overlay click
             modal.onclick = (e) => { if(e.target === modal) closeSalonDetail(); };
+        }
+
+        // ── Product Detail JS ──
+        function showProductAnalysisDetail(productName) {
+            const registry = window.currentProductRegistry;
+            if (!registry || !registry[productName]) return;
+
+            const data = registry[productName];
+            const month = document.getElementById('analysis-month-select').value;
+
+            document.getElementById('product-detail-name').textContent = productName;
+            document.getElementById('product-detail-summary').textContent = `${month.replace('-', '年')}月 / 合計販売数: ${data.count} 点 / 総売上: ¥${data.sales.toLocaleString()}`;
+
+            const salons = Object.entries(data.salons).sort((a,b) => b[1].sales - a[1].sales);
+
+            let tableHtml = `<table class="ranking-table" style="font-size:12px; margin-top:10px;">
+                <thead><tr><th>サロン名</th><th style="text-align:right;">数量</th><th style="text-align:right;">売上高</th></tr></thead>
+                <tbody>`;
+            
+            salons.forEach(([sName, sData]) => {
+                tableHtml += `<tr>
+                    <td style="font-weight:600;">${escapeHtml(sName)}</td>
+                    <td style="text-align:right; font-weight:700;">${sData.qty} 点</td>
+                    <td style="text-align:right; color:var(--primary-light);">¥${sData.sales.toLocaleString()}</td>
+                </tr>`;
+            });
+            tableHtml += `</tbody></table>`;
+            
+            document.getElementById('product-detail-table-area').innerHTML = tableHtml;
+
+            const modal = document.getElementById('modal-product-detail');
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+            setTimeout(() => modal.classList.add('active'), 10);
+
+            modal.onclick = (e) => { if(e.target === modal) closeProductDetail(); };
+        }
+
+        function closeProductDetail() {
+            const modal = document.getElementById('modal-product-detail');
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => modal.style.display = 'none', 300);
         }
 
         function closeSalonDetail() {
