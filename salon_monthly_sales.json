@@ -1,373 +1,189 @@
 {
-  "generated_at": "2026-04-05 21:29:39",
+  "generated_at": "2026-04-05 21:35:19",
   "salons": {
-    "BOOTH share saron 今井": {
-      "2026-01": {
-        "sales": 8075,
-        "cost": 4933,
-        "profit": 3142,
+    "ａｖｅ": {
+      "2025-10": {
+        "sales": 8820,
+        "cost": 6860,
+        "profit": 1960,
         "details": []
       },
-      "2024-07": {
-        "sales": 55088,
-        "cost": 45182,
-        "profit": 9906,
+      "2025-11": {
+        "sales": 10028,
+        "cost": 7885,
+        "profit": 2143,
         "details": []
       },
-      "2024-08": {
-        "sales": 19200,
-        "cost": 14016,
-        "profit": 5184,
+      "2025-12": {
+        "sales": 10464,
+        "cost": 7953,
+        "profit": 2511,
         "details": []
       },
-      "2024-09": {
-        "sales": 12950,
-        "cost": 8419,
-        "profit": 4531,
+      "2025-01": {
+        "sales": 7695,
+        "cost": 6267,
+        "profit": 1428,
         "details": []
       },
-      "2024-10": {
-        "sales": -2650,
-        "cost": -1723,
-        "profit": -927,
+      "2025-03": {
+        "sales": 8640,
+        "cost": 7015,
+        "profit": 1625,
         "details": []
-      }
-    },
-    "Lutella": {
-      "2026-01": {
-        "sales": 39325,
-        "cost": 26535,
-        "profit": 12790,
+      },
+      "2025-04": {
+        "sales": 6994,
+        "cost": 5513,
+        "profit": 1481,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 12150,
+        "cost": 9909,
+        "profit": 2241,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 12675,
+        "cost": 9860,
+        "profit": 2815,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 10575,
+        "cost": 7940,
+        "profit": 2635,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 10554,
+        "cost": 8251,
+        "profit": 2303,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 10111,
+        "cost": 7761,
+        "profit": 2350,
         "details": []
       },
       "2026-02": {
+        "sales": 7823,
+        "cost": 6086,
+        "profit": 1737,
+        "details": []
+      },
+      "2026-03": {
         "sales": 0,
         "cost": 0,
         "profit": 0,
         "details": []
       },
-      "2026-03": {
-        "sales": 38639,
-        "cost": 27667,
-        "profit": 10972,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 0,
-        "cost": 0,
-        "profit": 0,
-        "details": []
-      },
       "2024-10": {
         "sales": 0,
         "cost": 0,
         "profit": 0,
         "details": []
       },
-      "2024-11": {
-        "sales": 0,
-        "cost": 0,
-        "profit": 0,
-        "details": []
-      }
-    },
-    "TORSO": {
-      "2026-01": {
-        "sales": 21945,
-        "cost": 15525,
-        "profit": 6420,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 9682,
-        "cost": 6712,
-        "profit": 2970,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 11258,
-        "cost": 7264,
-        "profit": 3994,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 5408,
-        "cost": 3549,
-        "profit": 1859,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 16828,
-        "cost": 11290,
-        "profit": 5538,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 3744,
-        "cost": 2457,
-        "profit": 1287,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 19276,
-        "cost": 12759,
-        "profit": 6517,
-        "details": []
-      }
-    },
-    "HAIR SALON ＲＨＹＴＨＭ": {
-      "2026-01": {
-        "sales": 96512,
-        "cost": 69045,
-        "profit": 27467,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 71456,
-        "cost": 53171,
-        "profit": 18285,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 83859,
-        "cost": 62533,
-        "profit": 21326,
+      "2024-07": {
+        "sales": 9898,
+        "cost": 7796,
+        "profit": 2102,
         "details": []
       },
       "2024-08": {
-        "sales": 106762,
-        "cost": 76028,
-        "profit": 30734,
+        "sales": 6045,
+        "cost": 4849,
+        "profit": 1196,
         "details": []
       },
       "2024-11": {
-        "sales": 79449,
-        "cost": 56915,
-        "profit": 22534,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 85534,
-        "cost": 62101,
-        "profit": 23433,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 53760,
-        "cost": 41076,
-        "profit": 12684,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 78360,
-        "cost": 54628,
-        "profit": 23732,
+        "sales": 8274,
+        "cost": 6374,
+        "profit": 1900,
         "details": []
       },
       "2024-12": {
-        "sales": 42265,
-        "cost": 30309,
-        "profit": 11956,
-        "details": []
-      }
-    },
-    "Ｓａｌｏｎ         ＣＯＣＯ": {
-      "2026-01": {
-        "sales": 7056,
-        "cost": 6560,
-        "profit": 496,
-        "details": []
-      }
-    },
-    "出張理美容協会": {
-      "2026-01": {
-        "sales": 26370,
-        "cost": 18296,
-        "profit": 8074,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 24430,
-        "cost": 16425,
-        "profit": 8005,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 24506,
-        "cost": 16951,
-        "profit": 7555,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 26808,
-        "cost": 18872,
-        "profit": 7936,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 9288,
-        "cost": 7020,
-        "profit": 2268,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 22892,
-        "cost": 15760,
-        "profit": 7132,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 18661,
-        "cost": 14025,
-        "profit": 4636,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 39940,
-        "cost": 28058,
-        "profit": 11882,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 11442,
-        "cost": 9020,
-        "profit": 2422,
-        "details": []
-      }
-    },
-    "LYTRIE": {
-      "2026-01": {
-        "sales": 33320,
-        "cost": 25387,
-        "profit": 7933,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 21993,
-        "cost": 15892,
-        "profit": 6101,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 121423,
-        "cost": 95576,
-        "profit": 25847,
-        "details": []
-      }
-    },
-    "Ｆａｔｅ": {
-      "2026-01": {
-        "sales": 92803,
-        "cost": 71809,
-        "profit": 20994,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 97271,
-        "cost": 65717,
-        "profit": 31554,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 94164,
-        "cost": 62997,
-        "profit": 31167,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 80407,
-        "cost": 61443,
-        "profit": 18964,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 73053,
-        "cost": 52031,
-        "profit": 21022,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 90479,
-        "cost": 63926,
-        "profit": 26553,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 98433,
-        "cost": 77045,
-        "profit": 21388,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 42502,
-        "cost": 31757,
-        "profit": 10745,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 59457,
-        "cost": 44397,
-        "profit": 15060,
-        "details": []
-      }
-    },
-    "Ｖｅｌｖｅｔ ｈａｉｒ": {
-      "2026-01": {
-        "sales": 46853,
-        "cost": 34760,
-        "profit": 12093,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 50721,
-        "cost": 38981,
-        "profit": 11740,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 34576,
-        "cost": 24688,
-        "profit": 9888,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 31107,
-        "cost": 22884,
-        "profit": 8223,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 67279,
-        "cost": 48461,
-        "profit": 18818,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 57730,
-        "cost": 45845,
-        "profit": 11885,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 44498,
-        "cost": 34496,
-        "profit": 10002,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 86992,
-        "cost": 65355,
-        "profit": 21637,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 70630,
-        "cost": 53728,
-        "profit": 16902,
+        "sales": 8580,
+        "cost": 6674,
+        "profit": 1906,
         "details": []
       }
     },
     "７Ｖｅｌｖｅｔ": {
+      "2025-10": {
+        "sales": 87829,
+        "cost": 69847,
+        "profit": 17982,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 70336,
+        "cost": 52844,
+        "profit": 17492,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 75880,
+        "cost": 60900,
+        "profit": 14980,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 146331,
+        "cost": 119641,
+        "profit": 26690,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 127982,
+        "cost": 104416,
+        "profit": 23566,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 85902,
+        "cost": 70809,
+        "profit": 15093,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 151570,
+        "cost": 122973,
+        "profit": 28597,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 161498,
+        "cost": 129662,
+        "profit": 31836,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 158080,
+        "cost": 123487,
+        "profit": 34593,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 111252,
+        "cost": 88483,
+        "profit": 22769,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 158034,
+        "cost": 124808,
+        "profit": 33226,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 60556,
+        "cost": 45705,
+        "profit": 14851,
+        "details": []
+      },
       "2026-01": {
         "sales": 81719,
         "cost": 63151,
@@ -423,313 +239,275 @@
         "details": []
       }
     },
-    "Hairdesign ａｔｔｒｉｃｏ": {
+    "ｃｏｓｙ     Ｖｅｌｖｅｔ": {
+      "2025-10": {
+        "sales": 28143,
+        "cost": 21844,
+        "profit": 6299,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 64886,
+        "cost": 51622,
+        "profit": 13264,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 85878,
+        "cost": 67365,
+        "profit": 18513,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 12893,
+        "cost": 10471,
+        "profit": 2422,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 68051,
+        "cost": 54073,
+        "profit": 13978,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 15337,
+        "cost": 12084,
+        "profit": 3253,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 16802,
+        "cost": 13611,
+        "profit": 3191,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 53814,
+        "cost": 42122,
+        "profit": 11692,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 83545,
+        "cost": 64750,
+        "profit": 18795,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 21697,
+        "cost": 17369,
+        "profit": 4328,
+        "details": []
+      },
       "2026-01": {
-        "sales": 29047,
-        "cost": 22755,
-        "profit": 6292,
+        "sales": 78188,
+        "cost": 62574,
+        "profit": 15614,
+        "details": []
+      }
+    },
+    "Ｖｅｌｖｅｔ ｈａｉｒ": {
+      "2025-10": {
+        "sales": 50736,
+        "cost": 37829,
+        "profit": 12907,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 37184,
+        "cost": 26603,
+        "profit": 10581,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 152502,
+        "cost": 110767,
+        "profit": 41735,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 50300,
+        "cost": 37544,
+        "profit": 12756,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 58605,
+        "cost": 43597,
+        "profit": 15008,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 91208,
+        "cost": 68491,
+        "profit": 22717,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 57989,
+        "cost": 43749,
+        "profit": 14240,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 74293,
+        "cost": 51494,
+        "profit": 22799,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 44955,
+        "cost": 32782,
+        "profit": 12173,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 56692,
+        "cost": 42361,
+        "profit": 14331,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 71076,
+        "cost": 52921,
+        "profit": 18155,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 43760,
+        "cost": 32720,
+        "profit": 11040,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 46853,
+        "cost": 34760,
+        "profit": 12093,
         "details": []
       },
       "2026-02": {
-        "sales": 25670,
-        "cost": 19377,
-        "profit": 6293,
+        "sales": 50721,
+        "cost": 38981,
+        "profit": 11740,
         "details": []
       },
       "2026-03": {
-        "sales": 51823,
-        "cost": 41218,
-        "profit": 10605,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 27920,
-        "cost": 21983,
-        "profit": 5937,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 32270,
-        "cost": 25811,
-        "profit": 6459,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 34072,
-        "cost": 26007,
-        "profit": 8065,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 23877,
-        "cost": 18304,
-        "profit": 5573,
+        "sales": 34576,
+        "cost": 24688,
+        "profit": 9888,
         "details": []
       },
       "2024-10": {
-        "sales": 30546,
-        "cost": 24144,
-        "profit": 6402,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 29798,
-        "cost": 23560,
-        "profit": 6238,
-        "details": []
-      }
-    },
-    "株式会社 ＴＨＲＥＥ": {
-      "2026-01": {
-        "sales": 24236,
-        "cost": 19492,
-        "profit": 4744,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 20890,
-        "cost": 16197,
-        "profit": 4693,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 27363,
-        "cost": 21005,
-        "profit": 6358,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 30539,
-        "cost": 24502,
-        "profit": 6037,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 35135,
-        "cost": 28605,
-        "profit": 6530,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 28651,
-        "cost": 22756,
-        "profit": 5895,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 30292,
-        "cost": 24430,
-        "profit": 5862,
+        "sales": 31107,
+        "cost": 22884,
+        "profit": 8223,
         "details": []
       },
       "2024-11": {
-        "sales": 51187,
-        "cost": 40204,
-        "profit": 10983,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 31546,
-        "cost": 25096,
-        "profit": 6450,
-        "details": []
-      }
-    },
-    "THREE...HAKATA bleach": {
-      "2026-01": {
-        "sales": 38188,
-        "cost": 30625,
-        "profit": 7563,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 25383,
-        "cost": 19783,
-        "profit": 5600,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 13423,
-        "cost": 9979,
-        "profit": 3444,
-        "details": []
-      }
-    },
-    "Private salon   Bellreage": {
-      "2026-01": {
-        "sales": 14982,
-        "cost": 10392,
-        "profit": 4590,
-        "details": []
-      }
-    },
-    "Ｈａｉｒ Ａｒｉ": {
-      "2026-01": {
-        "sales": 53006,
-        "cost": 40876,
-        "profit": 12130,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 44268,
-        "cost": 29572,
-        "profit": 14696,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 133307,
-        "cost": 91795,
-        "profit": 41512,
+        "sales": 67279,
+        "cost": 48461,
+        "profit": 18818,
         "details": []
       },
       "2024-07": {
-        "sales": 46084,
-        "cost": 37026,
-        "profit": 9058,
+        "sales": 57730,
+        "cost": 45845,
+        "profit": 11885,
         "details": []
       },
       "2024-08": {
-        "sales": 51840,
-        "cost": 43179,
-        "profit": 8661,
+        "sales": 44498,
+        "cost": 34496,
+        "profit": 10002,
         "details": []
       },
       "2024-09": {
-        "sales": 60288,
-        "cost": 47687,
-        "profit": 12601,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 50812,
-        "cost": 40485,
-        "profit": 10327,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 53493,
-        "cost": 44735,
-        "profit": 8758,
+        "sales": 86992,
+        "cost": 65355,
+        "profit": 21637,
         "details": []
       },
       "2024-12": {
-        "sales": 20715,
-        "cost": 15787,
-        "profit": 4928,
-        "details": []
-      }
-    },
-    "Hair salon Ｃｒｅａ": {
-      "2026-01": {
-        "sales": 38811,
-        "cost": 26451,
-        "profit": 12360,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 54972,
-        "cost": 38548,
-        "profit": 16424,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 37513,
-        "cost": 26611,
-        "profit": 10902,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 28308,
-        "cost": 19950,
-        "profit": 8358,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 55447,
-        "cost": 39570,
-        "profit": 15877,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 63502,
-        "cost": 44777,
-        "profit": 18725,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 130413,
-        "cost": 94431,
-        "profit": 35982,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 119358,
-        "cost": 93229,
-        "profit": 26129,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 77575,
-        "cost": 57599,
-        "profit": 19976,
-        "details": []
-      }
-    },
-    "ere hair salon": {
-      "2026-01": {
-        "sales": 55430,
-        "cost": 38060,
-        "profit": 17370,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 19600,
-        "cost": 13720,
-        "profit": 5880,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 9575,
-        "cost": 6240,
-        "profit": 3335,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 17500,
-        "cost": 12250,
-        "profit": 5250,
-        "details": []
-      }
-    },
-    "STANDARD": {
-      "2026-01": {
-        "sales": 3510,
-        "cost": 1900,
-        "profit": 1610,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 15000,
-        "cost": 12250,
-        "profit": 2750,
-        "details": []
-      }
-    },
-    "Oneness+": {
-      "2026-01": {
-        "sales": 8765,
-        "cost": 5300,
-        "profit": 3465,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 8190,
-        "cost": 4435,
-        "profit": 3755,
+        "sales": 70630,
+        "cost": 53728,
+        "profit": 16902,
         "details": []
       }
     },
     "P-brandshair onojo komorebi": {
+      "2025-10": {
+        "sales": 48872,
+        "cost": 39221,
+        "profit": 9651,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 60480,
+        "cost": 48000,
+        "profit": 12480,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 35979,
+        "cost": 28510,
+        "profit": 7469,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 37184,
+        "cost": 29119,
+        "profit": 8065,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 39107,
+        "cost": 31280,
+        "profit": 7827,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 17792,
+        "cost": 14365,
+        "profit": 3427,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 22816,
+        "cost": 18039,
+        "profit": 4777,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 48815,
+        "cost": 38729,
+        "profit": 10086,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 71544,
+        "cost": 54464,
+        "profit": 17080,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 50849,
+        "cost": 38811,
+        "profit": 12038,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 91820,
+        "cost": 72249,
+        "profit": 19571,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 46284,
+        "cost": 37072,
+        "profit": 9212,
+        "details": []
+      },
       "2026-01": {
         "sales": 65112,
         "cost": 51787,
@@ -786,6 +564,78 @@
       }
     },
     "P-brands meinohama Ricetta": {
+      "2025-10": {
+        "sales": 36664,
+        "cost": 29383,
+        "profit": 7281,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 40678,
+        "cost": 30943,
+        "profit": 9735,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 24271,
+        "cost": 18055,
+        "profit": 6216,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 45930,
+        "cost": 36742,
+        "profit": 9188,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 43547,
+        "cost": 32560,
+        "profit": 10987,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 9230,
+        "cost": 7157,
+        "profit": 2073,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 37822,
+        "cost": 28691,
+        "profit": 9131,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 36025,
+        "cost": 27720,
+        "profit": 8305,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 25845,
+        "cost": 20328,
+        "profit": 5517,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 38524,
+        "cost": 30666,
+        "profit": 7858,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 27223,
+        "cost": 20117,
+        "profit": 7106,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 26732,
+        "cost": 20724,
+        "profit": 6008,
+        "details": []
+      },
       "2026-01": {
         "sales": 19641,
         "cost": 15248,
@@ -841,7 +691,201 @@
         "details": []
       }
     },
+    "HAIR SALON ＲＨＹＴＨＭ": {
+      "2025-10": {
+        "sales": 58943,
+        "cost": 43725,
+        "profit": 15218,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 93950,
+        "cost": 67077,
+        "profit": 26873,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 123588,
+        "cost": 88343,
+        "profit": 35245,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 73914,
+        "cost": 53180,
+        "profit": 20734,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 88930,
+        "cost": 61756,
+        "profit": 27174,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 84170,
+        "cost": 60402,
+        "profit": 23768,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 53158,
+        "cost": 36010,
+        "profit": 17148,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 79610,
+        "cost": 56579,
+        "profit": 23031,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 93450,
+        "cost": 67341,
+        "profit": 26109,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 68120,
+        "cost": 48726,
+        "profit": 19394,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 86983,
+        "cost": 61430,
+        "profit": 25553,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 93108,
+        "cost": 66831,
+        "profit": 26277,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 96512,
+        "cost": 69045,
+        "profit": 27467,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 71456,
+        "cost": 53171,
+        "profit": 18285,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 83859,
+        "cost": 62533,
+        "profit": 21326,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 106762,
+        "cost": 76028,
+        "profit": 30734,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 79449,
+        "cost": 56915,
+        "profit": 22534,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 85534,
+        "cost": 62101,
+        "profit": 23433,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 53760,
+        "cost": 41076,
+        "profit": 12684,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 78360,
+        "cost": 54628,
+        "profit": 23732,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 42265,
+        "cost": 30309,
+        "profit": 11956,
+        "details": []
+      }
+    },
     "STYLEE produce by Hair Bloom": {
+      "2025-10": {
+        "sales": 36923,
+        "cost": 26100,
+        "profit": 10823,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 153897,
+        "cost": 115480,
+        "profit": 38417,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 35895,
+        "cost": 25425,
+        "profit": 10470,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 31922,
+        "cost": 22275,
+        "profit": 9647,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 21175,
+        "cost": 14583,
+        "profit": 6592,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 32874,
+        "cost": 23130,
+        "profit": 9744,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 48487,
+        "cost": 36261,
+        "profit": 12226,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 57357,
+        "cost": 42912,
+        "profit": 14445,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 82900,
+        "cost": 61934,
+        "profit": 20966,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 32912,
+        "cost": 24525,
+        "profit": 8387,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 38096,
+        "cost": 27323,
+        "profit": 10773,
+        "details": []
+      },
       "2026-01": {
         "sales": 59070,
         "cost": 41781,
@@ -861,27 +905,689 @@
         "details": []
       }
     },
-    "plant": {
+    "Hairdesign ａｔｔｒｉｃｏ": {
+      "2025-10": {
+        "sales": 39129,
+        "cost": 31574,
+        "profit": 7555,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 23729,
+        "cost": 18428,
+        "profit": 5301,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 28713,
+        "cost": 21726,
+        "profit": 6987,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 26293,
+        "cost": 20750,
+        "profit": 5543,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 45810,
+        "cost": 34809,
+        "profit": 11001,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 39697,
+        "cost": 32374,
+        "profit": 7323,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 29961,
+        "cost": 22986,
+        "profit": 6975,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 37243,
+        "cost": 29398,
+        "profit": 7845,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 89646,
+        "cost": 67954,
+        "profit": 21692,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 47690,
+        "cost": 36273,
+        "profit": 11417,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 56591,
+        "cost": 41755,
+        "profit": 14836,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 20425,
+        "cost": 15937,
+        "profit": 4488,
+        "details": []
+      },
       "2026-01": {
-        "sales": 36870,
-        "cost": 26506,
-        "profit": 10364,
+        "sales": 29047,
+        "cost": 22755,
+        "profit": 6292,
         "details": []
       },
       "2026-02": {
-        "sales": 16241,
-        "cost": 10886,
-        "profit": 5355,
+        "sales": 25670,
+        "cost": 19377,
+        "profit": 6293,
         "details": []
       },
       "2026-03": {
-        "sales": 13206,
-        "cost": 8953,
-        "profit": 4253,
+        "sales": 51823,
+        "cost": 41218,
+        "profit": 10605,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 27920,
+        "cost": 21983,
+        "profit": 5937,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 32270,
+        "cost": 25811,
+        "profit": 6459,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 34072,
+        "cost": 26007,
+        "profit": 8065,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 23877,
+        "cost": 18304,
+        "profit": 5573,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 30546,
+        "cost": 24144,
+        "profit": 6402,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 29798,
+        "cost": 23560,
+        "profit": 6238,
+        "details": []
+      }
+    },
+    "Hair salon Ｃｒｅａ": {
+      "2025-10": {
+        "sales": 39746,
+        "cost": 27909,
+        "profit": 11837,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 121707,
+        "cost": 89043,
+        "profit": 32664,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 39878,
+        "cost": 28899,
+        "profit": 10979,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 77778,
+        "cost": 56063,
+        "profit": 21715,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 82924,
+        "cost": 59279,
+        "profit": 23645,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 84071,
+        "cost": 59756,
+        "profit": 24315,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 31376,
+        "cost": 21857,
+        "profit": 9519,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 53162,
+        "cost": 37039,
+        "profit": 16123,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 73894,
+        "cost": 53834,
+        "profit": 20060,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 77329,
+        "cost": 53925,
+        "profit": 23404,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 58460,
+        "cost": 40533,
+        "profit": 17927,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 29868,
+        "cost": 21921,
+        "profit": 7947,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 38811,
+        "cost": 26451,
+        "profit": 12360,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 54972,
+        "cost": 38548,
+        "profit": 16424,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 37513,
+        "cost": 26611,
+        "profit": 10902,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 28308,
+        "cost": 19950,
+        "profit": 8358,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 55447,
+        "cost": 39570,
+        "profit": 15877,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 63502,
+        "cost": 44777,
+        "profit": 18725,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 130413,
+        "cost": 94431,
+        "profit": 35982,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 119358,
+        "cost": 93229,
+        "profit": 26129,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 77575,
+        "cost": 57599,
+        "profit": 19976,
+        "details": []
+      }
+    },
+    "ひとみ美容室": {
+      "2025-10": {
+        "sales": 140288,
+        "cost": 97029,
+        "profit": 43259,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 29493,
+        "cost": 17818,
+        "profit": 11675,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 72749,
+        "cost": 52604,
+        "profit": 20145,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 67798,
+        "cost": 50282,
+        "profit": 17516,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 24932,
+        "cost": 18520,
+        "profit": 6412,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 114061,
+        "cost": 84133,
+        "profit": 29928,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 145998,
+        "cost": 107509,
+        "profit": 38489,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 57647,
+        "cost": 42656,
+        "profit": 14991,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 211836,
+        "cost": 157779,
+        "profit": 54057,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 48192,
+        "cost": 33926,
+        "profit": 14266,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 113407,
+        "cost": 83014,
+        "profit": 30393,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 81939,
+        "cost": 55182,
+        "profit": 26757,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 93016,
+        "cost": 67717,
+        "profit": 25299,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 94359,
+        "cost": 66059,
+        "profit": 28300,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 136373,
+        "cost": 95114,
+        "profit": 41259,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 95632,
+        "cost": 73516,
+        "profit": 22116,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 56430,
+        "cost": 42258,
+        "profit": 14172,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 101093,
+        "cost": 75513,
+        "profit": 25580,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 92325,
+        "cost": 71041,
+        "profit": 21284,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 184183,
+        "cost": 139726,
+        "profit": 44457,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 90043,
+        "cost": 67328,
+        "profit": 22715,
+        "details": []
+      }
+    },
+    "Ｈａｉｒ Ａｒｉ": {
+      "2025-10": {
+        "sales": 33435,
+        "cost": 27891,
+        "profit": 5544,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 58701,
+        "cost": 47097,
+        "profit": 11604,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 19358,
+        "cost": 14877,
+        "profit": 4481,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 62448,
+        "cost": 48727,
+        "profit": 13721,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 34389,
+        "cost": 25407,
+        "profit": 8982,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 54661,
+        "cost": 42088,
+        "profit": 12573,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 51030,
+        "cost": 42175,
+        "profit": 8855,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 73489,
+        "cost": 58897,
+        "profit": 14592,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 28567,
+        "cost": 22711,
+        "profit": 5856,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 30440,
+        "cost": 24646,
+        "profit": 5794,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 44177,
+        "cost": 37378,
+        "profit": 6799,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 45170,
+        "cost": 36659,
+        "profit": 8511,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 53006,
+        "cost": 40876,
+        "profit": 12130,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 44268,
+        "cost": 29572,
+        "profit": 14696,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 133307,
+        "cost": 91795,
+        "profit": 41512,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 46084,
+        "cost": 37026,
+        "profit": 9058,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 51840,
+        "cost": 43179,
+        "profit": 8661,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 60288,
+        "cost": 47687,
+        "profit": 12601,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 50812,
+        "cost": 40485,
+        "profit": 10327,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 53493,
+        "cost": 44735,
+        "profit": 8758,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 20715,
+        "cost": 15787,
+        "profit": 4928,
+        "details": []
+      }
+    },
+    "ere hair salon": {
+      "2025-10": {
+        "sales": 12625,
+        "cost": 8492,
+        "profit": 4133,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 14000,
+        "cost": 8168,
+        "profit": 5832,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 9585,
+        "cost": 5690,
+        "profit": 3895,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 49000,
+        "cost": 34300,
+        "profit": 14700,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 7605,
+        "cost": 4120,
+        "profit": 3485,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 8190,
+        "cost": 4435,
+        "profit": 3755,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 15765,
+        "cost": 10200,
+        "profit": 5565,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 18330,
+        "cost": 12090,
+        "profit": 6240,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 20085,
+        "cost": 13040,
+        "profit": 7045,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 12950,
+        "cost": 9065,
+        "profit": 3885,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 13300,
+        "cost": 9310,
+        "profit": 3990,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 12725,
+        "cost": 8445,
+        "profit": 4280,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 55430,
+        "cost": 38060,
+        "profit": 17370,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 19600,
+        "cost": 13720,
+        "profit": 5880,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 9575,
+        "cost": 6240,
+        "profit": 3335,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 17500,
+        "cost": 12250,
+        "profit": 5250,
         "details": []
       }
     },
     "ｄｒｏｐ ｂｙ ｄｒｏｐ": {
+      "2025-10": {
+        "sales": 33866,
+        "cost": 25932,
+        "profit": 7934,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 36412,
+        "cost": 28771,
+        "profit": 7641,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 47409,
+        "cost": 35428,
+        "profit": 11981,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 38096,
+        "cost": 30494,
+        "profit": 7602,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 41959,
+        "cost": 32139,
+        "profit": 9820,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 33565,
+        "cost": 26125,
+        "profit": 7440,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 39001,
+        "cost": 29931,
+        "profit": 9070,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 53839,
+        "cost": 42274,
+        "profit": 11565,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 27623,
+        "cost": 21169,
+        "profit": 6454,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 67242,
+        "cost": 50905,
+        "profit": 16337,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 47002,
+        "cost": 36116,
+        "profit": 10886,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 31585,
+        "cost": 25127,
+        "profit": 6458,
+        "details": []
+      },
       "2026-01": {
         "sales": 61182,
         "cost": 47574,
@@ -937,183 +1643,665 @@
         "details": []
       }
     },
-    "リンクコネクト株式会社": {
+    "THREE...HAKATA bleach": {
+      "2025-10": {
+        "sales": 23003,
+        "cost": 18322,
+        "profit": 4681,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 38863,
+        "cost": 30897,
+        "profit": 7966,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 53173,
+        "cost": 41073,
+        "profit": 12100,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 13960,
+        "cost": 10831,
+        "profit": 3129,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 25441,
+        "cost": 20162,
+        "profit": 5279,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 36484,
+        "cost": 28859,
+        "profit": 7625,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 35380,
+        "cost": 27446,
+        "profit": 7934,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 25390,
+        "cost": 20257,
+        "profit": 5133,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 33958,
+        "cost": 27571,
+        "profit": 6387,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 17205,
+        "cost": 13704,
+        "profit": 3501,
+        "details": []
+      },
       "2026-01": {
-        "sales": 140704,
-        "cost": 99080,
-        "profit": 41624,
+        "sales": 38188,
+        "cost": 30625,
+        "profit": 7563,
         "details": []
       },
       "2026-02": {
-        "sales": 55950,
-        "cost": 40391,
-        "profit": 15559,
+        "sales": 25383,
+        "cost": 19783,
+        "profit": 5600,
         "details": []
       },
       "2026-03": {
-        "sales": 189243,
-        "cost": 139707,
-        "profit": 49536,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 172466,
-        "cost": 140786,
-        "profit": 31680,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 33180,
-        "cost": 24332,
-        "profit": 8848,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 160860,
-        "cost": 109872,
-        "profit": 50988,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 73710,
-        "cost": 64240,
-        "profit": 9470,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 125393,
-        "cost": 90412,
-        "profit": 34981,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 195340,
-        "cost": 130161,
-        "profit": 65179,
+        "sales": 13423,
+        "cost": 9979,
+        "profit": 3444,
         "details": []
       }
     },
-    "株式会社LiBro   Life   Works": {
-      "2026-01": {
-        "sales": 14388,
-        "cost": 11282,
-        "profit": 3106,
+    "株式会社 ＴＨＲＥＥ": {
+      "2025-10": {
+        "sales": 22267,
+        "cost": 17457,
+        "profit": 4810,
         "details": []
-      }
-    },
-    "ＫＯＺＹ株式会社": {
+      },
+      "2025-11": {
+        "sales": 20423,
+        "cost": 16164,
+        "profit": 4259,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 28270,
+        "cost": 22827,
+        "profit": 5443,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 31575,
+        "cost": 25128,
+        "profit": 6447,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 34980,
+        "cost": 28338,
+        "profit": 6642,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 29054,
+        "cost": 23136,
+        "profit": 5918,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 32300,
+        "cost": 25605,
+        "profit": 6695,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 20104,
+        "cost": 15972,
+        "profit": 4132,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 30122,
+        "cost": 26337,
+        "profit": 3785,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 20448,
+        "cost": 17054,
+        "profit": 3394,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 17549,
+        "cost": 14081,
+        "profit": 3468,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 23371,
+        "cost": 18601,
+        "profit": 4770,
+        "details": []
+      },
       "2026-01": {
-        "sales": 73816,
-        "cost": 55340,
-        "profit": 18476,
+        "sales": 24236,
+        "cost": 19492,
+        "profit": 4744,
         "details": []
       },
       "2026-02": {
-        "sales": 89063,
-        "cost": 68774,
-        "profit": 20289,
+        "sales": 20890,
+        "cost": 16197,
+        "profit": 4693,
         "details": []
       },
       "2026-03": {
-        "sales": 70040,
-        "cost": 56094,
-        "profit": 13946,
+        "sales": 27363,
+        "cost": 21005,
+        "profit": 6358,
         "details": []
       },
       "2024-10": {
-        "sales": 41909,
-        "cost": 31661,
-        "profit": 10248,
+        "sales": 30539,
+        "cost": 24502,
+        "profit": 6037,
         "details": []
       },
       "2024-07": {
-        "sales": 51959,
-        "cost": 40141,
-        "profit": 11818,
+        "sales": 35135,
+        "cost": 28605,
+        "profit": 6530,
         "details": []
       },
       "2024-08": {
-        "sales": 97213,
-        "cost": 74016,
-        "profit": 23197,
+        "sales": 28651,
+        "cost": 22756,
+        "profit": 5895,
         "details": []
       },
       "2024-09": {
-        "sales": 66837,
-        "cost": 53185,
-        "profit": 13652,
+        "sales": 30292,
+        "cost": 24430,
+        "profit": 5862,
         "details": []
       },
       "2024-11": {
-        "sales": 109799,
-        "cost": 83123,
-        "profit": 26676,
+        "sales": 51187,
+        "cost": 40204,
+        "profit": 10983,
         "details": []
       },
       "2024-12": {
-        "sales": 45771,
-        "cost": 34205,
-        "profit": 11566,
+        "sales": 31546,
+        "cost": 25096,
+        "profit": 6450,
         "details": []
       }
     },
-    "ｒｉｃｏｒｅ’": {
+    "luxe hair design": {
+      "2025-10": {
+        "sales": 141262,
+        "cost": 107687,
+        "profit": 33575,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 103224,
+        "cost": 77684,
+        "profit": 25540,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 413311,
+        "cost": 337381,
+        "profit": 75930,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 372875,
+        "cost": 303760,
+        "profit": 69115,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 127644,
+        "cost": 98515,
+        "profit": 29129,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 176213,
+        "cost": 133942,
+        "profit": 42271,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 105774,
+        "cost": 80568,
+        "profit": 25206,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 68486,
+        "cost": 50862,
+        "profit": 17624,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 504295,
+        "cost": 414798,
+        "profit": 89497,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 149563,
+        "cost": 121557,
+        "profit": 28006,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 77839,
+        "cost": 59880,
+        "profit": 17959,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 119578,
+        "cost": 91469,
+        "profit": 28109,
+        "details": []
+      },
       "2026-01": {
-        "sales": 120227,
-        "cost": 88063,
-        "profit": 32164,
+        "sales": 381915,
+        "cost": 312751,
+        "profit": 69164,
         "details": []
       },
       "2026-02": {
-        "sales": 105951,
-        "cost": 80559,
-        "profit": 25392,
+        "sales": 45162,
+        "cost": 34564,
+        "profit": 10598,
         "details": []
       },
       "2026-03": {
-        "sales": 83497,
-        "cost": 62250,
-        "profit": 21247,
+        "sales": 89286,
+        "cost": 70270,
+        "profit": 19016,
         "details": []
       },
       "2024-08": {
-        "sales": 134716,
-        "cost": 98953,
-        "profit": 35763,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 134692,
-        "cost": 101174,
-        "profit": 33518,
+        "sales": 1994821,
+        "cost": 1853102,
+        "profit": 141719,
         "details": []
       },
       "2024-09": {
-        "sales": 194469,
-        "cost": 147115,
-        "profit": 47354,
+        "sales": 176555,
+        "cost": 138707,
+        "profit": 37848,
         "details": []
       },
       "2024-10": {
-        "sales": 63646,
-        "cost": 48302,
-        "profit": 15344,
+        "sales": 115245,
+        "cost": 87093,
+        "profit": 28152,
         "details": []
       },
       "2024-11": {
-        "sales": 102149,
-        "cost": 73731,
-        "profit": 28418,
+        "sales": 136053,
+        "cost": 105252,
+        "profit": 30801,
         "details": []
       },
       "2024-12": {
-        "sales": 78951,
-        "cost": 59731,
-        "profit": 19220,
+        "sales": 302182,
+        "cost": 245438,
+        "profit": 56744,
+        "details": []
+      }
+    },
+    "出張理美容協会": {
+      "2025-10": {
+        "sales": 47615,
+        "cost": 35130,
+        "profit": 12485,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 25129,
+        "cost": 17096,
+        "profit": 8033,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 21012,
+        "cost": 14149,
+        "profit": 6863,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 37898,
+        "cost": 28609,
+        "profit": 9289,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 60643,
+        "cost": 46221,
+        "profit": 14422,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 33770,
+        "cost": 25616,
+        "profit": 8154,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 27636,
+        "cost": 20428,
+        "profit": 7208,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 37055,
+        "cost": 24573,
+        "profit": 12482,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 57767,
+        "cost": 43682,
+        "profit": 14085,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 47334,
+        "cost": 36463,
+        "profit": 10871,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 23454,
+        "cost": 16460,
+        "profit": 6994,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 33736,
+        "cost": 23971,
+        "profit": 9765,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 26370,
+        "cost": 18296,
+        "profit": 8074,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 24430,
+        "cost": 16425,
+        "profit": 8005,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 24506,
+        "cost": 16951,
+        "profit": 7555,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 26808,
+        "cost": 18872,
+        "profit": 7936,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 9288,
+        "cost": 7020,
+        "profit": 2268,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 22892,
+        "cost": 15760,
+        "profit": 7132,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 18661,
+        "cost": 14025,
+        "profit": 4636,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 39940,
+        "cost": 28058,
+        "profit": 11882,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 11442,
+        "cost": 9020,
+        "profit": 2422,
+        "details": []
+      }
+    },
+    "Ｆａｔｅ": {
+      "2025-10": {
+        "sales": 108642,
+        "cost": 80945,
+        "profit": 27697,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 78775,
+        "cost": 58290,
+        "profit": 20485,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 82508,
+        "cost": 62678,
+        "profit": 19830,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 87144,
+        "cost": 65664,
+        "profit": 21480,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 54673,
+        "cost": 41727,
+        "profit": 12946,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 79599,
+        "cost": 59898,
+        "profit": 19701,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 78001,
+        "cost": 57671,
+        "profit": 20330,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 95784,
+        "cost": 70378,
+        "profit": 25406,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 57061,
+        "cost": 43392,
+        "profit": 13669,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 84431,
+        "cost": 64321,
+        "profit": 20110,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 120813,
+        "cost": 92027,
+        "profit": 28786,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 64928,
+        "cost": 49149,
+        "profit": 15779,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 92803,
+        "cost": 71809,
+        "profit": 20994,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 97271,
+        "cost": 65717,
+        "profit": 31554,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 94164,
+        "cost": 62997,
+        "profit": 31167,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 80407,
+        "cost": 61443,
+        "profit": 18964,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 73053,
+        "cost": 52031,
+        "profit": 21022,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 90479,
+        "cost": 63926,
+        "profit": 26553,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 98433,
+        "cost": 77045,
+        "profit": 21388,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 42502,
+        "cost": 31757,
+        "profit": 10745,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 59457,
+        "cost": 44397,
+        "profit": 15060,
         "details": []
       }
     },
     "Ｎａｔｔｙ": {
+      "2025-10": {
+        "sales": 25984,
+        "cost": 17825,
+        "profit": 8159,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 140148,
+        "cost": 99483,
+        "profit": 40665,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 25640,
+        "cost": 18692,
+        "profit": 6948,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 34526,
+        "cost": 26244,
+        "profit": 8282,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 41770,
+        "cost": 31206,
+        "profit": 10564,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 69966,
+        "cost": 51555,
+        "profit": 18411,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 40128,
+        "cost": 30645,
+        "profit": 9483,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 31038,
+        "cost": 22390,
+        "profit": 8648,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 46734,
+        "cost": 34332,
+        "profit": 12402,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 38167,
+        "cost": 27907,
+        "profit": 10260,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 23776,
+        "cost": 16898,
+        "profit": 6878,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 63283,
+        "cost": 46458,
+        "profit": 16825,
+        "details": []
+      },
       "2026-01": {
         "sales": 31669,
         "cost": 23267,
@@ -1169,15 +2357,415 @@
         "details": []
       }
     },
-    "上": {
+    "リンクコネクト株式会社": {
+      "2025-10": {
+        "sales": 132691,
+        "cost": 92530,
+        "profit": 40161,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 173626,
+        "cost": 118701,
+        "profit": 54925,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 414051,
+        "cost": 279048,
+        "profit": 135003,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 70580,
+        "cost": 48952,
+        "profit": 21628,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 64588,
+        "cost": 45557,
+        "profit": 19031,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 149628,
+        "cost": 105593,
+        "profit": 44035,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 151787,
+        "cost": 106622,
+        "profit": 45165,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 80070,
+        "cost": 55962,
+        "profit": 24108,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 150390,
+        "cost": 108583,
+        "profit": 41807,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 71500,
+        "cost": 52043,
+        "profit": 19457,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 88320,
+        "cost": 62114,
+        "profit": 26206,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 74970,
+        "cost": 53022,
+        "profit": 21948,
+        "details": []
+      },
       "2026-01": {
-        "sales": 59055,
-        "cost": 65435,
-        "profit": -6380,
+        "sales": 140704,
+        "cost": 99080,
+        "profit": 41624,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 55950,
+        "cost": 40391,
+        "profit": 15559,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 189243,
+        "cost": 139707,
+        "profit": 49536,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 172466,
+        "cost": 140786,
+        "profit": 31680,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 33180,
+        "cost": 24332,
+        "profit": 8848,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 160860,
+        "cost": 109872,
+        "profit": 50988,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 73710,
+        "cost": 64240,
+        "profit": 9470,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 125393,
+        "cost": 90412,
+        "profit": 34981,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 195340,
+        "cost": 130161,
+        "profit": 65179,
+        "details": []
+      }
+    },
+    "Seaside Hair&Nail": {
+      "2025-10": {
+        "sales": 5545,
+        "cost": 3452,
+        "profit": 2093,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 1306,
+        "cost": 850,
+        "profit": 456,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 5224,
+        "cost": 3400,
+        "profit": 1824,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 4995,
+        "cost": 3197,
+        "profit": 1798,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 1306,
+        "cost": 850,
+        "profit": 456,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 2925,
+        "cost": 1585,
+        "profit": 1340,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 4335,
+        "cost": 2666,
+        "profit": 1669,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 9074,
+        "cost": 6209,
+        "profit": 2865,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 2925,
+        "cost": 1585,
+        "profit": 1340,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 2925,
+        "cost": 1585,
+        "profit": 1340,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 8781,
+        "cost": 5621,
+        "profit": 3160,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 5850,
+        "cost": 3170,
+        "profit": 2680,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 1306,
+        "cost": 850,
+        "profit": 456,
+        "details": []
+      }
+    },
+    "ＫＯＺＹ株式会社": {
+      "2025-10": {
+        "sales": 75870,
+        "cost": 56668,
+        "profit": 19202,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 103711,
+        "cost": 80294,
+        "profit": 23417,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 109881,
+        "cost": 83009,
+        "profit": 26872,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 85279,
+        "cost": 64466,
+        "profit": 20813,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 141819,
+        "cost": 117744,
+        "profit": 24075,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 304413,
+        "cost": 243631,
+        "profit": 60782,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 63808,
+        "cost": 48039,
+        "profit": 15769,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 87754,
+        "cost": 64953,
+        "profit": 22801,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 92064,
+        "cost": 74696,
+        "profit": 17368,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 377975,
+        "cost": 286335,
+        "profit": 91640,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 59692,
+        "cost": 46903,
+        "profit": 12789,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 76859,
+        "cost": 57209,
+        "profit": 19650,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 73816,
+        "cost": 55340,
+        "profit": 18476,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 89063,
+        "cost": 68774,
+        "profit": 20289,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 70040,
+        "cost": 56094,
+        "profit": 13946,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 41909,
+        "cost": 31661,
+        "profit": 10248,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 51959,
+        "cost": 40141,
+        "profit": 11818,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 97213,
+        "cost": 74016,
+        "profit": 23197,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 66837,
+        "cost": 53185,
+        "profit": 13652,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 109799,
+        "cost": 83123,
+        "profit": 26676,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 45771,
+        "cost": 34205,
+        "profit": 11566,
         "details": []
       }
     },
     "nook hair shop": {
+      "2025-10": {
+        "sales": 38130,
+        "cost": 25213,
+        "profit": 12917,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 40670,
+        "cost": 25867,
+        "profit": 14803,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 15820,
+        "cost": 11074,
+        "profit": 4746,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 23380,
+        "cost": 16366,
+        "profit": 7014,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 19320,
+        "cost": 13524,
+        "profit": 5796,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 27440,
+        "cost": 19208,
+        "profit": 8232,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 22680,
+        "cost": 15876,
+        "profit": 6804,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 31120,
+        "cost": 21992,
+        "profit": 9128,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 24105,
+        "cost": 15190,
+        "profit": 8915,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 22653,
+        "cost": 14708,
+        "profit": 7945,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 4760,
+        "cost": 3332,
+        "profit": 1428,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 24500,
+        "cost": 17150,
+        "profit": 7350,
+        "details": []
+      },
       "2026-01": {
         "sales": 22680,
         "cost": 15876,
@@ -1215,169 +2803,79 @@
         "details": []
       }
     },
-    "ＳＴＲＡＷＢＥＲＲＹ": {
-      "2026-01": {
-        "sales": 37830,
-        "cost": 30060,
-        "profit": 7770,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 85435,
-        "cost": 55024,
-        "profit": 30411,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 28893,
-        "cost": 19990,
-        "profit": 8903,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 49003,
-        "cost": 33332,
-        "profit": 15671,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 68552,
-        "cost": 55371,
-        "profit": 13181,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 26134,
-        "cost": 18888,
-        "profit": 7246,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 42235,
-        "cost": 30571,
-        "profit": 11664,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 22830,
-        "cost": 16503,
-        "profit": 6327,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 32678,
-        "cost": 25480,
-        "profit": 7198,
-        "details": []
-      }
-    },
-    "ｌｕｃｋ": {
-      "2026-01": {
-        "sales": 65899,
-        "cost": 49178,
-        "profit": 16721,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 17285,
-        "cost": 12273,
-        "profit": 5012,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 38436,
-        "cost": 30326,
-        "profit": 8110,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 70713,
-        "cost": 54253,
-        "profit": 16460,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 15648,
-        "cost": 11492,
-        "profit": 4156,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 23504,
-        "cost": 17639,
-        "profit": 5865,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 49399,
-        "cost": 38410,
-        "profit": 10989,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 56537,
-        "cost": 44178,
-        "profit": 12359,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 13490,
-        "cost": 9872,
-        "profit": 3618,
-        "details": []
-      }
-    },
-    "luxe hair design": {
-      "2026-01": {
-        "sales": 381915,
-        "cost": 312751,
-        "profit": 69164,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 45162,
-        "cost": 34564,
-        "profit": 10598,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 89286,
-        "cost": 70270,
-        "profit": 19016,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 1994821,
-        "cost": 1853102,
-        "profit": 141719,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 176555,
-        "cost": 138707,
-        "profit": 37848,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 115245,
-        "cost": 87093,
-        "profit": 28152,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 136053,
-        "cost": 105252,
-        "profit": 30801,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 302182,
-        "cost": 245438,
-        "profit": 56744,
-        "details": []
-      }
-    },
     "ＨＡＬＳ ｈａｉｒ ｐｌａｃｅ": {
+      "2025-10": {
+        "sales": 97899,
+        "cost": 67756,
+        "profit": 30143,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 94602,
+        "cost": 67333,
+        "profit": 27269,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 100864,
+        "cost": 70802,
+        "profit": 30062,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 66879,
+        "cost": 48834,
+        "profit": 18045,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 79489,
+        "cost": 54879,
+        "profit": 24610,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 85222,
+        "cost": 62132,
+        "profit": 23090,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 72390,
+        "cost": 51075,
+        "profit": 21315,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 82183,
+        "cost": 57615,
+        "profit": 24568,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 91307,
+        "cost": 64328,
+        "profit": 26979,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 83467,
+        "cost": 58447,
+        "profit": 25020,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 102912,
+        "cost": 68938,
+        "profit": 33974,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 72661,
+        "cost": 53426,
+        "profit": 19235,
+        "details": []
+      },
       "2026-01": {
         "sales": 54698,
         "cost": 37980,
@@ -1433,127 +2931,369 @@
         "details": []
       }
     },
-    "ＬＡＣＯ      ｈａｉｒ": {
+    "上": {
+      "2025-10": {
+        "sales": 52328,
+        "cost": 58708,
+        "profit": -6380,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 32250,
+        "cost": 32470,
+        "profit": -220,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 53069,
+        "cost": 53151,
+        "profit": -82,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 53253,
+        "cost": 53473,
+        "profit": -220,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 14373,
+        "cost": 17673,
+        "profit": -3300,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 25769,
+        "cost": 25989,
+        "profit": -220,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 95116,
+        "cost": 98416,
+        "profit": -3300,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 28782,
+        "cost": 32302,
+        "profit": -3520,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 22654,
+        "cost": 22874,
+        "profit": -220,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 53116,
+        "cost": 53336,
+        "profit": -220,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 38728,
+        "cost": 44888,
+        "profit": -6160,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 93183,
+        "cost": 93403,
+        "profit": -220,
+        "details": []
+      },
       "2026-01": {
-        "sales": 30242,
-        "cost": 22362,
-        "profit": 7880,
+        "sales": 59055,
+        "cost": 65435,
+        "profit": -6380,
         "details": []
       }
     },
-    "Ｃｌａｒｋｅ’hair studio": {
-      "2026-01": {
-        "sales": 32703,
-        "cost": 23210,
-        "profit": 9493,
+    "株式会社LiBro          Life    Works": {
+      "2025-10": {
+        "sales": 26862,
+        "cost": 19739,
+        "profit": 7123,
         "details": []
       },
-      "2026-02": {
-        "sales": 39534,
-        "cost": 27859,
-        "profit": 11675,
+      "2025-11": {
+        "sales": 351,
+        "cost": 290,
+        "profit": 61,
         "details": []
       },
-      "2026-03": {
-        "sales": 39778,
-        "cost": 27101,
-        "profit": 12677,
+      "2025-02": {
+        "sales": 5340,
+        "cost": 4258,
+        "profit": 1082,
         "details": []
       },
-      "2024-07": {
-        "sales": 24690,
-        "cost": 18411,
-        "profit": 6279,
+      "2025-05": {
+        "sales": 9621,
+        "cost": 7359,
+        "profit": 2262,
         "details": []
       },
-      "2024-08": {
-        "sales": 40667,
-        "cost": 28768,
-        "profit": 11899,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 45206,
-        "cost": 33474,
-        "profit": 11732,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 69838,
-        "cost": 54812,
-        "profit": 15026,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 32673,
-        "cost": 24187,
-        "profit": 8486,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 50496,
-        "cost": 36140,
-        "profit": 14356,
+      "2025-08": {
+        "sales": 35974,
+        "cost": 26698,
+        "profit": 9276,
         "details": []
       }
     },
-    "Hair make Ｌｉｌｙ": {
+    "ｒｉｃｏｒｅ’": {
+      "2025-10": {
+        "sales": 140536,
+        "cost": 103702,
+        "profit": 36834,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 110464,
+        "cost": 81669,
+        "profit": 28795,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 120713,
+        "cost": 90158,
+        "profit": 30555,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 132938,
+        "cost": 99669,
+        "profit": 33269,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 107800,
+        "cost": 79865,
+        "profit": 27935,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 121083,
+        "cost": 90042,
+        "profit": 31041,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 110482,
+        "cost": 80753,
+        "profit": 29729,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 97804,
+        "cost": 74142,
+        "profit": 23662,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 156658,
+        "cost": 118071,
+        "profit": 38587,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 133304,
+        "cost": 99447,
+        "profit": 33857,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 125708,
+        "cost": 93238,
+        "profit": 32470,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 109207,
+        "cost": 81455,
+        "profit": 27752,
+        "details": []
+      },
       "2026-01": {
-        "sales": 40862,
-        "cost": 33300,
-        "profit": 7562,
+        "sales": 120227,
+        "cost": 88063,
+        "profit": 32164,
         "details": []
       },
       "2026-02": {
-        "sales": 48838,
-        "cost": 40344,
-        "profit": 8494,
+        "sales": 105951,
+        "cost": 80559,
+        "profit": 25392,
         "details": []
       },
       "2026-03": {
-        "sales": 56039,
-        "cost": 44504,
-        "profit": 11535,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 63996,
-        "cost": 52888,
-        "profit": 11108,
+        "sales": 83497,
+        "cost": 62250,
+        "profit": 21247,
         "details": []
       },
       "2024-08": {
-        "sales": 50895,
-        "cost": 42204,
-        "profit": 8691,
+        "sales": 134716,
+        "cost": 98953,
+        "profit": 35763,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 134692,
+        "cost": 101174,
+        "profit": 33518,
         "details": []
       },
       "2024-09": {
-        "sales": 50069,
-        "cost": 41687,
-        "profit": 8382,
+        "sales": 194469,
+        "cost": 147115,
+        "profit": 47354,
         "details": []
       },
       "2024-10": {
-        "sales": 64695,
-        "cost": 52628,
-        "profit": 12067,
+        "sales": 63646,
+        "cost": 48302,
+        "profit": 15344,
         "details": []
       },
       "2024-11": {
-        "sales": 67871,
-        "cost": 53624,
-        "profit": 14247,
+        "sales": 102149,
+        "cost": 73731,
+        "profit": 28418,
         "details": []
       },
       "2024-12": {
-        "sales": 70392,
-        "cost": 57374,
-        "profit": 13018,
+        "sales": 78951,
+        "cost": 59731,
+        "profit": 19220,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ          ＣＯＣＯ": {
+      "2025-10": {
+        "sales": 39221,
+        "cost": 27910,
+        "profit": 11311,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 35191,
+        "cost": 24652,
+        "profit": 10539,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 27585,
+        "cost": 19630,
+        "profit": 7955,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 12211,
+        "cost": 8405,
+        "profit": 3806,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 22001,
+        "cost": 14992,
+        "profit": 7009,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 23632,
+        "cost": 15223,
+        "profit": 8409,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 25284,
+        "cost": 17054,
+        "profit": 8230,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 18344,
+        "cost": 14093,
+        "profit": 4251,
         "details": []
       }
     },
     "Ｖｅｌｖｅｔ ｈａｉｒ 千早": {
+      "2025-10": {
+        "sales": 60907,
+        "cost": 46700,
+        "profit": 14207,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 93775,
+        "cost": 69177,
+        "profit": 24598,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 59651,
+        "cost": 46416,
+        "profit": 13235,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 96921,
+        "cost": 75760,
+        "profit": 21161,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 99197,
+        "cost": 76342,
+        "profit": 22855,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 77483,
+        "cost": 61577,
+        "profit": 15906,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 128673,
+        "cost": 96838,
+        "profit": 31835,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 99328,
+        "cost": 76378,
+        "profit": 22950,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 98332,
+        "cost": 76399,
+        "profit": 21933,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 83465,
+        "cost": 64812,
+        "profit": 18653,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 66532,
+        "cost": 52201,
+        "profit": 14331,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 76196,
+        "cost": 60164,
+        "profit": 16032,
+        "details": []
+      },
       "2026-01": {
         "sales": 43882,
         "cost": 34420,
@@ -1609,15 +3349,287 @@
         "details": []
       }
     },
-    "Ｓａｌｏｎ   ＣＯＣＯ": {
+    "ＬＡＣＯ    ｈａｉｒ": {
+      "2025-10": {
+        "sales": 43117,
+        "cost": 33585,
+        "profit": 9532,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 69902,
+        "cost": 49051,
+        "profit": 20851,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 108312,
+        "cost": 84701,
+        "profit": 23611,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 62736,
+        "cost": 46848,
+        "profit": 15888,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 35593,
+        "cost": 28251,
+        "profit": 7342,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 65154,
+        "cost": 49594,
+        "profit": 15560,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 66795,
+        "cost": 49767,
+        "profit": 17028,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 114778,
+        "cost": 88982,
+        "profit": 25796,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 26321,
+        "cost": 20801,
+        "profit": 5520,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 121156,
+        "cost": 87892,
+        "profit": 33264,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 111076,
+        "cost": 84643,
+        "profit": 26433,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 56439,
+        "cost": 43236,
+        "profit": 13203,
+        "details": []
+      },
       "2026-01": {
-        "sales": 15632,
-        "cost": 10464,
-        "profit": 5168,
+        "sales": 58614,
+        "cost": 44689,
+        "profit": 13925,
+        "details": []
+      }
+    },
+    "Hair make Ｌｉｌｙ": {
+      "2025-10": {
+        "sales": 43886,
+        "cost": 36111,
+        "profit": 7775,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 65762,
+        "cost": 54719,
+        "profit": 11043,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 56556,
+        "cost": 45843,
+        "profit": 10713,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 66993,
+        "cost": 56556,
+        "profit": 10437,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 127860,
+        "cost": 94139,
+        "profit": 33721,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 41225,
+        "cost": 33324,
+        "profit": 7901,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 57838,
+        "cost": 47222,
+        "profit": 10616,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 67073,
+        "cost": 55466,
+        "profit": 11607,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 70192,
+        "cost": 56878,
+        "profit": 13314,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 62879,
+        "cost": 50613,
+        "profit": 12266,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 89555,
+        "cost": 68769,
+        "profit": 20786,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 63307,
+        "cost": 48869,
+        "profit": 14438,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 40862,
+        "cost": 33300,
+        "profit": 7562,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 48838,
+        "cost": 40344,
+        "profit": 8494,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 56039,
+        "cost": 44504,
+        "profit": 11535,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 63996,
+        "cost": 52888,
+        "profit": 11108,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 50895,
+        "cost": 42204,
+        "profit": 8691,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 50069,
+        "cost": 41687,
+        "profit": 8382,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 64695,
+        "cost": 52628,
+        "profit": 12067,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 67871,
+        "cost": 53624,
+        "profit": 14247,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 70392,
+        "cost": 57374,
+        "profit": 13018,
         "details": []
       }
     },
     "Ａｍｂｅｒ．": {
+      "2025-10": {
+        "sales": 36162,
+        "cost": 27886,
+        "profit": 8276,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 30684,
+        "cost": 22016,
+        "profit": 8668,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 22444,
+        "cost": 18417,
+        "profit": 4027,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 36335,
+        "cost": 27981,
+        "profit": 8354,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 44600,
+        "cost": 35069,
+        "profit": 9531,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 36163,
+        "cost": 28070,
+        "profit": 8093,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 34667,
+        "cost": 27085,
+        "profit": 7582,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 32259,
+        "cost": 25090,
+        "profit": 7169,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 48834,
+        "cost": 37453,
+        "profit": 11381,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 27310,
+        "cost": 21601,
+        "profit": 5709,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 39838,
+        "cost": 30547,
+        "profit": 9291,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 39513,
+        "cost": 30864,
+        "profit": 8649,
+        "details": []
+      },
       "2026-01": {
         "sales": 31774,
         "cost": 24854,
@@ -1674,6 +3686,78 @@
       }
     },
     "(株)田菱 ＰＲＡＹＥＲ": {
+      "2025-10": {
+        "sales": 102852,
+        "cost": 76661,
+        "profit": 26191,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 89985,
+        "cost": 67087,
+        "profit": 22898,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 112778,
+        "cost": 85466,
+        "profit": 27312,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 50508,
+        "cost": 50412,
+        "profit": 96,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 134768,
+        "cost": 100778,
+        "profit": 33990,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 41183,
+        "cost": 30474,
+        "profit": 10709,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 54018,
+        "cost": 40078,
+        "profit": 13940,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 105192,
+        "cost": 78781,
+        "profit": 26411,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 52749,
+        "cost": 38706,
+        "profit": 14043,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 66777,
+        "cost": 50352,
+        "profit": 16425,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 123955,
+        "cost": 94295,
+        "profit": 29660,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 69766,
+        "cost": 54592,
+        "profit": 15174,
+        "details": []
+      },
       "2026-01": {
         "sales": 37181,
         "cost": 27715,
@@ -1729,175 +3813,463 @@
         "details": []
       }
     },
-    "ホロホロｈａｉｒ": {
+    "ｌｕｃｋ": {
+      "2025-10": {
+        "sales": 53243,
+        "cost": 40074,
+        "profit": 13169,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 24707,
+        "cost": 19184,
+        "profit": 5523,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 9188,
+        "cost": 6678,
+        "profit": 2510,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 31821,
+        "cost": 24741,
+        "profit": 7080,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 60381,
+        "cost": 46417,
+        "profit": 13964,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 30769,
+        "cost": 23233,
+        "profit": 7536,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 21343,
+        "cost": 15647,
+        "profit": 5696,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 34347,
+        "cost": 25531,
+        "profit": 8816,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 67398,
+        "cost": 50711,
+        "profit": 16687,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 42949,
+        "cost": 32938,
+        "profit": 10011,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 38342,
+        "cost": 29899,
+        "profit": 8443,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 29734,
+        "cost": 22446,
+        "profit": 7288,
+        "details": []
+      },
       "2026-01": {
-        "sales": 148721,
-        "cost": 111077,
-        "profit": 37644,
+        "sales": 65899,
+        "cost": 49178,
+        "profit": 16721,
         "details": []
       },
       "2026-02": {
-        "sales": 111928,
-        "cost": 83299,
-        "profit": 28629,
+        "sales": 17285,
+        "cost": 12273,
+        "profit": 5012,
         "details": []
       },
       "2026-03": {
-        "sales": 72500,
-        "cost": 53794,
-        "profit": 18706,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 130672,
-        "cost": 101046,
-        "profit": 29626,
+        "sales": 38436,
+        "cost": 30326,
+        "profit": 8110,
         "details": []
       },
       "2024-07": {
-        "sales": 139298,
-        "cost": 104455,
-        "profit": 34843,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 135031,
-        "cost": 99800,
-        "profit": 35231,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 126686,
-        "cost": 95453,
-        "profit": 31233,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 148187,
-        "cost": 112847,
-        "profit": 35340,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 180388,
-        "cost": 135977,
-        "profit": 44411,
-        "details": []
-      }
-    },
-    "ｃｏｓｙ     Ｖｅｌｖｅｔ": {
-      "2026-01": {
-        "sales": 78188,
-        "cost": 62574,
-        "profit": 15614,
-        "details": []
-      }
-    },
-    "Hui hair design": {
-      "2026-01": {
-        "sales": 17700,
-        "cost": 12390,
-        "profit": 5310,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 11450,
-        "cost": 8015,
-        "profit": 3435,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 14750,
-        "cost": 10325,
-        "profit": 4425,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 21000,
-        "cost": 16758,
-        "profit": 4242,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 13300,
-        "cost": 9310,
-        "profit": 3990,
-        "details": []
-      }
-    },
-    "Private salon      Bellreage": {
-      "2026-01": {
-        "sales": 13510,
-        "cost": 9506,
-        "profit": 4004,
-        "details": []
-      }
-    },
-    "ｃｏｓｙ      Ｖｅｌｖｅｔ": {
-      "2026-01": {
-        "sales": 76114,
-        "cost": 59943,
-        "profit": 16171,
-        "details": []
-      }
-    },
-    "ひとみ美容室": {
-      "2026-01": {
-        "sales": 93016,
-        "cost": 67717,
-        "profit": 25299,
-        "details": []
-      },
-      "2026-02": {
-        "sales": 94359,
-        "cost": 66059,
-        "profit": 28300,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 136373,
-        "cost": 95114,
-        "profit": 41259,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 95632,
-        "cost": 73516,
-        "profit": 22116,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 56430,
-        "cost": 42258,
-        "profit": 14172,
+        "sales": 70713,
+        "cost": 54253,
+        "profit": 16460,
         "details": []
       },
       "2024-08": {
-        "sales": 101093,
-        "cost": 75513,
-        "profit": 25580,
+        "sales": 15648,
+        "cost": 11492,
+        "profit": 4156,
         "details": []
       },
       "2024-09": {
-        "sales": 92325,
-        "cost": 71041,
-        "profit": 21284,
+        "sales": 23504,
+        "cost": 17639,
+        "profit": 5865,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 49399,
+        "cost": 38410,
+        "profit": 10989,
         "details": []
       },
       "2024-11": {
-        "sales": 184183,
-        "cost": 139726,
-        "profit": 44457,
+        "sales": 56537,
+        "cost": 44178,
+        "profit": 12359,
         "details": []
       },
       "2024-12": {
-        "sales": 90043,
-        "cost": 67328,
-        "profit": 22715,
+        "sales": 13490,
+        "cost": 9872,
+        "profit": 3618,
+        "details": []
+      }
+    },
+    "ＳＴＲＡＷＢＥＲＲＹ": {
+      "2025-10": {
+        "sales": 43742,
+        "cost": 34730,
+        "profit": 9012,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 40299,
+        "cost": 28927,
+        "profit": 11372,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 54878,
+        "cost": 36481,
+        "profit": 18397,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 37196,
+        "cost": 25281,
+        "profit": 11915,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 43720,
+        "cost": 28883,
+        "profit": 14837,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 31114,
+        "cost": 24205,
+        "profit": 6909,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 21316,
+        "cost": 15679,
+        "profit": 5637,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 35833,
+        "cost": 25564,
+        "profit": 10269,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 30649,
+        "cost": 21556,
+        "profit": 9093,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 41453,
+        "cost": 29350,
+        "profit": 12103,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 45308,
+        "cost": 35127,
+        "profit": 10181,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 59926,
+        "cost": 46263,
+        "profit": 13663,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 37830,
+        "cost": 30060,
+        "profit": 7770,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 85435,
+        "cost": 55024,
+        "profit": 30411,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 28893,
+        "cost": 19990,
+        "profit": 8903,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 49003,
+        "cost": 33332,
+        "profit": 15671,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 68552,
+        "cost": 55371,
+        "profit": 13181,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 26134,
+        "cost": 18888,
+        "profit": 7246,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 42235,
+        "cost": 30571,
+        "profit": 11664,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 22830,
+        "cost": 16503,
+        "profit": 6327,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 32678,
+        "cost": 25480,
+        "profit": 7198,
+        "details": []
+      }
+    },
+    "Ｃｌａｒｋｅ’hair studio": {
+      "2025-10": {
+        "sales": 28516,
+        "cost": 20692,
+        "profit": 7824,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 52063,
+        "cost": 36544,
+        "profit": 15519,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 95062,
+        "cost": 67254,
+        "profit": 27808,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 19009,
+        "cost": 14314,
+        "profit": 4695,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 83111,
+        "cost": 61655,
+        "profit": 21456,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 40872,
+        "cost": 29100,
+        "profit": 11772,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 15891,
+        "cost": 11390,
+        "profit": 4501,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 73807,
+        "cost": 53359,
+        "profit": 20448,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 47389,
+        "cost": 32228,
+        "profit": 15161,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 41717,
+        "cost": 26805,
+        "profit": 14912,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 15999,
+        "cost": 11107,
+        "profit": 4892,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 45030,
+        "cost": 31469,
+        "profit": 13561,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 32703,
+        "cost": 23210,
+        "profit": 9493,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 39534,
+        "cost": 27859,
+        "profit": 11675,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 39778,
+        "cost": 27101,
+        "profit": 12677,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 24690,
+        "cost": 18411,
+        "profit": 6279,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 40667,
+        "cost": 28768,
+        "profit": 11899,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 45206,
+        "cost": 33474,
+        "profit": 11732,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 69838,
+        "cost": 54812,
+        "profit": 15026,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 32673,
+        "cost": 24187,
+        "profit": 8486,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 50496,
+        "cost": 36140,
+        "profit": 14356,
         "details": []
       }
     },
     "THREE": {
+      "2025-10": {
+        "sales": 23875,
+        "cost": 18856,
+        "profit": 5019,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 32613,
+        "cost": 25348,
+        "profit": 7265,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 14821,
+        "cost": 11855,
+        "profit": 2966,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 14199,
+        "cost": 11328,
+        "profit": 2871,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 27872,
+        "cost": 22924,
+        "profit": 4948,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 11879,
+        "cost": 9786,
+        "profit": 2093,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 23583,
+        "cost": 18854,
+        "profit": 4729,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 16778,
+        "cost": 13141,
+        "profit": 3637,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 14652,
+        "cost": 11509,
+        "profit": 3143,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 18190,
+        "cost": 14899,
+        "profit": 3291,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 19161,
+        "cost": 15329,
+        "profit": 3832,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 27950,
+        "cost": 21744,
+        "profit": 6206,
+        "details": []
+      },
       "2026-01": {
         "sales": 25004,
         "cost": 19933,
@@ -1953,107 +4325,1109 @@
         "details": []
       }
     },
-    "ｸﾞﾗﾝﾄﾞｰﾑ福岡ふくつ": {
+    "ホロホロｈａｉｒ": {
+      "2025-10": {
+        "sales": 146117,
+        "cost": 108664,
+        "profit": 37453,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 114272,
+        "cost": 84826,
+        "profit": 29446,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 151076,
+        "cost": 111921,
+        "profit": 39155,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 213056,
+        "cost": 161385,
+        "profit": 51671,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 98334,
+        "cost": 73395,
+        "profit": 24939,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 147378,
+        "cost": 112468,
+        "profit": 34910,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 141614,
+        "cost": 107418,
+        "profit": 34196,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 157393,
+        "cost": 120982,
+        "profit": 36411,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 140733,
+        "cost": 107289,
+        "profit": 33444,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 122247,
+        "cost": 91444,
+        "profit": 30803,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 197203,
+        "cost": 149165,
+        "profit": 48038,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 108479,
+        "cost": 82609,
+        "profit": 25870,
+        "details": []
+      },
       "2026-01": {
-        "sales": 21420,
-        "cost": 17640,
-        "profit": 3780,
+        "sales": 148721,
+        "cost": 111077,
+        "profit": 37644,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 111928,
+        "cost": 83299,
+        "profit": 28629,
         "details": []
       },
       "2026-03": {
-        "sales": 86130,
-        "cost": 52672,
-        "profit": 33458,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 32130,
-        "cost": 26460,
-        "profit": 5670,
+        "sales": 72500,
+        "cost": 53794,
+        "profit": 18706,
         "details": []
       },
       "2024-08": {
-        "sales": 21420,
-        "cost": 17640,
-        "profit": 3780,
+        "sales": 130672,
+        "cost": 101046,
+        "profit": 29626,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 139298,
+        "cost": 104455,
+        "profit": 34843,
         "details": []
       },
       "2024-09": {
-        "sales": 75420,
-        "cost": 43852,
-        "profit": 31568,
+        "sales": 135031,
+        "cost": 99800,
+        "profit": 35231,
         "details": []
       },
       "2024-10": {
-        "sales": 21420,
-        "cost": 17640,
-        "profit": 3780,
+        "sales": 126686,
+        "cost": 95453,
+        "profit": 31233,
         "details": []
       },
       "2024-11": {
-        "sales": 77175,
-        "cost": 44802,
-        "profit": 32373,
+        "sales": 148187,
+        "cost": 112847,
+        "profit": 35340,
         "details": []
       },
       "2024-12": {
-        "sales": 21420,
-        "cost": 17640,
-        "profit": 3780,
+        "sales": 180388,
+        "cost": 135977,
+        "profit": 44411,
         "details": []
       }
     },
-    "株式会社LiBro          Life   Works": {
+    "Ｓａｌｏｎ     ＣＯＣＯ": {
+      "2025-10": {
+        "sales": 8431,
+        "cost": 6151,
+        "profit": 2280,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 32376,
+        "cost": 24867,
+        "profit": 7509,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 21565,
+        "cost": 14928,
+        "profit": 6637,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 15284,
+        "cost": 10935,
+        "profit": 4349,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 53234,
+        "cost": 37934,
+        "profit": 15300,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 21447,
+        "cost": 15875,
+        "profit": 5572,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 20800,
+        "cost": 14409,
+        "profit": 6391,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 37894,
+        "cost": 25392,
+        "profit": 12502,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 7726,
+        "cost": 5170,
+        "profit": 2556,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 12654,
+        "cost": 8757,
+        "profit": 3897,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 14352,
+        "cost": 9779,
+        "profit": 4573,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 13260,
+        "cost": 9258,
+        "profit": 4002,
+        "details": []
+      },
       "2026-01": {
-        "sales": 16236,
-        "cost": 12463,
-        "profit": 3773,
+        "sales": 13762,
+        "cost": 9105,
+        "profit": 4657,
         "details": []
       }
     },
-    "株式会社LiBro         Life   Works": {
-      "2026-01": {
-        "sales": 4340,
-        "cost": 3063,
-        "profit": 1277,
+    "ｃｏｓｙ    Ｖｅｌｖｅｔ": {
+      "2025-10": {
+        "sales": 45404,
+        "cost": 35781,
+        "profit": 9623,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 44421,
+        "cost": 34764,
+        "profit": 9657,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 30598,
+        "cost": 24177,
+        "profit": 6421,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 31847,
+        "cost": 25066,
+        "profit": 6781,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 18251,
+        "cost": 15306,
+        "profit": 2945,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 6497,
+        "cost": 5149,
+        "profit": 1348,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 59607,
+        "cost": 47530,
+        "profit": 12077,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 25158,
+        "cost": 19671,
+        "profit": 5487,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 51065,
+        "cost": 40322,
+        "profit": 10743,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 95439,
+        "cost": 71540,
+        "profit": 23899,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 33673,
+        "cost": 27558,
+        "profit": 6115,
         "details": []
       }
     },
-    "Seaside Hair&Nail": {
+    "江口美容所(株)": {
+      "2025-10": {
+        "sales": 7200,
+        "cost": 3900,
+        "profit": 3300,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 38993,
+        "cost": 36330,
+        "profit": 2663,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 11289,
+        "cost": 8957,
+        "profit": 2332,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 18427,
+        "cost": 16477,
+        "profit": 1950,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 14217,
+        "cost": 11677,
+        "profit": 2540,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 17692,
+        "cost": 13687,
+        "profit": 4005,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 27062,
+        "cost": 22607,
+        "profit": 4455,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 28192,
+        "cost": 22113,
+        "profit": 6079,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 10845,
+        "cost": 8927,
+        "profit": 1918,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 6142,
+        "cost": 5703,
+        "profit": 439,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 27780,
+        "cost": 20125,
+        "profit": 7655,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 19792,
+        "cost": 18785,
+        "profit": 1007,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 16943,
+        "cost": 13428,
+        "profit": 3515,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 4504,
+        "cost": 3485,
+        "profit": 1019,
+        "details": []
+      }
+    },
+    "plant": {
+      "2025-10": {
+        "sales": 34667,
+        "cost": 24819,
+        "profit": 9848,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 14372,
+        "cost": 10795,
+        "profit": 3577,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 13059,
+        "cost": 9434,
+        "profit": 3625,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 1165796,
+        "cost": 1075665,
+        "profit": 90131,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 6800,
+        "cost": 5023,
+        "profit": 1777,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 19041,
+        "cost": 14412,
+        "profit": 4629,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 11459,
+        "cost": 8247,
+        "profit": 3212,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 27970,
+        "cost": 21125,
+        "profit": 6845,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 12790,
+        "cost": 8853,
+        "profit": 3937,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 24117,
+        "cost": 17813,
+        "profit": 6304,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 20635,
+        "cost": 14607,
+        "profit": 6028,
+        "details": []
+      },
       "2026-01": {
-        "sales": 2925,
-        "cost": 1585,
-        "profit": 1340,
+        "sales": 36870,
+        "cost": 26506,
+        "profit": 10364,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 16241,
+        "cost": 10886,
+        "profit": 5355,
         "details": []
       },
       "2026-03": {
-        "sales": 8781,
-        "cost": 5621,
-        "profit": 3160,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 5850,
-        "cost": 3170,
-        "profit": 2680,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 1306,
-        "cost": 850,
-        "profit": 456,
+        "sales": 13206,
+        "cost": 8953,
+        "profit": 4253,
         "details": []
       }
     },
-    "Ｓａｌｏｎ          ＣＯＣＯ": {
+    "永田      竜一": {
+      "2025-10": {
+        "sales": 10961,
+        "cost": 8509,
+        "profit": 2452,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 1125,
+        "cost": 879,
+        "profit": 246,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 1500,
+        "cost": 1172,
+        "profit": 328,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 2464,
+        "cost": 1984,
+        "profit": 480,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 5200,
+        "cost": 4676,
+        "profit": 524,
+        "details": []
+      },
       "2026-01": {
-        "sales": 18344,
-        "cost": 14093,
-        "profit": 4251,
+        "sales": 2325,
+        "cost": 1881,
+        "profit": 444,
+        "details": []
+      }
+    },
+    "Lutella": {
+      "2025-10": {
+        "sales": 9000,
+        "cost": 6300,
+        "profit": 2700,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 60886,
+        "cost": 44534,
+        "profit": 16352,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 236689,
+        "cost": 171360,
+        "profit": 65329,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 224600,
+        "cost": 215300,
+        "profit": 9300,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 42000,
+        "cost": 34500,
+        "profit": 7500,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 26775,
+        "cost": 19338,
+        "profit": 7437,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 25000,
+        "cost": 23700,
+        "profit": 1300,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 62500,
+        "cost": 57500,
+        "profit": 5000,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 39325,
+        "cost": 26535,
+        "profit": 12790,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 0,
+        "cost": 0,
+        "profit": 0,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 38639,
+        "cost": 27667,
+        "profit": 10972,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 0,
+        "cost": 0,
+        "profit": 0,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 0,
+        "cost": 0,
+        "profit": 0,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 0,
+        "cost": 0,
+        "profit": 0,
+        "details": []
+      }
+    },
+    "Oneness+": {
+      "2025-10": {
+        "sales": 7000,
+        "cost": 4900,
+        "profit": 2100,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 8190,
+        "cost": 4435,
+        "profit": 3755,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 5265,
+        "cost": 2850,
+        "profit": 2415,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 14000,
+        "cost": 9800,
+        "profit": 4200,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 1733,
+        "cost": 1020,
+        "profit": 713,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 10500,
+        "cost": 7350,
+        "profit": 3150,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 8765,
+        "cost": 5300,
+        "profit": 3465,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 8190,
+        "cost": 4435,
+        "profit": 3755,
+        "details": []
+      }
+    },
+    "Hui hair design": {
+      "2025-10": {
+        "sales": 21450,
+        "cost": 15015,
+        "profit": 6435,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 24400,
+        "cost": 16346,
+        "profit": 8054,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 12850,
+        "cost": 8858,
+        "profit": 3992,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 7000,
+        "cost": 4900,
+        "profit": 2100,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 26950,
+        "cost": 18865,
+        "profit": 8085,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 3150,
+        "cost": 2205,
+        "profit": 945,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 20650,
+        "cost": 14455,
+        "profit": 6195,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 14400,
+        "cost": 10704,
+        "profit": 3696,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 13800,
+        "cost": 9660,
+        "profit": 4140,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 17700,
+        "cost": 12390,
+        "profit": 5310,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 11450,
+        "cost": 8015,
+        "profit": 3435,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 14750,
+        "cost": 10325,
+        "profit": 4425,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 21000,
+        "cost": 16758,
+        "profit": 4242,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 13300,
+        "cost": 9310,
+        "profit": 3990,
+        "details": []
+      }
+    },
+    "TORSO": {
+      "2025-10": {
+        "sales": 10836,
+        "cost": 7133,
+        "profit": 3703,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 16410,
+        "cost": 10070,
+        "profit": 6340,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 18040,
+        "cost": 11671,
+        "profit": 6369,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 6186,
+        "cost": 4193,
+        "profit": 1993,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 7706,
+        "cost": 5068,
+        "profit": 2638,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 13613,
+        "cost": 9406,
+        "profit": 4207,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 15480,
+        "cost": 9230,
+        "profit": 6250,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 6042,
+        "cost": 3976,
+        "profit": 2066,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 13803,
+        "cost": 8464,
+        "profit": 5339,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 18909,
+        "cost": 12173,
+        "profit": 6736,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 11034,
+        "cost": 7252,
+        "profit": 3782,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 15037,
+        "cost": 9819,
+        "profit": 5218,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 21945,
+        "cost": 15525,
+        "profit": 6420,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 9682,
+        "cost": 6712,
+        "profit": 2970,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 11258,
+        "cost": 7264,
+        "profit": 3994,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 5408,
+        "cost": 3549,
+        "profit": 1859,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 16828,
+        "cost": 11290,
+        "profit": 5538,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 3744,
+        "cost": 2457,
+        "profit": 1287,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 19276,
+        "cost": 12759,
+        "profit": 6517,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ   ＣＯＣＯ": {
+      "2025-10": {
+        "sales": 18668,
+        "cost": 13752,
+        "profit": 4916,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 9907,
+        "cost": 6730,
+        "profit": 3177,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 58606,
+        "cost": 41034,
+        "profit": 17572,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 9475,
+        "cost": 6066,
+        "profit": 3409,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 29278,
+        "cost": 21324,
+        "profit": 7954,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 11475,
+        "cost": 8330,
+        "profit": 3145,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 56355,
+        "cost": 39541,
+        "profit": 16814,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 15632,
+        "cost": 10464,
+        "profit": 5168,
+        "details": []
+      }
+    },
+    "ＬＡＣＯ         ｈａｉｒ": {
+      "2025-10": {
+        "sales": 21067,
+        "cost": 16672,
+        "profit": 4395,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 19209,
+        "cost": 14317,
+        "profit": 4892,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 11858,
+        "cost": 11020,
+        "profit": 838,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 33255,
+        "cost": 26216,
+        "profit": 7039,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 26949,
+        "cost": 20589,
+        "profit": 6360,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 41166,
+        "cost": 31370,
+        "profit": 9796,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 16074,
+        "cost": 12571,
+        "profit": 3503,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 22409,
+        "cost": 17770,
+        "profit": 4639,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 46094,
+        "cost": 33981,
+        "profit": 12113,
+        "details": []
+      }
+    },
+    "ｃｏｓｙ         Ｖｅｌｖｅｔ": {
+      "2025-10": {
+        "sales": 50187,
+        "cost": 39155,
+        "profit": 11032,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 3585,
+        "cost": 2725,
+        "profit": 860,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 17446,
+        "cost": 13731,
+        "profit": 3715,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 42138,
+        "cost": 33236,
+        "profit": 8902,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 39288,
+        "cost": 31509,
+        "profit": 7779,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 44870,
+        "cost": 35645,
+        "profit": 9225,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 45924,
+        "cost": 36063,
+        "profit": 9861,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 33686,
+        "cost": 26650,
+        "profit": 7036,
+        "details": []
+      }
+    },
+    "Riche hair": {
+      "2025-10": {
+        "sales": 10000,
+        "cost": 6826,
+        "profit": 3174,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 5000,
+        "cost": 3413,
+        "profit": 1587,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 10481,
+        "cost": 7273,
+        "profit": 3208,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 34620,
+        "cost": 24234,
+        "profit": 10386,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 23960,
+        "cost": 16774,
+        "profit": 7186,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 10000,
+        "cost": 6826,
+        "profit": 3174,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 2016,
+        "cost": 1412,
+        "profit": 604,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 5000,
+        "cost": 3413,
+        "profit": 1587,
         "details": []
       }
     },
     "ミツアミ堂": {
+      "2025-10": {
+        "sales": 45012,
+        "cost": 31981,
+        "profit": 13031,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 97460,
+        "cost": 67084,
+        "profit": 30376,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 120480,
+        "cost": 83646,
+        "profit": 36834,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 70150,
+        "cost": 49406,
+        "profit": 20744,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 117341,
+        "cost": 80670,
+        "profit": 36671,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 90733,
+        "cost": 67960,
+        "profit": 22773,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 51152,
+        "cost": 33695,
+        "profit": 17457,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 94796,
+        "cost": 65485,
+        "profit": 29311,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 157040,
+        "cost": 112101,
+        "profit": 44939,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 61821,
+        "cost": 43035,
+        "profit": 18786,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 105730,
+        "cost": 75681,
+        "profit": 30049,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 90663,
+        "cost": 62241,
+        "profit": 28422,
+        "details": []
+      },
       "2026-01": {
         "sales": 67250,
         "cost": 46421,
@@ -2109,23 +5483,199 @@
         "details": []
       }
     },
-    "ＬＡＣＯ    ｈａｉｒ": {
-      "2026-01": {
-        "sales": 58614,
-        "cost": 44689,
-        "profit": 13925,
+    "Private salon     Bellreage": {
+      "2025-10": {
+        "sales": 17069,
+        "cost": 12502,
+        "profit": 4567,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 11192,
+        "cost": 7240,
+        "profit": 3952,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 12388,
+        "cost": 8933,
+        "profit": 3455,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 9582,
+        "cost": 7063,
+        "profit": 2519,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 10722,
+        "cost": 8429,
+        "profit": 2293,
         "details": []
       }
     },
-    "永田      竜一": {
+    "ﾘﾗｸｾﾞｰｼｮﾝﾙｰﾑ ランプ": {
+      "2025-10": {
+        "sales": 9400,
+        "cost": 6580,
+        "profit": 2820,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 38255,
+        "cost": 25631,
+        "profit": 12624,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 37380,
+        "cost": 26166,
+        "profit": 11214,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 2016,
+        "cost": 1764,
+        "profit": 252,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 10800,
+        "cost": 8280,
+        "profit": 2520,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 5150,
+        "cost": 3348,
+        "profit": 1802,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 11550,
+        "cost": 8820,
+        "profit": 2730,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 112260,
+        "cost": 86856,
+        "profit": 25404,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 77399,
+        "cost": 54357,
+        "profit": 23042,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 83640,
+        "cost": 58008,
+        "profit": 25632,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 31625,
+        "cost": 22343,
+        "profit": 9282,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 38220,
+        "cost": 26208,
+        "profit": 12012,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 10080,
+        "cost": 7056,
+        "profit": 3024,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 23360,
+        "cost": 16904,
+        "profit": 6456,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 23904,
+        "cost": 19746,
+        "profit": 4158,
+        "details": []
+      }
+    },
+    "BOOTH share saron 今井": {
+      "2025-10": {
+        "sales": 2925,
+        "cost": 1585,
+        "profit": 1340,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 5850,
+        "cost": 3170,
+        "profit": 2680,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 10300,
+        "cost": 6696,
+        "profit": 3604,
+        "details": []
+      },
       "2026-01": {
-        "sales": 2325,
-        "cost": 1881,
-        "profit": 444,
+        "sales": 8075,
+        "cost": 4933,
+        "profit": 3142,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 55088,
+        "cost": 45182,
+        "profit": 9906,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 19200,
+        "cost": 14016,
+        "profit": 5184,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 12950,
+        "cost": 8419,
+        "profit": 4531,
+        "details": []
+      },
+      "2024-10": {
+        "sales": -2650,
+        "cost": -1723,
+        "profit": -927,
         "details": []
       }
     },
     "BOOTH share saron": {
+      "2025-10": {
+        "sales": 2925,
+        "cost": 1585,
+        "profit": 1340,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 6160,
+        "cost": 4492,
+        "profit": 1668,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 6160,
+        "cost": 4492,
+        "profit": 1668,
+        "details": []
+      },
       "2026-01": {
         "sales": 3080,
         "cost": 2246,
@@ -2164,6 +5714,42 @@
       }
     },
     "株式会社LiBro     Life     Works": {
+      "2025-10": {
+        "sales": 8380,
+        "cost": 5741,
+        "profit": 2639,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 351,
+        "cost": 290,
+        "profit": 61,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 2500,
+        "cost": 1625,
+        "profit": 875,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 1053,
+        "cost": 870,
+        "profit": 183,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 5040,
+        "cost": 3594,
+        "profit": 1446,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 702,
+        "cost": 580,
+        "profit": 122,
+        "details": []
+      },
       "2026-01": {
         "sales": 1404,
         "cost": 1160,
@@ -2171,19 +5757,1045 @@
         "details": []
       }
     },
-    "Ｓａｌｏｎ     ＣＯＣＯ": {
+    "Private salon      Bellreage": {
+      "2025-10": {
+        "sales": 2314,
+        "cost": 1640,
+        "profit": 674,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 39896,
+        "cost": 28943,
+        "profit": 10953,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 6634,
+        "cost": 5239,
+        "profit": 1395,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 585,
+        "cost": 455,
+        "profit": 130,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 20728,
+        "cost": 14809,
+        "profit": 5919,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 15721,
+        "cost": 11495,
+        "profit": 4226,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 58392,
+        "cost": 40996,
+        "profit": 17396,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 2200,
+        "cost": 1925,
+        "profit": 275,
+        "details": []
+      },
       "2026-01": {
-        "sales": 13762,
-        "cost": 9105,
-        "profit": 4657,
+        "sales": 13510,
+        "cost": 9506,
+        "profit": 4004,
         "details": []
       }
     },
-    "ｃｏｓｙ         Ｖｅｌｖｅｔ": {
+    "ｸﾞﾗﾝﾄﾞｰﾑ福岡ふくつ": {
+      "2025-10": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 99050,
+        "cost": 63182,
+        "profit": 35868,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 75420,
+        "cost": 43852,
+        "profit": 31568,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 86130,
+        "cost": 52672,
+        "profit": 33458,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 42840,
+        "cost": 35280,
+        "profit": 7560,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 108000,
+        "cost": 52424,
+        "profit": 55576,
+        "details": []
+      },
       "2026-01": {
-        "sales": 33686,
-        "cost": 26650,
-        "profit": 7036,
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 86130,
+        "cost": 52672,
+        "profit": 33458,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 32130,
+        "cost": 26460,
+        "profit": 5670,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 75420,
+        "cost": 43852,
+        "profit": 31568,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 77175,
+        "cost": 44802,
+        "profit": 32373,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 21420,
+        "cost": 17640,
+        "profit": 3780,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ      ＣＯＣＯ": {
+      "2025-10": {
+        "sales": 10615,
+        "cost": 7363,
+        "profit": 3252,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 5492,
+        "cost": 4020,
+        "profit": 1472,
+        "details": []
+      },
+      "2025-01": {
+        "sales": -30332,
+        "cost": -19867,
+        "profit": -10465,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 30483,
+        "cost": 24402,
+        "profit": 6081,
+        "details": []
+      }
+    },
+    "ＬＡＣＯ        ｈａｉｒ": {
+      "2025-10": {
+        "sales": 10591,
+        "cost": 8415,
+        "profit": 2176,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 25108,
+        "cost": 17094,
+        "profit": 8014,
+        "details": []
+      }
+    },
+    "Private salon   Bellreage": {
+      "2025-10": {
+        "sales": 14556,
+        "cost": 10269,
+        "profit": 4287,
+        "details": []
+      },
+      "2025-11": {
+        "sales": 24041,
+        "cost": 17581,
+        "profit": 6460,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 86549,
+        "cost": 62164,
+        "profit": 24385,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 28624,
+        "cost": 20801,
+        "profit": 7823,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 38304,
+        "cost": 27497,
+        "profit": 10807,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 39998,
+        "cost": 28570,
+        "profit": 11428,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 36823,
+        "cost": 26688,
+        "profit": 10135,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 28182,
+        "cost": 20568,
+        "profit": 7614,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 32182,
+        "cost": 23415,
+        "profit": 8767,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 12141,
+        "cost": 8912,
+        "profit": 3229,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 10610,
+        "cost": 7430,
+        "profit": 3180,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 14982,
+        "cost": 10392,
+        "profit": 4590,
+        "details": []
+      }
+    },
+    "株式会社LiBro          Life   Works": {
+      "2025-11": {
+        "sales": 41226,
+        "cost": 27399,
+        "profit": 13827,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 1485,
+        "cost": 1230,
+        "profit": 255,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 16343,
+        "cost": 12204,
+        "profit": 4139,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 15993,
+        "cost": 12654,
+        "profit": 3339,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 2400,
+        "cost": 2200,
+        "profit": 200,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 16236,
+        "cost": 12463,
+        "profit": 3773,
+        "details": []
+      }
+    },
+    "LYTRIE": {
+      "2025-11": {
+        "sales": 465825,
+        "cost": 360334,
+        "profit": 105491,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 27029,
+        "cost": 19759,
+        "profit": 7270,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 18604,
+        "cost": 14458,
+        "profit": 4146,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 130746,
+        "cost": 97933,
+        "profit": 32813,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 33320,
+        "cost": 25387,
+        "profit": 7933,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 21993,
+        "cost": 15892,
+        "profit": 6101,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 121423,
+        "cost": 95576,
+        "profit": 25847,
+        "details": []
+      }
+    },
+    "永田    竜一": {
+      "2025-11": {
+        "sales": 2025,
+        "cost": 1741,
+        "profit": 284,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 2850,
+        "cost": 2450,
+        "profit": 400,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 20186,
+        "cost": 15738,
+        "profit": 4448,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 3189,
+        "cost": 2550,
+        "profit": 639,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 7190,
+        "cost": 5700,
+        "profit": 1490,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 1125,
+        "cost": 879,
+        "profit": 246,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 7695,
+        "cost": 6235,
+        "profit": 1460,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 4635,
+        "cost": 3675,
+        "profit": 960,
+        "details": []
+      }
+    },
+    "STANDARD": {
+      "2025-11": {
+        "sales": 8400,
+        "cost": 6244,
+        "profit": 2156,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 4050,
+        "cost": 3150,
+        "profit": 900,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 8249,
+        "cost": 6377,
+        "profit": 1872,
+        "details": []
+      },
+      "2025-09": {
+        "sales": -1071,
+        "cost": -794,
+        "profit": -277,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 3510,
+        "cost": 1900,
+        "profit": 1610,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 15000,
+        "cost": 12250,
+        "profit": 2750,
+        "details": []
+      }
+    },
+    "ｃｏｓｙ       Ｖｅｌｖｅｔ": {
+      "2025-11": {
+        "sales": -75,
+        "cost": -58,
+        "profit": -17,
+        "details": []
+      },
+      "2025-12": {
+        "sales": 17641,
+        "cost": 14146,
+        "profit": 3495,
+        "details": []
+      }
+    },
+    "株式会社LiBro        Life   Works": {
+      "2025-11": {
+        "sales": 16529,
+        "cost": 13044,
+        "profit": 3485,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 5040,
+        "cost": 3712,
+        "profit": 1328,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 27693,
+        "cost": 19633,
+        "profit": 8060,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 6300,
+        "cost": 4435,
+        "profit": 1865,
+        "details": []
+      }
+    },
+    "株式会社LiBro     Life   Works": {
+      "2025-11": {
+        "sales": 31341,
+        "cost": 22349,
+        "profit": 8992,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 5937,
+        "cost": 4980,
+        "profit": 957,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 1134,
+        "cost": 940,
+        "profit": 194,
+        "details": []
+      }
+    },
+    "LiLiLash": {
+      "2025-12": {
+        "sales": 10850,
+        "cost": 7595,
+        "profit": 3255,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 13300,
+        "cost": 9310,
+        "profit": 3990,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 3150,
+        "cost": 2205,
+        "profit": 945,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 12900,
+        "cost": 9134,
+        "profit": 3766,
+        "details": []
+      },
+      "2026-02": {
+        "sales": 34500,
+        "cost": 25750,
+        "profit": 8750,
+        "details": []
+      },
+      "2026-03": {
+        "sales": 10010,
+        "cost": 7007,
+        "profit": 3003,
+        "details": []
+      }
+    },
+    "株式会社LiBro   Life   Works": {
+      "2025-12": {
+        "sales": 33730,
+        "cost": 24374,
+        "profit": 9356,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 14388,
+        "cost": 11282,
+        "profit": 3106,
+        "details": []
+      }
+    },
+    "株式会社LiBro     Life    Works": {
+      "2025-12": {
+        "sales": 134028,
+        "cost": 94536,
+        "profit": 39492,
+        "details": []
+      }
+    },
+    "株式会社LiBro      Life    Works": {
+      "2025-12": {
+        "sales": 25198,
+        "cost": 18105,
+        "profit": 7093,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 16281,
+        "cost": 11909,
+        "profit": 4372,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 8496,
+        "cost": 6978,
+        "profit": 1518,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ        ＣＯＣＯ": {
+      "2025-12": {
+        "sales": 6674,
+        "cost": 6240,
+        "profit": 434,
+        "details": []
+      },
+      "2025-01": {
+        "sales": 10260,
+        "cost": 9630,
+        "profit": 630,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 7254,
+        "cost": 4720,
+        "profit": 2534,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 6576,
+        "cost": 6150,
+        "profit": 426,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 4410,
+        "cost": 3145,
+        "profit": 1265,
+        "details": []
+      }
+    },
+    "株式会社LiBro Life Works": {
+      "2025-01": {
+        "sales": 74916,
+        "cost": 55052,
+        "profit": 19864,
+        "details": []
+      }
+    },
+    "Private salon Bellreage": {
+      "2025-01": {
+        "sales": 39755,
+        "cost": 30857,
+        "profit": 8898,
+        "details": []
+      }
+    },
+    "ｎｏｖａ": {
+      "2025-01": {
+        "sales": 7511,
+        "cost": 5846,
+        "profit": 1665,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 2973,
+        "cost": 2258,
+        "profit": 715,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 2550,
+        "cost": 1984,
+        "profit": 566,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 11092,
+        "cost": 8556,
+        "profit": 2536,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 7880,
+        "cost": 6126,
+        "profit": 1754,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 1548,
+        "cost": 1207,
+        "profit": 341,
+        "details": []
+      },
+      "2024-07": {
+        "sales": 2496,
+        "cost": 1948,
+        "profit": 548,
+        "details": []
+      },
+      "2024-08": {
+        "sales": 9216,
+        "cost": 7244,
+        "profit": 1972,
+        "details": []
+      },
+      "2024-09": {
+        "sales": 5312,
+        "cost": 4239,
+        "profit": 1073,
+        "details": []
+      },
+      "2024-10": {
+        "sales": 17264,
+        "cost": 13548,
+        "profit": 3716,
+        "details": []
+      },
+      "2024-11": {
+        "sales": 6853,
+        "cost": 5407,
+        "profit": 1446,
+        "details": []
+      },
+      "2024-12": {
+        "sales": 2196,
+        "cost": 1714,
+        "profit": 482,
+        "details": []
+      }
+    },
+    "ｃｏｓｙ      Ｖｅｌｖｅｔ": {
+      "2025-01": {
+        "sales": 24406,
+        "cost": 19370,
+        "profit": 5036,
+        "details": []
+      },
+      "2025-02": {
+        "sales": 31214,
+        "cost": 24611,
+        "profit": 6603,
+        "details": []
+      },
+      "2025-04": {
+        "sales": -2550,
+        "cost": -1984,
+        "profit": -566,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 12532,
+        "cost": 9954,
+        "profit": 2578,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 76114,
+        "cost": 59943,
+        "profit": 16171,
+        "details": []
+      }
+    },
+    "ＬＡＣＯ       ｈａｉｒ": {
+      "2025-01": {
+        "sales": 14660,
+        "cost": 11580,
+        "profit": 3080,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 32039,
+        "cost": 26702,
+        "profit": 5337,
+        "details": []
+      }
+    },
+    "ｃｏｓｙ        Ｖｅｌｖｅｔ": {
+      "2025-02": {
+        "sales": 20818,
+        "cost": 16549,
+        "profit": 4269,
+        "details": []
+      }
+    },
+    "ＬＡＣＯ     ｈａｉｒ": {
+      "2025-02": {
+        "sales": 35105,
+        "cost": 24854,
+        "profit": 10251,
+        "details": []
+      }
+    },
+    "株式会社LiBro      Life   Works": {
+      "2025-02": {
+        "sales": 19868,
+        "cost": 15523,
+        "profit": 4345,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 351,
+        "cost": 290,
+        "profit": 61,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 1899,
+        "cost": 1505,
+        "profit": 394,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ       ＣＯＣＯ": {
+      "2025-02": {
+        "sales": 21840,
+        "cost": 15293,
+        "profit": 6547,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 17019,
+        "cost": 11883,
+        "profit": 5136,
+        "details": []
+      }
+    },
+    "株式会社LiBro      Life     Works": {
+      "2025-02": {
+        "sales": 27182,
+        "cost": 20062,
+        "profit": 7120,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 351,
+        "cost": 290,
+        "profit": 61,
+        "details": []
+      },
+      "2025-05": {
+        "sales": 24000,
+        "cost": 17840,
+        "profit": 6160,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 2975,
+        "cost": 2500,
+        "profit": 475,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 18440,
+        "cost": 14996,
+        "profit": 3444,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 3500,
+        "cost": 2450,
+        "profit": 1050,
+        "details": []
+      }
+    },
+    "株式会社LiBro   Life    Works": {
+      "2025-02": {
+        "sales": 23625,
+        "cost": 17734,
+        "profit": 5891,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 8400,
+        "cost": 5955,
+        "profit": 2445,
+        "details": []
+      },
+      "2025-04": {
+        "sales": 28266,
+        "cost": 20553,
+        "profit": 7713,
+        "details": []
+      },
+      "2025-06": {
+        "sales": 31749,
+        "cost": 23082,
+        "profit": 8667,
+        "details": []
+      }
+    },
+    "株式会社LiBro       Life   Works": {
+      "2025-02": {
+        "sales": 10080,
+        "cost": 8000,
+        "profit": 2080,
+        "details": []
+      },
+      "2025-03": {
+        "sales": 49768,
+        "cost": 36480,
+        "profit": 13288,
+        "details": []
+      }
+    },
+    "Private salon    Bellreage": {
+      "2025-03": {
+        "sales": 11900,
+        "cost": 8330,
+        "profit": 3570,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 17134,
+        "cost": 12429,
+        "profit": 4705,
+        "details": []
+      }
+    },
+    "株式会社LiBro         Life    Works": {
+      "2025-04": {
+        "sales": 6720,
+        "cost": 5040,
+        "profit": 1680,
+        "details": []
+      },
+      "2025-08": {
+        "sales": 3500,
+        "cost": 2450,
+        "profit": 1050,
+        "details": []
+      }
+    },
+    "株式会社LiBro         Life     Works": {
+      "2025-05": {
+        "sales": 2400,
+        "cost": 2200,
+        "profit": 200,
+        "details": []
+      }
+    },
+    "X   Riche hair": {
+      "2025-05": {
+        "sales": 2331,
+        "cost": 1632,
+        "profit": 699,
+        "details": []
+      }
+    },
+    "株式会社LiBro         Life   Works": {
+      "2025-05": {
+        "sales": 61307,
+        "cost": 44596,
+        "profit": 16711,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 4340,
+        "cost": 3063,
+        "profit": 1277,
+        "details": []
+      }
+    },
+    "X    Riche hair": {
+      "2025-06": {
+        "sales": -2331,
+        "cost": -1632,
+        "profit": -699,
+        "details": []
+      }
+    },
+    "ＬＡＣＯ      ｈａｉｒ": {
+      "2025-06": {
+        "sales": 45371,
+        "cost": 34612,
+        "profit": 10759,
+        "details": []
+      },
+      "2025-09": {
+        "sales": 57627,
+        "cost": 42828,
+        "profit": 14799,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 30242,
+        "cost": 22362,
+        "profit": 7880,
+        "details": []
+      }
+    },
+    "qpula": {
+      "2025-06": {
+        "sales": 40702,
+        "cost": 34018,
+        "profit": 6684,
+        "details": []
+      },
+      "2025-07": {
+        "sales": 9571,
+        "cost": 7877,
+        "profit": 1694,
+        "details": []
+      }
+    },
+    "株式会社LiBro   Life     Works": {
+      "2025-08": {
+        "sales": 351,
+        "cost": 290,
+        "profit": 61,
+        "details": []
+      }
+    },
+    "ｃｏｓｙ          Ｖｅｌｖｅｔ": {
+      "2025-09": {
+        "sales": 5606,
+        "cost": 4421,
+        "profit": 1185,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ           ＣＯＣＯ": {
+      "2025-09": {
+        "sales": 18559,
+        "cost": 12499,
+        "profit": 6060,
+        "details": []
+      }
+    },
+    "株式会社LiBro    Life    Works": {
+      "2025-09": {
+        "sales": 51311,
+        "cost": 36293,
+        "profit": 15018,
+        "details": []
+      }
+    },
+    "ＬＡＣＯ          ｈａｉｒ": {
+      "2025-09": {
+        "sales": 26651,
+        "cost": 21716,
+        "profit": 4935,
+        "details": []
+      }
+    },
+    "株式会社LiBro    Life   Works": {
+      "2025-09": {
+        "sales": 20057,
+        "cost": 15223,
+        "profit": 4834,
+        "details": []
+      }
+    },
+    "Ｓａｌｏｎ         ＣＯＣＯ": {
+      "2025-09": {
+        "sales": 12247,
+        "cost": 8571,
+        "profit": 3676,
+        "details": []
+      },
+      "2026-01": {
+        "sales": 7056,
+        "cost": 6560,
+        "profit": 496,
         "details": []
       }
     },
@@ -2401,20 +7013,6 @@
         "details": []
       }
     },
-    "Riche hair": {
-      "2026-02": {
-        "sales": 2016,
-        "cost": 1412,
-        "profit": 604,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 5000,
-        "cost": 3413,
-        "profit": 1587,
-        "details": []
-      }
-    },
     "永田　竜一": {
       "2026-02": {
         "sales": 7330,
@@ -2529,34 +7127,6 @@
         "details": []
       }
     },
-    "江口美容所(株)": {
-      "2026-02": {
-        "sales": 16943,
-        "cost": 13428,
-        "profit": 3515,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 4504,
-        "cost": 3485,
-        "profit": 1019,
-        "details": []
-      }
-    },
-    "LiLiLash": {
-      "2026-02": {
-        "sales": 34500,
-        "cost": 25750,
-        "profit": 8750,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 10010,
-        "cost": 7007,
-        "profit": 3003,
-        "details": []
-      }
-    },
     "Roble": {
       "2026-02": {
         "sales": 31500,
@@ -2576,50 +7146,6 @@
         "sales": 24570,
         "cost": 13305,
         "profit": 11265,
-        "details": []
-      }
-    },
-    "ａｖｅ": {
-      "2026-02": {
-        "sales": 7823,
-        "cost": 6086,
-        "profit": 1737,
-        "details": []
-      },
-      "2026-03": {
-        "sales": 0,
-        "cost": 0,
-        "profit": 0,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 0,
-        "cost": 0,
-        "profit": 0,
-        "details": []
-      },
-      "2024-07": {
-        "sales": 9898,
-        "cost": 7796,
-        "profit": 2102,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 6045,
-        "cost": 4849,
-        "profit": 1196,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 8274,
-        "cost": 6374,
-        "profit": 1900,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 8580,
-        "cost": 6674,
-        "profit": 1906,
         "details": []
       }
     },
@@ -2706,70 +7232,6 @@
         "sales": 0,
         "cost": 0,
         "profit": 0,
-        "details": []
-      }
-    },
-    "ｎｏｖａ": {
-      "2024-07": {
-        "sales": 2496,
-        "cost": 1948,
-        "profit": 548,
-        "details": []
-      },
-      "2024-08": {
-        "sales": 9216,
-        "cost": 7244,
-        "profit": 1972,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 5312,
-        "cost": 4239,
-        "profit": 1073,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 17264,
-        "cost": 13548,
-        "profit": 3716,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 6853,
-        "cost": 5407,
-        "profit": 1446,
-        "details": []
-      },
-      "2024-12": {
-        "sales": 2196,
-        "cost": 1714,
-        "profit": 482,
-        "details": []
-      }
-    },
-    "ﾘﾗｸｾﾞｰｼｮﾝﾙｰﾑ ランプ": {
-      "2024-08": {
-        "sales": 38220,
-        "cost": 26208,
-        "profit": 12012,
-        "details": []
-      },
-      "2024-09": {
-        "sales": 10080,
-        "cost": 7056,
-        "profit": 3024,
-        "details": []
-      },
-      "2024-10": {
-        "sales": 23360,
-        "cost": 16904,
-        "profit": 6456,
-        "details": []
-      },
-      "2024-11": {
-        "sales": 23904,
-        "cost": 19746,
-        "profit": 4158,
         "details": []
       }
     },
