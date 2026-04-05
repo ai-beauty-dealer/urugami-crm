@@ -1424,12 +1424,12 @@
                         <span style="font-size:12px;">Gemini 2.5 Flash <small style="color:var(--text-dim);">(最速・低コスト)</small></span>
                     </label>
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="radio" name="ai-model" value="gemini-1.5-pro">
-                        <span style="font-size:12px;">Gemini 1.5 Pro <small style="color:var(--text-dim);">(高度な推論・分析)</small></span>
+                        <input type="radio" name="ai-model" value="gemini-2.5-pro">
+                        <span style="font-size:12px;">Gemini 2.5 Pro <small style="color:var(--text-dim);">(高度な推論・分析)</small></span>
                     </label>
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="radio" name="ai-model" value="gemini-2.5-pro">
-                        <span style="font-size:12px;">Gemini 2.5 Pro <small style="color:var(--text-dim);">(最高知能・戦略立案)</small></span>
+                        <input type="radio" name="ai-model" value="gemini-3.1-pro-preview">
+                        <span style="font-size:12px;">Gemini 3.1 Pro (Preview) <small style="color:var(--text-dim);">(現時点での最高知能)</small></span>
                     </label>
                 </div>
             </div>
@@ -1984,12 +1984,15 @@
             // 使用するモデルを選択されたもの、またはデフォルト(2.5-flash)に設定
             const MODEL = localStorage.getItem('crm_ai_model') || "gemini-2.5-flash"; 
 
+            // プレビューモデルの場合はv1betaエンドポイントを使用
+            const apiVersion = MODEL.includes('preview') ? 'v1beta' : 'v1';
+
             try {
                 btn.disabled = true;
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<span class="spinner"></span> 分析中...';
                 
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1/models/${MODEL}:generateContent?key=${key}`, {
+                const res = await fetch(`https://generativelanguage.googleapis.com/${apiVersion}/models/${MODEL}:generateContent?key=${key}`, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
                 });
