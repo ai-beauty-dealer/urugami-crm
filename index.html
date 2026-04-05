@@ -2822,11 +2822,14 @@ ${csvData}
 
             // 1.2.5 新機能の初期化
             detectDeadStock(name, data);
-            renderChart(salonMonths, month);
 
             const modal = document.getElementById('modal-salon-detail');
             modal.style.display = 'flex';
             document.body.classList.add('modal-open');
+            
+            // モーダル表示後に描画しないとChart.jsのサイズが崩れる（スマホ非表示対策）
+            renderChart(salonMonths, month);
+
             setTimeout(() => modal.classList.add('active'), 10);
 
             // Close on overlay click
