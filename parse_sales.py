@@ -29,14 +29,17 @@ def safe_float(value: str) -> float:
         return 0.0
 
 def get_report_month(date_str: str, salon_name: str) -> str:
-    """納品日から『計上月』を判定する"""
-    SALONS_20th = ["ピーブランズヘア大野城", "ピーブランズヘア春日", "Pブランズ姪浜", "出張理美容"]
+    """納品日から『計上月』を判定する (原則20日締め)"""
     try:
         dt = datetime.strptime(date_str, "%Y/%m/%d")
         year, month = dt.year, dt.month
-        if salon_name in SALONS_20th and dt.day >= 21:
+        # 原則20日締め: 21日以降は翌月扱い
+        # 例: 2026/01/21 -> 2026-02
+        if dt.day >= 21:
             month += 1
-            if month > 12: month = 1; year += 1
+            if month > 12:
+                month = 1
+                year += 1
         return f"{year}-{month:02d}"
     except:
         if len(date_str) >= 7: return date_str[:7].replace("/", "-")
