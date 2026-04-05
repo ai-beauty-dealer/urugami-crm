@@ -2335,6 +2335,8 @@
             ${getEffectiveInstructions('monthly', document.getElementById('monthly-instruction').value)}`;
 
             await callGeminiAPI(prompt, btn, resultBox, costEl);
+            // 解析完了後にフィードバックエリアを表示
+            document.getElementById('monthly-feedback-area').style.display = 'block';
         }
 
         // --- Individual Salon Detail & AI Analysis ---
@@ -2439,7 +2441,7 @@
             document.getElementById('salon-ai-result').style.display = 'none';
             document.getElementById('salon-ai-result').innerHTML = '';
             document.getElementById('salon-feedback-area').style.display = 'none';
-            document.getElementById('salon-instruction').value = '';
+            // 指示入力欄はリセットせず、前回の指示を表示したままにする（ユーザーの要望：常時表示）
 
             const modal = document.getElementById('modal-salon-detail');
             modal.style.display = 'flex';
@@ -2541,6 +2543,8 @@
             ${getEffectiveInstructions('salon', document.getElementById('salon-instruction').value)}`;
 
             await callGeminiAPI(prompt, btn, resultBox);
+            // 解析完了後にフィードバックエリアを表示
+            document.getElementById('salon-feedback-area').style.display = 'block';
         }
 
         function getPreviousMonth(monthStr) {
