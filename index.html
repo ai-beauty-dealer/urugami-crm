@@ -1416,6 +1416,23 @@
                 <label class="input-label">AI基本性格・共通ルール</label>
                 <textarea id="input-ai-global-rules" class="instruction-input" placeholder="例：利益率20%以下は厳しく指摘する。専門用語を多めにする。等"></textarea>
             </div>
+            <div class="input-group">
+                <label class="input-label">使用するAIモデル</label>
+                <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-2.5-flash" checked>
+                        <span style="font-size:12px;">Gemini 2.5 Flash <small style="color:var(--text-dim);">(最速・低コスト)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-1.5-pro">
+                        <span style="font-size:12px;">Gemini 1.5 Pro <small style="color:var(--text-dim);">(高度な推論・分析)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-2.5-pro">
+                        <span style="font-size:12px;">Gemini 2.5 Pro <small style="color:var(--text-dim);">(最高知能・戦略立案)</small></span>
+                    </label>
+                </div>
+            </div>
             <div class="backup-group">
                 <button class="btn-outline" onclick="exportMemory()">記憶をバックアップ(Export)</button>
                 <button class="btn-outline" onclick="importMemory()">記憶を復元(Import)</button>
@@ -1964,8 +1981,8 @@
             const key = localStorage.getItem('crm_gemini_key');
             if (!key) { alert('APIキーを設定してください（⚙️アイコンから）'); return; }
 
-            // 2026年4月現在の最新安定モデル gemini-2.5-flash に更新
-            const MODEL = "gemini-2.5-flash"; 
+            // 使用するモデルを選択されたもの、またはデフォルト(2.5-flash)に設定
+            const MODEL = localStorage.getItem('crm_ai_model') || "gemini-2.5-flash"; 
 
             try {
                 btn.disabled = true;
@@ -2280,6 +2297,12 @@
             document.getElementById('input-api-key').value = localStorage.getItem('crm_gemini_key') || '';
             document.getElementById('input-gas-url').value = localStorage.getItem('crm_gas_url') || GAS_API_URL;
             document.getElementById('input-ai-global-rules').value = aiMemory.global_instructions || '';
+            
+            // モデルの選択状態を復元
+            const savedModel = localStorage.getItem('crm_ai_model') || 'gemini-2.5-flash';
+            const modelRadio = document.querySelector(`input[name="ai-model"][value="${savedModel}"]`);
+            if (modelRadio) modelRadio.checked = true;
+
             const modal = document.getElementById('modal-settings');
             modal.style.display = 'flex';
             setTimeout(() => modal.classList.add('active'), 10);
@@ -2293,8 +2316,12 @@
             const key = document.getElementById('input-api-key').value.trim();
             const url = document.getElementById('input-gas-url').value.trim();
             const rules = document.getElementById('input-ai-global-rules').value.trim();
+            const model = document.querySelector('input[name="ai-model"]:checked').value;
+
             if (key) localStorage.setItem('crm_gemini_key', key);
             if (url) localStorage.setItem('crm_gas_url', url);
+            localStorage.setItem('crm_ai_model', model);
+            
             aiMemory.global_instructions = rules;
             saveMemory();
             alert('設定を保存しました');
