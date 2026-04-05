@@ -1701,8 +1701,12 @@
     </div>
 
     <script>
+        // ── Constants & API Configuration ──
+        const GAS_API_URL = localStorage.getItem('crm_gas_url') || 'https://script.google.com/macros/s/AKfycbxutj9vkwLDtQEYuRsxARvY2c6OJD0hYBh9BZR892Sf5fesbXQcU2S72zWj-FHsJC1P/exec';
+
         // ── State ──
         let DATA = null;
+        let MONTHLY_DATA = null;
         let selectedDay = null;
         let selectedSalon = null;
         let sortOrder = 'date';
@@ -1907,7 +1911,7 @@
         }
 
         // GAS Web App URL
-        const GAS_API_URL = localStorage.getItem('crm_gas_url') || 'https://script.google.com/macros/s/AKfycbxutj9vkwLDtQEYuRsxARvY2c6OJD0hYBh9BZR892Sf5fesbXQcU2S72zWj-FHsJC1P/exec';
+        // ── UI Helpers ──
 
         const DAY_LABELS = {
             Tuesday: '火曜日',
@@ -1916,8 +1920,6 @@
             Friday: '金曜日',
             Others: 'その他'
         };
-
-        let MONTHLY_DATA = null;
 
         // ── Price Override (localStorage) ──
         function loadPriceOverrides() {
