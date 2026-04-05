@@ -2758,20 +2758,24 @@
         // ── Data Loading ──
         async function loadData() {
             try {
+                // キャッシュ回避用のクエリパラメータ
+                const v = new Date().getTime();
+                console.log('データ取得開始 (v=' + v + ')...');
+                
                 const [resProducts, resMonthly] = await Promise.all([
-                    fetch('./salon_products.json'),
-                    fetch('./salon_monthly_sales.json')
+                    fetch('./salon_products.json?v=' + v),
+                    fetch('./salon_monthly_sales.json?v=' + v)
                 ]);
 
-                if (resProducts.ok) {
-                    DATA = await resProducts.json();
-                    console.log('商品データ読み込み完了:', DATA.generated_at);
+                if (!resProducts.ok || !resMonthly.ok) {
+                    throw new Error(`HTTP Error: Products=${resProducts.status}, Monthly=${resMonthly.status}`);
                 }
 
-                if (resMonthly.ok) {
-                    MONTHLY_DATA = await resMonthly.json();
-                    console.log('月次売上データ読み込み完了:', MONTHLY_DATA.generated_at);
-                }
+                DATA = await resProducts.json();
+                console.log('商品データ取得完了:', DATA.generated_at);
+                
+                MONTHLY_DATA = await resMonthly.json();
+                console.log('月次売上データ取得完了:', MONTHLY_DATA.generated_at);
                 
                 // データ読み込み後の初期化処理
                 initAnalysis();
@@ -2784,11 +2788,8 @@
                 console.log('初期化シーケンス完了');
             } catch (e) {
                 console.error('データ読み込み・初期化エラー:', e);
-                // fetch自体が成功していても、その後の処理で落ちた場合に備えて詳細を出す
                 const msg = e.message || '不明なエラー';
-                if (!DATA || !MONTHLY_DATA) {
-                    alert(`データの読み込みまたは初期化に失敗しました。(${msg})\nページを再読み込みしてください。`);
-                }
+                alert(`データの初期化に失敗しました。(${msg})\nページを再読み込みしてください。`);
             }
         }
 
