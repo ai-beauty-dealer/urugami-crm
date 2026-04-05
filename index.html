@@ -1677,10 +1677,14 @@
 
                 <div id="dead-stock-alert-area" style="display:none; margin-bottom:15px;"></div>
 
-                <div class="section-label">📊 推移データ</div>
-                <div id="detail-table-area" style="overflow-x:auto; margin-bottom: 20px;">
-                    <!-- JSで動的に追加 -->
-                </div>
+                <details style="margin-bottom: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 8px;">
+                    <summary style="padding: 10px; cursor: pointer; outline: none; list-style: none;">
+                        <div class="section-label" style="margin: 0; pointer-events: none;">📊 推移データ (過去6ヶ月)</div>
+                    </summary>
+                    <div id="detail-table-area" style="overflow-x:auto; padding: 0 10px 10px;">
+                        <!-- JSで動的に追加 -->
+                    </div>
+                </details>
 
                 <div id="detail-products-area" style="margin-bottom: 20px;">
                     <!-- 当月の主力商品を表示 -->
