@@ -55,8 +55,11 @@ OUTPUT_JSON = os.path.join(SCRIPT_DIR, "salon_products.json")
 MONTHLY_JSON = os.path.join(SCRIPT_DIR, "salon_monthly_sales.json")
 
 # Mapping data from customers.json
-with open(CUSTOMERS_JSON, "r", encoding="utf-8") as f:
-    customers_map = json.load(f)
+if os.path.exists(CUSTOMERS_JSON):
+    with open(CUSTOMERS_JSON, "r", encoding="utf-8") as f:
+        customers_map = json.load(f)
+else:
+    customers_map = {}
 all_salons = [{"name": s, "day": d} for d, ss in customers_map.items() for s in ss]
 
 def normalize(text: str) -> str:
@@ -137,15 +140,18 @@ def parse_sales_csv(filepath: str) -> list[dict]:
         with open(filepath, "r", encoding="cp932", errors="replace") as f:
             reader = csv.reader(f)
             for row in reader:
-                if len(row) < 27: continue
+                if len(row) < 30: continue # 粗利まで読み込むため30以上に
                 date_str, cname, slip_no = row[5].strip(), row[1].strip(), row[6].strip()
                 pcode, pname = row[17].strip(), row[18].strip()
                 qty, price, sales, cost = safe_int(row[20]), safe_int(row[21]), safe_int(row[23]), safe_float(row[26])
+                # ユーザー要求: 手動計算ではなく、28列目の粗利を正解として採用する
+                profit = safe_int(row[28])
+                
                 if not re.match(r'\d{4}/\d{2}/\d{2}', date_str) or cname in ("得意先名", "売 上 一 覧 表"): continue
                 records.append({
                     "customer_name": cname, "delivery_date": date_str, "slip_no": slip_no,
                     "product_code": pcode, "product_name": pname, "qty": qty, 
-                    "unit_price": price, "total_sales": sales, "unit_cost": cost, "total_profit": sales - int(cost * qty)
+                    "unit_price": price, "total_sales": sales, "unit_cost": cost, "total_profit": profit
                 })
     except Exception as e: print(f"  Warning: Error parsing CSV {filepath}: {e}")
     return records
@@ -157,18 +163,39 @@ def parse_sales_file(filepath: str) -> list[dict]:
         cur_c, cur_d, cur_s = None, None, None
         for line in lines:
             line = line.replace("\x0c", "")
+            # 伝票ヘッダー
             h_match = re.search(r'^\s{0,10}\d{5,10}\s+(.+?)\s{2,}[７7][６6][１1]\s+\S+\s+(\d{4}/\d{2}/\d{2})\s+(\d+)\s', line)
             if h_match:
                 cur_c, cur_d, cur_s = h_match.group(1).strip(), h_match.group(2), h_match.group(3)
                 continue
-            d_match = re.search(r'売\s+上\s+(\d+)\s+(.+?)\s+(\d+)\s+([\d,]+(?:\s+\*\*)?)\s+([\d,]+)\s+([\d,.]+)', line)
+            
+            # 売上行 (数量, 単価, 売上, 在庫単価, 原価, 粗利)
+            # 例: 売   上  ... 1   2,700   2,700   2,007.00   2,007   693
+            d_match = re.search(r'売\s+上\s+(\d+)\s+(.+?)\s+(\d+)\s+([\d,]+(?:\s+\*\*)?)\s+([\d,]+)\s+([\d,.]+)\s+([\d,]+)\s+([-\d,]+)', line)
             if d_match and cur_c:
-                qty, price, sales, cost = safe_int(d_match.group(3)), safe_int(d_match.group(4)), safe_int(d_match.group(5)), safe_float(d_match.group(6))
+                qty, price, sales, cost_unit, cost_total, profit = \
+                    safe_int(d_match.group(3)), safe_int(d_match.group(4)), safe_int(d_match.group(5)), \
+                    safe_float(d_match.group(6)), safe_int(d_match.group(7)), safe_int(d_match.group(8))
+                
                 records.append({
                     "customer_name": cur_c, "delivery_date": cur_d, "slip_no": cur_s,
                     "product_code": d_match.group(1), "product_name": re.sub(r"^\*\s*", "", d_match.group(2)).strip(),
-                    "qty": qty, "unit_price": price, "total_sales": sales, "unit_cost": cost, "total_profit": sales - int(cost * qty)
+                    "qty": qty, "unit_price": price, "total_sales": sales, "unit_cost": cost_unit, "total_profit": profit
                 })
+                continue
+                
+            # 伝引 (値引き) 行
+            # 例: 伝引(％) ... -975 ... -975
+            disc_match = re.search(r'伝引\(.+?\)\s+(\d+)\s+[-\*]*\s+([-\d,]+)\s{2,}.+?\s+([-\d,]+)', line)
+            if disc_match and cur_c:
+                # 伝引の金額は3番目の数値（右端の粗利/合計）を採用
+                disc_val = safe_int(disc_match.group(3))
+                records.append({
+                    "customer_name": cur_c, "delivery_date": cur_d, "slip_no": cur_s,
+                    "product_code": "DISCOUNT", "product_name": "伝引",
+                    "qty": 1, "unit_price": disc_val, "total_sales": disc_val, "unit_cost": 0, "total_profit": disc_val
+                })
+                
     except Exception as e: print(f"  Warning: Error parsing TXT {filepath}: {e}")
     return records
 
@@ -195,21 +222,25 @@ def run_parsing():
         sname = matched["name"] if matched else c
         month = get_report_month(d, sname)
         
-        # Product Map
-        if p not in prod_map[sname]: prod_map[sname][p] = {"product_code": p, "product_name": r["product_name"], "unit_price": r["unit_price"], "unit_cost": r["unit_cost"], "last_order_date": d}
-        elif datetime.strptime(d, "%Y/%m/%d") > datetime.strptime(prod_map[sname][p]["last_order_date"], "%Y/%m/%d"):
-            prod_map[sname][p].update({"last_order_date": d, "unit_price": r["unit_price"], "unit_cost": r["unit_cost"]})
+        # Product Map (伝引以外を商品マスタへ追加)
+        if p != "DISCOUNT":
+            if p not in prod_map[sname]: prod_map[sname][p] = {"product_code": p, "product_name": r["product_name"], "unit_price": r["unit_price"], "unit_cost": r["unit_cost"], "last_order_date": d}
+            elif datetime.strptime(d, "%Y/%m/%d") > datetime.strptime(prod_map[sname][p]["last_order_date"], "%Y/%m/%d"):
+                prod_map[sname][p].update({"last_order_date": d, "unit_price": r["unit_price"], "unit_cost": r["unit_cost"]})
         
         # Monthly Map
         if sname not in monthly["salons"]: monthly["salons"][sname] = {}
         if month not in monthly["salons"][sname]: monthly["salons"][sname][month] = {"sales": 0, "cost": 0, "profit": 0, "details": []}
         m = monthly["salons"][sname][month]
         m["sales"] += r["total_sales"]; m["profit"] += r["total_profit"]; m["cost"] = m["sales"] - m["profit"]
-        det = next((i for i in m["details"] if i["name"] == r["product_name"]), None)
+        
+        # Details へ追加 (伝引は月ごとに1つにまとめる)
+        pname = r["product_name"]
+        det = next((i for i in m["details"] if i["name"] == pname), None)
         if det: det["qty"] += r["qty"]; det["sales"] += r["total_sales"]
-        else: m["details"].append({"name": r["product_name"], "qty": r["qty"], "sales": r["total_sales"]})
+        else: m["details"].append({"name": pname, "qty": r["qty"], "sales": r["total_sales"]})
 
-    # Final logic
+    # Final logic (サロン別商品リスト)
     salon_final = {d: {} for d in customers_map.keys()}
     if "その他" not in salon_final: salon_final["その他"] = {}
     for sname, prods in prod_map.items():
@@ -220,7 +251,7 @@ def run_parsing():
     
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f: json.dump({"generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "customers": customers_map, "salons": salon_final}, f, ensure_ascii=False, indent=2)
     with open(MONTHLY_JSON, "w", encoding="utf-8") as f: json.dump(monthly, f, ensure_ascii=False, indent=2)
-    print("✅ 解析完了")
+    print(f"✅ 完成: records={len(unique)}")
     return True
 
 if __name__ == "__main__":

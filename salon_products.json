@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05 20:28:46",
+  "generated_at": "2026-04-05 20:37:53",
   "customers": {
     "Tuesday": [
       "フェイト",
@@ -14016,9 +14016,9 @@
         },
         {
           "product_code": "4030037",
-          "product_name": "ｽﾀ販LOA THE P UVｽﾌﾟﾚｰ BLANCHE",
-          "unit_price": 1,
-          "unit_cost": 2400.0,
+          "product_name": "ｽﾀ販LOA THE P UVｽﾌﾟﾚｰ BLANCHE 80",
+          "unit_price": 2400,
+          "unit_cost": 1784.0,
           "last_order_date": "2025/05/16"
         },
         {
@@ -16292,9 +16292,9 @@
         },
         {
           "product_code": "4030037",
-          "product_name": "ｽﾀ販LOA THE P UVｽﾌﾟﾚｰ BLANCHE",
-          "unit_price": 1,
-          "unit_cost": 2400.0,
+          "product_name": "ｽﾀ販LOA THE P UVｽﾌﾟﾚｰ BLANCHE 80",
+          "unit_price": 2400,
+          "unit_cost": 1784.0,
           "last_order_date": "2025/05/15"
         },
         {
