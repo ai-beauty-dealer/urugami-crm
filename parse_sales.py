@@ -17,13 +17,15 @@ def safe_int(value: str) -> int:
     except:
         return 0
 
-def normalize(text: str) -> str:
+def normalize_name(text: str) -> str:
+    """サロン名の表記ゆれ（全角・半角・連続スペース）を完全に排除する"""
     if not text: return ""
-    result = "".join([chr(ord(ch) - 0xFEE0) if 0xFF01 <= ord(ch) <= 0xFF5E else (" " if ch == "　" else ch) for ch in text])
-    return re.sub(r"\s+", " ", unicodedata.normalize("NFKC", result)).strip().upper()
+    # 全角を半角に、NFKCで正規化
+    result = unicodedata.normalize("NFKC", text)
+    # 連続する空白（全角含む）を半角スペース1つに置換し、前後を削る
+    return re.sub(r"\s+", " ", result).strip().upper()
 
 def get_report_month(date_str: str) -> str:
-    """納品日から『計上月』を判定する"""
     try:
         dt = datetime.strptime(date_str, "%Y/%m/%d")
         year, month = dt.year, dt.month
@@ -46,12 +48,23 @@ SALES_INDIVIDUAL_FILES = sorted(glob.glob(os.path.join(BASE_DIR, "99_Sbox/annual
 CUSTOMERS_JSON = os.path.join(BASE_DIR, "00_システム/devtools/route_report_tool/backend/customers.json")
 MONTHLY_JSON = os.path.join(SCRIPT_DIR, "salon_monthly_sales.json")
 
+# マスターの名寄せリストを作成
 if os.path.exists(CUSTOMERS_JSON):
     with open(CUSTOMERS_JSON, "r", encoding="utf-8") as f:
         customers_map = json.load(f)
 else:
     customers_map = {}
-all_salons = [{"name": s, "day": d} for d, ss in customers_map.items() for s in ss]
+# 名前 -> 正規化名 のマッピング
+name_to_canonical = {}
+for ss in customers_map.values():
+    if not ss: continue
+    canonical = ss[0] # 最初の名前を代表名とする
+    for s in ss:
+        name_to_canonical[normalize_name(s)] = canonical
+
+def get_canonical_name(raw_name: str) -> str:
+    norm = normalize_name(raw_name)
+    return name_to_canonical.get(norm, re.sub(r"\s+", " ", raw_name).strip())
 
 def parse_sales_csv(filepath: str) -> list[dict]:
     records = []
@@ -63,7 +76,7 @@ def parse_sales_csv(filepath: str) -> list[dict]:
                 date_str, cname = row[5].strip(), row[1].strip()
                 if not re.match(r'\d{4}/\d{2}/\d{2}', date_str) or cname in ("得意先名", "売 上 一 覧 表"): continue
                 records.append({
-                    "salon_name": cname,
+                    "salon_name": get_canonical_name(cname),
                     "month": get_report_month(date_str),
                     "sales": safe_int(row[23]),
                     "cost": safe_int(row[27]),
@@ -73,7 +86,6 @@ def parse_sales_csv(filepath: str) -> list[dict]:
     return records
 
 def parse_layout_file(filepath: str) -> list[dict]:
-    """layout.txt ファイルから「摘要（小計）」行をより柔軟に抽出する"""
     records = []
     try:
         with open(filepath, "r", encoding="utf-8") as f: lines = f.readlines()
@@ -82,26 +94,19 @@ def parse_layout_file(filepath: str) -> list[dict]:
             line = line.replace("\x0c", "").replace("\n", "")
             h_match = re.search(r'^\s{0,10}(\d{5,10})\s+(.+?)\s{2,}[７7][６6][１1]', line)
             if h_match: cur_c = h_match.group(2).strip(); continue
-            
-            # 2025年版対応: 非常に広いスペースや、コード付きの名称にも対応
-            # 例: 摘要    2966323:BS Hitomi Biyoshitsu ... 43,450 ... 32,585 ... 10,865
             abst_match = re.search(r'摘要\s+(?:[\d:]+)?(.*?)\s{5,}([-\d,]+)\s+([-\d,]+)\s+([-\d,]+)', line)
             if abst_match and cur_c:
-                sales = safe_int(abst_match.group(2))
-                cost = safe_int(abst_match.group(3))
-                profit = safe_int(abst_match.group(4))
-                if sales != 0 or profit != 0:
-                    records.append({
-                        "salon_name": cur_c,
-                        "sales": sales,
-                        "cost": cost,
-                        "profit": profit
-                    })
+                records.append({
+                    "salon_name": get_canonical_name(cur_c),
+                    "sales": safe_int(abst_match.group(2)),
+                    "cost": safe_int(abst_match.group(3)),
+                    "profit": safe_int(abst_match.group(4))
+                })
     except Exception as e: print(f"  Err TXT {filepath}: {e}")
     return records
 
 def run_parsing():
-    print("売上統合フェーズ開始 (パーサー強化モード)...")
+    print("売上統合フェーズ開始 (名寄せ強化モード)...")
     monthly = {"generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "salons": {}}
     month_to_file = {}
     for f in SALES_INDIVIDUAL_FILES:
@@ -109,28 +114,18 @@ def run_parsing():
         m = re.search(r'(\d{4})年(\d+)月', os.path.basename(f))
         if m:
             target = f"{m.group(1)}-{int(m.group(2)):02d}"
-            # 優先順位: layout.txt > TXT > CSV
             if target not in month_to_file or "_layout.txt" in f:
                 month_to_file[target] = f
 
     processed_months = set()
     for month, f in month_to_file.items():
         print(f"  {month}度のソース: {os.path.basename(f)}")
-        recs = []
-        if f.endswith(".txt"):
-            recs = parse_layout_file(f)
-            for r in recs: r["month"] = month
-        else:
-            recs = parse_sales_csv(f)
-        
+        recs = parse_layout_file(f) if f.endswith(".txt") else parse_sales_csv(f)
         for r in recs:
-            sname = normalize(r["salon_name"])
-            matched = next((s for s in all_salons if normalize(s["name"]) == sname), None)
-            display_name = matched["name"] if matched else r["salon_name"]
-            m_key = r["month"]
-            if display_name not in monthly["salons"]: monthly["salons"][display_name] = {}
-            if m_key not in monthly["salons"][display_name]: monthly["salons"][display_name][m_key] = {"sales": 0, "cost": 0, "profit": 0, "details": []}
-            item = monthly["salons"][display_name][m_key]
+            sname = r["salon_name"]; m_key = month if f.endswith(".txt") else r["month"]
+            if sname not in monthly["salons"]: monthly["salons"][sname] = {}
+            if m_key not in monthly["salons"][sname]: monthly["salons"][sname][m_key] = {"sales": 0, "cost": 0, "profit": 0, "details": []}
+            item = monthly["salons"][sname][m_key]
             item["sales"] += r["sales"]; item["profit"] += r["profit"]; item["cost"] += r["cost"]
         if recs: processed_months.add(month)
 
@@ -139,19 +134,14 @@ def run_parsing():
         master_recs = parse_sales_csv(SALES_MASTER_CSV)
         for r in master_recs:
             if r["month"] not in processed_months:
-                display_name = next((s["name"] for s in all_salons if normalize(s["name"]) == normalize(r["salon_name"])), r["salon_name"])
-                m_key = r["month"]
-                if display_name not in monthly["salons"]: monthly["salons"][display_name] = {}
-                if m_key not in monthly["salons"][display_name]: monthly["salons"][display_name][m_key] = {"sales": 0, "cost": 0, "profit": 0, "details": []}
-                item = monthly["salons"][display_name][m_key]
+                sname = r["salon_name"]; m_key = r["month"]
+                if sname not in monthly["salons"]: monthly["salons"][sname] = {}
+                if m_key not in monthly["salons"][sname]: monthly["salons"][sname][m_key] = {"sales": 0, "cost": 0, "profit": 0, "details": []}
+                item = monthly["salons"][sname][m_key]
                 item["sales"] += r["sales"]; item["profit"] += r["profit"]; item["cost"] += r["cost"]
 
     with open(MONTHLY_JSON, "w", encoding="utf-8") as f: json.dump(monthly, f, ensure_ascii=False, indent=2)
-    
-    total_jan25 = sum(sal.get("2025-01", {}).get("sales", 0) for sal in monthly["salons"].values())
-    total_jan26 = sum(sal.get("2026-01", {}).get("sales", 0) for sal in monthly["salons"].values())
-    print(f"🎉 検証 2025-01 総売上: {total_jan25:,}円 (目標: 3,073,270円)")
-    print(f"🎉 検証 2026-01 総売上: {total_jan26:,}円 (目標: 2,892,624円)")
+    print("🎉 名寄せ完了。")
     return True
 
 if __name__ == "__main__":
