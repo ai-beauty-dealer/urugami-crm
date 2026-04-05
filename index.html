@@ -2061,7 +2061,7 @@
             
             // 実行前シミュレーション
             const estTokens = Math.ceil(prompt.length * (localStorage.getItem('crm_token_coeff') || 1.25));
-            const selectedModel = localStorage.getItem('crm_ai_model') || 'gemini-2.0-flash';
+            const selectedModel = localStorage.getItem('crm_ai_model') || 'gemini-3-flash-preview';
             const estCost = calculateCost(estTokens, 0, selectedModel, config.exchangeRate); // 出力は不明なので入力のみ暫定
 
             if (config.apiPlan === 'free' && usageData.dailyRequests >= 1500) {
@@ -2096,6 +2096,7 @@
                 if (data.error) throw new Error(data.error.message);
 
                 const resultText = data.candidates[0].content.parts[0].text;
+                resultBox.style.display = 'block';
                 resultBox.innerHTML = formatMarkdown(resultText);
                 resultBox.classList.add('slide-in');
 
