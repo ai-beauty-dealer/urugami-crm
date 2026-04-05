@@ -2769,9 +2769,16 @@
                     MONTHLY_DATA = await resMonthly.json();
                     console.log('月次売上データ読み込み完了:', MONTHLY_DATA.generated_at);
                 }
+                
+                // データ読み込み後の初期化処理
+                initAnalysis();
+                renderAnalysisHistory();
+                selectDay('Tuesday'); // 初期表示
+                updateUsageIndicators();
+                
             } catch (e) {
                 console.error('データ読み込みエラー:', e);
-                if (!DATA) alert('データファイルの読み込みに失敗しました。');
+                if (!DATA) alert('データファイルの読み込みに失敗しました。サーバーが起動しているか、ファイルが存在するか確認してください。');
             }
         }
 
@@ -3487,8 +3494,7 @@
         // ── Init ──
         loadMemory();
         loadPriceOverrides();
-        loadData();
-        updateUsageIndicators();
+        loadData(); // loadData内の await 後に初期化が走る
 
         // Character Count Listeners
         ['monthly-instruction', 'salon-instruction'].forEach(id => {

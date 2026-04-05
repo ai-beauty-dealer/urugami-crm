@@ -20,10 +20,12 @@ def safe_int(value: str) -> int:
 def normalize_name(text: str) -> str:
     """サロン名の表記ゆれ（全角・半角・連続スペース・記号）を排除する"""
     if not text: return ""
+    # 特殊な置換（英字表記と日本語表記の混在対策など）
+    text = text.replace("P-brandshair", "ピーブランズヘア").replace("komorebi", "").replace("onojo", "大野城")
     # 全角を半角に、NFKCで正規化（＆や・なども標準化される）
     result = unicodedata.normalize("NFKC", text)
     # 記号の除去（任意：名寄せの精度を上げるため、特定の記号を消去または置換）
-    result = result.replace("・", "").replace(" ", "").replace("　", "")
+    result = re.sub(r'[\(\)\[\]（）［］【】\s　・\-]+', '', result)
     return result.strip().upper()
 
 def get_report_month(date_str: str) -> str:
