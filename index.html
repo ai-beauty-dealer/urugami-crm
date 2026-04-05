@@ -1988,7 +1988,10 @@
 
         function initAnalysis() {
             const select = document.getElementById('analysis-month-select');
-            if (!select || select.options.length > 1) return; // すでに初期化済みならスキップ
+            if (!select) return;
+            
+            // 既存の選択肢をクリアして初期状態に戻す（重複防止）
+            select.innerHTML = '<option value="">月を選択</option>';
 
             if (MONTHLY_DATA && MONTHLY_DATA.salons) {
                 // 利用可能な月を抽出
@@ -2773,12 +2776,19 @@
                 // データ読み込み後の初期化処理
                 initAnalysis();
                 renderAnalysisHistory();
-                selectDay('Tuesday'); // 初期表示
+                
+                // 既に選択されている日があればそれを優先、なければ火曜日
+                selectDay(selectedDay || 'Tuesday'); 
                 updateUsageIndicators();
                 
+                console.log('初期化シーケンス完了');
             } catch (e) {
-                console.error('データ読み込みエラー:', e);
-                if (!DATA) alert('データファイルの読み込みに失敗しました。サーバーが起動しているか、ファイルが存在するか確認してください。');
+                console.error('データ読み込み・初期化エラー:', e);
+                // fetch自体が成功していても、その後の処理で落ちた場合に備えて詳細を出す
+                const msg = e.message || '不明なエラー';
+                if (!DATA || !MONTHLY_DATA) {
+                    alert(`データの読み込みまたは初期化に失敗しました。(${msg})\nページを再読み込みしてください。`);
+                }
             }
         }
 
