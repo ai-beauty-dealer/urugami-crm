@@ -733,6 +733,165 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* ── AI Instruction & Feedback UI ── */
+        .instruction-area {
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .instruction-input {
+            width: 100%;
+            min-height: 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--text);
+            font-size: 13px;
+            font-family: inherit;
+            resize: vertical;
+            outline: none;
+            transition: all 0.2s;
+            line-height: 1.5;
+        }
+
+        .instruction-input:focus {
+            border-color: var(--primary);
+            background: rgba(124, 106, 247, 0.05);
+            box-shadow: 0 0 15px rgba(124, 106, 247, 0.1);
+        }
+
+        .instruction-input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .instruction-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            padding: 0 4px;
+        }
+
+        .instruction-count {
+            font-size: 10px;
+            color: var(--text-dim);
+        }
+
+        .instruction-preview-btn {
+            font-size: 10px;
+            color: var(--primary-light);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 0;
+        }
+
+        .feedback-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            display: none; /* 回答後に出現 */
+        }
+
+        .feedback-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quick-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .quick-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-tag:hover {
+            border-color: var(--primary);
+            color: var(--text);
+            background: var(--primary-glow);
+        }
+
+        .quick-tag.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .instruction-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .instruction-toggle input {
+            cursor: pointer;
+        }
+
+        .instruction-toggle span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .backup-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .btn-outline {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-light);
+            color: var(--text);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .prompt-preview-modal {
+            background: rgba(10, 10, 15, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--primary);
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--text);
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
         /* ── Analysis Mode ── */
         #mode-analysis { display: none; }
         .analysis-summary {
@@ -1168,13 +1327,23 @@
 
         <!-- ===== SALES ANALYSIS MODE ===== -->
         <div id="mode-analysis" style="display:none;">
-            <div style="margin-bottom:20px; display:flex; gap:12px; align-items:center;">
-                <select id="analysis-month-select" class="input-field" style="max-width:200px;" onchange="runAnalysis()">
-                    <option value="">月を選択</option>
-                </select>
-                <button class="btn-monthly-ai" id="btn-monthly-ai" onclick="analyzeFullMonth()" style="max-width:180px; margin-top:0;">
-                    <span>✨ AI分析</span>
-                </button>
+            <div style="margin-bottom:20px;">
+                <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+                    <select id="analysis-month-select" class="input-field" style="max-width:200px;" onchange="runAnalysis()">
+                        <option value="">月を選択</option>
+                    </select>
+                    <button class="btn-monthly-ai" id="btn-monthly-ai" onclick="analyzeFullMonth()" style="max-width:180px; margin-top:0;">
+                        <span>✨ AI分析</span>
+                    </button>
+                </div>
+                <!-- 追加指示エリア -->
+                <div class="instruction-area">
+                    <textarea id="monthly-instruction" class="instruction-input" placeholder="今回の分析への追加指示（例：特定の商材を重点的に見てほしい、等）..."></textarea>
+                    <div class="instruction-meta">
+                        <span class="instruction-count" id="monthly-instruction-count">0 characters</span>
+                        <button class="instruction-preview-btn" onclick="previewPrompt('monthly')">適用される全指示を確認</button>
+                    </div>
+                </div>
             </div>
 
             <div id="analysis-empty" class="empty-state">
@@ -1188,6 +1357,18 @@
                 </div>
 
                 <div id="monthly-ai-result" class="ai-result-box"></div>
+                <!-- フィードバックエリア -->
+                <div id="monthly-feedback-area" class="feedback-container">
+                    <div class="feedback-label">💡 AIの解釈を修正して覚えさせる</div>
+                    <div class="quick-tags">
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', '数値が違う')">数値が違う</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', 'トーンを修正')">トーンを修正</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', 'この商品を詳しく')">この商品を詳しく</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', '提案を具体的に')">提案を具体的に</button>
+                    </div>
+                    <textarea id="monthly-feedback-input" class="instruction-input" style="min-height:60px;" placeholder="具体的にどう修正すべきか入力してください..."></textarea>
+                    <button class="btn-primary" style="margin-top:8px; padding:6px 12px; width:auto; font-size:11px;" onclick="saveFeedback('monthly')">修正を記憶させる</button>
+                </div>
                 <div id="monthly-api-cost" class="api-status"></div>
 
                 <div style="margin-top:30px;">
@@ -1230,6 +1411,14 @@
                 <label class="input-label">日報用 GAS API URL</label>
                 <input type="text" id="input-gas-url" class="input-field" placeholder="https://script.google.com/...">
             </div>
+            <div class="input-group">
+                <label class="input-label">AI基本性格・共通ルール</label>
+                <textarea id="input-ai-global-rules" class="instruction-input" placeholder="例：利益率20%以下は厳しく指摘する。専門用語を多めにする。等"></textarea>
+            </div>
+            <div class="backup-group">
+                <button class="btn-outline" onclick="exportMemory()">記憶をバックアップ(Export)</button>
+                <button class="btn-outline" onclick="importMemory()">記憶を復元(Import)</button>
+            </div>
             <button class="btn-primary" onclick="saveSettings()">設定を保存</button>
         </div>
     </div>
@@ -1268,10 +1457,34 @@
                     <!-- 当月の主力商品を表示 -->
                 </div>
 
+                <div class="instruction-area">
+                    <label class="instruction-toggle">
+                        <input type="checkbox" id="salon-use-history" checked>
+                        <span>過去の修正（記憶）を活用する</span>
+                    </label>
+                    <textarea id="salon-instruction" class="instruction-input" placeholder="このサロンへの個別指示..."></textarea>
+                    <div class="instruction-meta">
+                        <span class="instruction-count" id="salon-instruction-count">0 characters</span>
+                        <button class="instruction-preview-btn" onclick="previewPrompt('salon')">全指示を確認</button>
+                    </div>
+                </div>
+
                 <button class="btn-salon-ai" id="btn-salon-ai" onclick="analyzeSalonSpecific()">
                     ✨ このサロンをAI分析
                 </button>
                 <div id="salon-ai-result" class="ai-result-box"></div>
+                <!-- フィードバックエリア -->
+                <div id="salon-feedback-area" class="feedback-container">
+                    <div class="feedback-label">💡 AIの解釈を修正して覚えさせる</div>
+                    <div class="quick-tags">
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', '数値が違う')">数値が違う</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', '店販を重視')">店販を重視</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', 'リスクを指摘')">リスクを指摘</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', '会話調で')">会話調で</button>
+                    </div>
+                    <textarea id="salon-feedback-input" class="instruction-input" style="min-height:60px;" placeholder="具体的にどう修正すべきか入力してください..."></textarea>
+                    <button class="btn-primary" style="margin-top:8px; padding:6px 12px; width:auto; font-size:11px;" onclick="saveFeedback('salon')">修正を記憶させる</button>
+                </div>
             </div>
         </div>
     </div>
@@ -1304,6 +1517,140 @@
         let sortOrder = 'date';
         let currentMode = 'salon'; // 'salon' | 'product' | 'analysis'
         let priceOverrides = {}; // localStorage保存の価格オーバーライド
+
+        // AI Memory Layer
+        let aiMemory = {
+            global_instructions: "",
+            feedback_history: [], // 全体履歴
+            salon_specific: {} // サロン名: { history: [] }
+        };
+
+        function loadMemory() {
+            try {
+                const saved = localStorage.getItem('crm_ai_memory');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    aiMemory = { ...aiMemory, ...parsed };
+                }
+            } catch (e) { console.error('Memory load error:', e); }
+        }
+
+        function saveMemory() {
+            localStorage.setItem('crm_ai_memory', JSON.stringify(aiMemory));
+        }
+
+        function exportMemory() {
+            const blob = new Blob([JSON.stringify(aiMemory, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `crm_ai_memory_${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+        }
+
+        function importMemory() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = re => {
+                    try {
+                        const data = JSON.parse(re.target.result);
+                        aiMemory = data;
+                        saveMemory();
+                        alert('記憶を復元しました');
+                        location.reload();
+                    } catch (err) { alert('不正なファイル形式です'); }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        function addFeedbackTag(type, text) {
+            const inputId = type === 'monthly' ? 'monthly-feedback-input' : 'salon-feedback-input';
+            const input = document.getElementById(inputId);
+            const current = input.value.trim();
+            input.value = current ? `${current}, ${text}` : text;
+        }
+
+        function saveFeedback(type) {
+            const inputId = type === 'monthly' ? 'monthly-feedback-input' : 'salon-feedback-input';
+            const input = document.getElementById(inputId);
+            const text = input.value.trim();
+            if (!text) return;
+
+            const entry = { text, date: new Date().toISOString() };
+            
+            if (type === 'monthly') {
+                aiMemory.feedback_history.unshift(entry);
+                if (aiMemory.feedback_history.length > 10) aiMemory.feedback_history.pop();
+            } else {
+                const sName = currentDetailSalon;
+                if (!aiMemory.salon_specific[sName]) aiMemory.salon_specific[sName] = { history: [] };
+                aiMemory.salon_specific[sName].history.unshift(entry);
+                if (aiMemory.salon_specific[sName].history.length > 5) aiMemory.salon_specific[sName].history.pop();
+            }
+            
+            saveMemory();
+            input.value = "";
+            alert('修正内容を記憶しました。次回の分析に反映されます。');
+            document.getElementById(`${type}-feedback-area`).style.display = 'none';
+        }
+
+        function getEffectiveInstructions(type, currentInput) {
+            let parts = [];
+            
+            // 1. Current (Highest priority)
+            if (currentInput) {
+                parts.push(`【★★★最優先指令：今回の特別指示】\n${currentInput}`);
+            }
+
+            // 2. Feedback History
+            let history = [];
+            if (type === 'salon') {
+                const useHistory = document.getElementById('salon-use-history').checked;
+                if (useHistory) {
+                    const sName = currentDetailSalon;
+                    const specific = aiMemory.salon_specific[sName]?.history || [];
+                    history = [...specific, ...aiMemory.feedback_history].slice(0, 5);
+                }
+            } else {
+                history = aiMemory.feedback_history.slice(0, 5);
+            }
+
+            if (history.length > 0) {
+                parts.push(`【★★重要：過去のフィードバック履歴（学習済み事項）】\n${history.map(h => `- ${h.text}`).join('\n')}`);
+            }
+
+            // 3. Global Rules
+            if (aiMemory.global_instructions) {
+                parts.push(`【★基本性格・共通ルール】\n${aiMemory.global_instructions}`);
+            }
+
+            return parts.length > 0 ? "\n---\n" + parts.join('\n\n') : "";
+        }
+
+        function previewPrompt(type) {
+            const inputId = type === 'monthly' ? 'monthly-instruction' : 'salon-instruction';
+            const current = document.getElementById(inputId).value;
+            const instructions = getEffectiveInstructions(type, current);
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay active';
+            overlay.innerHTML = `
+                <div class="modal">
+                    <div class="modal-header">
+                        <h2 class="modal-title">適用される指示プレビュー</h2>
+                        <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+                    </div>
+                    <div class="prompt-preview-modal">${instructions || '適用される指示はありません'}</div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        }
 
         // GAS Web App URL
         const GAS_API_URL = localStorage.getItem('crm_gas_url') || 'https://script.google.com/macros/s/AKfycbxutj9vkwLDtQEYuRsxARvY2c6OJD0hYBh9BZR892Sf5fesbXQcU2S72zWj-FHsJC1P/exec';
@@ -1645,6 +1992,11 @@
                     const text = resData.candidates[0].content.parts[0].text;
                     resultBox.innerHTML = formatMarkdown(text);
                     resultBox.style.display = 'block';
+                    
+                    // 回答後にフィードバックエリアを表示
+                    const type = resultBox.id.includes('monthly') ? 'monthly' : 'salon';
+                    document.getElementById(`${type}-feedback-area`).style.display = 'block';
+                    
                     if (costEl) costEl.textContent = `完了 (${MODEL} / Tokens: ${resData.usageMetadata?.totalTokenCount || 0})`;
                 } else { 
                     throw new Error(resData.error?.message || 'AIからの応答がありませんでした。'); 
@@ -1695,7 +2047,8 @@
             1. 昨対比や利益率の観点から、売上の「増減の原因」をデータから推測し指摘せよ。
             2. 動向にあるブランド（LOA, エマルジョン, プテロ等）の実績に基づいた分析を含める。
             3. 現場で即役立つ具体的なフォロー提案を1つ含める。
-            日本語で、マークダウン形式で出力。`;
+            日本語で、マークダウン形式で出力。
+            ${getEffectiveInstructions('monthly', document.getElementById('monthly-instruction').value)}`;
 
             await callGeminiAPI(prompt, btn, resultBox, costEl);
         }
@@ -1801,6 +2154,8 @@
             // Reset AI area
             document.getElementById('salon-ai-result').style.display = 'none';
             document.getElementById('salon-ai-result').innerHTML = '';
+            document.getElementById('salon-feedback-area').style.display = 'none';
+            document.getElementById('salon-instruction').value = '';
 
             const modal = document.getElementById('modal-salon-detail');
             modal.style.display = 'flex';
@@ -1898,7 +2253,8 @@
             2. **具体アクション**: 「この商品を」「この理由で」「この時期に」提案せよ、という具体的なスクリプト案を含める。
             3. **リスク管理**: 注文が減っている商品のフォローや、利益率向上のための店販提案など、コンサルティング視点を含める。
 
-            出力は日本語、簡潔なマークダウン形式で。専門用語を使いつつも、営業担当者が自信を持って話せるスタイルで。`;
+            出力は日本語、簡潔なマークダウン形式で。専門用語を使いつつも、営業担当者が自信を持って話せるスタイルで。
+            ${getEffectiveInstructions('salon', document.getElementById('salon-instruction').value)}`;
 
             await callGeminiAPI(prompt, btn, resultBox);
         }
@@ -1920,6 +2276,7 @@
         function openSettings() {
             document.getElementById('input-api-key').value = localStorage.getItem('crm_gemini_key') || '';
             document.getElementById('input-gas-url').value = localStorage.getItem('crm_gas_url') || GAS_API_URL;
+            document.getElementById('input-ai-global-rules').value = aiMemory.global_instructions || '';
             const modal = document.getElementById('modal-settings');
             modal.style.display = 'flex';
             setTimeout(() => modal.classList.add('active'), 10);
@@ -1932,8 +2289,11 @@
         function saveSettings() {
             const key = document.getElementById('input-api-key').value.trim();
             const url = document.getElementById('input-gas-url').value.trim();
+            const rules = document.getElementById('input-ai-global-rules').value.trim();
             if (key) localStorage.setItem('crm_gemini_key', key);
             if (url) localStorage.setItem('crm_gas_url', url);
+            aiMemory.global_instructions = rules;
+            saveMemory();
             alert('設定を保存しました');
             location.reload();
         }
@@ -2638,8 +2998,20 @@
         };
 
         // ── Init ──
+        loadMemory();
         loadPriceOverrides();
         loadData();
+
+        // Character Count Listeners
+        ['monthly-instruction', 'salon-instruction'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', () => {
+                    const countEl = document.getElementById(id + '-count');
+                    if (countEl) countEl.textContent = `${el.value.length} characters`;
+                });
+            }
+        });
     </script>
 </body>
 
