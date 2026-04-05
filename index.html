@@ -2095,6 +2095,14 @@
                 const data = await response.json();
                 if (data.error) throw new Error(data.error.message);
 
+                // 安全フィルター等で内容が空の場合のハンドリング
+                if (!data.candidates || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                    if (data.candidates && data.candidates[0].finishReason === 'SAFETY') {
+                        throw new Error('安全性フィルターにより内容がブロックされました。プロンプトを調整してください。');
+                    }
+                    throw new Error('AIからの応答が空でした。もう一度お試しください。');
+                }
+
                 const resultText = data.candidates[0].content.parts[0].text;
                 resultBox.style.display = 'block';
                 resultBox.innerHTML = formatMarkdown(resultText);
@@ -2121,6 +2129,7 @@
 
             } catch (error) {
                 console.error('Gemini API Error:', error);
+                resultBox.style.display = 'block'; // エラー時も確実に表示
                 resultBox.innerHTML = `<div class="insight-box alert"><div class="insight-title">Error</div><div class="insight-text">${error.message === 'Failed to fetch' ? '通信エラーまたはレート制限に達しました' : error.message}</div></div>`;
             } finally {
                 btn.innerHTML = originalBtnHtml;
