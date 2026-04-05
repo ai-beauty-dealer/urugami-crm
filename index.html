@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --bg: #0a0a0f;
@@ -1666,6 +1667,16 @@
                     </div>
                 </div>
 
+                <div id="chart-tabs" class="report-tabs" style="margin-bottom:10px;">
+                    <button class="report-tab active" id="tab-chart-donut" onclick="switchSalonChart('donut')">商品構成比</button>
+                    <button class="report-tab" id="tab-chart-line" onclick="switchSalonChart('line')">売上推移</button>
+                </div>
+                <div style="position: relative; height:200px; width:100%; margin-bottom:15px;" id="salon-chart-container">
+                    <canvas id="salonChart"></canvas>
+                </div>
+
+                <div id="dead-stock-alert-area" style="display:none; margin-bottom:15px;"></div>
+
                 <div class="section-label">📊 推移データ</div>
                 <div id="detail-table-area" style="overflow-x:auto; margin-bottom: 20px;">
                     <!-- JSで動的に追加 -->
@@ -1691,6 +1702,10 @@
                     ✨ このサロンをAI分析
                 </button>
                 <div id="salon-ai-result" class="ai-result-box"></div>
+                <div id="quick-export-bar" style="display:none; gap:10px; margin-top:10px; margin-bottom:10px;">
+                    <button class="btn-primary" style="padding: 8px 12px; font-size: 11px; flex: 1; background: rgba(124, 106, 247, 0.2); border: 1px solid var(--primary);" onclick="exportSalonAI('copy')">📋 コピー</button>
+                    <button class="btn-primary" style="padding: 8px 12px; font-size: 11px; flex: 1; background: #06c755; border: 1px solid #06c755; color: white;" onclick="exportSalonAI('line')">💬 LINEへ出力</button>
+                </div>
                 <div id="salon-usage-badge" style="text-align:center; font-size:10px; color:var(--text-dim); margin-top:4px;"></div>
                 <!-- フィードバックエリア -->
                 <div id="salon-feedback-area" class="feedback-container">
@@ -2796,7 +2811,12 @@ ${csvData}
             document.getElementById('salon-ai-result').style.display = 'none';
             document.getElementById('salon-ai-result').innerHTML = '';
             document.getElementById('salon-feedback-area').style.display = 'none';
+            document.getElementById('quick-export-bar').style.display = 'none';
             // 指示入力欄はリセットせず、前回の指示を表示したままにする（ユーザーの要望：常時表示）
+
+            // 1.2.5 新機能の初期化
+            detectDeadStock(name, data);
+            renderChart(salonMonths, month);
 
             const modal = document.getElementById('modal-salon-detail');
             modal.style.display = 'flex';
@@ -2898,8 +2918,9 @@ ${csvData}
             ${getEffectiveInstructions('salon', document.getElementById('salon-instruction').value)}`;
 
             await callGeminiAPI(prompt, btn, resultBox);
-            // 解析完了後にフィードバックエリアを表示
+            // 解析完了後にフィードバックエリア等を表示
             document.getElementById('salon-feedback-area').style.display = 'block';
+            document.getElementById('quick-export-bar').style.display = 'flex';
         }
 
         function getPreviousMonth(monthStr) {
@@ -3721,8 +3742,179 @@ ${csvData}
             }
         }
 
+        // ── 1.2.5 Features ──
+        let currentSalonChart = null;
+        let lastChartData = null;
+
+        function renderChart(salonMonths, currentMonth) {
+            lastChartData = { salonMonths, currentMonth };
+            switchSalonChart('donut'); // 初期状態をドーナツにする
+        }
+
+        function switchSalonChart(type) {
+            if (!lastChartData) return;
+            const { salonMonths, currentMonth } = lastChartData;
+            
+            document.getElementById('tab-chart-donut').classList.remove('active');
+            document.getElementById('tab-chart-line').classList.remove('active');
+            document.getElementById('tab-chart-' + type).classList.add('active');
+
+            const ctx = document.getElementById('salonChart');
+            if (!ctx) return;
+            
+            if (currentSalonChart) {
+                currentSalonChart.destroy();
+            }
+
+            Chart.defaults.color = '#7a7994'; // var(--text-muted)
+
+            if (type === 'donut') {
+                const data = salonMonths[currentMonth] || {};
+                const products = data.details || [];
+                const topProducts = [...products].sort((a, b) => b.sales - a.sales).slice(0, 10);
+                
+                const labels = topProducts.map(p => p.name);
+                const values = topProducts.map(p => p.sales);
+
+                currentSalonChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: [
+                                '#7c6af7', '#a095ff', '#34d399', '#fbbf24', '#f87171',
+                                '#4a4a6a', '#9ca3af', '#60a5fa', '#818cf8', '#c084fc'
+                            ],
+                            borderWidth: 0,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: { boxWidth: 10, font: { size: 10 } }
+                            }
+                        }
+                    }
+                });
+            } else if (type === 'line') {
+                const allMonths = Object.keys(salonMonths).sort();
+                const sliceIdx = allMonths.indexOf(currentMonth);
+                const trendMonths = allMonths.slice(Math.max(0, sliceIdx - 5), sliceIdx + 1); // Last 6 months
+
+                const salesData = trendMonths.map(m => salonMonths[m] ? salonMonths[m].sales || 0 : 0);
+                const profitData = trendMonths.map(m => salonMonths[m] ? salonMonths[m].profit || 0 : 0);
+
+                currentSalonChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: trendMonths,
+                        datasets: [
+                            {
+                                label: '売上高',
+                                data: salesData,
+                                borderColor: '#7c6af7',
+                                backgroundColor: 'rgba(124, 106, 247, 0.1)',
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: '利益額',
+                                data: profitData,
+                                borderColor: '#34d399',
+                                backgroundColor: 'transparent',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                fill: false,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+                            x: { grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                        },
+                        plugins: { legend: { position: 'top' } }
+                    }
+                });
+            }
+        }
+
+        function detectDeadStock(salonName, currentData) {
+            const area = document.getElementById('dead-stock-alert-area');
+            if (!area) return;
+            
+            area.style.display = 'none';
+            area.innerHTML = '';
+            
+            const salonMonths = MONTHLY_DATA?.salons?.[salonName] || {};
+            // 最新から過去への月リスト
+            const allMonths = Object.keys(salonMonths).sort().reverse(); 
+            
+            // 60日（約2ヶ月）の判定：前々月(n-2)以前には購入があったが、当月(n)および前月(n-1)に購入がないもの
+            if (allMonths.length < 3) return; 
+
+            const currentObj = salonMonths[allMonths[0]]?.details || [];
+            const prevObj = salonMonths[allMonths[1]]?.details || [];
+            const prev2Obj = salonMonths[allMonths[2]]?.details || [];
+
+            const recentNames = new Set([...currentObj.map(p=>p.name), ...prevObj.map(p=>p.name)]);
+            const deadProducts = [];
+            
+            prev2Obj.forEach(p => {
+                if (!recentNames.has(p.name)) {
+                    deadProducts.push(p);
+                }
+            });
+
+            if (deadProducts.length > 0) {
+                const topDead = deadProducts.sort((a,b) => b.sales - a.sales).slice(0, 3);
+                area.style.display = 'block';
+                area.innerHTML = `
+                    <div class="insight-box alert" style="margin-bottom:0;">
+                        <div class="insight-title">⚠️ 失客アラート (60日超)</div>
+                        <div class="insight-text">
+                            過去の主力商品が直近60日以上発注されていません。他社へ切り替わった可能性があります。<br>
+                            <span style="font-weight:700; color:var(--red);">
+                            ${topDead.map(p => `・${escapeHtml(p.name)}`).join('<br>')}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function exportSalonAI(type) {
+            const aiResult = document.getElementById('salon-ai-result');
+            if (!aiResult) return;
+            
+            const text = aiResult.innerText;
+            if (!text.trim()) return;
+
+            const prefix = "お疲れ様です！今月のデータが出ました📊\n\n";
+            const fullText = prefix + text;
+
+            if (type === 'copy') {
+                navigator.clipboard.writeText(fullText).then(() => {
+                    alert('クリップボードにコピーしました！');
+                }).catch(err => {
+                    alert('コピーに失敗しました: ' + err);
+                });
+            } else if (type === 'line') {
+                const encoded = encodeURIComponent(fullText);
+                window.location.href = 'line://msg/text/?' + encoded;
+            }
+        }
+
         // ── GAS URL設定ヘルパー ──
-        // ブラウザコンソールで setGasUrl('https://script.google.com/macros/s/XXXXX/exec') を実行
         window.setGasUrl = function (url) {
             localStorage.setItem('crm_gas_url', url);
             location.reload();
