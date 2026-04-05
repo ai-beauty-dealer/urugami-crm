@@ -2246,17 +2246,53 @@
 
         
         
-        // ── Global AI Query Logic ──
+        
+        // ── Global AI Query Logic (Polished) ──
         let globalChatHistory = [];
+
+        // リロード時に履歴を復元する
+        function loadGlobalChat() {
+            const saved = localStorage.getItem('crm_global_chat_history');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    globalChatHistory = parsed.history;
+                    
+                    const historyArea = document.getElementById('global-chat-history');
+                    historyArea.innerHTML = '<div style="text-align:center; color:var(--text-dim); font-size:12px; margin-top: 20px;">前回のセッションから復元されました</div>';
+                    
+                    parsed.uiMessages.forEach(msg => {
+                        renderChatBubble(msg.role, msg.text);
+                    });
+                } catch(e) { console.error('履歴読み込み失敗', e); }
+            }
+        }
+
+        function saveGlobalChat(uiMessages) {
+            localStorage.setItem('crm_global_chat_history', JSON.stringify({
+                history: globalChatHistory,
+                uiMessages: uiMessages
+            }));
+        }
+
+        // 保存用と描画用の分離
+        let currentUIMessages = [];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // 他のDOMツリー構築完了後にロード
+            setTimeout(loadGlobalChat, 500);
+        });
 
         function clearGlobalChat() {
             globalChatHistory = [];
+            currentUIMessages = [];
+            localStorage.removeItem('crm_global_chat_history');
             const historyArea = document.getElementById('global-chat-history');
             historyArea.innerHTML = `<div style="text-align:center; color:var(--text-dim); font-size:12px; margin-top: 20px;">対話履歴をリセットしました。新たな分析をスタートできます。</div>`;
             document.getElementById('global-ai-instruction').value = '';
         }
 
-        function addChatMessage(role, text) {
+        function renderChatBubble(role, text) {
             const historyArea = document.getElementById('global-chat-history');
             const msgDiv = document.createElement('div');
             
@@ -2268,7 +2304,6 @@
                 msgDiv.classList.add('ai-response-content');
                 msgDiv.innerHTML = formatMarkdown(text);
                 
-                // overflow table styles injection directly to inside tables just in case
                 const tables = msgDiv.querySelectorAll('table');
                 tables.forEach(t => t.parentElement.style.overflowX = 'auto');
             }
@@ -2289,8 +2324,6 @@
                     }
                     let recentMonths = Array.from(allMonths).sort().reverse().slice(0, maxMonths);
 
-                    // 事前フィルタリング判定
-                    // 指示文にサロン名や商品名が含まれている可能性を探る
                     const instLower = instruction.toLowerCase().replace(/\s+/g, '');
                     
                     for (let salon in salons) {
@@ -2303,23 +2336,18 @@
                             details.forEach(d => {
                                 if (d.name === '伝引' || d.sales === 0) return;
                                 
-                                // 簡単な商品名マッチ（3文字以上の部分一致等）または 特定できていない場合は全て
                                 const nameClean = d.name.toLowerCase().replace(/[\s\(\)\[\]]/g, '');
                                 const isRelevant = salonMatch || (nameClean.length > 2 && instLower.includes(nameClean)) || instLower.includes('全て') || instLower.includes('ランキング') || instLower.includes('全体');
-                                
-                                // 万が一完全なフィルタリングが難しい場合は、全体のデータのうち「ランキング」「全て」等の文脈ではパススルーさせ、
-                                // 特定の商品について聞かれた場合はノイズを減らす方針
                                 
                                 csv += `${salon},${month},${d.name},${d.qty},${d.sales}\n`;
                             });
                         }
                     }
-                    // 最大長制限 (約10万文字 = 約3万〜4万トークン程度にセーフティで抑える)
                     if (csv.length > 150000) {
                         csv = csv.substring(0, 150000) + "\n...[データ上限により途中省略]";
                     }
                     resolve(csv);
-                }, 50); // メインスレッドを少し解放
+                }, 50);
             });
         }
 
@@ -2337,23 +2365,25 @@
             const statusEl = document.getElementById('global-query-status');
             
             // UI Update
-            addChatMessage('user', instruction);
+            renderChatBubble('user', instruction);
+            currentUIMessages.push({role: 'user', text: instruction});
             inputEl.value = '';
             btn.disabled = true;
             statusEl.style.display = 'block';
-            statusEl.textContent = 'CSVデータを生成中... (プレフィルタ稼働)';
+            statusEl.textContent = 'CSVデータを生成中...';
 
             try {
-                // データの抽出 (非同期)
-                const csvData = await extractRelevantCSVAsync(instruction, 12);
+                let currentPayloadHistory = [...globalChatHistory];
                 
+                // 初回インプット、または指示が新軸の場合はCSVを抽出して付与
                 statusEl.textContent = 'AIに送信し、大規模分析を実行中...';
                 
-                // 本文プロンプト作成（最初のリクエストのみCSVをガッツリ含める）
                 let promptText = instruction;
-                if (globalChatHistory.length === 0) {
-                    promptText = `あなたは美容ディーラーのデータアナリストです。提供された全サロンの売上データ（CSV）から要求された内容を分析してください。指定された商品のランキングや特定のトレンドを Markdown テーブルを用いてわかりやすく提示してください。
-データ量が多い場合は上位15位以内に絞るなど、人間が見やすいように工夫してください。
+                if (currentPayloadHistory.length === 0 || instruction.includes('データ再抽出')) {
+                    const csvData = await extractRelevantCSVAsync(instruction, 12);
+                    promptText = `あなたは美容ディーラーの優秀なデータアナリストです。提供された全サロンの売上データ（CSV形式）を用いて、ユーザーの質問に正確に回答してください。
+指定された商品のランキングや特定のトレンドを Markdown テーブルを用いてわかりやすく提示してください。
+※「年間」などの指示があった場合、月ごとの合算を正しく行い総合計を出してください。データ量が多い場合は上位15位等に絞ってください。
 
 【ユーザーの指示】
 ${instruction}
@@ -2363,8 +2393,7 @@ ${csvData}
 `;
                 }
 
-                // APIリクエストのペイロードを作成
-                const newHistory = [...globalChatHistory, { role: "user", parts: [{ text: promptText }] }];
+                currentPayloadHistory.push({ role: "user", parts: [{ text: promptText }] });
                 
                 const apiKey = localStorage.getItem('crm_gemini_key');
                 if (!apiKey) throw new Error('APIキーが未設定です。');
@@ -2376,7 +2405,7 @@ ${csvData}
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: newHistory,
+                        contents: currentPayloadHistory,
                         generationConfig: { temperature: 0.6, maxOutputTokens: 4096 }
                     })
                 });
@@ -2387,16 +2416,25 @@ ${csvData}
 
                 const replyText = data.candidates[0].content.parts[0].text;
                 
-                // ヒストリーを更新
-                globalChatHistory.push({ role: "user", parts: [{ text: instruction }] }); // CSV付きプロンプトはトークンのため内部履歴には持たせるか一考だが、今回はシンプル保存
+                // 次回リクエストでトークン肥大化を防ぐため、今回の生のプロンプト(長大なCSV含む)を軽量化して保存
+                if (promptText.length > instruction.length) {
+                    globalChatHistory.push({ role: "user", parts: [{ text: `[SystemNote: CSV data provided in previous step.] \nUser: ${instruction}` }] });
+                } else {
+                    globalChatHistory.push({ role: "user", parts: [{ text: instruction }] });
+                }
+                
                 globalChatHistory.push({ role: "model", parts: [{ text: replyText }] });
 
                 // UIへ出力
-                addChatMessage('model', replyText);
+                renderChatBubble('model', replyText);
+                currentUIMessages.push({role: 'model', text: replyText});
+
+                // ローカルストレージに状態保存
+                saveGlobalChat(currentUIMessages);
 
             } catch (e) {
                 console.error(e);
-                addChatMessage('model', `**エラーが発生しました**\n${e.message}\nデータ量が多すぎるか、ネットワークの問題が考えられます。`);
+                renderChatBubble('model', `**エラーが発生しました**\n${e.message}\nもう一度お試しください。`);
             }
 
             statusEl.style.display = 'none';
