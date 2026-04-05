@@ -1002,6 +1002,46 @@
             display: none;
         }
 
+        /* ── Usage Tracker Styles ── */
+        .usage-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 10px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            margin-top: 8px;
+        }
+        .usage-badge.warning { color: var(--yellow); border-color: var(--yellow); }
+        .usage-badge.danger { color: var(--red); border-color: var(--red); }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .archive-list {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .archive-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-dim);
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+
         .api-status {
             font-size: 10px;
             color: var(--text-dim);
@@ -1333,9 +1373,13 @@
                     <select id="analysis-month-select" class="input-field" style="max-width:200px;" onchange="runAnalysis()">
                         <option value="">月を選択</option>
                     </select>
-                    <button class="btn-monthly-ai" id="btn-monthly-ai" onclick="analyzeFullMonth()" style="max-width:180px; margin-top:0;">
-                        <span>✨ AI分析</span>
+                    <button id="btn-analyze" class="btn-monthly-ai" onclick="analyzeSales()" style="max-width:180px; margin-top:0;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.7 7.3"></path><path d="M12 12V22"></path><path d="M12 12L21.3 7.3"></path></svg>
+                        AI Deep Analysis を実行
                     </button>
+                </div>
+                <div id="analysis-usage-indicator" class="usage-badge" style="display:none;">
+                    <span>推定利用額: ¥0 / ¥0</span>
                 </div>
                 <!-- 追加指示エリア -->
                 <div class="instruction-area">
@@ -1420,22 +1464,59 @@
                 <label class="input-label">使用するAIモデル</label>
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="radio" name="ai-model" value="gemini-2.5-flash" checked>
-                        <span style="font-size:12px;">Gemini 2.5 Flash <small style="color:var(--text-dim);">(最速・低コスト)</small></span>
+                        <input type="radio" name="ai-model" value="gemini-2.0-flash" checked>
+                        <span style="font-size:12px;">Gemini 2.0 Flash <small style="color:var(--text-dim);">(最速・低コスト)</small></span>
                     </label>
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="radio" name="ai-model" value="gemini-2.5-pro">
-                        <span style="font-size:12px;">Gemini 2.5 Pro <small style="color:var(--text-dim);">(高度な推論・分析)</small></span>
-                    </label>
-                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="radio" name="ai-model" value="gemini-3.1-pro-preview">
-                        <span style="font-size:12px;">Gemini 3.1 Pro (Preview) <small style="color:var(--text-dim);">(現時点での最高知能)</small></span>
+                        <input type="radio" name="ai-model" value="gemini-2.0-pro-exp-02-05">
+                        <span style="font-size:12px;">Gemini 2.0 Pro <small style="color:var(--text-dim);">(高度な推論・分析)</small></span>
                     </label>
                 </div>
             </div>
+
+            <div class="modal-grid">
+                <div class="input-group">
+                    <label class="input-label">月間予算上限 (円)</label>
+                    <input type="number" id="input-monthly-budget" class="input-field" placeholder="1000">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">為替レート (円/$)</label>
+                    <input type="number" id="input-exchange-rate" class="input-field" placeholder="155">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">APIプラン</label>
+                <select id="input-api-plan" class="input-field" style="background:var(--surface); color:var(--text);">
+                    <option value="free">無料版 (Free Tier - 制限あり)</option>
+                    <option value="paid" selected>有料版 (Pay-as-you-go)</option>
+                </select>
+                <p style="font-size: 10px; color: var(--text-dim); margin-top: 4px;">
+                    ※無料版は日次の回数制限もカウントします
+                </p>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">現在の利用状況</label>
+                <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span style="font-size:12px;">今月の推定額:</span>
+                        <strong id="settings-current-usage" style="color:var(--primary-light); font-size:14px;">¥0</strong>
+                    </div>
+                    <div id="settings-free-limit" style="display:none; justify-content:space-between; margin-bottom:8px; border-top:1px solid var(--border); pt:8px;">
+                        <span style="font-size:11px;">本日の残り回数:</span>
+                        <strong id="settings-remaining-req" style="color:var(--green); font-size:11px;">1,500 / 1,500</strong>
+                    </div>
+                    <div id="usage-archive" class="archive-list">
+                        <!-- アーカイブがここに表示される -->
+                    </div>
+                    <button class="btn-outline" style="margin-top:10px; width:100%; border-color:rgba(211, 64, 64, 0.3); color:var(--red);" onclick="resetUsageManual()">利用実績を手動リセット</button>
+                </div>
+            </div>
+
             <div class="backup-group">
-                <button class="btn-outline" onclick="exportMemory()">記憶をバックアップ(Export)</button>
-                <button class="btn-outline" onclick="importMemory()">記憶を復元(Import)</button>
+                <button class="btn-outline" onclick="exportUsageCSV()">利用明細(CSV)出力</button>
+                <button class="btn-outline" onclick="exportMemory()">記憶をバックアップ</button>
             </div>
             <button class="btn-primary" onclick="saveSettings()">設定を保存</button>
         </div>
@@ -1491,6 +1572,7 @@
                     ✨ このサロンをAI分析
                 </button>
                 <div id="salon-ai-result" class="ai-result-box"></div>
+                <div id="salon-usage-badge" style="text-align:center; font-size:10px; color:var(--text-dim); margin-top:4px;"></div>
                 <!-- フィードバックエリア -->
                 <div id="salon-feedback-area" class="feedback-container">
                     <div class="feedback-label">💡 AIの解釈を修正して覚えさせる</div>
@@ -1564,27 +1646,6 @@
             a.href = url;
             a.download = `crm_ai_memory_${new Date().toISOString().slice(0, 10)}.json`;
             a.click();
-        }
-
-        function importMemory() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = e => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = re => {
-                    try {
-                        const data = JSON.parse(re.target.result);
-                        aiMemory = data;
-                        saveMemory();
-                        alert('記憶を復元しました');
-                        location.reload();
-                    } catch (err) { alert('不正なファイル形式です'); }
-                };
-                reader.readAsText(file);
-            };
-            input.click();
         }
 
         function addFeedbackTag(type, text) {
@@ -1780,6 +1841,7 @@
             document.getElementById('analysis-content').style.display = 'block';
             document.getElementById('analysis-empty').style.display = 'none';
             renderAnalysisRanking();
+            updateUsageIndicators();
         }
 
         function sortAnalysis(key) {
@@ -1978,72 +2040,195 @@
 
         // --- Common AI Analysis Logic ---
         async function callGeminiAPI(prompt, btn, resultBox, costEl = null) {
-            const key = localStorage.getItem('crm_gemini_key');
-            if (!key) { alert('APIキーを設定してください（⚙️アイコンから）'); return; }
+            const apiKey = localStorage.getItem('crm_gemini_key');
+            if (!apiKey) {
+                alert('APIキーが設定されていません。設定ボタンから入力してください。');
+                openSettings();
+                return;
+            }
 
-            // 使用するモデルを選択されたもの、またはデフォルト(2.5-flash)に設定
-            const MODEL = localStorage.getItem('crm_ai_model') || "gemini-2.5-flash"; 
+            // 予算・制限チェック
+            const usageData = getUsageData();
+            const config = getUsageConfig();
+            
+            // 実行前シミュレーション
+            const estTokens = Math.ceil(prompt.length * (localStorage.getItem('crm_token_coeff') || 1.25));
+            const selectedModel = localStorage.getItem('crm_ai_model') || 'gemini-2.0-flash';
+            const estCost = calculateCost(estTokens, 0, selectedModel, config.exchangeRate); // 出力は不明なので入力のみ暫定
 
-            // プレビューモデルの場合はv1betaエンドポイントを使用
-            const apiVersion = MODEL.includes('preview') ? 'v1beta' : 'v1';
+            if (config.apiPlan === 'free' && usageData.dailyRequests >= 1500) {
+                alert('本日の実行回数制限（1,500件）に達しました。有料プランに切り替えるか、明日までお待ちください。');
+                return;
+            }
+
+            if (usageData.monthlyCost + estCost > config.monthlyBudget) {
+                const proceed = confirm(`月間予算を超過する可能性があります（予測コスト: ¥${estCost.toFixed(2)}）。\n現在の累計: ¥${usageData.monthlyCost.toFixed(0)} / 予算: ¥${config.monthlyBudget} \n\n分析を続行しますか？`);
+                if (!proceed) return;
+            }
+
+            const modelId = selectedModel;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+
+            // ボタン無効化とスピナー
+            const originalBtnHtml = btn.innerHTML;
+            btn.innerHTML = '<span class="report-loading"><span class="spinner"></span>分析中...</span>';
+            btn.disabled = true;
 
             try {
-                btn.disabled = true;
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<span class="spinner"></span> 分析中...';
-                
-                const res = await fetch(`https://generativelanguage.googleapis.com/${apiVersion}/models/${MODEL}:generateContent?key=${key}`, {
-                    method: 'POST', headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: { temperature: 0.7, maxOutputTokens: 2048 }
+                    })
                 });
+
+                const data = await response.json();
+                if (data.error) throw new Error(data.error.message);
+
+                const resultText = data.candidates[0].content.parts[0].text;
+                resultBox.innerHTML = formatMarkdown(resultText);
+                resultBox.classList.add('slide-in');
+
+                // コスト計上
+                const usage = data.usageMetadata || { promptTokenCount: 0, candidatesTokenCount: 0 };
+                const actualCost = calculateCost(usage.promptTokenCount, usage.candidatesTokenCount, selectedModel, config.exchangeRate);
                 
-                const resData = await res.json();
-
-                if (res.status === 429 || res.status === 403) {
-                    const errorMsg = resData.error?.message || "";
-                    let waitMsg = "現在、APIの利用制限（クォータ）に達しています。";
-                    const match = errorMsg.match(/retry in ([\d\.]+)s/);
-                    if (match) {
-                        waitMsg += `<br>あと <strong>${Math.ceil(parseFloat(match[1]))} 秒</strong> 待ってから再試行してください。`;
-                    } else {
-                        waitMsg += "<br>1分ほど待ってから再度お試しください。";
-                    }
-                    throw new Error(waitMsg);
+                // 予測補正係数の更新 (学習)
+                if (usage.promptTokenCount > 0) {
+                    const newCoeff = usage.promptTokenCount / prompt.length;
+                    const oldCoeff = parseFloat(localStorage.getItem('crm_token_coeff') || 1.25);
+                    localStorage.setItem('crm_token_coeff', (oldCoeff * 0.8 + newCoeff * 0.2).toFixed(3)); // 徐々に適応
                 }
 
-                if (resData.candidates && resData.candidates[0].content) {
-                    const text = resData.candidates[0].content.parts[0].text;
-                    resultBox.innerHTML = formatMarkdown(text);
-                    resultBox.style.display = 'block';
-                    
-                    // 回答後にフィードバックエリアを表示
-                    const type = resultBox.id.includes('monthly') ? 'monthly' : 'salon';
-                    document.getElementById(`${type}-feedback-area`).style.display = 'block';
-                    
-                    if (costEl) costEl.textContent = `完了 (${MODEL} / Tokens: ${resData.usageMetadata?.totalTokenCount || 0})`;
-                } else { 
-                    throw new Error(resData.error?.message || 'AIからの応答がありませんでした。'); 
+                updateUsageData(actualCost, 1);
+                updateUsageIndicators();
+
+                if (costEl) {
+                    costEl.textContent = `Cost: ¥${actualCost.toFixed(2)}`;
+                    costEl.style.display = 'inline';
                 }
-                btn.innerHTML = originalText;
-            } catch (e) {
-                const isQuota = e.message.includes("制限") || e.message.includes("quota");
-                resultBox.innerHTML = `
-                    <div style="border-left: 3px solid ${isQuota ? '#fbbf24' : 'var(--red)'}; padding-left: 12px;">
-                        <span style="color:${isQuota ? '#fbbf24' : 'var(--red)'}; font-weight:700;">
-                            ${isQuota ? '⏳ 利用制限中' : '⚠️ エラー'}
-                        </span><br>
-                        <span style="font-size:12px;">${e.message}</span>
-                    </div>`;
-                resultBox.style.display = 'block';
-                btn.innerHTML = '✨ 再試行';
+
+            } catch (error) {
+                console.error('Gemini API Error:', error);
+                resultBox.innerHTML = `<div class="insight-box alert"><div class="insight-title">Error</div><div class="insight-text">${error.message === 'Failed to fetch' ? '通信エラーまたはレート制限に達しました' : error.message}</div></div>`;
             } finally {
+                btn.innerHTML = originalBtnHtml;
                 btn.disabled = false;
             }
         }
 
-        async function analyzeFullMonth() {
+        // ── Usage Tracking Logic ──
+        function getUsageData() {
+            const now = new Date();
+            const monthKey = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
+            const dayKey = now.toISOString().split('T')[0];
+            
+            let data = JSON.parse(localStorage.getItem('crm_usage_stats') || '{}');
+            
+            // 月が替わっていたらアーカイブ
+            if (data.currentMonth && data.currentMonth !== monthKey) {
+                const archives = JSON.parse(localStorage.getItem('crm_usage_archives') || '[]');
+                archives.unshift({ month: data.currentMonth, cost: data.monthlyCost });
+                localStorage.setItem('crm_usage_archives', JSON.stringify(archives.slice(0, 3))); // 直近3ヶ月
+                data = {}; // リセット
+            }
+
+            if (!data.dailyRequestsDate || data.dailyRequestsDate !== dayKey) {
+                data.dailyRequests = 0;
+                data.dailyRequestsDate = dayKey;
+            }
+
+            return {
+                currentMonth: monthKey,
+                monthlyCost: data.monthlyCost || 0,
+                dailyRequests: data.dailyRequests || 0
+            };
+        }
+
+        function updateUsageData(cost, reqCount) {
+            const data = getUsageData();
+            data.monthlyCost += cost;
+            data.dailyRequests += reqCount;
+            localStorage.setItem('crm_usage_stats', JSON.stringify(data));
+        }
+
+        function getUsageConfig() {
+            return {
+                monthlyBudget: parseFloat(localStorage.getItem('crm_monthly_budget') || '1000'),
+                exchangeRate: parseFloat(localStorage.getItem('crm_exchange_rate') || '155'),
+                apiPlan: localStorage.getItem('crm_api_plan') || 'paid'
+            };
+        }
+
+        function calculateCost(inputToken, outputToken, model, rate) {
+            // 単価表 ($ / 1M token) - 2025.02時点
+            const specs = {
+                'gemini-2.0-flash': { in: 0.1, out: 0.4 },
+                'gemini-2.0-pro-exp-02-05': { in: 1.25, out: 5.0 }
+            };
+            const spec = specs[model] || specs['gemini-2.0-flash'];
+            const costUsd = (inputToken / 1000000 * spec.in) + (outputToken / 1000000 * spec.out);
+            return costUsd * rate;
+        }
+
+        function updateUsageIndicators() {
+            const usage = getUsageData();
+            const config = getUsageConfig();
+            
+            const text = `今月の推定利用額: ¥${usage.monthlyCost.toFixed(1)} / ¥${config.monthlyBudget}`;
+            const indicator = document.getElementById('analysis-usage-indicator');
+            if (indicator) {
+                indicator.innerHTML = `<span>${text}</span>`;
+                indicator.style.display = 'inline-flex';
+                indicator.classList.remove('warning', 'danger');
+                if (usage.monthlyCost > config.monthlyBudget) indicator.classList.add('danger');
+                else if (usage.monthlyCost > config.monthlyBudget * 0.8) indicator.classList.add('warning');
+            }
+
+            const modalUsage = document.getElementById('settings-current-usage');
+            if (modalUsage) modalUsage.textContent = `¥${usage.monthlyCost.toFixed(1)}`;
+
+            const freeArea = document.getElementById('settings-free-limit');
+            if (freeArea) {
+                freeArea.style.display = config.apiPlan === 'free' ? 'flex' : 'none';
+                document.getElementById('settings-remaining-req').textContent = `${(1500 - usage.dailyRequests).toLocaleString()} / 1,500`;
+            }
+
+            // アーカイブ表示
+            const archives = JSON.parse(localStorage.getItem('crm_usage_archives') || '[]');
+            const archiveEl = document.getElementById('usage-archive');
+            if (archiveEl) {
+                archiveEl.innerHTML = archives.map(a => `<div class="archive-item"><span>${a.month} 実績:</span><strong>¥${a.cost.toFixed(0)}</strong></div>`).join('');
+            }
+        }
+
+        function resetUsageManual() {
+            if (confirm('今月の利用実績をリセットしますか？（アーカイブには移動しません）')) {
+                localStorage.removeItem('crm_usage_stats');
+                updateUsageIndicators();
+            }
+        }
+
+        function exportUsageCSV() {
+            const usage = getUsageData();
+            const archives = JSON.parse(localStorage.getItem('crm_usage_archives') || '[]');
+            let csv = "Target,Amount\n";
+            csv += `Current Month (${usage.currentMonth}),${usage.monthlyCost.toFixed(2)}\n`;
+            archives.forEach(a => { csv += `${a.month},${a.cost.toFixed(2)}\n`; });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `crm_usage_${usage.currentMonth}.csv`);
+            a.click();
+        }
+
+        async function analyzeSales() {
             const month = document.getElementById('analysis-month-select').value;
-            const btn = document.getElementById('btn-monthly-ai');
+            const btn = document.getElementById('btn-analyze');
             const resultBox = document.getElementById('monthly-ai-result');
             const costEl = document.getElementById('monthly-api-cost');
 
@@ -2301,10 +2486,16 @@
             document.getElementById('input-gas-url').value = localStorage.getItem('crm_gas_url') || GAS_API_URL;
             document.getElementById('input-ai-global-rules').value = aiMemory.global_instructions || '';
             
-            // モデルの選択状態を復元
-            const savedModel = localStorage.getItem('crm_ai_model') || 'gemini-2.5-flash';
+            // モデル・予算・為替・プランを復元
+            const savedModel = localStorage.getItem('crm_ai_model') || 'gemini-2.0-flash';
             const modelRadio = document.querySelector(`input[name="ai-model"][value="${savedModel}"]`);
             if (modelRadio) modelRadio.checked = true;
+
+            document.getElementById('input-monthly-budget').value = localStorage.getItem('crm_monthly_budget') || '1000';
+            document.getElementById('input-exchange-rate').value = localStorage.getItem('crm_exchange_rate') || '155';
+            document.getElementById('input-api-plan').value = localStorage.getItem('crm_api_plan') || 'paid';
+
+            updateUsageIndicators();
 
             const modal = document.getElementById('modal-settings');
             modal.style.display = 'flex';
@@ -2320,10 +2511,16 @@
             const url = document.getElementById('input-gas-url').value.trim();
             const rules = document.getElementById('input-ai-global-rules').value.trim();
             const model = document.querySelector('input[name="ai-model"]:checked').value;
+            const budget = document.getElementById('input-monthly-budget').value;
+            const rate = document.getElementById('input-exchange-rate').value;
+            const plan = document.getElementById('input-api-plan').value;
 
             if (key) localStorage.setItem('crm_gemini_key', key);
             if (url) localStorage.setItem('crm_gas_url', url);
             localStorage.setItem('crm_ai_model', model);
+            localStorage.setItem('crm_monthly_budget', budget);
+            localStorage.setItem('crm_exchange_rate', rate);
+            localStorage.setItem('crm_api_plan', plan);
             
             aiMemory.global_instructions = rules;
             saveMemory();
@@ -2465,15 +2662,10 @@
         }
 
         function renderMonthlySales() {
-            console.log('--- renderMonthlySales Debug ---');
-            console.log('selectedSalon:', selectedSalon);
-            console.log('MONTHLY_DATA loaded:', !!MONTHLY_DATA);
-
             const container = document.getElementById('monthly-sales-container');
             const section = document.getElementById('section-monthly-sales');
 
             if (!MONTHLY_DATA || !MONTHLY_DATA.salons) {
-                console.warn('MONTHLY_DATA is null or has no salons property.');
                 section.style.display = 'none';
                 return;
             }
@@ -2483,7 +2675,6 @@
             const salonMonths = salonKey ? MONTHLY_DATA.salons[salonKey] : null;
 
             if (!salonMonths) {
-                console.warn('No monthly data for salon:', selectedSalon);
                 section.style.display = 'none';
                 return;
             }
@@ -3034,6 +3225,7 @@
         loadMemory();
         loadPriceOverrides();
         loadData();
+        updateUsageIndicators();
 
         // Character Count Listeners
         ['monthly-instruction', 'salon-instruction'].forEach(id => {
