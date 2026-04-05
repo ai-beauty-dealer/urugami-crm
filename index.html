@@ -1290,6 +1290,7 @@
             <button class="mode-tab active" onclick="switchMode('salon')" id="tab-salon">📋 サロン別</button>
             <button class="mode-tab" onclick="switchMode('product')" id="tab-product">🔍 商品検索</button>
             <button class="mode-tab" onclick="switchMode('analysis')" id="tab-analysis">📊 売上分析</button>
+            <button class="mode-tab" onclick="switchMode('global-ai')" id="tab-global-ai">💭 全体AI検索</button>
         </div>
 
         <!-- ===== SALON MODE ===== -->
@@ -1505,6 +1506,23 @@
                     <!-- JSで動的に追加 -->
                 </div>
             </div>
+        </div>
+
+        <div id="mode-global-ai" style="display:none;">
+            <div class="section-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                全サロンのデータに対するAI直接検索（ランキング・抽出・トレンド分析）
+            </div>
+            <div class="instruction-area" style="margin-top: 15px;">
+                <textarea id="global-ai-instruction" class="instruction-input" style="min-height: 80px;" placeholder="例: ケラファイヒートエマルジョンを年間で購入しているサロンを売上順にランキング化して
+例: 直近3ヶ月で売上が急激に伸びているサロンを5店舗教えて
+例: 全サロンの中で、先月と今月で大きく落ち込んでいる取引先をリストアップして"></textarea>
+                <button class="btn-monthly-ai" id="btn-global-ai" onclick="runGlobalAIQuery()" style="margin-top: 15px; width: 250px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.7 7.3"></path><path d="M12 12V22"></path><path d="M12 12L21.3 7.3"></path></svg>
+                    AIにデータ検索・集計を依頼する
+                </button>
+            </div>
+            <div id="global-ai-result" class="ai-result-box" style="display:none; margin-top: 20px;"></div>
         </div>
 
         <footer>© 2026 2nd Brain Systems. All rights reserved.</footer>
@@ -2216,6 +2234,73 @@
             if (table) table.classList.add('mobile-cards');
         }
 
+        
+        // ── Global AI Query Logic ──
+        async function runGlobalAIQuery() {
+            const instruction = document.getElementById('global-ai-instruction').value.trim();
+            if (!instruction) {
+                alert('検索したい内容を入力してください。');
+                return;
+            }
+            if (!MONTHLY_DATA || !MONTHLY_DATA.salons) {
+                alert('月次売上データがまだロードされていません。');
+                return;
+            }
+
+            const btn = document.getElementById('btn-global-ai');
+            const resultBox = document.getElementById('global-ai-result');
+
+            // Build CSV representation of recent data to save tokens
+            // Take the past 12 months to reduce payload size to something reasonable while mostly satisfying "annual" queries.
+            let csv = "Salon,Month,Product,Qty,Sales\n";
+            const salons = MONTHLY_DATA.salons;
+            
+            let allMonths = new Set();
+            for (let s in salons) {
+                for (let m in salons[s]) allMonths.add(m);
+            }
+            let sortedMonths = Array.from(allMonths).sort().reverse();
+            let recentMonths = sortedMonths.slice(0, 12); 
+
+            for (let salon in salons) {
+                for (let month in salons[salon]) {
+                    if (!recentMonths.includes(month)) continue;
+                    const details = salons[salon][month].details;
+                    details.forEach(d => {
+                        if (d.name !== '伝引' && d.sales !== 0) {
+                            csv += `${salon},${month},${d.name},${d.qty},${d.sales}\n`;
+                        }
+                    });
+                }
+            }
+
+            const prompt = `あなたは美容ディーラーの優秀なデータアナリストです。提供された全サロンの売上データ（CSV形式）を用いて、ユーザーの質問に正確に回答してください。
+指定された商品のランキングや特定のトレンドを Markdown テーブルを用いてわかりやすく提示してください。データ量が多い場合は上位15位などを適宜抽出してください。
+
+【ユーザーの指示】
+${instruction}
+
+【売上データ（過去最大1年間分）】
+${csv}
+`;
+            
+            // Backup innerHTML to restore after API call
+            const btnHtml = btn.innerHTML;
+            
+            // callGeminiAPI changes innerHTML and sets disabled=true, and throws error if fail.
+            // We'll wrap in try-catch to ensure we can restore the button text.
+            try {
+                await callGeminiAPI(prompt, btn, resultBox);
+            } catch (e) {
+                // error alert handled in callGeminiAPI or unhandled
+                console.error(e);
+            }
+            
+            // Restore button
+            btn.innerHTML = btnHtml;
+            btn.disabled = false;
+        }
+
         // --- Common AI Analysis Logic ---
         async function callGeminiAPI(prompt, btn, resultBox, costEl = null) {
             const apiKey = localStorage.getItem('crm_gemini_key');
@@ -2746,6 +2831,7 @@
             document.getElementById('mode-salon').style.display = mode === 'salon' ? 'block' : 'none';
             document.getElementById('mode-product').style.display = mode === 'product' ? 'block' : 'none';
             document.getElementById('mode-analysis').style.display = mode === 'analysis' ? 'block' : 'none';
+            document.getElementById('mode-global-ai').style.display = mode === 'global-ai' ? 'block' : 'none';
             if (mode === 'product') {
                 document.getElementById('global-product-search').focus();
             }
