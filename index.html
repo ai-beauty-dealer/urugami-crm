@@ -1464,12 +1464,20 @@
                 <label class="input-label">使用するAIモデル</label>
                 <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="radio" name="ai-model" value="gemini-2.0-flash" checked>
-                        <span style="font-size:12px;">Gemini 2.0 Flash <small style="color:var(--text-dim);">(最速・低コスト)</small></span>
+                        <input type="radio" name="ai-model" value="gemini-3-flash-preview" checked>
+                        <span style="font-size:12px;">Gemini 3 Flash <small style="color:var(--text-dim);">(最新・爆速・低コスト)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-3.1-pro-preview">
+                        <span style="font-size:12px;">Gemini 3.1 Pro <small style="color:var(--text-dim);">(最新・最高知能)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-2.0-flash">
+                        <span style="font-size:12px;">Gemini 2.0 Flash</span>
                     </label>
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
                         <input type="radio" name="ai-model" value="gemini-2.0-pro-exp-02-05">
-                        <span style="font-size:12px;">Gemini 2.0 Pro <small style="color:var(--text-dim);">(高度な推論・分析)</small></span>
+                        <span style="font-size:12px;">Gemini 2.0 Pro</span>
                     </label>
                 </div>
             </div>
@@ -2163,12 +2171,14 @@
         }
 
         function calculateCost(inputToken, outputToken, model, rate) {
-            // 単価表 ($ / 1M token) - 2025.02時点
+            // 単価表 ($ / 1M token) - 2026.04時点目安
             const specs = {
+                'gemini-3-flash-preview': { in: 0.50, out: 3.00 },
+                'gemini-3.1-pro-preview': { in: 2.00, out: 12.00 },
                 'gemini-2.0-flash': { in: 0.1, out: 0.4 },
                 'gemini-2.0-pro-exp-02-05': { in: 1.25, out: 5.0 }
             };
-            const spec = specs[model] || specs['gemini-2.0-flash'];
+            const spec = specs[model] || specs['gemini-3-flash-preview'];
             const costUsd = (inputToken / 1000000 * spec.in) + (outputToken / 1000000 * spec.out);
             return costUsd * rate;
         }
@@ -2487,7 +2497,7 @@
             document.getElementById('input-ai-global-rules').value = aiMemory.global_instructions || '';
             
             // モデル・予算・為替・プランを復元
-            const savedModel = localStorage.getItem('crm_ai_model') || 'gemini-2.0-flash';
+            const savedModel = localStorage.getItem('crm_ai_model') || 'gemini-3-flash-preview';
             const modelRadio = document.querySelector(`input[name="ai-model"][value="${savedModel}"]`);
             if (modelRadio) modelRadio.checked = true;
 
