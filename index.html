@@ -1382,18 +1382,20 @@
             </div>
 
             <!-- Step 3.5: Monthly Sales Report -->
-            <div class="section glass slide-in" id="section-monthly-sales" style="display:none; margin-top: 1rem;">
-                <div class="section-label">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="20" x2="12" y2="10" />
-                        <line x1="18" y1="20" x2="18" y2="4" />
-                        <line x1="6" y1="20" x2="6" y2="16" />
-                    </svg>
-                    📊 月次売上推移分析
-                </div>
-                <div id="monthly-sales-container"></div>
-            </div>
+            <details class="section glass slide-in" id="section-monthly-sales" style="display:none; margin-top: 1rem; border-radius: 8px;">
+                <summary style="cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="section-label" style="margin: 0; pointer-events: none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10" />
+                            <line x1="18" y1="20" x2="18" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="16" />
+                        </svg>
+                        📊 月次売上推移分析
+                    </div>
+                    <span style="font-size: 14px; color: var(--text-muted);">▼</span>
+                </summary>
+                <div id="monthly-sales-container" style="margin-top: 15px;"></div>
+            </details>
 
             <!-- Step 4: Visit History -->
             <div class="section glass slide-in" id="section-reports" style="display:none;">
