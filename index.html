@@ -1,0 +1,4284 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRM ツール | URUGAMI SYSTEM</title>
+    <meta name="description" content="サロン別・導入商品情報確認ツール" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-hover: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.18);
+            --primary: #7c6af7;
+            --primary-light: #a095ff;
+            --primary-glow: rgba(124, 106, 247, 0.25);
+            --text: #f0f0f8;
+            --text-muted: #7a7994;
+            --text-dim: #4a4a6a;
+            --green: #34d399;
+            --yellow: #fbbf24;
+            --red: #f87171;
+            --radius: 14px;
+            --margin-low: #f87171;
+            --margin-normal: #fbbf24;
+            --margin-high: #34d399;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 60vh;
+            background: radial-gradient(ellipse, rgba(124, 106, 247, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .app {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+        }
+
+        /* ── Header ── */
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(124, 106, 247, 0.12);
+            border: 1px solid rgba(124, 106, 247, 0.3);
+            border-radius: 100px;
+            padding: 4px 14px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        h1.brand {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, #fff 30%, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* ── Mode Tabs ── */
+        .mode-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .mode-tab {
+            flex: 1;
+            padding: 10px 8px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .mode-tab:hover {
+            color: var(--text);
+        }
+
+        .mode-tab.active {
+            background: var(--primary-glow);
+            color: var(--primary-light);
+            box-shadow: 0 2px 8px rgba(124, 106, 247, 0.2);
+        }
+
+        /* ── Steps ── */
+        .steps {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .step.active {
+            color: var(--primary-light);
+        }
+
+        .step.done {
+            color: var(--green);
+        }
+
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-num {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .step.done .step-num {
+            background: rgba(52, 211, 153, 0.15);
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .step-sep {
+            color: var(--text-dim);
+            margin: 0 4px;
+        }
+
+        /* ── Section ── */
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-label svg {
+            color: var(--primary-light);
+        }
+
+        /* ── Day Buttons ── */
+        .day-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .day-btn {
+            padding: 14px 8px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .day-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            color: var(--text);
+            transform: translateY(-1px);
+        }
+
+        .day-btn.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(124, 106, 247, 0.3);
+        }
+
+        /* ── Glass Panel ── */
+        .glass {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        /* ── Salon List ── */
+        .salon-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+        }
+
+        .salon-btn {
+            padding: 12px 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .salon-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
+
+        .salon-btn.active {
+            background: rgba(124, 106, 247, 0.15);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        /* ── Trend Badges ── */
+        .trend-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 0.02em;
+        }
+        .trend-up { color: var(--green); background: rgba(52, 211, 153, 0.1); }
+        .trend-down { color: var(--red); background: rgba(248, 113, 113, 0.1); }
+        .trend-neutral { color: var(--text-dim); background: rgba(255, 255, 255, 0.05); }
+
+        .insight-box {
+            background: rgba(124, 106, 247, 0.05);
+            border-left: 2px solid var(--primary);
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+            transition: all 0.2s;
+        }
+        .insight-box.alert {
+            background: rgba(248, 113, 113, 0.05);
+            border-left-color: var(--red);
+        }
+        .insight-box.good {
+            background: rgba(52, 211, 153, 0.05);
+            border-left-color: var(--green);
+        }
+        .insight-title {
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .insight-box.alert .insight-title { color: var(--red); }
+        .insight-box.good .insight-title { color: var(--green); }
+
+        .insight-text {
+            font-size: 11px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .salon-btn .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .salon-btn.no-data .dot {
+            background: var(--text-dim);
+        }
+
+        /* ── Product Table ── */
+        .product-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .salon-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .product-count {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 3px 10px;
+        }
+
+        .sort-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .sort-btn {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .sort-btn.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .search-box {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: var(--text);
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+
+        .search-box::placeholder {
+            color: var(--text-dim);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            text-align: left;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            padding: 0 8px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr {
+            transition: background 0.15s;
+            cursor: default;
+        }
+
+        tbody tr:hover {
+            background: var(--surface-hover);
+        }
+
+        tbody td {
+            padding: 10px 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .td-product {
+            font-weight: 500;
+        }
+
+        .td-price {
+            font-weight: 700;
+            color: var(--primary-light);
+            white-space: nowrap;
+        }
+
+        .td-date {
+            color: var(--text-muted);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .td-date.recent {
+            color: var(--green);
+        }
+
+        .td-date.old {
+            color: var(--yellow);
+        }
+
+        .td-date.very-old {
+            color: var(--red);
+        }
+
+        /* ── Price Edit ── */
+        .price-cell {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .price-value {
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: background 0.15s;
+        }
+
+        .price-value:hover {
+            background: rgba(124, 106, 247, 0.15);
+        }
+
+        .price-value.edited {
+            color: var(--green);
+        }
+
+        .price-edit-input {
+            width: 80px;
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            padding: 2px 6px;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 700;
+            outline: none;
+            text-align: right;
+        }
+
+        .price-reset {
+            font-size: 9px;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: color 0.15s;
+        }
+
+        .price-reset:hover {
+            color: var(--red);
+        }
+
+        /* ── Product Search Mode ── */
+        .product-search-section {
+            margin-top: 1rem;
+        }
+
+        .product-search-results {
+            margin-top: 1rem;
+        }
+
+        .result-product-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: var(--primary-glow);
+            border-radius: 8px;
+            border: 1px solid rgba(124, 106, 247, 0.2);
+        }
+
+        .result-salon-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: background 0.15s;
+        }
+
+        .result-salon-card:hover {
+            background: var(--surface-hover);
+        }
+
+        .result-salon-name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .result-salon-day {
+            font-size: 10px;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 2px 8px;
+            margin-left: 8px;
+        }
+
+        .result-meta {
+            text-align: right;
+            font-size: 12px;
+        }
+
+        /* ── Empty State ── */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-dim);
+        }
+
+        .empty-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .empty-state p {
+            font-size: 13px;
+        }
+
+        /* ── Report History ── */
+        .report-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .report-tab {
+            flex: 1;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .report-tab.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .report-entry {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .report-entry:last-child {
+            border-bottom: none;
+        }
+
+        .report-date {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 4px;
+        }
+
+        .report-comment {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .proposal-summary {
+            background: rgba(124, 106, 247, 0.06);
+            border: 1px solid rgba(124, 106, 247, 0.18);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .proposal-summary-title {
+            color: var(--primary-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+
+        .proposal-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .proposal-history-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 8px;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .proposal-history-name {
+            color: var(--text);
+            font-weight: 700;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .proposal-history-meta {
+            color: var(--text-muted);
+            font-size: 10px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .report-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 7px 0;
+        }
+
+        .report-chip {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            color: var(--text-muted);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 7px;
+        }
+
+        .report-chip.proposal {
+            background: rgba(251, 191, 36, 0.08);
+            border-color: rgba(251, 191, 36, 0.22);
+            color: var(--yellow);
+        }
+
+        .report-chip.reaction {
+            background: rgba(52, 211, 153, 0.08);
+            border-color: rgba(52, 211, 153, 0.22);
+            color: var(--green);
+        }
+
+        .report-chip.todo {
+            background: rgba(124, 106, 247, 0.1);
+            border-color: rgba(124, 106, 247, 0.25);
+            color: var(--primary-light);
+        }
+
+        .report-more {
+            margin-top: 4px;
+        }
+
+        .report-more summary {
+            color: var(--primary-light);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 10px 12px;
+        }
+
+        .report-photo-link {
+            font-size: 11px;
+            color: var(--primary-light);
+            text-decoration: none;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .report-photo-link:hover {
+            text-decoration: underline;
+        }
+
+        .report-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        .report-loading .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary-light);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── Slide animation ── */
+        .analysis-history-list {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .analysis-history-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .ai-response-content {
+            line-height: 1.7;
+            color: var(--text);
+        }
+        .ai-response-content h3 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-light);
+        }
+        .ai-response-content p {
+            margin-bottom: 0.8rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .day-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .salon-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ── AI Instruction & Feedback UI ── */
+        .instruction-area {
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .instruction-input {
+            width: 100%;
+            min-height: 80px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            color: var(--text);
+            font-size: 13px;
+            font-family: inherit;
+            resize: vertical;
+            outline: none;
+            transition: all 0.2s;
+            line-height: 1.5;
+        }
+
+        .instruction-input:focus {
+            border-color: var(--primary);
+            background: rgba(124, 106, 247, 0.05);
+            box-shadow: 0 0 15px rgba(124, 106, 247, 0.1);
+        }
+
+        .instruction-input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .instruction-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            padding: 0 4px;
+        }
+
+        .instruction-count {
+            font-size: 10px;
+            color: var(--text-dim);
+        }
+
+        .instruction-preview-btn {
+            font-size: 10px;
+            color: var(--primary-light);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 0;
+        }
+
+        .feedback-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            display: none; /* 回答後に出現 */
+        }
+
+        .feedback-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quick-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .quick-tag {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-tag:hover {
+            border-color: var(--primary);
+            color: var(--text);
+            background: var(--primary-glow);
+        }
+
+        .quick-tag.active {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+
+        .instruction-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .instruction-toggle input {
+            cursor: pointer;
+        }
+
+        .instruction-toggle span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .backup-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .btn-outline {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-light);
+            color: var(--text);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .prompt-preview-modal {
+            background: rgba(10, 10, 15, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--primary);
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--text);
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+        /* ── Analysis Mode ── */
+        #mode-analysis { display: none; }
+        .analysis-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .summary-card:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
+        }
+
+        .summary-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        .ranking-table th {
+            padding: 12px;
+            text-align: left;
+            color: var(--text-dim);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .ranking-table td {
+            padding: 14px 12px;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ranking-table tr td:first-child {
+            border-left: 1px solid var(--border);
+            border-radius: 12px 0 0 12px;
+        }
+
+        .ranking-table tr td:last-child {
+            border-right: 1px solid var(--border);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .td-rank { font-weight: 700; color: var(--text-muted); width: 40px; }
+        .td-margin-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .margin-low { background: rgba(248, 113, 113, 0.15); color: var(--red); }
+        .margin-high { background: rgba(52, 211, 153, 0.15); color: var(--green); }
+
+        .btn-monthly-ai {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), #b06ab3);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .ai-result-box {
+            background: rgba(124, 106, 247, 0.05);
+            border: 1px solid var(--primary-glow);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        /* Upload Zone Style */
+        .upload-zone {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 20px;
+        }
+        .upload-zone:hover {
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .upload-zone.dragover {
+            border-color: var(--green);
+            background: rgba(46, 213, 115, 0.1);
+            transform: scale(1.02);
+        }
+        .upload-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary-light);
+        }
+        #upload-status {
+            font-size: 12px;
+            margin-top: 10px;
+            min-height: 1.2em;
+        }
+        .loading-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Usage Tracker Styles ── */
+        .usage-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 10px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            margin-top: 8px;
+        }
+        .usage-badge.warning { color: var(--yellow); border-color: var(--yellow); }
+        .usage-badge.danger { color: var(--red); border-color: var(--red); }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .archive-list {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .archive-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-dim);
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+
+        .api-status {
+            font-size: 10px;
+            color: var(--text-dim);
+            margin-top: 8px;
+            text-align: right;
+        }
+
+        /* Modal Settings */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 40px 0;
+            z-index: 1000;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #111118;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: all 0.3s;
+        }
+        .modal.active { transform: translateY(0); }
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-close {
+            background: none; border: none; color: var(--text-dim);
+            font-size: 1.5rem; cursor: pointer;
+        }
+        .input-group { margin-bottom: 1.5rem; }
+        .input-label {
+            display: block; font-size: 10px; font-weight: 700;
+            color: var(--text-dim); text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .input-field {
+            width: 100%; background: #0a0a0f; border: 1px solid var(--border);
+            border-radius: 10px; padding: 12px; color: #fff; font-size: 14px;
+        }
+        .input-field:focus { border-color: var(--primary); outline: none; }
+
+        .header-top {
+            display: flex; justify-content: center; align-items: center;
+            position: relative; margin-bottom: 1rem;
+        }
+        .settings-btn {
+            position: absolute; right: 0; top: 0;
+            background: var(--surface); border: 1px solid var(--border);
+            color: var(--text-muted); width: 32px; height: 32px;
+            border-radius: 10px; display: flex; align-items: center;
+            justify-content: center; cursor: pointer; transition: all 0.2s;
+        }
+        .settings-btn:hover { border-color: var(--border-hover); background: var(--surface-hover); color: #fff; }
+
+        @media (max-width: 600px) {
+            .ranking-table, .ranking-table thead, .ranking-table tbody, .ranking-table th, .ranking-table td, .ranking-table tr {
+                display: block;
+            }
+            .ranking-table thead tr { position: absolute; top: -9999px; left: -9999px; }
+            .ranking-table tr { margin-bottom: 1rem; }
+            .ranking-table td {
+                border: none; border-bottom: 1px solid var(--border);
+                position: relative; padding-left: 40% !important; text-align: left;
+            }
+            .ranking-table td:before {
+                position: absolute; left: 12px; width: 35%; padding-right: 10px;
+                white-space: nowrap; content: attr(data-label);
+                font-weight: 700; color: var(--text-dim); font-size: 11px;
+            }
+        }
+        /* --- Salon Detail Modal (Analysis) --- */
+        .modal-detail {
+            max-width: 600px;
+            width: 95%;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .detail-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+        .detail-label {
+            font-size: 10px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .detail-diff {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+        .clickable-name {
+            display: inline-block;
+            padding: 8px 4px;
+            color: var(--primary-light);
+            text-decoration: underline;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+        .clickable-name:active {
+            background: rgba(124, 106, 247, 0.2);
+            color: #fff;
+        }
+        .clickable-name:hover { opacity: 0.7; }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .btn-salon-ai {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        #salon-ai-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(168, 85, 247, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 10px;
+            font-size: 13px;
+            display: none;
+        }
+        .summary-card.clickable:hover {
+            border-color: var(--primary) !important;
+            background: rgba(255,255,255,0.06) !important;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <div class="badge">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor">
+                        <path d="M6 0l1.5 4H12L8.5 6.5 10 11 6 8.5 2 11l1.5-4.5L0 4h4.5z" />
+                    </svg>
+                    URUGAMI SYSTEM
+                </div>
+                <button class="settings-btn" onclick="openSettings()" title="設定">⚙️</button>
+            </div>
+            <h1 class="brand">CRM TOOL</h1>
+            <p>顧客情報管理システム</p>
+        </header>
+
+        <!-- Mode Tabs -->
+        <div class="mode-tabs">
+            <button class="mode-tab active" onclick="switchMode('salon')" id="tab-salon">📋 サロン別</button>
+            <button class="mode-tab" onclick="switchMode('product')" id="tab-product">🔍 商品検索</button>
+            <button class="mode-tab" onclick="switchMode('analysis')" id="tab-analysis">📊 売上分析</button>
+            <button class="mode-tab" onclick="switchMode('global-ai')" id="tab-global-ai">💭 全体AI検索</button>
+        </div>
+
+        <!-- ===== SALON MODE ===== -->
+        <div id="mode-salon">
+            <!-- Steps Indicator -->
+            <div class="steps" id="steps">
+                <div class="step active" id="step1">
+                    <div class="step-num">1</div>
+                    <span>曜日を選択</span>
+                </div>
+                <div class="step-sep">›</div>
+                <div class="step" id="step2">
+                    <div class="step-num">2</div>
+                    <span>サロンを選択</span>
+                </div>
+                <div class="step-sep">›</div>
+                <div class="step" id="step3">
+                    <div class="step-num">3</div>
+                    <span>導入商品を確認</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Day Selection -->
+            <div class="section" id="section-day">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    訪問曜日
+                </div>
+                <div class="day-grid">
+                    <button class="day-btn" onclick="selectDay('Tuesday')" id="day-Tuesday">火曜日</button>
+                    <button class="day-btn" onclick="selectDay('Wednesday')" id="day-Wednesday">水曜日</button>
+                    <button class="day-btn" onclick="selectDay('Thursday')" id="day-Thursday">木曜日</button>
+                    <button class="day-btn" onclick="selectDay('Friday')" id="day-Friday">金曜日</button>
+                    <button class="day-btn" onclick="selectDay('Others')" id="day-Others">その他</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Salon Selection -->
+            <div class="section glass slide-in" id="section-salon" style="display:none;">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    サロンを選択
+                </div>
+                <input class="search-box" type="text" id="salon-search" placeholder="サロン名で絞り込み..."
+                    oninput="renderSalons()" />
+                <div class="salon-list" id="salon-list"></div>
+            </div>
+
+            <!-- Step 3: Product List -->
+            <div class="section glass slide-in" id="section-products" style="display:none;">
+                <div class="product-header" onclick="toggleProductList()" style="cursor:pointer;">
+                    <div>
+                        <div class="salon-title" id="selected-salon-name"></div>
+                        <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">導入商品リスト <span
+                                style="font-size:10px;opacity:0.6;">（価格クリックで変更可）</span></div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div class="product-count" id="product-count"></div>
+                        <span id="product-toggle-icon" style="font-size:18px;transition:transform 0.3s;">▼</span>
+                    </div>
+                </div>
+                <div id="product-list-body">
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;">
+                        <div class="sort-bar">
+                            <button class="sort-btn active" onclick="setSortOrder('date')"
+                                id="sort-date">最終発注日順</button>
+                            <button class="sort-btn" onclick="setSortOrder('name')" id="sort-name">商品名順</button>
+                            <button class="sort-btn" onclick="setSortOrder('price')" id="sort-price">価格順</button>
+                        </div>
+                    </div>
+                    <input class="search-box" type="text" id="product-search" placeholder="商品名で絞り込み..."
+                        oninput="renderTable()" />
+                    <div id="table-container"></div>
+                    <div id="generated-at"
+                        style="text-align:right;font-size:10px;color:var(--text-dim);margin-top:12px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3.5: Monthly Sales Report -->
+            <details class="section glass slide-in" id="section-monthly-sales" style="display:none; margin-top: 1rem; border-radius: 8px;">
+                <summary style="cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <div class="section-label" style="margin: 0; pointer-events: none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10" />
+                            <line x1="18" y1="20" x2="18" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="16" />
+                        </svg>
+                        📊 月次売上推移分析
+                    </div>
+                    <span style="font-size: 14px; color: var(--text-muted);">▼</span>
+                </summary>
+                <div id="monthly-sales-container" style="margin-top: 15px;"></div>
+            </details>
+
+            <!-- Step 4: Visit History -->
+            <div class="section glass slide-in" id="section-reports" style="display:none;">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    📝 訪問履歴
+                </div>
+                <div id="report-list"></div>
+            </div>
+        </div>
+
+        <!-- ===== PRODUCT SEARCH MODE ===== -->
+        <div id="mode-product" style="display:none;">
+            <div class="section product-search-section">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    商品名で導入サロンを検索
+                </div>
+                <input class="search-box" type="text" id="global-product-search" placeholder="商品名を入力..."
+                    oninput="searchProducts()" />
+                <div id="product-search-count" style="font-size:11px;color:var(--text-muted);margin-bottom:12px;"></div>
+                <div class="product-search-results" id="global-search-results"></div>
+            </div>
+        </div>
+
+        <!-- ===== SALES ANALYSIS MODE ===== -->
+        <div id="mode-analysis" style="display:none;">
+            <div style="margin-bottom:20px;">
+                <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+                    <select id="analysis-month-select" class="input-field" style="max-width:200px;" onchange="runAnalysis()">
+                        <option value="">月を選択</option>
+                    </select>
+                    <button id="btn-analyze" class="btn-monthly-ai" onclick="analyzeSales()" style="max-width:180px; margin-top:0;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 12L2.7 7.3"></path><path d="M12 12V22"></path><path d="M12 12L21.3 7.3"></path></svg>
+                        AI Deep Analysis を実行
+                    </button>
+                </div>
+                <div id="analysis-usage-indicator" class="usage-badge" style="display:none;">
+                    <span>推定利用額: ¥0 / ¥0</span>
+                </div>
+                <!-- 追加指示エリア -->
+                <div class="instruction-area">
+                    <textarea id="monthly-instruction" class="instruction-input" placeholder="今回の分析への追加指示（例：特定の商材を重点的に見てほしい、等）..."></textarea>
+                    <div class="instruction-meta">
+                        <span class="instruction-count" id="monthly-instruction-count">0 characters</span>
+                        <button class="instruction-preview-btn" onclick="previewPrompt('monthly')">適用される全指示を確認</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="analysis-empty" class="empty-state">
+                <div class="empty-icon">📊</div>
+                <p>月を選択して分析を開始してください</p>
+            </div>
+
+            <div id="analysis-content" style="display:none;">
+                <div class="analysis-summary" id="analysis-summary">
+                    <!-- JSで動的に追加 -->
+                </div>
+
+                <div id="monthly-ai-result" class="ai-result-box"></div>
+                <!-- フィードバックエリア -->
+                <div id="monthly-feedback-area" class="feedback-container">
+                    <div class="feedback-label">💡 AIの解釈を修正して覚えさせる</div>
+                    <div class="quick-tags">
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', '数値が違う')">数値が違う</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', 'トーンを修正')">トーンを修正</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', 'この商品を詳しく')">この商品を詳しく</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('monthly', '提案を具体的に')">提案を具体的に</button>
+                    </div>
+                    <textarea id="monthly-feedback-input" class="instruction-input" style="min-height:60px;" placeholder="具体的にどう修正すべきか入力してください..."></textarea>
+                    <button class="btn-primary" style="margin-top:8px; padding:6px 12px; width:auto; font-size:11px;" onclick="saveFeedback('monthly')">修正を記憶させる</button>
+                </div>
+                <div id="monthly-api-cost" class="api-status"></div>
+
+                <div style="margin-top:30px;">
+                    <table class="ranking-table" id="ranking-table">
+                        <thead>
+                            <tr>
+                                <th class="td-rank">#</th>
+                                <th onclick="sortAnalysis('name')">サロン名</th>
+                                <th onclick="sortAnalysis('sales')" style="text-align: right;">売上高</th>
+                                <th onclick="sortAnalysis('profit')" style="text-align: right;">利益額</th>
+                                <th onclick="sortAnalysis('margin')" style="text-align: right;">利益率</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-body">
+                            <!-- JSで動的に追加 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 分析履歴セクション -->
+            <div id="analysis-history-section" style="margin-top: 50px; border-top: 2px solid var(--border); padding-top: 30px;">
+                <div class="section-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    AI分析履歴（アーカイブ）
+                </div>
+                <div id="analysis-history-list" class="analysis-history-list">
+                    <!-- JSで動的に追加 -->
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="mode-global-ai" style="display:none; height: 100%; display: flex; flex-direction: column;">
+            <div class="section-label" style="flex-shrink: 0;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                全体データベースとの対話（チャット形式）
+            </div>
+            
+            <div id="global-chat-history" style="flex-grow: 1; overflow-y: auto; overflow-x: hidden; padding: 10px; margin-top: 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-dark); min-height: 360px; max-height: 68vh; display: flex; flex-direction: column; gap: 15px;">
+                <div style="text-align:center; color:var(--text-dim); font-size:12px; margin-top: 20px;">
+                    データベースへの質問を何でも入力してください。<br>例：「ケラファイを年間で購入しているサロン上位を教えて」
+                </div>
+            </div>
+
+            <div class="instruction-area" style="position: sticky; bottom: 0; flex-shrink: 0; margin-top: 15px; padding-top: 10px; background: linear-gradient(to top, var(--bg) 70%, transparent);">
+                <textarea id="global-ai-instruction" class="instruction-input" style="min-height: 60px;" placeholder="データベースに関する新たな質問・追加指示を入力..."></textarea>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 10px;">
+                    <div id="global-query-status" style="font-size:11px; color:var(--text-dim); display:none;">データを抽出中...</div>
+                    <button class="btn-monthly-ai" id="btn-global-ai" onclick="runGlobalAIQuery()" style="margin-left: auto; width: 140px; border-radius:20px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        送信する
+                    </button>
+                    <button class="btn-outline" style="margin-left:10px; font-size:11px; padding:6px 12px;" onclick="clearGlobalChat()">リセット</button>
+                </div>
+            </div>
+        </div>
+
+
+        <footer>© 2026 2nd Brain Systems. All rights reserved.</footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="modal-settings">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">システム設定</h2>
+                <button class="modal-close" onclick="closeSettings()">&times;</button>
+            </div>
+            <div class="input-group">
+                <label class="input-label">Gemini API Key</label>
+                <input type="password" id="input-api-key" class="input-field" placeholder="AI StudioのAPIキーを入力">
+                <p style="font-size: 10px; color: var(--text-dim); margin-top: 5px;">
+                    ※ブラウザのlocalStorageに保存されます
+                </p>
+            </div>
+            <div class="input-group">
+                <label class="input-label">日報用 GAS API URL</label>
+                <input type="text" id="input-gas-url" class="input-field" placeholder="https://script.google.com/...">
+            </div>
+            <div class="input-group">
+                <label class="input-label">AI基本性格・共通ルール</label>
+                <textarea id="input-ai-global-rules" class="instruction-input" placeholder="例：利益率20%以下は厳しく指摘する。専門用語を多めにする。等"></textarea>
+            </div>
+            <div class="input-group">
+                <label class="input-label">使用するAIモデル</label>
+                <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-2.0-flash" checked>
+                        <span style="font-size:12px;">Gemini 2.0 Flash <small style="color:var(--text-dim);">(安定・高速)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-3-flash-preview">
+                        <span style="font-size:12px;">Gemini 3 Flash <small style="color:var(--text-dim);">(混雑時は自動切替)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-3.1-pro-preview">
+                        <span style="font-size:12px;">Gemini 3.1 Pro <small style="color:var(--text-dim);">(混雑時は自動切替)</small></span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="radio" name="ai-model" value="gemini-2.0-pro-exp-02-05">
+                        <span style="font-size:12px;">Gemini 2.0 Pro</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-grid">
+                <div class="input-group">
+                    <label class="input-label">月間予算上限 (円)</label>
+                    <input type="number" id="input-monthly-budget" class="input-field" placeholder="1000">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">為替レート (円/$)</label>
+                    <input type="number" id="input-exchange-rate" class="input-field" placeholder="155">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">APIプラン</label>
+                <select id="input-api-plan" class="input-field" style="background:var(--surface); color:var(--text);">
+                    <option value="free">無料版 (Free Tier - 制限あり)</option>
+                    <option value="paid" selected>有料版 (Pay-as-you-go)</option>
+                </select>
+                <p style="font-size: 10px; color: var(--text-dim); margin-top: 4px;">
+                    ※無料版は日次の回数制限もカウントします
+                </p>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">現在の利用状況</label>
+                <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:10px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <span style="font-size:12px;">今月の推定額:</span>
+                        <strong id="settings-current-usage" style="color:var(--primary-light); font-size:14px;">¥0</strong>
+                    </div>
+                    <div id="settings-free-limit" style="display:none; justify-content:space-between; margin-bottom:8px; border-top:1px solid var(--border); pt:8px;">
+                        <span style="font-size:11px;">本日の残り回数:</span>
+                        <strong id="settings-remaining-req" style="color:var(--green); font-size:11px;">1,500 / 1,500</strong>
+                    </div>
+                    <div id="usage-archive" class="archive-list">
+                        <!-- アーカイブがここに表示される -->
+                    </div>
+                    <button class="btn-outline" style="margin-top:10px; width:100%; border-color:rgba(211, 64, 64, 0.3); color:var(--red);" onclick="resetUsageManual()">利用実績を手動リセット</button>
+                </div>
+            </div>
+
+            <div class="input-group" style="border-top:1px solid var(--border); padding-top:20px; margin-top:20px;">
+                <label class="input-label">売上データ更新 (CSVアップロード)</label>
+                <div class="upload-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                    <div class="upload-icon">📁</div>
+                    <div style="font-size:14px; font-weight:500;">CSVファイルをドロップ、またはクリック</div>
+                    <div style="font-size:11px; color:var(--text-dim); margin-top:5px;">※毎月の売上データをアップロードすると自動集計されます</div>
+                    <input type="file" id="file-input" style="display:none" accept=".csv" onchange="handleFileSelect(event)">
+                    <div id="upload-status"></div>
+                </div>
+            </div>
+
+            <div class="backup-group">
+                <button class="btn-outline" onclick="exportUsageCSV()">利用明細(CSV)出力</button>
+                <button class="btn-outline" onclick="exportMemory()">記憶をバックアップ</button>
+            </div>
+            <button class="btn-primary" onclick="saveSettings()">設定を保存</button>
+        </div>
+    </div>
+
+    <!-- Salon Detail Modal -->
+    <div class="modal-overlay" id="modal-salon-detail">
+        <div class="modal modal-detail">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="detail-salon-name">サロン名</h2>
+                    <p style="font-size:11px; color:var(--text-dim); margin-top:2px;" id="detail-month-label"></p>
+                </div>
+                <button class="modal-close" onclick="closeSalonDetail()">&times;</button>
+            </div>
+            
+            <div id="detail-content">
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">売上高 (YoY / MoM)</div>
+                        <div class="detail-value" id="detail-sales">¥0</div>
+                        <div class="detail-diff" id="detail-sales-diff"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">利益額 (YoY / MoM)</div>
+                        <div class="detail-value" id="detail-profit">¥0</div>
+                        <div class="detail-diff" id="detail-profit-diff"></div>
+                    </div>
+                </div>
+
+                <div id="chart-tabs" class="report-tabs" style="margin-bottom:10px;">
+                    <button class="report-tab active" id="tab-chart-donut" onclick="switchSalonChart('donut')">商品構成比</button>
+                    <button class="report-tab" id="tab-chart-line" onclick="switchSalonChart('line')">売上推移</button>
+                </div>
+                <div style="position: relative; height:200px; width:100%; margin-bottom:15px;" id="salon-chart-container">
+                    <canvas id="salonChart"></canvas>
+                </div>
+
+                <div id="dead-stock-alert-area" style="display:none; margin-bottom:15px;"></div>
+
+                <details style="margin-bottom: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 8px;">
+                    <summary style="padding: 10px; cursor: pointer; outline: none; list-style: none;">
+                        <div class="section-label" style="margin: 0; pointer-events: none;">📊 推移データ (過去6ヶ月)</div>
+                    </summary>
+                    <div id="detail-table-area" style="overflow-x:auto; padding: 0 10px 10px;">
+                        <!-- JSで動的に追加 -->
+                    </div>
+                </details>
+
+                <div id="detail-products-area" style="margin-bottom: 20px;">
+                    <!-- 当月の主力商品を表示 -->
+                </div>
+
+                <div class="instruction-area">
+                    <label class="instruction-toggle">
+                        <input type="checkbox" id="salon-use-history" checked>
+                        <span>過去の修正（記憶）を活用する</span>
+                    </label>
+                    <textarea id="salon-instruction" class="instruction-input" placeholder="このサロンへの個別指示..."></textarea>
+                    <div class="instruction-meta">
+                        <span class="instruction-count" id="salon-instruction-count">0 characters</span>
+                        <button class="instruction-preview-btn" onclick="previewPrompt('salon')">全指示を確認</button>
+                    </div>
+                </div>
+
+                <button class="btn-salon-ai" id="btn-salon-ai" onclick="analyzeSalonSpecific()">
+                    ✨ このサロンをAI分析
+                </button>
+                <div id="salon-ai-result" class="ai-result-box"></div>
+                <div id="quick-export-bar" style="display:none; gap:10px; margin-top:10px; margin-bottom:10px;">
+                    <button class="btn-primary" style="padding: 8px 12px; font-size: 11px; flex: 1; background: rgba(124, 106, 247, 0.2); border: 1px solid var(--primary);" onclick="exportSalonAI('copy')">📋 コピー</button>
+                    <button class="btn-primary" style="padding: 8px 12px; font-size: 11px; flex: 1; background: #06c755; border: 1px solid #06c755; color: white;" onclick="exportSalonAI('line')">💬 LINEへ出力</button>
+                </div>
+                <div id="salon-usage-badge" style="text-align:center; font-size:10px; color:var(--text-dim); margin-top:4px;"></div>
+                <!-- フィードバックエリア -->
+                <div id="salon-feedback-area" class="feedback-container">
+                    <div class="feedback-label">💡 AIの解釈を修正して覚えさせる</div>
+                    <div class="quick-tags">
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', '数値が違う')">数値が違う</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', '店販を重視')">店販を重視</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', 'リスクを指摘')">リスクを指摘</button>
+                        <button class="quick-tag" onclick="addFeedbackTag('salon', '会話調で')">会話調で</button>
+                    </div>
+                    <textarea id="salon-feedback-input" class="instruction-input" style="min-height:60px;" placeholder="具体的にどう修正すべきか入力してください..."></textarea>
+                    <button class="btn-primary" style="margin-top:8px; padding:6px 12px; width:auto; font-size:11px;" onclick="saveFeedback('salon')">修正を記憶させる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal-overlay" id="modal-product-detail">
+        <div class="modal modal-detail">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="product-detail-name">商品名</h2>
+                    <p style="font-size:11px; color:var(--text-dim); margin-top:2px;" id="product-detail-summary"></p>
+                </div>
+                <button class="modal-close" onclick="closeProductDetail()">&times;</button>
+            </div>
+            
+            <div id="product-detail-content">
+                <div class="section-label">🏪 サロン別販売内訳</div>
+                <div id="product-detail-table-area" style="overflow-x:auto; margin-bottom: 20px;">
+                    <!-- JSで動的に追加 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Constants & API Configuration ──
+        const GAS_API_URL = localStorage.getItem('crm_gas_url') || 'https://script.google.com/macros/s/AKfycbxutj9vkwLDtQEYuRsxARvY2c6OJD0hYBh9BZR892Sf5fesbXQcU2S72zWj-FHsJC1P/exec';
+
+        // ── State ──
+        let DATA = null;
+        let MONTHLY_DATA = null;
+        let selectedDay = null;
+        let selectedSalon = null;
+        let sortOrder = 'date';
+        let currentMode = 'salon'; // 'salon' | 'product' | 'analysis'
+        let priceOverrides = {}; // localStorage保存の価格オーバーライド
+
+        // AI Memory Layer
+        let aiMemory = {
+            global_instructions: "",
+            feedback_history: [], // 全体履歴
+            salon_specific: {}, // サロン名: { history: [] }
+            analysis_logs: []   // 新規：AI分析結果のログアーカイブ
+        };
+
+        function loadMemory() {
+            try {
+                const saved = localStorage.getItem('crm_ai_memory');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    aiMemory = { ...aiMemory, ...parsed };
+                }
+            } catch (e) { console.error('Memory load error:', e); }
+        }
+
+        function saveMemory() {
+            localStorage.setItem('crm_ai_memory', JSON.stringify(aiMemory));
+        }
+
+        function exportMemory() {
+            const blob = new Blob([JSON.stringify(aiMemory, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `crm_ai_memory_${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+        }
+
+        function addFeedbackTag(type, text) {
+            const inputId = type === 'monthly' ? 'monthly-feedback-input' : 'salon-feedback-input';
+            const input = document.getElementById(inputId);
+            const current = input.value.trim();
+            input.value = current ? `${current}, ${text}` : text;
+        }
+
+        function saveFeedback(type) {
+            const inputId = type === 'monthly' ? 'monthly-feedback-input' : 'salon-feedback-input';
+            const input = document.getElementById(inputId);
+            const text = input.value.trim();
+            if (!text) return;
+
+            const entry = { text, date: new Date().toISOString() };
+            
+            if (type === 'monthly') {
+                aiMemory.feedback_history.unshift(entry);
+                if (aiMemory.feedback_history.length > 10) aiMemory.feedback_history.pop();
+            } else {
+                const sName = currentDetailSalon;
+                if (!aiMemory.salon_specific[sName]) aiMemory.salon_specific[sName] = { history: [] };
+                aiMemory.salon_specific[sName].history.unshift(entry);
+                if (aiMemory.salon_specific[sName].history.length > 5) aiMemory.salon_specific[sName].history.pop();
+            }
+            
+            saveMemory();
+            input.value = "";
+            alert('修正内容を記憶しました。次回の分析に反映されます。');
+            document.getElementById(`${type}-feedback-area`).style.display = 'none';
+        }
+        
+        async function saveAnalysisResult(type) {
+            const resultBox = type === 'monthly' ? document.getElementById('monthly-ai-result') : document.getElementById('salon-ai-result');
+            const resultText = resultBox.querySelector('.ai-response-content')?.innerText || resultBox.innerText;
+            const targetMonth = document.getElementById('analysis-month-select').value;
+            const salon = type === 'salon' ? currentDetailSalon : '全体分析';
+            
+            const logEntry = {
+                date: new Date().toLocaleString('ja-JP'),
+                type: type,
+                salon: salon,
+                month: targetMonth,
+                result: resultText
+            };
+            
+            // 1. LocalStorage に保存
+            if (!aiMemory.analysis_logs) aiMemory.analysis_logs = [];
+            aiMemory.analysis_logs.unshift(logEntry);
+            if (aiMemory.analysis_logs.length > 50) aiMemory.analysis_logs.pop(); // 直近50件
+            saveMemory();
+            
+            // 2. GAS に送信 (行動・インサイトをスプレッドシートに記録)
+            if (GAS_API_URL) {
+                try {
+                    // Fetch APIでPOST送信（no-cors または受信側のCORS設定が必要ですが、まずは送信試行）
+                    fetch(GAS_API_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            action: 'saveAIAnalysis',
+                            data: logEntry
+                        })
+                    });
+                } catch(e) { console.error('GAS save error:', e); }
+            }
+            
+            alert('分析結果を履歴に保存しました。');
+            renderAnalysisHistory();
+            
+            // 保存ボタンを非表示（または無効化）
+            const btn = document.getElementById(`btn-save-${type}`);
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = '✅ 保存済み';
+                btn.style.background = 'var(--surface)';
+                btn.style.color = 'var(--green)';
+            }
+        }
+        
+        function renderAnalysisHistory() {
+            const container = document.getElementById('analysis-history-list');
+            if (!container) return;
+            const logs = aiMemory.analysis_logs || [];
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="empty-state">履歴はありません</div>';
+                return;
+            }
+            
+            container.innerHTML = logs.map((log, idx) => `
+                <div class="glass" style="margin-bottom:10px; padding:12px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:6px; color:var(--text-dim); font-size:10px;">
+                        <span>${log.date}</span>
+                        <span style="background:var(--primary-glow); color:var(--primary-light); padding:2px 6px; border-radius:4px;">${log.month} / ${log.salon}</span>
+                    </div>
+                    <div style="line-height:1.6; color:var(--text); white-space:pre-wrap; max-height:100px; overflow-y:auto;">${escapeHtml(log.result)}</div>
+                    <div style="text-align:right; margin-top:8px;">
+                        <button class="instruction-preview-btn" onclick="deleteHistoryEntry(${idx})">削除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function deleteHistoryEntry(idx) {
+            if (confirm('この履歴を削除しますか？')) {
+                aiMemory.analysis_logs.splice(idx, 1);
+                saveMemory();
+                renderAnalysisHistory();
+            }
+        }
+
+        function getEffectiveInstructions(type, currentInput) {
+            let parts = [];
+            
+            // 1. Current (Highest priority)
+            if (currentInput) {
+                parts.push(`【★★★最優先指令：今回の特別指示】\n${currentInput}`);
+            }
+
+            // 2. Feedback History
+            let history = [];
+            if (type === 'salon') {
+                const useHistory = document.getElementById('salon-use-history').checked;
+                if (useHistory) {
+                    const sName = currentDetailSalon;
+                    const specific = aiMemory.salon_specific[sName]?.history || [];
+                    history = [...specific, ...aiMemory.feedback_history].slice(0, 5);
+                }
+            } else {
+                history = aiMemory.feedback_history.slice(0, 5);
+            }
+
+            if (history.length > 0) {
+                parts.push(`【★★重要：過去のフィードバック履歴（学習済み事項）】\n${history.map(h => `- ${h.text}`).join('\n')}`);
+            }
+
+            // 3. Global Rules
+            if (aiMemory.global_instructions) {
+                parts.push(`【★基本性格・共通ルール】\n${aiMemory.global_instructions}`);
+            }
+
+            return parts.length > 0 ? "\n---\n" + parts.join('\n\n') : "";
+        }
+
+        function previewPrompt(type) {
+            const inputId = type === 'monthly' ? 'monthly-instruction' : 'salon-instruction';
+            const current = document.getElementById(inputId).value;
+            const instructions = getEffectiveInstructions(type, current);
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay active';
+            overlay.style.display = 'flex'; // 確実に表示
+            overlay.innerHTML = `
+                <div class="modal slide-in active" style="max-width: 600px;">
+                    <div class="modal-header">
+                        <h2 class="modal-title">適用される指示プレビュー</h2>
+                        <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+                    </div>
+                    <div class="prompt-preview-modal">${instructions || '適用される指示はありません'}</div>
+                    <button class="btn-primary" style="margin-top:20px; width:100%;" onclick="this.closest('.modal-overlay').remove()">閉じる</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        }
+
+        // GAS Web App URL
+        // ── UI Helpers ──
+
+        const DAY_LABELS = {
+            Tuesday: '火曜日',
+            Wednesday: '水曜日',
+            Thursday: '木曜日',
+            Friday: '金曜日',
+            Others: 'その他'
+        };
+
+        // ── Price Override (localStorage) ──
+        function loadPriceOverrides() {
+            try {
+                const saved = localStorage.getItem('crm_price_overrides');
+                if (saved) priceOverrides = JSON.parse(saved);
+            } catch (e) { priceOverrides = {}; }
+        }
+
+        function savePriceOverrides() {
+            localStorage.setItem('crm_price_overrides', JSON.stringify(priceOverrides));
+        }
+
+        function getPriceKey(day, salon, productName) {
+            return `${day}::${salon}::${productName}`;
+        }
+
+        function getDisplayPrice(day, salon, product) {
+            const key = getPriceKey(day, salon, product.product_name);
+            return priceOverrides[key] !== undefined ? priceOverrides[key] : product.unit_price;
+        }
+
+        function isEdited(day, salon, productName) {
+            return priceOverrides[getPriceKey(day, salon, productName)] !== undefined;
+        }
+
+        function startEditPrice(day, salon, productName, currentPrice) {
+            const key = getPriceKey(day, salon, productName);
+            const cell = event.target.closest('.price-cell');
+            const valueEl = cell.querySelector('.price-value');
+            valueEl.style.display = 'none';
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'price-edit-input';
+            input.value = currentPrice;
+            cell.insertBefore(input, valueEl);
+            input.focus();
+            input.select();
+
+            const commit = () => {
+                const newPrice = parseInt(input.value);
+                if (!isNaN(newPrice) && newPrice >= 0) {
+                    priceOverrides[key] = newPrice;
+                    savePriceOverrides();
+                }
+                renderTable();
+            };
+
+            input.addEventListener('blur', commit);
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); commit(); }
+                if (e.key === 'Escape') { input.remove(); valueEl.style.display = ''; }
+            });
+        }
+
+        function resetPrice(day, salon, productName) {
+            const key = getPriceKey(day, salon, productName);
+            delete priceOverrides[key];
+            savePriceOverrides();
+            renderTable();
+        }
+
+        // ── Analysis Logic ──
+        let analysisSort = 'sales';
+
+        function initAnalysis() {
+            const select = document.getElementById('analysis-month-select');
+            if (!select) return;
+            
+            // 既存の選択肢をクリアして初期状態に戻す（重複防止）
+            select.innerHTML = '<option value="">月を選択</option>';
+
+            if (MONTHLY_DATA && MONTHLY_DATA.salons) {
+                // 利用可能な月を抽出
+                const months = new Set();
+                for (const s in MONTHLY_DATA.salons) {
+                    for (const m in MONTHLY_DATA.salons[s]) months.add(m);
+                }
+                const sorted = Array.from(months).sort().reverse();
+                sorted.forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m;
+                    opt.textContent = m.replace('-', '年') + '月';
+                    select.appendChild(opt);
+                });
+            }
+        }
+
+        function runAnalysis() {
+            const month = document.getElementById('analysis-month-select').value;
+            if (!month) {
+                document.getElementById('analysis-content').style.display = 'none';
+                document.getElementById('analysis-empty').style.display = 'block';
+                return;
+            }
+            document.getElementById('analysis-content').style.display = 'block';
+            document.getElementById('analysis-empty').style.display = 'none';
+            renderAnalysisRanking();
+            updateUsageIndicators();
+        }
+
+        function sortAnalysis(key) {
+            analysisSort = key;
+            renderAnalysisRanking();
+        }
+
+        function renderAnalysisRanking() {
+            const month = document.getElementById('analysis-month-select').value;
+            if (!MONTHLY_DATA || !month) return;
+
+            const [y, m] = month.split('-').map(Number);
+            const prevYearMonth = `${y - 1}-${m.toString().padStart(2, '0')}`;
+
+            const list = [];
+            let totalSales = 0, totalProfit = 0, prevTotalSales = 0, prevTotalProfit = 0;
+            const productRegistry = {}; // { name: { sales, count, salons: { name: { qty, sales } } } }
+
+            const getFocusBrand = (pName) => {
+                if (pName.includes('プテロ') || pName.includes('PUTELO')) return 'プテロ/Putelo';
+                if ((pName.includes('P-UP') || pName.includes('ﾃﾗﾍﾙﾂ')) && !pName.includes('ﾌﾞﾗｼ') && !pName.includes('ブラシ')) return 'P-UP/XTERA';
+                return null;
+            };
+
+            for (const name in MONTHLY_DATA.salons) {
+                const sData = MONTHLY_DATA.salons[name];
+                const data = sData[month];
+                const prevD = sData[prevYearMonth];
+
+                if (data) {
+                    const sales = data.sales || 0;
+                    const profit = data.profit || 0;
+                    totalSales += sales;
+                    totalProfit += profit;
+
+                    if (data.details) {
+                        data.details.forEach(p => {
+                            const pName = p.name.toUpperCase();
+                            const focusBrand = getFocusBrand(pName);
+                            const key = focusBrand || p.name; // フォーカスブランドがあればそちらに集約、なければ個別商品名
+
+                            if (!productRegistry[key]) {
+                                productRegistry[key] = { sales: 0, count: 0, salons: {} };
+                            }
+                            productRegistry[key].sales += (p.sales || 0);
+                            productRegistry[key].count += (p.qty || 1);
+                            
+                            if (!productRegistry[key].salons[name]) {
+                                productRegistry[key].salons[name] = { qty: 0, sales: 0 };
+                            }
+                            productRegistry[key].salons[name].qty += (p.qty || 1);
+                            productRegistry[key].salons[name].sales += (p.sales || 0);
+                        });
+                    }
+
+                    let yoy = null, yoyDiff = null, pDiff = null;
+                    if (prevD && prevD.sales > 0) {
+                        yoy = ((sales - prevD.sales) / prevD.sales) * 100;
+                        yoyDiff = sales - prevD.sales;
+                    }
+                    if (prevD) pDiff = profit - (prevD.profit || 0);
+
+                    list.push({ name, sales, profit, margin: sales > 0 ? (profit / sales) * 100 : 0, yoy, yoyDiff, pDiff });
+                }
+                if (prevD) {
+                    prevTotalSales += prevD.sales || 0;
+                    prevTotalProfit += prevD.profit || 0;
+                }
+            }
+
+            let overallYoY = null, profitYoY = null, marginYoY = null;
+            let salesDiff = totalSales - prevTotalSales;
+            let profitDiff = totalProfit - prevTotalProfit;
+
+            if (prevTotalSales > 0) overallYoY = ((totalSales - prevTotalSales) / prevTotalSales) * 100;
+            if (prevTotalProfit > 0) profitYoY = ((totalProfit - prevTotalProfit) / prevTotalProfit) * 100;
+            
+            const currentMargin = totalSales > 0 ? (totalProfit / totalSales) * 100 : 0;
+            const prevMargin = prevTotalSales > 0 ? (prevTotalProfit / prevTotalSales) * 100 : 0;
+            if (prevMargin > 0) marginYoY = currentMargin - prevMargin;
+
+            list.sort((a, b) => {
+                if (analysisSort === 'name') return a.name.localeCompare(b.name, 'ja');
+                if (analysisSort === 'yoy') return (b.yoy || -999) - (a.yoy || -999);
+                return (b[analysisSort] || 0) - (a[analysisSort] || 0);
+            });
+
+            const summary = document.getElementById('analysis-summary');
+            if (summary) {
+                const salesBadge = overallYoY !== null ? 
+                    `<div class="trend-badge ${overallYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
+                        ${overallYoY >= 0 ? '↑' : '↓'} ${Math.abs(overallYoY).toFixed(1)}% (${(salesDiff >= 0 ? '+' : '-') + '¥' + Math.abs(salesDiff).toLocaleString()})
+                     </div>` : '';
+
+                const profitBadge = profitYoY !== null ? 
+                    `<div class="trend-badge ${profitYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
+                        ${profitYoY >= 0 ? '↑' : '↓'} ${Math.abs(profitYoY).toFixed(1)}% (${(profitDiff >= 0 ? '+' : '-') + '¥' + Math.abs(profitDiff).toLocaleString()})
+                     </div>` : '';
+
+                const marginBadge = marginYoY !== null ? 
+                    `<div class="trend-badge ${marginYoY >= 0 ? 'trend-up' : 'trend-down'}" style="margin-top:4px; font-size:10px;">
+                        ${marginYoY >= 0 ? '↑' : '↓'} ${Math.abs(marginYoY).toFixed(1)}pt <small>昨対</small>
+                     </div>` : '';
+
+                summary.innerHTML = `
+                    <div class="summary-card">
+                        <div class="summary-label">総売上</div>
+                        <div class="summary-value">¥${totalSales.toLocaleString()}</div>
+                        ${salesBadge}
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">総利益</div>
+                        <div class="summary-value">¥${totalProfit.toLocaleString()}</div>
+                        ${profitBadge}
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-label">平均利益率</div>
+                        <div class="summary-value">${currentMargin.toFixed(1)}%</div>
+                        ${marginBadge}
+                    </div>
+                `;
+
+                // 動的ブランド/商品の抽出 (プテロ・P-UPを優先、残りは売上順にTOP6まで)
+                const sortedProducts = Object.entries(productRegistry)
+                    .sort((a, b) => b[1].sales - a[1].sales);
+                
+                const focusItems = sortedProducts.filter(([name]) => name === 'プテロ/Putelo' || name === 'P-UP/XTERA');
+                const restItems = sortedProducts.filter(([name]) => name !== 'プテロ/Putelo' && name !== 'P-UP/XTERA').slice(0, 4);
+                const displayProducts = [...focusItems, ...restItems].slice(0, 6);
+
+                window.currentProductRegistry = productRegistry; // モーダルアクセス用
+
+                let brandHtml = '<div style="margin-top:20px; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; width:100%;">';
+                displayProducts.forEach(([name, b]) => {
+                    if (b.sales > 0) {
+                        brandHtml += `
+                            <div class="summary-card clickable" onclick="showProductAnalysisDetail('${escapeAttr(name)}')" 
+                                 style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); padding:12px; border-radius:12px; cursor:pointer; transition: all 0.2s;">
+                                <div style="font-size:11px; color:var(--text-dim); margin-bottom:4px; display:flex; justify-content:space-between; align-items:center;">
+                                    <span>${name}</span>
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                                </div>
+                                <div style="font-size:16px; font-weight:700; color:var(--primary-light);">¥${b.sales.toLocaleString()}</div>
+                                <div style="font-size:10px; color:var(--text-muted);">${b.count} 点の販売</div>
+                            </div>
+                        `;
+                    }
+                });
+                brandHtml += '</div>';
+                summary.innerHTML += brandHtml;
+            }
+
+            const tbody = document.getElementById('ranking-body');
+            if (tbody) {
+                tbody.innerHTML = list.map((item, idx) => {
+                    const marginClass = item.margin < 18 ? 'margin-low' : (item.margin > 25 ? 'margin-high' : '');
+                    const yoyInfo = item.yoy !== null ? 
+                        `<div class="trend-badge ${item.yoy >= 0 ? 'trend-up' : 'trend-down'}" style="font-size:9px; padding:2px 6px; margin-top:2px; display:inline-block;">
+                            ${item.yoy >= 0 ? '↑' : '↓'}${Math.abs(item.yoy).toFixed(0)}%
+                            <br><small style="font-weight:700;">${(item.yoyDiff >= 0 ? '+' : '-') + '¥' + Math.abs(item.yoyDiff).toLocaleString()}</small>
+                         </div>` : '';
+                    const saleTrend = item.yoyDiff !== null ? 
+                        `<div style="font-size:9px; font-weight:700; color:${item.yoyDiff >= 0 ? 'var(--green)' : 'var(--red)'};">
+                            ${item.yoyDiff >= 0 ? '↑' : '↓'}¥${Math.abs(item.yoyDiff).toLocaleString()}
+                         </div>` : '';
+                    const profitTrend = item.pDiff !== null ? 
+                        `<div style="font-size:9px; font-weight:700; color:${item.pDiff >= 0 ? 'var(--green)' : 'var(--red)'};">
+                            ${item.pDiff >= 0 ? '↑' : '↓'}¥${Math.abs(item.pDiff).toLocaleString()}
+                         </div>` : '';
+
+                    return `
+                        <tr>
+                            <td class="td-rank">${idx + 1}</td>
+                            <td data-label="サロン名" style="font-weight:600;">
+                                <span class="clickable-name" onclick="showSalonAnalysisDetail('${escapeAttr(item.name)}')">${escapeHtml(item.name)}</span>
+                                ${yoyInfo}
+                            </td>
+                            <td data-label="売上高" style="text-align:right; font-weight:700;">
+                                ¥${item.sales.toLocaleString()}
+                                ${saleTrend}
+                            </td>
+                            <td data-label="利益額" style="text-align:right; color:var(--primary-light);">
+                                ¥${item.profit.toLocaleString()}
+                                ${profitTrend}
+                            </td>
+                            <td data-label="利益率" style="text-align:right;">
+                                <span class="td-margin-badge ${marginClass}">${item.margin.toFixed(1)}%</span>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+            const table = document.getElementById('ranking-table');
+            if (table) table.classList.add('mobile-cards');
+        }
+
+        
+        
+        
+        // ── Global AI Query Logic (Polished) ──
+        let globalChatHistory = [];
+
+        // リロード時に履歴を復元する
+        function loadGlobalChat() {
+            const saved = localStorage.getItem('crm_global_chat_history');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    globalChatHistory = parsed.history;
+                    currentUIMessages = parsed.uiMessages || [];
+                    
+                    const historyArea = document.getElementById('global-chat-history');
+                    historyArea.innerHTML = '<div style="text-align:center; color:var(--text-dim); font-size:12px; margin-top: 20px;">前回のセッションから復元されました</div>';
+                    
+                    currentUIMessages.forEach(msg => {
+                        renderChatBubble(msg.role, msg.text);
+                    });
+                } catch(e) { console.error('履歴読み込み失敗', e); }
+            }
+        }
+
+        function saveGlobalChat(uiMessages) {
+            localStorage.setItem('crm_global_chat_history', JSON.stringify({
+                history: globalChatHistory,
+                uiMessages: uiMessages
+            }));
+        }
+
+        // 保存用と描画用の分離
+        let currentUIMessages = [];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // 他のDOMツリー構築完了後にロード
+            setTimeout(loadGlobalChat, 500);
+        });
+
+        function clearGlobalChat() {
+            globalChatHistory = [];
+            currentUIMessages = [];
+            localStorage.removeItem('crm_global_chat_history');
+            const historyArea = document.getElementById('global-chat-history');
+            historyArea.innerHTML = `<div style="text-align:center; color:var(--text-dim); font-size:12px; margin-top: 20px;">対話履歴をリセットしました。新たな分析をスタートできます。</div>`;
+            document.getElementById('global-ai-instruction').value = '';
+        }
+
+        function renderChatBubble(role, text) {
+            const historyArea = document.getElementById('global-chat-history');
+            const msgDiv = document.createElement('div');
+            
+            if (role === 'user') {
+                msgDiv.style.cssText = "align-self: flex-end; background: var(--primary-light); color: #fff; padding: 10px 15px; border-radius: 18px 18px 0 18px; max-width: 85%; font-size:13px; line-height:1.5;";
+                msgDiv.textContent = text;
+            } else {
+                msgDiv.style.cssText = "align-self: flex-start; background: var(--surface); color: var(--text); padding: 12px 16px; border-radius: 18px 18px 18px 0; border: 1px solid var(--border); max-width: 95%; font-size:13px; line-height:1.6; overflow-x:auto;";
+                msgDiv.classList.add('ai-response-content');
+                msgDiv.innerHTML = formatMarkdown(text);
+                
+                const tables = msgDiv.querySelectorAll('table');
+                tables.forEach(t => t.parentElement.style.overflowX = 'auto');
+            }
+            
+            historyArea.appendChild(msgDiv);
+            historyArea.scrollTop = historyArea.scrollHeight;
+        }
+
+        function extractProductTerms(instruction) {
+            let normalized = normalizeSearch(instruction)
+                .replace(/[「」『』【】（）()\[\]、。,.!?！？:：]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+            const stopWords = [
+                '年間', '月間', '直近', '最大', '全体', '全部', 'すべて', '全て', 'データ', 'サロン', '商品',
+                '売上', '購入', '導入', '上位', '下位', 'ランキング', '教えて', '知りたい', '合計', '集計',
+                '分析', '比較', '推移', '一覧', 'どこ', 'どれ', 'いくら', 'ください', 'して', 'いる', 'ある',
+                'した', 'された', 'されて', '買って', '買う', '買った', '使って', '使う'
+            ];
+            stopWords.forEach(word => {
+                normalized = normalized.replaceAll(word, ' ');
+            });
+            normalized = normalized.replace(/[をにがはでとのやへもからまでより]/g, ' ');
+            return normalized.split(' ')
+                .map(t => t.trim())
+                .filter(t => t.length >= 2 && !/^\d+$/.test(t));
+        }
+
+        async function extractRelevantCSVAsync(instruction, maxMonths=12) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    const rows = [];
+                    const salons = MONTHLY_DATA.salons;
+                    
+                    let allMonths = new Set();
+                    for (let s in salons) {
+                        for (let m in salons[s]) allMonths.add(m);
+                    }
+                    let recentMonths = Array.from(allMonths).sort().reverse().slice(0, maxMonths);
+
+                    const normInstruction = normalizeSearch(instruction).replace(/\s+/g, '');
+                    const productTerms = extractProductTerms(instruction);
+                    const isBroadQuery = /全体|全部|全て|すべて|ランキング|上位|下位|一覧|売上|年間|月間|比較|推移/.test(instruction);
+                    
+                    for (let salon in salons) {
+                        const salonMatch = normInstruction.includes(normalizeSearch(salon).replace(/\s+/g, ''));
+                        
+                        for (let month in salons[salon]) {
+                            if (!recentMonths.includes(month)) continue;
+                            const details = salons[salon][month].details;
+                            
+                            details.forEach(d => {
+                                if (d.name === '伝引' || d.sales === 0) return;
+
+                                const normProduct = normalizeSearch(d.name).replace(/\s+/g, '');
+                                const productMatch = productTerms.length > 0
+                                    ? productTerms.some(term => normProduct.includes(term.replace(/\s+/g, '')))
+                                    : false;
+                                const includeRow = salonMatch || productMatch || (isBroadQuery && productTerms.length === 0);
+                                if (!includeRow) return;
+
+                                rows.push({
+                                    salon,
+                                    month,
+                                    product: d.name,
+                                    qty: Number(d.qty) || 0,
+                                    sales: Number(d.sales) || 0
+                                });
+                            });
+                        }
+                    }
+
+                    let finalRows = rows;
+                    let mode = 'raw';
+
+                    if (finalRows.length === 0) {
+                        // 見つからない場合でも「データなし」と誤答しないよう、サロン月次合計だけは渡す。
+                        mode = 'salon_monthly_summary_fallback';
+                        finalRows = [];
+                        for (let salon in salons) {
+                            for (let month in salons[salon]) {
+                                if (!recentMonths.includes(month)) continue;
+                                finalRows.push({
+                                    salon,
+                                    month,
+                                    product: 'TOTAL',
+                                    qty: '',
+                                    sales: Number(salons[salon][month].sales) || 0
+                                });
+                            }
+                        }
+                    } else if (finalRows.length > 3500) {
+                        // 大規模クエリは商品別サロン別に合算して、途中切れで商品が落ちる事故を防ぐ。
+                        mode = 'aggregated';
+                        const map = new Map();
+                        finalRows.forEach(row => {
+                            const key = `${row.salon}||${row.product}`;
+                            const current = map.get(key) || { salon: row.salon, month: 'ALL', product: row.product, qty: 0, sales: 0 };
+                            current.qty += row.qty;
+                            current.sales += row.sales;
+                            map.set(key, current);
+                        });
+                        finalRows = Array.from(map.values()).sort((a, b) => b.sales - a.sales).slice(0, 3500);
+                    }
+
+                    let csv = "Salon,Month,Product,Qty,Sales\n";
+                    finalRows.forEach(row => {
+                        const safeProduct = String(row.product).replace(/"/g, '""');
+                        csv += `"${row.salon}",${row.month},"${safeProduct}",${row.qty},${row.sales}\n`;
+                    });
+
+                    resolve({
+                        csv,
+                        meta: {
+                            mode,
+                            matchedRows: rows.length,
+                            sentRows: finalRows.length,
+                            months: recentMonths.join(', '),
+                            terms: productTerms.join(', ')
+                        }
+                    });
+                }, 50);
+            });
+        }
+
+        async function runGlobalAIQuery() {
+            const inputEl = document.getElementById('global-ai-instruction');
+            const instruction = inputEl.value.trim();
+            if (!instruction) return;
+            
+            if (!MONTHLY_DATA || !MONTHLY_DATA.salons) {
+                alert('月次売上データがまだロードされていません。');
+                return;
+            }
+
+            const btn = document.getElementById('btn-global-ai');
+            const statusEl = document.getElementById('global-query-status');
+            
+            // UI Update
+            renderChatBubble('user', instruction);
+            currentUIMessages.push({role: 'user', text: instruction});
+            inputEl.value = '';
+            btn.disabled = true;
+            statusEl.style.display = 'block';
+            statusEl.textContent = 'CSVデータを生成中...';
+
+            try {
+                // 毎回、現在の質問に必要なCSVを再抽出して渡す。
+                // 会話履歴だけに依存すると、2回目以降にAIが実データを見失うため。
+                const extracted = await extractRelevantCSVAsync(instruction, 12);
+                statusEl.textContent = `AIに送信中... (${extracted.meta.sentRows}行 / ${extracted.meta.mode})`;
+
+                const promptText = `あなたは美容ディーラーの優秀なデータアナリストです。提供された全サロンの売上データ（CSV形式）を用いて、ユーザーの質問に正確に回答してください。
+指定された商品のランキングや特定のトレンドを Markdown テーブルを用いてわかりやすく提示してください。
+※「年間」などの指示があった場合、月ごとの合算を正しく行い総合計を出してください。データ量が多い場合は上位15位等に絞ってください。
+※CSVに該当行がある場合は「データがない」と回答しないでください。判断に迷う場合は、参照したCSV行数と検索語を明記してください。
+
+【ユーザーの指示】
+${instruction}
+
+【抽出メタ情報】
+mode=${extracted.meta.mode}
+matchedRows=${extracted.meta.matchedRows}
+sentRows=${extracted.meta.sentRows}
+months=${extracted.meta.months}
+searchTerms=${extracted.meta.terms || 'なし'}
+
+【参照用売上データ（直近最大1年間）】
+${extracted.csv}
+`;
+
+                const recentConversation = globalChatHistory.slice(-4);
+                let currentPayloadHistory = [...recentConversation];
+                currentPayloadHistory.push({ role: "user", parts: [{ text: promptText }] });
+                
+                const apiKey = localStorage.getItem('crm_gemini_key');
+                if (!apiKey) throw new Error('APIキーが未設定です。');
+                
+                const selectedModel = getSelectedAIModel();
+                const aiResult = await callGeminiGenerateContent({
+                    apiKey,
+                    selectedModel,
+                    contents: currentPayloadHistory,
+                    generationConfig: { temperature: 0.6, maxOutputTokens: 4096 },
+                    onFallback: (fromModel, toModel) => {
+                        statusEl.textContent = `${fromModel} が混雑中のため、${toModel} に切り替えて再実行中...`;
+                    }
+                });
+                const data = aiResult.data;
+                if (!data.candidates || !data.candidates[0].content) throw new Error('解析結果が空でした。');
+
+                const replyText = data.candidates[0].content.parts[0].text;
+                
+                // 保存する履歴は軽量化。次回もCSVは再抽出する。
+                globalChatHistory.push({ role: "user", parts: [{ text: instruction }] });
+                globalChatHistory.push({ role: "model", parts: [{ text: replyText }] });
+
+                // UIへ出力
+                renderChatBubble('model', replyText);
+                currentUIMessages.push({role: 'model', text: replyText});
+
+                // ローカルストレージに状態保存
+                saveGlobalChat(currentUIMessages);
+
+            } catch (e) {
+                console.error(e);
+                renderChatBubble('model', `**エラーが発生しました**\n${e.message}\nもう一度お試しください。`);
+            }
+
+            statusEl.style.display = 'none';
+            btn.disabled = false;
+        }
+
+        // --- Common AI Analysis Logic ---
+        function getSelectedAIModel() {
+            return localStorage.getItem('crm_ai_model') || 'gemini-2.0-flash';
+        }
+
+        function getGeminiModelFallbacks(selectedModel) {
+            const models = [
+                selectedModel,
+                'gemini-2.0-flash',
+                'gemini-3-flash-preview',
+                'gemini-3.1-pro-preview',
+                'gemini-2.0-pro-exp-02-05'
+            ];
+            return Array.from(new Set(models.filter(Boolean)));
+        }
+
+        function isGeminiFallbackError(response, data) {
+            const message = data?.error?.message || '';
+            const status = data?.error?.status || '';
+            return response.status === 429
+                || response.status === 503
+                || /high demand|overloaded|temporarily unavailable|unavailable|try again later|model is currently|not found|not supported/i.test(message)
+                || /UNAVAILABLE|RESOURCE_EXHAUSTED|NOT_FOUND/i.test(status);
+        }
+
+        async function callGeminiGenerateContent({ apiKey, selectedModel, contents, generationConfig, onFallback }) {
+            const models = getGeminiModelFallbacks(selectedModel);
+            let lastError = null;
+
+            for (let i = 0; i < models.length; i++) {
+                const modelId = models[i];
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents, generationConfig })
+                });
+
+                const data = await response.json().catch(() => ({}));
+                if (!data.error && response.ok) {
+                    return { data, modelId };
+                }
+
+                lastError = new Error(data?.error?.message || `Gemini API error (${response.status})`);
+                if (i < models.length - 1 && isGeminiFallbackError(response, data)) {
+                    if (typeof onFallback === 'function') onFallback(modelId, models[i + 1]);
+                    continue;
+                }
+                break;
+            }
+
+            throw lastError || new Error('AI呼び出しに失敗しました。');
+        }
+
+        async function callGeminiAPI(prompt, btn, resultBox, costEl = null) {
+            const apiKey = localStorage.getItem('crm_gemini_key');
+            if (!apiKey) {
+                alert('APIキーが設定されていません。設定ボタンから入力してください。');
+                openSettings();
+                return;
+            }
+
+            // 予算・制限チェック
+            const usageData = getUsageData();
+            const config = getUsageConfig();
+            
+            // 実行前シミュレーション
+            const estTokens = Math.ceil(prompt.length * (localStorage.getItem('crm_token_coeff') || 1.25));
+            const selectedModel = getSelectedAIModel();
+            const estCost = calculateCost(estTokens, 0, selectedModel, config.exchangeRate); // 出力は不明なので入力のみ暫定
+
+            if (config.apiPlan === 'free' && usageData.dailyRequests >= 1500) {
+                alert('本日の実行回数制限（1,500件）に達しました。有料プランに切り替えるか、明日までお待ちください。');
+                return;
+            }
+
+            if (usageData.monthlyCost + estCost > config.monthlyBudget) {
+                const proceed = confirm(`月間予算を超過する可能性があります（予測コスト: ¥${estCost.toFixed(2)}）。\n現在の累計: ¥${usageData.monthlyCost.toFixed(0)} / 予算: ¥${config.monthlyBudget} \n\n分析を続行しますか？`);
+                if (!proceed) return;
+            }
+
+            // ボタン無効化とスピナー
+            const originalBtnHtml = btn.innerHTML;
+            btn.innerHTML = '<span class="report-loading"><span class="spinner"></span>分析中...</span>';
+            btn.disabled = true;
+
+            try {
+                const aiResult = await callGeminiGenerateContent({
+                    apiKey,
+                    selectedModel,
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { temperature: 0.7, maxOutputTokens: 4096 },
+                    onFallback: (fromModel, toModel) => {
+                        btn.innerHTML = `<span class="report-loading"><span class="spinner"></span>${fromModel}混雑中 → ${toModel}で再試行...</span>`;
+                    }
+                });
+                const data = aiResult.data;
+                const usedModel = aiResult.modelId;
+
+                // 安全フィルター等で内容が空の場合のハンドリング
+                if (!data.candidates || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                    if (data.candidates && data.candidates[0].finishReason === 'SAFETY') {
+                        throw new Error('安全性フィルターにより内容がブロックされました。プロンプトを調整してください。');
+                    }
+                    throw new Error('AIからの応答が空でした。もう一度お試しください。');
+                }
+
+                let resultText = data.candidates[0].content.parts[0].text;
+
+                // トークン上限による途切れのチェック
+                if (data.candidates[0].finishReason === 'MAX_TOKENS') {
+                    resultText += '\n\n**⚠️ 出力制限に達したため、文章が途中で切れている可能性があります。**';
+                }
+
+                resultBox.style.display = 'block';
+                resultBox.innerHTML = `
+                    <div class="ai-response-content">${formatMarkdown(resultText)}</div>
+                    <div style="margin-top:15px; border-top:1px solid var(--border); padding-top:10px; text-align:right;">
+                        <button id="btn-save-${resultBox.id.includes('salon') ? 'salon' : 'monthly'}" 
+                                class="btn-primary" style="width:auto; padding:6px 14px; font-size:11px;" 
+                                onclick="saveAnalysisResult('${resultBox.id.includes('salon') ? 'salon' : 'monthly'}')">
+                            💾 この分析結果を記録する
+                        </button>
+                    </div>
+                `;
+                resultBox.classList.add('slide-in');
+
+                // コスト計上
+                const usage = data.usageMetadata || { promptTokenCount: 0, candidatesTokenCount: 0 };
+                const actualCost = calculateCost(usage.promptTokenCount, usage.candidatesTokenCount, usedModel, config.exchangeRate);
+                
+                // 予測補正係数の更新 (学習)
+                if (usage.promptTokenCount > 0) {
+                    const newCoeff = usage.promptTokenCount / prompt.length;
+                    const oldCoeff = parseFloat(localStorage.getItem('crm_token_coeff') || 1.25);
+                    localStorage.setItem('crm_token_coeff', (oldCoeff * 0.8 + newCoeff * 0.2).toFixed(3)); // 徐々に適応
+                }
+
+                updateUsageData(actualCost, 1);
+                updateUsageIndicators();
+
+                if (costEl) {
+                    costEl.textContent = `Cost: ¥${actualCost.toFixed(2)}`;
+                    costEl.style.display = 'inline';
+                }
+
+            } catch (error) {
+                console.error('Gemini API Error:', error);
+                resultBox.style.display = 'block'; // エラー時も確実に表示
+                resultBox.innerHTML = `<div class="insight-box alert"><div class="insight-title">Error</div><div class="insight-text">${error.message === 'Failed to fetch' ? '通信エラーまたはレート制限に達しました' : error.message}</div></div>`;
+                // エラー時は保存ボタンを出さない
+            } finally {
+                btn.innerHTML = originalBtnHtml;
+                btn.disabled = false;
+            }
+        }
+
+        // ── Usage Tracking Logic ──
+        function getUsageData() {
+            const now = new Date();
+            const monthKey = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
+            const dayKey = now.toISOString().split('T')[0];
+            
+            let data = JSON.parse(localStorage.getItem('crm_usage_stats') || '{}');
+            
+            // 月が替わっていたらアーカイブ
+            if (data.currentMonth && data.currentMonth !== monthKey) {
+                const archives = JSON.parse(localStorage.getItem('crm_usage_archives') || '[]');
+                archives.unshift({ month: data.currentMonth, cost: data.monthlyCost });
+                localStorage.setItem('crm_usage_archives', JSON.stringify(archives.slice(0, 3))); // 直近3ヶ月
+                data = {}; // リセット
+            }
+
+            if (!data.dailyRequestsDate || data.dailyRequestsDate !== dayKey) {
+                data.dailyRequests = 0;
+                data.dailyRequestsDate = dayKey;
+            }
+
+            return {
+                currentMonth: monthKey,
+                monthlyCost: data.monthlyCost || 0,
+                dailyRequests: data.dailyRequests || 0
+            };
+        }
+
+        function updateUsageData(cost, reqCount) {
+            const data = getUsageData();
+            data.monthlyCost += cost;
+            data.dailyRequests += reqCount;
+            localStorage.setItem('crm_usage_stats', JSON.stringify(data));
+        }
+
+        function getUsageConfig() {
+            return {
+                monthlyBudget: parseFloat(localStorage.getItem('crm_monthly_budget') || '1000'),
+                exchangeRate: parseFloat(localStorage.getItem('crm_exchange_rate') || '155'),
+                apiPlan: localStorage.getItem('crm_api_plan') || 'paid'
+            };
+        }
+
+        function calculateCost(inputToken, outputToken, model, rate) {
+            // 単価表 ($ / 1M token) - 2026.04時点目安
+            const specs = {
+                'gemini-3-flash-preview': { in: 0.50, out: 3.00 },
+                'gemini-3.1-pro-preview': { in: 2.00, out: 12.00 },
+                'gemini-2.0-flash': { in: 0.1, out: 0.4 },
+                'gemini-2.0-pro-exp-02-05': { in: 1.25, out: 5.0 }
+            };
+            const spec = specs[model] || specs['gemini-2.0-flash'];
+            const costUsd = (inputToken / 1000000 * spec.in) + (outputToken / 1000000 * spec.out);
+            return costUsd * rate;
+        }
+
+        function updateUsageIndicators() {
+            const usage = getUsageData();
+            const config = getUsageConfig();
+            
+            const text = `今月の推定利用額: ¥${usage.monthlyCost.toFixed(1)} / ¥${config.monthlyBudget}`;
+            const indicator = document.getElementById('analysis-usage-indicator');
+            if (indicator) {
+                indicator.innerHTML = `<span>${text}</span>`;
+                indicator.style.display = 'inline-flex';
+                indicator.classList.remove('warning', 'danger');
+                if (usage.monthlyCost > config.monthlyBudget) indicator.classList.add('danger');
+                else if (usage.monthlyCost > config.monthlyBudget * 0.8) indicator.classList.add('warning');
+            }
+
+            const modalUsage = document.getElementById('settings-current-usage');
+            if (modalUsage) modalUsage.textContent = `¥${usage.monthlyCost.toFixed(1)}`;
+
+            const freeArea = document.getElementById('settings-free-limit');
+            if (freeArea) {
+                freeArea.style.display = config.apiPlan === 'free' ? 'flex' : 'none';
+                document.getElementById('settings-remaining-req').textContent = `${(1500 - usage.dailyRequests).toLocaleString()} / 1,500`;
+            }
+
+            // アーカイブ表示
+            const archives = JSON.parse(localStorage.getItem('crm_usage_archives') || '[]');
+            const archiveEl = document.getElementById('usage-archive');
+            if (archiveEl) {
+                archiveEl.innerHTML = archives.map(a => `<div class="archive-item"><span>${a.month} 実績:</span><strong>¥${a.cost.toFixed(0)}</strong></div>`).join('');
+            }
+        }
+
+        function resetUsageManual() {
+            if (confirm('今月の利用実績をリセットしますか？（アーカイブには移動しません）')) {
+                localStorage.removeItem('crm_usage_stats');
+                updateUsageIndicators();
+            }
+        }
+
+        function exportUsageCSV() {
+            const usage = getUsageData();
+            const archives = JSON.parse(localStorage.getItem('crm_usage_archives') || '[]');
+            let csv = "Target,Amount\n";
+            csv += `Current Month (${usage.currentMonth}),${usage.monthlyCost.toFixed(2)}\n`;
+            archives.forEach(a => { csv += `${a.month},${a.cost.toFixed(2)}\n`; });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `crm_usage_${usage.currentMonth}.csv`);
+            a.click();
+        }
+
+        async function analyzeSales() {
+            const month = document.getElementById('analysis-month-select').value;
+            const btn = document.getElementById('btn-analyze');
+            const resultBox = document.getElementById('monthly-ai-result');
+            const costEl = document.getElementById('monthly-api-cost');
+
+            const top5 = [...document.querySelectorAll('#ranking-body tr')].slice(0, 10).map(tr => tr.innerText.replace(/\n/g, ' ')).join('\n');
+            const summaryText = document.getElementById('analysis-summary').innerText.replace(/\n/g, ' ');
+
+            const registry = window.currentProductRegistry || {};
+            const topBrandsStr = Object.entries(registry)
+                .filter(([_, b]) => b.sales > 0)
+                .sort((a, b) => b[1].sales - a[1].sales)
+                .slice(0, 6)
+                .map(([name, b]) => `${name}: ¥${b.sales.toLocaleString()} (${b.count}点)`)
+                .join(', ');
+
+            const prompt = `あなたは優秀な美容ディーラーの営業コンサルタントです。以下の${month}月の売上データに基づき、簡潔で鋭いビジネスインサイトを3点提示してください。
+            【凡例】: ↑は増加、↓は減少を意味します。
+            
+            【全体計】: ${summaryText}
+            【注力/主力ブランド動向】: ${topBrandsStr || 'データなし'}
+            【上位サロン(TOP10)】:
+            ${top5}
+            
+            条件:
+            1. 昨対比や利益率の観点から、売上の「増減の原因」をデータから推測し指摘せよ。
+            2. 動向にあるブランド（LOA, エマルジョン, プテロ等）の実績に基づいた分析を含める。
+            3. 現場で即役立つ具体的なフォロー提案を1つ含める。
+            日本語で、マークダウン形式で出力。
+            ${getEffectiveInstructions('monthly', document.getElementById('monthly-instruction').value)}`;
+
+            await callGeminiAPI(prompt, btn, resultBox, costEl);
+            // 解析完了後にフィードバックエリアを表示
+            document.getElementById('monthly-feedback-area').style.display = 'block';
+        }
+
+        // --- Individual Salon Detail & AI Analysis ---
+        let currentDetailSalon = "";
+
+        function showSalonAnalysisDetail(name) {
+            currentDetailSalon = name;
+            const month = document.getElementById('analysis-month-select').value;
+            if (!MONTHLY_DATA || !month) return;
+
+            document.getElementById('detail-salon-name').textContent = name;
+            document.getElementById('detail-month-label').textContent = `${month.replace('-', '年')}月 の詳細データ`;
+            
+            const salonMonths = MONTHLY_DATA.salons[name] || {};
+            const data = salonMonths[month] || { sales: 0, profit: 0 };
+            
+            // --- YoY (Year over Year) ---
+            const [y, m] = month.split('-').map(Number);
+            const yoyKey = `${y - 1}-${m.toString().padStart(2, '0')}`;
+            const yoyData = salonMonths[yoyKey];
+
+            // --- MoM (Month over Month) ---
+            const momKey = getPreviousMonth(month);
+            const momData = salonMonths[momKey];
+
+            // Render Overview
+            document.getElementById('detail-sales').textContent = `¥${data.sales.toLocaleString()}`;
+            document.getElementById('detail-profit').textContent = `¥${data.profit.toLocaleString()}`;
+
+            const renderDiff = (cur, target, label) => {
+                if (!target || target.sales === 0) return `<small style="color:var(--text-dim);">${label}: データなし (新規?)</small>`;
+                const diff = ((cur - target.sales) / target.sales) * 100;
+                const diffAmt = cur - target.sales;
+                const icon = diff >= 0 ? '↑' : '↓';
+                const cls = diff >= 0 ? 'trend-up' : 'trend-down';
+                return `<span class="trend-badge ${cls}" style="font-size:10px;">${icon}${Math.abs(diff).toFixed(1)}% (${(diffAmt>=0?'+':'-')+'¥'+Math.abs(diffAmt).toLocaleString()}) <small>${label}</small></span>`;
+            };
+
+            document.getElementById('detail-sales-diff').innerHTML = `
+                ${renderDiff(data.sales, yoyData, '昨対')} 
+                ${renderDiff(data.sales, momData, '前月比')}
+            `;
+
+            const renderProfitDiff = (cur, target, label) => {
+                if (!target || target.profit === 0) return "";
+                const diff = ((cur - target.profit) / target.profit) * 100;
+                const diffAmt = cur - target.profit;
+                const icon = diff >= 0 ? '↑' : '↓';
+                const color = diff >= 0 ? 'var(--green)' : 'var(--red)';
+                return `<small style="color:${color}; font-weight:700; margin-left:5px;">${icon}${Math.abs(diff).toFixed(1)}%(${(diffAmt>=0?'+':'-')+'¥'+Math.abs(diffAmt).toLocaleString()}) <small>${label}</small></small>`;
+            };
+
+            document.getElementById('detail-profit-diff').innerHTML = `
+                ${renderProfitDiff(data.profit, yoyData, '昨対')}
+                ${renderProfitDiff(data.profit, momData, '前月比')}
+            `;
+
+            // Render Mini Trend Table
+            const allMonths = Object.keys(salonMonths).sort().reverse();
+            const sliceIdx = allMonths.indexOf(month);
+            const trendMonths = allMonths.slice(sliceIdx, sliceIdx + 6);
+            
+            let tableHtml = `<table class="ranking-table" style="font-size:12px; margin-top:10px;">
+                <thead><tr><th>月</th><th>売上</th><th>利益</th><th>利益率</th></tr></thead>
+                <tbody>`;
+            
+            if (trendMonths.length === 0) {
+                tableHtml += `<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-dim);">過去の取引データがありません</td></tr>`;
+            } else {
+                trendMonths.forEach(mKey => {
+                    const d = salonMonths[mKey];
+                    const margin = d.sales > 0 ? (d.profit/d.sales*100).toFixed(1) : 0;
+                    tableHtml += `<tr>
+                        <td>${mKey}</td>
+                        <td style="text-align:right;">¥${d.sales.toLocaleString()}</td>
+                        <td style="text-align:right;">¥${d.profit.toLocaleString()}</td>
+                        <td style="text-align:right;">${margin}%</td>
+                    </tr>`;
+                });
+            }
+            tableHtml += `</tbody></table>`;
+            document.getElementById('detail-table-area').innerHTML = tableHtml;
+
+            // Render Today's Top Products
+            let productHtml = "";
+            if (data.details && data.details.length > 0) {
+                const topProducts = [...data.details].sort((a,b) => (b.sales||0) - (a.sales||0)).slice(0, 5);
+                productHtml = `
+                    <div class="section-label">🛒 ${month.slice(-2)}月の主力取引</div>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+                        ${topProducts.map(p => `
+                            <div style="background:rgba(255,255,255,0.05); border:1px solid var(--border); padding:4px 10px; border-radius:15px; font-size:11px;">
+                                ${escapeHtml(p.name)} <span style="color:var(--primary-light); font-weight:700;">¥${(p.sales||0).toLocaleString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            document.getElementById('detail-products-area').innerHTML = productHtml;
+
+            // Reset AI area
+            document.getElementById('salon-ai-result').style.display = 'none';
+            document.getElementById('salon-ai-result').innerHTML = '';
+            document.getElementById('salon-feedback-area').style.display = 'none';
+            document.getElementById('quick-export-bar').style.display = 'none';
+            // 指示入力欄はリセットせず、前回の指示を表示したままにする（ユーザーの要望：常時表示）
+
+            // 1.2.5 新機能の初期化
+            detectDeadStock(name, data);
+
+            const modal = document.getElementById('modal-salon-detail');
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+            
+            // モーダル表示後に描画しないとChart.jsのサイズが崩れる（スマホ非表示対策）
+            renderChart(salonMonths, month);
+
+            setTimeout(() => modal.classList.add('active'), 10);
+
+            // Close on overlay click
+            modal.onclick = (e) => { if(e.target === modal) closeSalonDetail(); };
+        }
+
+        // ── Product Detail JS ──
+        function showProductAnalysisDetail(productName) {
+            const registry = window.currentProductRegistry;
+            if (!registry || !registry[productName]) return;
+
+            const data = registry[productName];
+            const month = document.getElementById('analysis-month-select').value;
+
+            document.getElementById('product-detail-name').textContent = productName;
+            document.getElementById('product-detail-summary').textContent = `${month.replace('-', '年')}月 / 合計販売数: ${data.count} 点 / 総売上: ¥${data.sales.toLocaleString()}`;
+
+            const salons = Object.entries(data.salons).sort((a,b) => b[1].sales - a[1].sales);
+
+            let tableHtml = `<table class="ranking-table" style="font-size:12px; margin-top:10px;">
+                <thead><tr><th>サロン名</th><th style="text-align:right;">数量</th><th style="text-align:right;">売上高</th></tr></thead>
+                <tbody>`;
+            
+            salons.forEach(([sName, sData]) => {
+                tableHtml += `<tr>
+                    <td style="font-weight:600;">${escapeHtml(sName)}</td>
+                    <td style="text-align:right; font-weight:700;">${sData.qty} 点</td>
+                    <td style="text-align:right; color:var(--primary-light);">¥${sData.sales.toLocaleString()}</td>
+                </tr>`;
+            });
+            tableHtml += `</tbody></table>`;
+            
+            document.getElementById('product-detail-table-area').innerHTML = tableHtml;
+
+            const modal = document.getElementById('modal-product-detail');
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+            setTimeout(() => modal.classList.add('active'), 10);
+
+            modal.onclick = (e) => { if(e.target === modal) closeProductDetail(); };
+        }
+
+        function closeProductDetail() {
+            const modal = document.getElementById('modal-product-detail');
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        function closeSalonDetail() {
+            const modal = document.getElementById('modal-salon-detail');
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        async function analyzeSalonSpecific() {
+            const btn = document.getElementById('btn-salon-ai');
+            const resultBox = document.getElementById('salon-ai-result');
+            const month = document.getElementById('analysis-month-select').value;
+            const salonName = currentDetailSalon;
+
+            const salonMonths = MONTHLY_DATA.salons[salonName] || {};
+            const current = salonMonths[month] || {};
+            const prevMonthKey = getPreviousMonth(month);
+            const prev = salonMonths[prevMonthKey] || {};
+            
+            // Calculate 6-month trend (roughly)
+            const allMonths = Object.keys(salonMonths).sort();
+            const last6 = allMonths.slice(Math.max(0, allMonths.indexOf(month) - 5), allMonths.indexOf(month) + 1);
+            const trendText = last6.map(m => `${m}: ¥${(salonMonths[m].sales||0).toLocaleString()}`).join(' → ');
+
+            // Calculate YoY
+            const [y, m] = month.split('-').map(Number);
+            const yoyKey = `${y - 1}-${m.toString().padStart(2, '0')}`;
+            const yoySales = salonMonths[yoyKey] ? salonMonths[yoyKey].sales : 0;
+            const yoyText = yoySales > 0 ? `昨対比: ${((current.sales/yoySales)*100).toFixed(1)}%` : "昨対比: データなし";
+
+            const prompt = `あなたはデータ分析に基づいた美容商社のトップセールスコンサルタントです。
+            サロン「${salonName}」の${month}月の状況を、短期・中長期の両面から分析し、次回の訪問で「絶対に提案すべき」営業アクションを3点提示してください。
+            【凡例】: ↑は増加、↓は減少を意味します。
+
+            【データインプット】
+            ・当月売上: ¥${(current.sales||0).toLocaleString()}（${yoyText.replace('昨対比:', '昨対比(↑増加/↓減少):')}）
+            ・前月売上: ¥${(prev.sales||0).toLocaleString()}
+            ・過去の推移: ${trendText}
+            ・直近の取引商品: ${(current.details||[]).map(d => d.name).slice(0, 10).join(', ')}
+
+            【分析・提案の要件】
+            1. **トレンド分析**: 過去数ヶ月の推移から、成長中か衰退中かを判断し、その背景（推測）を述べる。
+            2. **具体アクション**: 「この商品を」「この理由で」「この時期に」提案せよ、という具体的なスクリプト案を含める。
+            3. **リスク管理**: 注文が減っている商品のフォローや、利益率向上のための店販提案など、コンサルティング視点を含める。
+
+            出力は日本語、簡潔なマークダウン形式で。専門用語を使いつつも、営業担当者が自信を持って話せるスタイルで。
+            ${getEffectiveInstructions('salon', document.getElementById('salon-instruction').value)}`;
+
+            await callGeminiAPI(prompt, btn, resultBox);
+            // 解析完了後にフィードバックエリア等を表示
+            document.getElementById('salon-feedback-area').style.display = 'block';
+            document.getElementById('quick-export-bar').style.display = 'flex';
+        }
+
+        function getPreviousMonth(monthStr) {
+            const [y, m] = monthStr.split('-').map(Number);
+            let prevY = y, prevM = m - 1;
+            if (prevM === 0) { prevM = 12; prevY--; }
+            return `${prevY}-${prevM.toString().padStart(2, '0')}`;
+        }
+
+        function formatMarkdown(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                       .replace(/### (.*)/g, '<h3 style="color:var(--primary-light);margin:15px 0 8px;">$1</h3>')
+                       .replace(/- (.*)/g, '<div style="margin-left:10px;margin-bottom:4px;">• $1</div>');
+        }
+
+        // ── Settings Modal JS ──
+        function openSettings() {
+            document.getElementById('input-api-key').value = localStorage.getItem('crm_gemini_key') || '';
+            document.getElementById('input-gas-url').value = localStorage.getItem('crm_gas_url') || GAS_API_URL;
+            document.getElementById('input-ai-global-rules').value = aiMemory.global_instructions || '';
+            
+            // モデル・予算・為替・プランを復元
+            const savedModel = getSelectedAIModel();
+            const modelRadio = document.querySelector(`input[name="ai-model"][value="${savedModel}"]`);
+            if (modelRadio) modelRadio.checked = true;
+
+            document.getElementById('input-monthly-budget').value = localStorage.getItem('crm_monthly_budget') || '1000';
+            document.getElementById('input-exchange-rate').value = localStorage.getItem('crm_exchange_rate') || '155';
+            document.getElementById('input-api-plan').value = localStorage.getItem('crm_api_plan') || 'paid';
+
+            updateUsageIndicators();
+
+            const modal = document.getElementById('modal-settings');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+        function closeSettings() {
+            const modal = document.getElementById('modal-settings');
+            modal.classList.remove('active');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+        function saveSettings() {
+            const key = document.getElementById('input-api-key').value.trim();
+            const url = document.getElementById('input-gas-url').value.trim();
+            const rules = document.getElementById('input-ai-global-rules').value.trim();
+            const model = document.querySelector('input[name="ai-model"]:checked').value;
+            const budget = document.getElementById('input-monthly-budget').value;
+            const rate = document.getElementById('input-exchange-rate').value;
+            const plan = document.getElementById('input-api-plan').value;
+
+            if (key) localStorage.setItem('crm_gemini_key', key);
+            if (url) localStorage.setItem('crm_gas_url', url);
+            localStorage.setItem('crm_ai_model', model);
+            localStorage.setItem('crm_monthly_budget', budget);
+            localStorage.setItem('crm_exchange_rate', rate);
+            localStorage.setItem('crm_api_plan', plan);
+            
+            aiMemory.global_instructions = rules;
+            saveMemory();
+            alert('設定を保存しました');
+            location.reload();
+        }
+
+        // ── Mode Switching ──
+        function switchMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + mode).classList.add('active');
+            document.getElementById('mode-salon').style.display = mode === 'salon' ? 'block' : 'none';
+            document.getElementById('mode-product').style.display = mode === 'product' ? 'block' : 'none';
+            document.getElementById('mode-analysis').style.display = mode === 'analysis' ? 'block' : 'none';
+            document.getElementById('mode-global-ai').style.display = mode === 'global-ai' ? 'block' : 'none';
+            if (mode === 'product') {
+                document.getElementById('global-product-search').focus();
+            }
+            if (mode === 'analysis') {
+                initAnalysis();
+                renderAnalysisHistory();
+            }
+        }
+
+        // ── 暗号化データの復号（公開ホスティング用。PCオフでも閲覧可） ──
+        // ローカル配信（ダッシュボード /crm/）では平文JSONが返るのでパスワード不要。
+        // 公開ホスティング（GitHub Pages）には .enc（AES-256-GCM）だけを置き、
+        // 初回にパスワード入力→端末に記憶する。encrypt_data.py と同一パラメータ。
+        const CRM_PW_KEY = 'crm_unlock_pw';
+        async function crmDeriveKey(password, salt) {
+            const base = await crypto.subtle.importKey(
+                'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+            return crypto.subtle.deriveKey(
+                { name: 'PBKDF2', salt, iterations: 200000, hash: 'SHA-256' },
+                base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+        }
+        async function crmDecrypt(b64, password) {
+            const raw = Uint8Array.from(atob(b64.replace(/\s+/g, '')), c => c.charCodeAt(0));
+            const salt = raw.slice(0, 16), iv = raw.slice(16, 28), ct = raw.slice(28);
+            const key = await crmDeriveKey(password, salt);
+            const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+            return JSON.parse(new TextDecoder().decode(pt));
+        }
+        async function loadJsonMaybeEncrypted(name, v) {
+            try {
+                const plain = await fetch('./' + name + '?v=' + v);
+                if (plain.ok) return await plain.json();
+            } catch (e) { /* 平文なし→暗号化版へ */ }
+            const encRes = await fetch('./' + name + '.enc?v=' + v);
+            if (!encRes.ok) throw new Error('HTTP ' + encRes.status + ' (' + name + ')');
+            const b64 = await encRes.text();
+            for (let i = 0; i < 3; i++) {
+                let pw = localStorage.getItem(CRM_PW_KEY);
+                if (!pw) {
+                    pw = prompt('🔒 閲覧パスワードを入力してください（この端末に記憶されます）');
+                    if (pw === null || pw === '') throw new Error('パスワード未入力');
+                }
+                try {
+                    const data = await crmDecrypt(b64, pw);
+                    localStorage.setItem(CRM_PW_KEY, pw);
+                    return data;
+                } catch (e) {
+                    localStorage.removeItem(CRM_PW_KEY);
+                    alert('パスワードが違います');
+                }
+            }
+            throw new Error('パスワード認証に失敗');
+        }
+
+        // ── Data Loading ──
+        async function loadData() {
+            try {
+                // キャッシュ回避用のクエリパラメータ
+                const v = new Date().getTime();
+                console.log('データ取得開始 (v=' + v + ')...');
+
+                DATA = await loadJsonMaybeEncrypted('salon_products.json', v);
+                console.log('商品データ取得完了:', DATA.generated_at);
+
+                MONTHLY_DATA = await loadJsonMaybeEncrypted('salon_monthly_sales.json', v);
+                console.log('月次売上データ取得完了:', MONTHLY_DATA.generated_at);
+                
+                // データ読み込み後の初期化処理
+                initAnalysis();
+                renderAnalysisHistory();
+                
+                // 既に選択されている日があればそれを優先、なければ火曜日
+                selectDay(selectedDay || 'Tuesday'); 
+                updateUsageIndicators();
+                
+                console.log('初期化シーケンス完了');
+            } catch (e) {
+                console.error('データ読み込み・初期化エラー:', e);
+                const msg = e.message || '不明なエラー';
+                alert(`データの初期化に失敗しました。(${msg})\nページを再読み込みしてください。`);
+            }
+        }
+
+        // ── Day Selection ──
+        function selectDay(day) {
+            selectedDay = day;
+            selectedSalon = null;
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('day-' + day).classList.add('active');
+            updateSteps(2);
+            renderSalons();
+            document.getElementById('section-salon').style.display = 'block';
+            document.getElementById('section-salon').classList.remove('slide-in');
+            void document.getElementById('section-salon').offsetWidth;
+            document.getElementById('section-salon').classList.add('slide-in');
+            document.getElementById('section-products').style.display = 'none';
+        }
+
+        // ── Salon Rendering ──
+        function renderSalons() {
+            if (!DATA) return;
+            const query = (document.getElementById('salon-search').value || '').toLowerCase();
+            const salonsOnDay = DATA.salons[selectedDay] || {};
+            let customers = getCustomersForDay(selectedDay);
+
+            // Others の場合は月次データにある全てのサロン（マスタにないもの）を表示
+            if (selectedDay === 'Others' && MONTHLY_DATA) {
+                // マスタに存在しないサロンを抽出
+                customers = Object.keys(MONTHLY_DATA.salons).filter(name => {
+                    return !isMasterSalon(name);
+                });
+                // 読みやすいようにソート
+                customers.sort((a, b) => a.localeCompare(b, 'ja'));
+            }
+
+            // 検索フィルタリング
+            if (query) {
+                customers = customers.filter(name => normalizeSearch(name).includes(normalizeSearch(query)));
+            }
+
+            const list = document.getElementById('salon-list');
+            if (customers.length === 0) {
+                list.innerHTML = `<div class="empty-state" style="grid-column: 1/-1;"><p>不一致またはデータなし</p></div>`;
+                return;
+            }
+
+            list.innerHTML = customers.map(name => {
+                const hasData = name in salonsOnDay;
+                const count = hasData ? salonsOnDay[name].length : 0;
+                const hasMonthly = MONTHLY_DATA && MONTHLY_DATA.salons[name];
+
+                return `<button class="salon-btn ${!hasData ? 'no-data' : ''} ${hasMonthly ? 'has-monthly' : ''}" onclick="selectSalon('${escapeAttr(name)}')" id="salon-${encodeURIComponent(name)}">
+        <span class="dot"></span>${escapeHtml(name)}
+        ${hasData ? `<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">${count}商品</div>` : '<div style="font-size:10px;color:var(--text-dim);margin-top:3px;">商品データなし</div>'}
+        ${hasMonthly ? `<div style="font-size:9px;color:var(--primary-light);margin-top:2px;">📈 売上データあり</div>` : ''}
+      </button>`;
+            }).join('');
+        }
+
+        function isMasterSalon(name) {
+            for (const day in DATA.customers) {
+                if (DATA.customers[day].includes(name)) return true;
+                if (DATA.salons[day] && DATA.salons[day][name]) return true;
+            }
+            return false;
+        }
+
+        function getCustomersForDay(day) {
+            if (!DATA) return [];
+            if (DATA.customers && DATA.customers[day]) return DATA.customers[day];
+            const salonsOnDay = DATA.salons[day] || {};
+            return Object.keys(salonsOnDay);
+        }
+
+        // ── Salon Selection ──
+        function selectSalon(name) {
+            selectedSalon = name;
+            document.querySelectorAll('.salon-btn').forEach(b => b.classList.remove('active'));
+            // encodeURIComponentだとIDとして見つけにくい場合があるため selectorで対応
+            const btn = document.getElementById('salon-' + encodeURIComponent(name));
+            if (btn) btn.classList.add('active');
+            updateSteps(3);
+            document.getElementById('product-search').value = '';
+            document.getElementById('selected-salon-name').textContent = name;
+
+            // 商品データがある場合のみ表示
+            const hasProducts = DATA && DATA.salons[selectedDay] && DATA.salons[selectedDay][name];
+            document.getElementById('section-products').style.display = hasProducts ? 'block' : 'none';
+
+            renderTable();
+            renderMonthlySales(); // 売上レポート表示
+            loadReports();
+
+            const target = hasProducts ? 'section-products' : 'section-monthly-sales';
+            document.getElementById(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function renderMonthlySales() {
+            const container = document.getElementById('monthly-sales-container');
+            const section = document.getElementById('section-monthly-sales');
+
+            if (!MONTHLY_DATA || !MONTHLY_DATA.salons) {
+                section.style.display = 'none';
+                return;
+            }
+
+            // 名寄せの柔軟性を持たせるため、トリム後の名前で検索
+            const salonKey = Object.keys(MONTHLY_DATA.salons).find(k => k.trim() === selectedSalon.trim());
+            const salonMonths = salonKey ? MONTHLY_DATA.salons[salonKey] : null;
+
+            if (!salonMonths) {
+                section.style.display = 'none';
+                return;
+            }
+
+            section.style.display = 'block';
+            const sortedMonths = Object.keys(salonMonths).sort((a, b) => b.localeCompare(a));
+
+            container.innerHTML = sortedMonths.map((month, idx) => {
+                const data = salonMonths[month];
+                const sales = data.sales || 0;
+                const profit = data.profit || 0;
+                const cost = sales - profit;
+                const margin = sales > 0 ? Math.round((profit / sales) * 100) : 0;
+                
+                let momBadge = '';
+                let yoyBadge = '';
+                let marginTrendHtml = '';
+                let insightHtml = '';
+
+                // --- Previous Month Comparison ---
+                const prevMonthKey = sortedMonths[idx + 1];
+                if (prevMonthKey) {
+                    const prevData = salonMonths[prevMonthKey];
+                    const prevSales = prevData.sales || 0;
+                    const prevProfit = prevData.profit || 0;
+                    const prevMargin = prevSales > 0 ? Math.round((prevProfit / prevSales) * 100) : 0;
+                    
+                    if (prevSales > 0) {
+                        const diff = ((sales - prevSales) / prevSales) * 100;
+                        const icon = diff > 0 ? '▲' : '▼';
+                        const cls = diff > 0 ? 'trend-up' : (diff < 0 ? 'trend-down' : 'trend-neutral');
+                        momBadge = `<span class="trend-badge ${cls}">${icon} ${Math.abs(Math.round(diff))}% <small style="opacity:0.7;margin-left:2px;">前月比</small></span>`;
+                        
+                        const marginDiff = margin - prevMargin;
+                        if (marginDiff !== 0) {
+                            const mIcon = marginDiff > 0 ? '↑' : '↓';
+                            const mCls = marginDiff > 0 ? 'var(--green)' : 'var(--red)';
+                            marginTrendHtml = `<small style="color: ${mCls}; font-size: 9px; margin-left: 4px; font-weight: 700;">(${mIcon}${Math.abs(marginDiff)}pts)</small>`;
+                        }
+
+                        // --- Advanced Insight Calculation ---
+                        const curDetails = data.details || [];
+                        const prevDetails = prevData.details || [];
+                        const curMap = new Map(curDetails.map(d => [d.name, d]));
+                        const prevMap = new Map(prevDetails.map(p => [p.name, p]));
+
+                        let insightParts = [];
+                        let actionParts = [];
+                        
+                        let biggestIncItem = { name: '', diff: -1 };
+                        let biggestDecItem = { name: '', diff: 1 };
+                        let missingHighValueItem = null;
+
+                        curDetails.forEach(d => {
+                            const prev = prevMap.get(d.name);
+                            const dImpact = d.sales - (prev ? prev.sales : 0);
+                            if (dImpact > biggestIncItem.diff) { biggestIncItem = { name: d.name, diff: dImpact }; }
+                            if (dImpact < biggestDecItem.diff) { biggestDecItem = { name: d.name, diff: dImpact }; }
+                        });
+
+                        prevDetails.forEach(p => {
+                            if (!curMap.has(p.name) && p.sales > 10000) {
+                                if (!missingHighValueItem || p.sales > missingHighValueItem.sales) {
+                                    missingHighValueItem = p;
+                                }
+                            }
+                        });
+
+                        if (missingHighValueItem) {
+                            insightParts.push(`前月あった「${missingHighValueItem.name}」の注文が途絶えています。`);
+                            actionParts.push(`次回「${missingHighValueItem.name}」の在庫状況を確認し、再提案しましょう。`);
+                        } else if (diff > 5 && biggestIncItem.name) {
+                            insightParts.push(`売上が${Math.round(diff)}%増加。特に「${biggestIncItem.name}」が寄与しています。`);
+                        } else if (diff < -5 && biggestDecItem.name) {
+                            insightParts.push(`売上が減少傾向。「${biggestDecItem.name}」の注文減が主な要因です。`);
+                            actionParts.push(`売上回復へ、サブカテゴリ商品の提案を検討してください。`);
+                        }
+
+                        if (marginDiff < -2) {
+                            insightParts.push(`利益率が${Math.abs(marginDiff)}pts低下。原価率の高い商品の比重が増えています。`);
+                            actionParts.push(`利益確保のため、高利益率の店販商品のセット提案を強化しましょう。`);
+                        } else if (marginDiff > 2) {
+                            insightParts.push(`利益率が大幅に改善しています。`);
+                        }
+
+                        if (insightParts.length > 0) {
+                            const isNegative = diff < -10 || marginDiff < -3 || missingHighValueItem;
+                            const boxClass = isNegative ? 'insight-box alert' : 'insight-box good';
+                            // SVG paths as single polylines, using separate path tags if needed
+                            const iconHtml = isNegative 
+                                ? '<line x1="23" y1="18" x2="13.5" y2="8.5"></line><line x1="13.5" y1="8.5" x2="8.5" y2="13.5"></line><line x1="8.5" y1="13.5" x2="1" y2="6"></line><polyline points="17 18 23 18 23 12"></polyline>'
+                                : '<line x1="23" y1="6" x2="13.5" y2="15.5"></line><line x1="13.5" y1="15.5" x2="8.5" y2="10.5"></line><line x1="8.5" y1="10.5" x2="1" y2="18"></line><polyline points="17 6 23 6 23 12"></polyline>';
+
+                            insightHtml = `
+                            <div class="${boxClass}">
+                                <div class="insight-title">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${iconHtml}</svg> 
+                                    ${isNegative ? 'Performance Alert' : 'Performance Insight'}
+                                </div>
+                                <div class="insight-text">
+                                    ${insightParts.join('<br>')}
+                                    ${actionParts.length > 0 ? `<div style="margin-top:8px; padding-top:8px; border-top: 1px dashed rgba(255,255,255,0.1); color: var(--primary-light); font-weight: 500;">💡 ACTION: ${actionParts.join(' ')}</div>` : ''}
+                                </div>
+                            </div>`;
+                        }
+                    }
+                }
+
+                let yoyProfitBadge = '';
+                const [curY, curM] = month.split('-').map(Number);
+                const yoyKey = `${curY - 1}-${String(curM).padStart(2, '0')}`;
+                if (salonMonths[yoyKey]) {
+                    const yoyData = salonMonths[yoyKey];
+                    
+                    // Sales YoY
+                    const yoySales = yoyData.sales || 0;
+                    if (yoySales > 0) {
+                        const diff = ((sales - yoySales) / yoySales) * 100;
+                        const icon = diff > 0 ? '▲' : '▼';
+                        const cls = diff > 0 ? 'trend-up' : (diff < 0 ? 'trend-down' : 'trend-neutral');
+                        yoyBadge = `<span class="trend-badge ${cls}">${icon} ${Math.abs(Math.round(diff))}% <small style="opacity:0.7;margin-left:2px;">昨年比</small></span>`;
+                    }
+
+                    // Profit YoY
+                    const yoyProfit = yoyData.profit || 0;
+                    if (yoyProfit > 0) {
+                        const pDiff = ((profit - yoyProfit) / yoyProfit) * 100;
+                        const pIcon = pDiff > 0 ? '▲' : '▼';
+                        const pCls = pDiff > 0 ? 'var(--green)' : (pDiff < 0 ? 'var(--red)' : 'var(--text-dim)');
+                        yoyProfitBadge = `<span style="font-size: 9px; color: ${pCls}; font-weight: 700; margin-left: 4px;">${pIcon}${Math.abs(Math.round(pDiff))}% <small style="opacity:0.6;font-weight:400;">昨年比</small></span>`;
+                    }
+                }
+
+                let statusColor = '#fbbf24'; 
+                if (margin < 20) statusColor = '#f87171';
+                if (margin >= 26) statusColor = '#34d399';
+
+                const accordionId = `acc-${month.replace('-', '')}`;
+                const detailsHtml = (data.details || []).map(d => `
+                    <tr>
+                        <td style="padding: 8px; color: var(--text-muted); line-height: 1.4;">${escapeHtml(d.name || 'Unknown Item')}</td>
+                        <td style="padding: 8px; text-align: center; font-weight: 600;">${d.qty || 0}</td>
+                        <td style="padding: 8px; text-align: right; color: var(--primary-light); font-weight: 700;">¥${(d.sales || 0).toLocaleString()}</td>
+                    </tr>
+                `).join('');
+
+                return `
+                <div class="glass" style="margin-bottom: 12px; padding: 14px; border-left: 4px solid ${statusColor}; position: relative; overflow: hidden;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; cursor: pointer;" onclick="toggleAccordion('${accordionId}')">
+                        <div style="flex: 1;">
+                            <div style="font-size: 10px; font-weight: 700; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+                                ${month.replace('-', ' / ')}
+                                <div style="display: flex; gap: 4px;">${momBadge}${yoyBadge}</div>
+                            </div>
+                            <div style="display: flex; align-items: baseline; gap: 10px;">
+                                <span style="font-size: 20px; font-weight: 700; color: #fff;">¥${sales.toLocaleString()}</span>
+                                <span style="font-size: 13px; font-weight: 700; color: ${statusColor};">${margin}%${marginTrendHtml} <small style="font-size: 9px; font-weight: 400; opacity: 0.8;">利益率</small></span>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 2px;">利益: <span style="color: #fff; font-weight: 700;">¥${profit.toLocaleString()}</span>${yoyProfitBadge}</div>
+                            <div style="font-size: 11px; color: var(--text-muted);">支出: <span>¥${cost.toLocaleString()}</span></div>
+                            <div style="font-size: 9px; color: var(--text-dim); margin-top: 6px; letter-spacing: 0.05em;">詳細内訳 ▼</div>
+                        </div>
+                    </div>
+                    <div id="${accordionId}" style="display: none; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 12px; animation: slideIn 0.3s ease;">
+                        ${insightHtml}
+                        <table style="font-size: 11px; width: 100%;">
+                            <thead style="background: rgba(255,255,255,0.02);">
+                                <tr>
+                                    <th style="padding: 6px 8px; text-align: left;">ITEM NAME</th>
+                                    <th style="padding: 6px 8px; text-align: center; width: 40px;">QTY</th>
+                                    <th style="padding: 6px 8px; text-align: right; width: 80px;">AMOUNT</th>
+                                </tr>
+                            </thead>
+                            <tbody>${detailsHtml}</tbody>
+                        </table>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        window.toggleAccordion = function (id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // ── Product Table ──
+        function toggleProductList() {
+            const body = document.getElementById('product-list-body');
+            const icon = document.getElementById('product-toggle-icon');
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                body.style.display = 'none';
+                icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+
+        function setSortOrder(order) {
+            sortOrder = order;
+            document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('sort-' + order).classList.add('active');
+            renderTable();
+        }
+
+        function renderTable() {
+            if (!DATA || !selectedSalon || !selectedDay) return;
+            const products = (DATA.salons[selectedDay] || {})[selectedSalon] || [];
+            const query = document.getElementById('product-search').value.toLowerCase();
+            const today = new Date();
+
+            let filtered = products.filter(p => {
+                if (!query) return true;
+                return matchesQuery(p.product_name, query);
+            });
+
+            const sorted = [...filtered].sort((a, b) => {
+                if (sortOrder === 'date') return b.last_order_date.localeCompare(a.last_order_date);
+                if (sortOrder === 'name') return a.product_name.localeCompare(b.product_name, 'ja');
+                if (sortOrder === 'price') {
+                    const pa = getDisplayPrice(selectedDay, selectedSalon, a);
+                    const pb = getDisplayPrice(selectedDay, selectedSalon, b);
+                    return pb - pa;
+                }
+                return 0;
+            });
+
+            document.getElementById('product-count').textContent = `${sorted.length} / ${products.length} 件`;
+            document.getElementById('generated-at').textContent = `データ更新: ${DATA.generated_at}`;
+
+            if (sorted.length === 0) {
+                document.getElementById('table-container').innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📦</div>
+          <p>${query ? '条件に一致する商品がありません' : '売上データが見つかりません'}</p>
+        </div>`;
+                return;
+            }
+
+            const rows = sorted.map(p => {
+                const dateClass = getDateClass(p.last_order_date, today);
+                const dateLabel = formatDateRelative(p.last_order_date, today);
+                const displayPrice = getDisplayPrice(selectedDay, selectedSalon, p);
+                const edited = isEdited(selectedDay, selectedSalon, p.product_name);
+                return `<tr>
+        <td class="td-product">${escapeHtml(p.product_name)}</td>
+        <td class="td-price">
+          <div class="price-cell">
+            <span class="price-value ${edited ? 'edited' : ''}" onclick="startEditPrice('${escapeAttr(selectedDay)}','${escapeAttr(selectedSalon)}','${escapeAttr(p.product_name)}',${displayPrice})" title="クリックで価格を変更">¥${displayPrice.toLocaleString()}</span>
+            ${edited ? `<span class="price-reset" onclick="resetPrice('${escapeAttr(selectedDay)}','${escapeAttr(selectedSalon)}','${escapeAttr(p.product_name)}')" title="元に戻す">↩</span>` : ''}
+          </div>
+        </td>
+        <td class="td-date ${dateClass}" title="${p.last_order_date}">${p.last_order_date}<br><span style="font-size:10px;opacity:0.7">${dateLabel}</span></td>
+      </tr>`;
+            }).join('');
+
+            document.getElementById('table-container').innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>販売単価</th>
+            <th>最終発注日</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+        }
+
+        // ── Product Search Mode ──
+        function searchProducts() {
+            if (!DATA) return;
+            const query = document.getElementById('global-product-search').value.toLowerCase().trim();
+            const results = document.getElementById('global-search-results');
+            const countEl = document.getElementById('product-search-count');
+
+            if (query.length < 2) {
+                results.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><p>2文字以上入力してください</p></div>`;
+                countEl.textContent = '';
+                return;
+            }
+
+            // 全サロン・全商品から検索
+            const matches = {}; // product_name -> [{salon, day, price, date}]
+            const today = new Date();
+
+            for (const [day, salons] of Object.entries(DATA.salons)) {
+                for (const [salon, products] of Object.entries(salons)) {
+                    for (const p of products) {
+                        if (matchesQuery(p.product_name, query)) {
+                            const key = p.product_name;
+                            if (!matches[key]) matches[key] = [];
+                            matches[key].push({
+                                salon,
+                                day,
+                                price: getDisplayPrice(day, salon, p),
+                                date: p.last_order_date,
+                            });
+                        }
+                    }
+                }
+            }
+
+            const productNames = Object.keys(matches).sort((a, b) => a.localeCompare(b, 'ja'));
+            const totalSalons = productNames.reduce((sum, k) => sum + matches[k].length, 0);
+            countEl.textContent = `${productNames.length} 商品 / ${totalSalons} サロン`;
+
+            if (productNames.length === 0) {
+                results.innerHTML = `<div class="empty-state"><div class="empty-icon">📦</div><p>「${escapeHtml(query)}」に一致する商品がありません</p></div>`;
+                return;
+            }
+
+            results.innerHTML = productNames.map(name => {
+                const salons = matches[name].sort((a, b) => b.date.localeCompare(a.date));
+                return `
+          <div class="glass" style="margin-bottom:12px;">
+            <div class="result-product-name">${escapeHtml(name)}<span style="font-size:11px;color:var(--text-muted);margin-left:8px;">${salons.length}サロン</span></div>
+            ${salons.map(s => {
+                    const dateClass = getDateClass(s.date, today);
+                    const dateLabel = formatDateRelative(s.date, today);
+                    return `<div class="result-salon-card">
+              <div>
+                <span class="result-salon-name">${escapeHtml(s.salon)}</span>
+                <span class="result-salon-day">${DAY_LABELS[s.day] || s.day}</span>
+              </div>
+              <div class="result-meta">
+                <div class="td-price" style="font-size:13px;">¥${s.price.toLocaleString()}</div>
+                <div class="td-date ${dateClass}" style="font-size:11px;">${s.date} (${dateLabel})</div>
+              </div>
+            </div>`;
+                }).join('')}
+          </div>`;
+            }).join('');
+        }
+
+        // ── Helpers ──
+        function getDateClass(dateStr, today) {
+            const d = new Date(dateStr);
+            const diffDays = Math.floor((today - d) / (1000 * 60 * 60 * 24));
+            if (diffDays <= 60) return 'recent';
+            if (diffDays <= 180) return 'old';
+            return 'very-old';
+        }
+
+        function formatDateRelative(dateStr, today) {
+            const d = new Date(dateStr);
+            const diffDays = Math.floor((today - d) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) return '今日';
+            if (diffDays < 7) return `${diffDays}日前`;
+            if (diffDays < 30) return `${Math.floor(diffDays / 7)}週間前`;
+            if (diffDays < 365) return `${Math.floor(diffDays / 30)}ヶ月前`;
+            return `${Math.floor(diffDays / 365)}年以上前`;
+        }
+
+        function updateSteps(active) {
+            [1, 2, 3].forEach(i => {
+                const el = document.getElementById('step' + i);
+                el.classList.remove('active', 'done');
+                if (i < active) el.classList.add('done');
+                else if (i === active) el.classList.add('active');
+            });
+        }
+
+        function escapeHtml(str) {
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+        function escapeAttr(str) {
+            return String(str).replace(/'/g, "\\'");
+        }
+
+        // ── 検索用正規化（全角⇔半角・大小文字統一） ──
+        function normalizeSearch(str) {
+            let result = '';
+            for (const ch of str) {
+                const code = ch.charCodeAt(0);
+                // 全角英数 → 半角
+                if (code >= 0xFF01 && code <= 0xFF5E) {
+                    result += String.fromCharCode(code - 0xFEE0);
+                    // 全角スペース → 半角
+                } else if (code === 0x3000) {
+                    result += ' ';
+                    // 半角カタカナ → 全角カタカナ
+                } else if (code >= 0xFF65 && code <= 0xFF9F) {
+                    const hkMap = 'ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ';
+                    const fkMap = 'ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛゜';
+                    const idx = hkMap.indexOf(ch);
+                    result += idx >= 0 ? fkMap[idx] : ch;
+                } else {
+                    result += ch;
+                }
+            }
+            // 濁点(゛)・半濁点(゜)を前の文字と結合
+            result = result.replace(/([カキクケコサシスセソタチツテトハヒフヘホウ])゛/g, (_, c) => {
+                const dakuMap = 'カガキギクグケゲコゴサザシジスズセゼソゾタダチヂツヅテデトドハバヒビフブヘベホボウヴ';
+                const i = dakuMap.indexOf(c);
+                return i >= 0 && i % 2 === 0 ? dakuMap[i + 1] : c + '゛';
+            });
+            result = result.replace(/([ハヒフヘホ])゜/g, (_, c) => {
+                const hanMap = { 'ハ': 'パ', 'ヒ': 'ピ', 'フ': 'プ', 'ヘ': 'ペ', 'ホ': 'ポ' };
+                return hanMap[c] || c + '゜';
+            });
+            return result.toLowerCase();
+        }
+
+        // ── スペース区切りAND検索 ──
+        function matchesQuery(productName, query) {
+            const normName = normalizeSearch(productName);
+            // スペース（全角・半角）で分割し、各トークンがすべて含まれていればマッチ
+            const tokens = normalizeSearch(query).split(/\s+/).filter(t => t.length > 0);
+            return tokens.every(t => normName.includes(t));
+        }
+
+        // ── 訪問履歴（GAS API連携） ──
+        // 日報スプレッドシートのサロン名 → CRM上のサロン名 逆引きマッピング
+        const REPORT_SALON_MAP = {
+            // 火曜日
+            'FATE': 'フェイト', 'Fate': 'フェイト',
+            'スコップ': 'スコップ', 'リンクコネクト株式会社': 'スコップ',
+            'STANDARD': 'スタンダード',
+            // 水曜日
+            'リッシュヘアー': 'リッシュヘアー', 'Riche hair': 'リッシュヘアー',
+            'ピーブランズヘア大野城': 'ピーブランズヘア大野城', 'P-brandshair onojo': 'ピーブランズヘア大野城',
+            'ピーブランズヘア春日': 'ピーブランズヘア春日',
+            'アリー': 'アリー', 'Ari': 'アリー',
+            'スタイリー': 'スタイリー', 'STYLEE': 'スタイリー',
+            'ベルリアージュ': 'ベルリアージュ', 'Bellreage': 'ベルリアージュ',
+            'クレア': 'クレア', 'Crea': 'クレア',
+            'リズム': 'リズム', 'RHYTHM': 'リズム',
+            'ワンネス': 'ワンネス', 'Oneness': 'ワンネス',
+            'ひとみ美容室': 'ひとみ美容室',
+            'プラント': 'プラント', 'plant': 'プラント',
+            '出張理美容': '出張理美容',
+            'アトリコ': 'アトリコ', 'attrico': 'アトリコ',
+            'セブンベルベット': 'セブンベルベット', '7Velvet': 'セブンベルベット',
+            'コージーベルベット': 'コージーベルベット', 'cosy Velvet': 'コージーベルベット',
+            'アヴェ': 'アヴェ', 'ave': 'アヴェ', 'Ave': 'アヴェ',
+            'スリー1階': 'スリー1階', 'THREE': 'スリー5階',
+            'スリー5階': 'スリー5階', 'スリー ブリーチ': 'スリー ブリーチ',
+            'エレ': 'エレ', 'ere': 'エレ',
+            'ドロップバイドロップ': 'ドロップバイドロップ', 'drop by drop': 'ドロップバイドロップ',
+            'ベルベットヘア': 'ベルベットヘア', 'Velvet hair': 'ベルベットヘア',
+            'リコラ': 'リコラ', 'ricore': 'リコラ',
+            'ライトリー': 'ライトリー', 'LYTRIE': 'ライトリー',
+            // 木曜日
+            'リブロ': 'リブロ', 'LiBro': 'リブロ',
+            'ハルズヘアー': 'ハルズヘアー', 'HALS': 'ハルズヘアー',
+            'ラック': 'ラック', 'luck': 'ラック',
+            'コージー': 'コージー', 'KOZY': 'コージー',
+            'ナッティー': 'ナッティー', 'Natty': 'ナッティー',
+            'サロンココ': 'サロンココ', 'Salon COCO': 'サロンココ',
+            'アンバー': 'アンバー', 'Amber': 'アンバー',
+            'リュクス': 'リュクス', 'Luxe': 'リュクス',
+            // 金曜日
+            'クラーク': 'クラーク', 'Clarke': 'クラーク',
+            'ミツアミ堂': 'ミツアミ堂',
+            'ラコヘアー': 'ラコヘアー', 'LACO hair': 'ラコヘアー',
+            'ベルベット千早': 'ベルベット千早', 'Velvet hair 千早': 'ベルベット千早',
+            'ロブレ': 'ロブレ', 'Roble': 'ロブレ',
+            'シエララグゼ': 'シエララグゼ',
+            'ホロホロヘアー': 'ホロホロヘアー',
+        };
+
+        function matchesSalonName(reportSalon, crmSalon) {
+            if (reportSalon === crmSalon) return true;
+            const mapped = REPORT_SALON_MAP[reportSalon];
+            if (mapped === crmSalon) return true;
+            // 正規化比較（大小文字・全角半角統一）
+            return normalizeSearch(reportSalon) === normalizeSearch(crmSalon);
+        }
+
+        function splitProposalString(value) {
+            return String(value || '')
+                .split(/[,、\n]/)
+                .map(item => item.trim())
+                .filter(Boolean);
+        }
+
+        function dateSortValue(value) {
+            const text = String(value || '').trim();
+            const match = text.match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})$/);
+            if (match) {
+                return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getTime();
+            }
+            const parsed = new Date(text).getTime();
+            return Number.isNaN(parsed) ? 0 : parsed;
+        }
+
+        function buildProposalSummary(reports) {
+            const proposalMap = new Map();
+
+            reports.forEach(report => {
+                splitProposalString(report.proposals).forEach(name => {
+                    const key = normalizeSearch(name);
+                    const current = proposalMap.get(key);
+                    if (!current || dateSortValue(report.date) > dateSortValue(current.date)) {
+                        proposalMap.set(key, {
+                            name,
+                            date: report.date,
+                            reaction: report.reaction || '',
+                            nextAction: report.nextAction || ''
+                        });
+                    }
+                });
+            });
+
+            const proposals = Array.from(proposalMap.values())
+                .sort((a, b) => dateSortValue(b.date) - dateSortValue(a.date))
+                .slice(0, 12);
+
+            if (proposals.length === 0) return '';
+
+            return `<div class="proposal-summary">
+                <div class="proposal-summary-title">過去の提案テーマ</div>
+                <div class="proposal-history-list">
+                    ${proposals.map(item => {
+                        const metaParts = [item.date, item.reaction].filter(Boolean);
+                        return `<div class="proposal-history-item">
+                            <div class="proposal-history-name">${escapeHtml(item.name)}</div>
+                            <div class="proposal-history-meta">${escapeHtml(metaParts.join(' / '))}</div>
+                        </div>`;
+                    }).join('')}
+                </div>
+            </div>`;
+        }
+
+        function renderReportEntry(r) {
+            const proposalChips = splitProposalString(r.proposals)
+                .map(item => `<span class="report-chip proposal">${escapeHtml(item)}</span>`)
+                .join('');
+            const reactionChip = r.reaction ? `<span class="report-chip reaction">反応: ${escapeHtml(r.reaction)}</span>` : '';
+            const nextActionChip = r.nextAction ? `<span class="report-chip todo">次回: ${escapeHtml(r.nextAction)}</span>` : '';
+            const photoHtml = r.photoUrl && r.photoUrl !== '' && r.photoUrl !== 'undefined'
+                && r.photoUrl.startsWith('http')
+                ? `<a class="report-photo-link" href="${escapeHtml(r.photoUrl)}" target="_blank">📷 写真を見る</a>`
+                : '';
+            const metaHtml = proposalChips || reactionChip || nextActionChip
+                ? `<div class="report-meta-row">${proposalChips}${reactionChip}${nextActionChip}</div>`
+                : '';
+
+            return `<div class="report-entry">
+                <div class="report-date">${escapeHtml(r.date)}</div>
+                ${metaHtml}
+                <div class="report-comment">${escapeHtml(r.comment)}</div>
+                ${photoHtml}
+            </div>`;
+        }
+
+        function loadReports() {
+            const reportSection = document.getElementById('section-reports');
+            const reportList = document.getElementById('report-list');
+
+            if (!GAS_API_URL || !selectedSalon || !selectedDay) {
+                reportSection.style.display = 'none';
+                return;
+            }
+
+            reportSection.style.display = 'block';
+            reportSection.classList.remove('slide-in');
+            void reportSection.offsetWidth;
+            reportSection.classList.add('slide-in');
+            reportList.innerHTML = '<div class="report-loading"><span class="spinner"></span>読み込み中...</div>';
+
+            // JSONP でGAS APIを呼び出し（customerフィルタ無し→CRM側で名寄せ）
+            const callbackName = 'gasCallback_' + Date.now();
+            window[callbackName] = function (response) {
+                delete window[callbackName];
+                const scriptEl = document.getElementById('gas-jsonp');
+                if (scriptEl) scriptEl.remove();
+
+                if (!response || response.status !== 'ok' || !response.reports) {
+                    reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>訪問履歴がありません</p></div>';
+                    return;
+                }
+
+                // レスポンスの列ずれ対応: salonが数字の場合はcomment=サロン名, photoUrl=コメント
+                const normalized = response.reports.map(r => {
+                    if (/^\d+$/.test(String(r.salon).trim())) {
+                        // 列ずれ: salon=件数, comment=サロン名, photoUrl=コメント
+                        return { date: r.date, salon: r.comment, comment: r.photoUrl || '', photoUrl: '', proposals: '', reaction: '', nextAction: '' };
+                    }
+                    return r;
+                });
+
+                // CRM側で名寄せフィルタリング
+                const filtered = normalized
+                    .filter(r => matchesSalonName(r.salon, selectedSalon))
+                    .sort((a, b) => dateSortValue(b.date) - dateSortValue(a.date));
+
+                if (filtered.length === 0) {
+                    reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>訪問履歴がありません</p></div>';
+                    return;
+                }
+
+                const latestReports = filtered.slice(0, 3);
+                const olderReports = filtered.slice(3);
+                const proposalSummary = buildProposalSummary(filtered);
+                const latestHtml = latestReports.map(renderReportEntry).join('');
+                const olderHtml = olderReports.length > 0
+                    ? `<details class="report-more">
+                        <summary>過去の訪問履歴をさらに表示（${olderReports.length}件）</summary>
+                        ${olderReports.map(renderReportEntry).join('')}
+                    </details>`
+                    : '';
+
+                reportList.innerHTML = proposalSummary + latestHtml + olderHtml;
+            };
+
+            const script = document.createElement('script');
+            script.id = 'gas-jsonp';
+            script.src = GAS_API_URL + '?action=getReports&day=' + encodeURIComponent(selectedDay) + '&callback=' + callbackName;
+            script.onerror = function () {
+                reportList.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><p>日報データの取得に失敗しました</p></div>';
+                delete window[callbackName];
+            };
+            document.body.appendChild(script);
+        }
+
+        // ── データ更新 (Upload) ──
+        const dropZone = document.getElementById('drop-zone');
+        if (dropZone) {
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evt => {
+                dropZone.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); }, false);
+            });
+            dropZone.addEventListener('dragenter', () => dropZone.classList.add('dragover'));
+            dropZone.addEventListener('dragover', () => dropZone.classList.add('dragover'));
+            dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+            dropZone.addEventListener('drop', (e) => {
+                dropZone.classList.remove('dragover');
+                const file = e.dataTransfer.files[0];
+                if (file) uploadCSV(file);
+            });
+        }
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) uploadCSV(file);
+        }
+
+        async function uploadCSV(file) {
+            if (!file.name.endsWith('.csv')) {
+                alert('CSVファイルを選択してください');
+                return;
+            }
+
+            const status = document.getElementById('upload-status');
+            status.innerHTML = '<span class="loading-spinner"></span> 解析・集計中... (数秒かかります)';
+            status.style.color = 'var(--primary-light)';
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    status.innerHTML = '✅ 集計完了！データを更新しました。';
+                    status.style.color = 'var(--green)';
+                    setTimeout(() => location.reload(), 1500);
+                } else {
+                    throw new Error(result.error || '不明なエラーが発生しました');
+                }
+            } catch (err) {
+                console.error(err);
+                status.innerHTML = `❌ エラー: ${err.message}`;
+                status.style.color = 'var(--red)';
+            }
+        }
+
+        // ── 1.2.5 Features ──
+        let currentSalonChart = null;
+        let lastChartData = null;
+
+        function renderChart(salonMonths, currentMonth) {
+            lastChartData = { salonMonths, currentMonth };
+            switchSalonChart('donut'); // 初期状態をドーナツにする
+        }
+
+        function switchSalonChart(type) {
+            if (!lastChartData) return;
+            const { salonMonths, currentMonth } = lastChartData;
+            
+            document.getElementById('tab-chart-donut').classList.remove('active');
+            document.getElementById('tab-chart-line').classList.remove('active');
+            document.getElementById('tab-chart-' + type).classList.add('active');
+
+            const ctx = document.getElementById('salonChart');
+            if (!ctx) return;
+            
+            if (currentSalonChart) {
+                currentSalonChart.destroy();
+            }
+
+            Chart.defaults.color = '#7a7994'; // var(--text-muted)
+
+            if (type === 'donut') {
+                const data = salonMonths[currentMonth] || {};
+                const products = data.details || [];
+                const topProducts = [...products].sort((a, b) => b.sales - a.sales).slice(0, 10);
+                
+                const labels = topProducts.map(p => p.name);
+                const values = topProducts.map(p => p.sales);
+
+                currentSalonChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: [
+                                '#7c6af7', '#a095ff', '#34d399', '#fbbf24', '#f87171',
+                                '#4a4a6a', '#9ca3af', '#60a5fa', '#818cf8', '#c084fc'
+                            ],
+                            borderWidth: 0,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: { boxWidth: 10, font: { size: 10 } }
+                            }
+                        }
+                    }
+                });
+            } else if (type === 'line') {
+                const allMonths = Object.keys(salonMonths).sort();
+                const sliceIdx = allMonths.indexOf(currentMonth);
+                const trendMonths = allMonths.slice(Math.max(0, sliceIdx - 5), sliceIdx + 1); // Last 6 months
+
+                const salesData = trendMonths.map(m => salonMonths[m] ? salonMonths[m].sales || 0 : 0);
+                const profitData = trendMonths.map(m => salonMonths[m] ? salonMonths[m].profit || 0 : 0);
+
+                currentSalonChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: trendMonths,
+                        datasets: [
+                            {
+                                label: '売上高',
+                                data: salesData,
+                                borderColor: '#7c6af7',
+                                backgroundColor: 'rgba(124, 106, 247, 0.1)',
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: '利益額',
+                                data: profitData,
+                                borderColor: '#34d399',
+                                backgroundColor: 'transparent',
+                                borderWidth: 2,
+                                borderDash: [5, 5],
+                                fill: false,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
+                            x: { grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                        },
+                        plugins: { legend: { position: 'top' } }
+                    }
+                });
+            }
+        }
+
+        function detectDeadStock(salonName, currentData) {
+            const area = document.getElementById('dead-stock-alert-area');
+            if (!area) return;
+            
+            area.style.display = 'none';
+            area.innerHTML = '';
+            
+            const salonMonths = MONTHLY_DATA?.salons?.[salonName] || {};
+            // 最新から過去への月リスト
+            const allMonths = Object.keys(salonMonths).sort().reverse(); 
+            
+            // 60日（約2ヶ月）の判定：前々月(n-2)以前には購入があったが、当月(n)および前月(n-1)に購入がないもの
+            if (allMonths.length < 3) return; 
+
+            const currentObj = salonMonths[allMonths[0]]?.details || [];
+            const prevObj = salonMonths[allMonths[1]]?.details || [];
+            const prev2Obj = salonMonths[allMonths[2]]?.details || [];
+
+            const recentNames = new Set([...currentObj.map(p=>p.name), ...prevObj.map(p=>p.name)]);
+            const deadProducts = [];
+            
+            prev2Obj.forEach(p => {
+                if (!recentNames.has(p.name)) {
+                    deadProducts.push(p);
+                }
+            });
+
+            if (deadProducts.length > 0) {
+                const topDead = deadProducts.sort((a,b) => b.sales - a.sales).slice(0, 3);
+                area.style.display = 'block';
+                area.innerHTML = `
+                    <div class="insight-box alert" style="margin-bottom:0;">
+                        <div class="insight-title">⚠️ 失客アラート (60日超)</div>
+                        <div class="insight-text">
+                            過去の主力商品が直近60日以上発注されていません。他社へ切り替わった可能性があります。<br>
+                            <span style="font-weight:700; color:var(--red);">
+                            ${topDead.map(p => `・${escapeHtml(p.name)}`).join('<br>')}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function exportSalonAI(type) {
+            const aiResult = document.getElementById('salon-ai-result');
+            if (!aiResult) return;
+            
+            const text = aiResult.innerText;
+            if (!text.trim()) return;
+
+            const prefix = "お疲れ様です！今月のデータが出ました📊\n\n";
+            const fullText = prefix + text;
+
+            if (type === 'copy') {
+                navigator.clipboard.writeText(fullText).then(() => {
+                    alert('クリップボードにコピーしました！');
+                }).catch(err => {
+                    alert('コピーに失敗しました: ' + err);
+                });
+            } else if (type === 'line') {
+                const encoded = encodeURIComponent(fullText);
+                window.location.href = 'line://msg/text/?' + encoded;
+            }
+        }
+
+        // ── GAS URL設定ヘルパー ──
+        window.setGasUrl = function (url) {
+            localStorage.setItem('crm_gas_url', url);
+            location.reload();
+        };
+
+        // ── Init ──
+        loadMemory();
+        loadPriceOverrides();
+        loadData(); // loadData内の await 後に初期化が走る
+
+        // Character Count Listeners
+        ['monthly-instruction', 'salon-instruction'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', () => {
+                    const countEl = document.getElementById(id + '-count');
+                    if (countEl) countEl.textContent = `${el.value.length} characters`;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
