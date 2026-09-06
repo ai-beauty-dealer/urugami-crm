@@ -3418,7 +3418,29 @@ ${extracted.csv}
             section.style.display = 'block';
             const sortedMonths = Object.keys(salonMonths).sort((a, b) => b.localeCompare(a));
 
-            container.innerHTML = sortedMonths.map((month, idx) => {
+            // ── 年間売上推移グラフ（直近12ヶ月・2026-07-25追加） ──
+            const chronMonths = [...sortedMonths].reverse().slice(-12);
+            const maxSales = Math.max(...chronMonths.map(mm => (salonMonths[mm].sales || 0)), 1);
+            const chartBars = chronMonths.map(mm => {
+                const s = salonMonths[mm].sales || 0;
+                const h = Math.max(Math.round(s / maxSales * 100), 2);
+                return `<div style="flex:1;min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
+                    <div style="font-size:8px;color:#8b8fa3;white-space:nowrap;">${s > 0 ? '¥' + Math.round(s / 10000) + '万' : ''}</div>
+                    <div style="width:68%;max-width:26px;height:${h}%;background:linear-gradient(180deg,#8b5cf6,#6d28d9);border-radius:3px 3px 0 0;" title="${mm}: ¥${s.toLocaleString()}"></div>
+                    <div style="font-size:8px;color:#8b8fa3;white-space:nowrap;">${mm.slice(2).replace('-', '/')}</div>
+                </div>`;
+            }).join('');
+            const yearTotal = chronMonths.reduce((a, mm) => a + (salonMonths[mm].sales || 0), 0);
+            const yearProfit = chronMonths.reduce((a, mm) => a + (salonMonths[mm].profit || 0), 0);
+            const chartHtml = `<div style="margin-bottom:16px;padding:14px;border:1px solid rgba(139,92,246,0.25);border-radius:12px;background:rgba(139,92,246,0.06);">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+                    <span style="font-size:11px;letter-spacing:0.05em;color:#a78bfa;">📈 年間売上推移（直近${chronMonths.length}ヶ月）</span>
+                    <span style="font-size:11px;color:#8b8fa3;">累計 ¥${yearTotal.toLocaleString()} ・ 粗利 ¥${yearProfit.toLocaleString()}</span>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:4px;height:120px;">${chartBars}</div>
+            </div>`;
+
+            container.innerHTML = chartHtml + sortedMonths.map((month, idx) => {
                 const data = salonMonths[month];
                 const sales = data.sales || 0;
                 const profit = data.profit || 0;
